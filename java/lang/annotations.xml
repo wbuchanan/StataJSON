@@ -1,0 +1,9 @@
+<!--suppress XmlUnboundNsPrefix -->
+<root>
+    <item name='java.lang.Integer'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='java.lang.Override'>
+	  <annotation name='org.jetbrains.annotations.NotNull'/>
+	</item>
+</root>
