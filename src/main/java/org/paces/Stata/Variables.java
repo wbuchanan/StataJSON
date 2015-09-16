@@ -1,11 +1,14 @@
-package org.paces.StataMetaData;
+package org.paces.Stata;
 import com.stata.sfi.Data;
-import com.stata.sfi.Macro;
 import com.stata.sfi.ValueLabel;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import static com.stata.sfi.Data.getParsedVarCount;
 
 /**
  * @author Billy Buchanan
@@ -14,33 +17,59 @@ import java.util.Map;
  * <p>Class used for Stata's Java API to access the metadata for Stata variables
  * .</p>
  */
-public class StataVarsImpl implements StataVars {
+public class Variables {
 
 	// Member variable containing variable indices
-	private List<Integer> varindex;
+	public List<Integer> varindex;
 
 	// Member variable containing Stata variable names
-	private List<String> varnames;
+	public List<String> varnames;
 
 	// Member variable containing Stata variable labels
-	private List<String> varlabels;
+	public List<String> varlabels;
 
 	// Member variable containing Stata value label names associated with a
 	// given variable
-	private List<String> valueLabelNames;
+	public List<String> valueLabelNames;
 
 	// Member variable containing a list of Map objects with the values and
 	// associated labels contained in the Map object
-	private List<Map<Integer, String>> valueLabels;
+	public List<Map<Integer, String>> valueLabels;
 
 	// Member variable containing indicators for whether or not the variable
 	// is of type String
-	private List<Boolean> varTypes;
+	public List<Boolean> varTypes;
 
 	/***
-	 * Constructor method for class StataVarsImpl
+	 * Generic constructor when varlist is passed
+	 * @param arguments Transformed list of strings from the args parameter
 	 */
-	public StataVarsImpl() {
+	Variables(List<String> arguments) {
+
+		// Set the variable index member variable
+		setVariableIndex(arguments);
+
+		// Set the variable name member variable
+		setVariableNames();
+
+		// Set the variable label member variable
+		setVariableLabels();
+
+		// Set the value label name member variable
+		setValueLabelNames();
+
+		// Set the value label value/label pair member variable
+		setValueLabels();
+
+		// Set the variable is string index member variable
+		setVariableTypeIndex();
+
+	} // End constructor method
+
+	/***
+	 * Generic constructor when no varlist is passed
+	 */
+	Variables() {
 
 		// Set the variable index member variable
 		setVariableIndex();
@@ -64,43 +93,28 @@ public class StataVarsImpl implements StataVars {
 
 	/***
 	 * Sets an object containing the indices for variables accessed from Stata
+	 * @param args Passed from javacall
 	 */
-	@Override
+	public void setVariableIndex(List<String> args) {
+		this.varindex.addAll(args.stream().map(Data::getVarIndex).
+				collect(Collectors.<Integer>toList()));
+	}
+
 	public void setVariableIndex() {
 
 		// Initialize an empty array list of Integer objects
-		List<Integer> vars = new ArrayList<Integer>();
+		List<Integer> vars = new ArrayList<>();
 
-		if (Data.isVarlistSpecified()) {
+		// Get the total number of variables in the dataset
+		int nvars = Data.getParsedVarCount();
 
-			// Get a string object with the contents of the varlist macro
-			String varl = Macro.getLocalSafe("varlist");
+		// Loop over the total indices of variables
+		for (int i = 0; i < getParsedVarCount(); i++) {
 
-			String[] varlist = varl.split(" ");
+			// Add the index value to the list object
+			vars.add(i);
 
-			// Loop over the variable names passed from javacall
-			for (String vindex : varlist) {
-
-				// Get the variable index for a given variable name and append
-				// the variable index to the ArrayList object
-				vars.add(Data.getVarIndex(vindex));
-
-			} // End Loop over variable names
-
-		} else {
-
-			// Get the total number of variables
-			int allVars = Data.getParsedVarCount();
-
-			// Iterate over the number of variables
-			for (int vindex = 0; vindex <= allVars - 1; vindex++) {
-
-				// Append values to ArrayList object
-				vars.add(vindex);
-
-			} // End Loop over values
-
-		} // End IF/ELSE Block for java call w/ w/o varlist included
+		} // End Loop over values
 
 		// Set the variable index member variable's values
 		this.varindex = vars;
@@ -112,18 +126,14 @@ public class StataVarsImpl implements StataVars {
 	 * Sets an object containing variable names from Stata data set.
 	 * Requires the variable index.
 	 */
-	@Override
 	public void setVariableNames() {
 
-		List<String> tmp = new ArrayList<String>();
+		List<String> tmp = new ArrayList<>();
 
 		// Iterate over the variable indices
-		for (Integer vdx : this.varindex) {
-
-			// Add the variable name to the list object
-			tmp.add(Data.getVarName(vdx));
-
-		} // End Loop
+		// Add the variable name to the list object
+		tmp.addAll(this.varindex.stream().map(Data::getVarName).
+					collect(Collectors.toList()));
 
 		// Set the variable names member variable
 		this.varnames = tmp;
@@ -134,18 +144,14 @@ public class StataVarsImpl implements StataVars {
 	 * Sets an object containing variable labels from Stata data set.
 	 * Requires the variable index.
 	 */
-	@Override
 	public void setVariableLabels() {
 
-		List<String> tmp = new ArrayList<String>();
+		List<String> tmp = new ArrayList<>();
 
 		// Iterate over the variable indices
-		for (Integer vdx : this.varindex) {
-
-			// Add the variable name to the list object
-			tmp.add(Data.getVarLabel(vdx));
-
-		} // End Loop
+		// Add the variable name to the list object
+		tmp.addAll(this.varindex.stream().map(Data::getVarLabel).
+				collect(Collectors.toList()));
 
 		// Set the variable names member variable
 		this.varlabels = tmp;
@@ -157,10 +163,9 @@ public class StataVarsImpl implements StataVars {
 	 * index value
 	 * Requires the variable index.
 	 */
-	@Override
 	public void setValueLabelNames() {
 
-		List<String> tmp = new ArrayList<String>();
+		List<String> tmp = new ArrayList<>();
 
 		// Iterate over the variable indices
 		for (Integer vdx : this.varindex) {
@@ -185,18 +190,16 @@ public class StataVarsImpl implements StataVars {
 	 * Sets an object with the value labels defined for a given variable.
 	 * Requires the variable index.
 	 */
-	@Override
 	public void setValueLabels() {
 
 		// Initialize temporary container object
-		List<Map<Integer, String>> valabs = new ArrayList<Map<Integer,
-				String>>();
+		List<Map<Integer, String>> valabs = new ArrayList<>();
 
 		// Loop over the variable indices
 		for (String vdx : this.valueLabelNames) {
 
 			// Create temp object to store the value label set
-			Map<Integer, String> labels = new HashMap<Integer, String>();
+			Map<Integer, String> labels = new HashMap<>();
 
 			// Test whether the object is null/empty
 			if (vdx == null) {
@@ -233,18 +236,14 @@ public class StataVarsImpl implements StataVars {
 	 * is/isn't a string.
 	 * Requires the variable index.
 	 */
-	@Override
 	public void setVariableTypeIndex() {
 
-		List<Boolean> tmp = new ArrayList<Boolean>();
+		List<Boolean> tmp = new ArrayList<>();
 
 		// Iterate over the variable indices
-		for (Integer vdx : this.varindex) {
-
-			// Add the variable name to the list object
-			tmp.add(Data.isVarTypeString(vdx));
-
-		} // End Loop
+		// Add the variable name to the list object
+		tmp.addAll(this.varindex.stream().map(Data::isVarTypeString).
+				collect(Collectors.toList()));
 
 		// Set the variable type index
 		this.varTypes = tmp;
@@ -256,55 +255,76 @@ public class StataVarsImpl implements StataVars {
 	 *
 	 * @return A list of Integer objects containing variable indices
 	 */
-	@Override
 	public List<Integer> getVariableIndex() {
 		return this.varindex;
 	}
 
 	/***
-	 * @param varidx The Stata Dataset variable index member variable
 	 * @return A list of String objects containing variable names
 	 */
-	@Override
-	public List<String> getVariableNames(List<Integer> varidx) {
+	public List<String> getVariableNames() {
 		return this.varnames;
 	}
 
 	/***
-	 * @param varidx The Stata Dataset variable index member variable
+	 * @param varidx valid variable index value
+	 * @return Name of variable at index varidx
+	 */
+	public String getName(int varidx) {
+		return this.varnames.get(varidx);
+	}
+
+	/***
+	 * @param varidx valid variable index value
+	 * @return Variable Label
+	 */
+	public String getVarLabel(int varidx) {
+		return this.varlabels.get(varidx);
+	}
+
+	/***
+	 * @param varidx valid variable index value
+	 * @return Name of variable at index varidx
+	 */
+	public Boolean getVarType(int varidx) {
+		return this.varTypes.get(varidx);
+	}
+
+	/***
+	 * @param varidx valid variable index value
+	 * @return Name of value label associated with a given variable index
+	 */
+	public String getValueLabelName(int varidx) { return this.valueLabelNames
+			.get(varidx); }
+
+
+	/***
 	 * @return A list of String objects containing variable labels.
 	 */
-	@Override
-	public List<String> getVariableLabels(List<Integer> varidx) {
+	public List<String> getVariableLabels() {
 		return this.varlabels;
 	}
 
 	/***
-	 * @param varidx The Stata Dataset variable index member variable
 	 * @return A list of String objects containing value label names.
 	 */
-	@Override
-	public List<String> getValueLabelNames(List<Integer> varidx) {
+	public List<String> getValueLabelNames() {
 		return this.valueLabelNames;
 	}
 
 	/***
-	 * @param varidx The Stata Dataset variable index member variable
 	 * @return A list of Map objects containing the value/label pairs for
 	 * labeled variables or the keyword "skip" to indicate the variable does not
 	 * have any value labels associated with it.
 	 */
-	@Override
-	public List<Map<Integer, String>> getValueLabels(List<Integer> varidx) {
+	public List<Map<Integer, String>> getValueLabels() {
 		return this.valueLabels;
 	}
 
 	/***
-	 * @param varidx The Stata Dataset variable index member variable
 	 * @return A list of Boolean objects indicating if variable is a string
 	 */
-	@Override
-	public List<Boolean> getVariableTypes(List<Integer> varidx) {
+	public List<Boolean> getVariableTypes() {
 		return this.varTypes;
 	}
 

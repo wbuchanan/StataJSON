@@ -1,7 +1,7 @@
-package org.paces.StataMetaData;
+package org.paces.Stata;
 import com.stata.sfi.Data;
-import com.stata.sfi.Macro;
 import com.stata.sfi.SFIToolkit;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * <p>Implementation of the Stata Observation interface class.</p>
  */
 
-public class StataObsImpl implements StataObs {
+public class Observations {
 
 	// Starting observation index number
 	private long sobs;
@@ -26,13 +26,10 @@ public class StataObsImpl implements StataObs {
 	// Observation indices
 	private List<Long> obindex;
 
-	// Get printme argument
-	final String printme = Macro.getLocalSafe("print");
-
 	/***
 	 * Constructor method for class ObservationsImpl
 	 */
-	public StataObsImpl() {
+	public Observations() {
 
 		// Set the starting observation index
 		setSobs();
@@ -80,7 +77,7 @@ public class StataObsImpl implements StataObs {
 	public void setObservationIndex(Long start, Long end) {
 
 		// Initialize temp variable
-		List tmp = new ArrayList<Long>();
+		List tmp = new ArrayList<>();
 
 		// Loop over the observations
 		for(Long i = start; i <= end; i++) {
@@ -103,12 +100,6 @@ public class StataObsImpl implements StataObs {
 	 * @return the starting observation index value
 	 */
 	public long getSobs() { return(this.sobs); }
-
-	/***
-	 *
-	 * @return The value of the local macro print
-	 */
-	public String getPrintme() { return(this.printme); }
 
 	/***
 	 * @return the ending observation index value

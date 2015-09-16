@@ -64,7 +64,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="Stata" target="1.6" />
+      <module name="Stata" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="CppTools.Loader" reportImplicitCastToBool="false" reportNameReferencedOnce="false" version="3" compilerSelect="AUTO" />
@@ -615,9 +615,6 @@
     <option wsh="true" />
     <option yui="true" />
   </component>
-  <component name="JUnitGeneratorProjectSettings">
-    <option name="combineGetterAndSetter" value="true" />
-  </component>
   <component name="JsBowerSettings">
     <exe-path>/usr/local/bin/bower</exe-path>
     <config-path />
@@ -750,13 +747,37 @@
       </item>
     </group>
   </component>
+  <component name="Play2CompilerConfiguration">
+    <option name="PROJECT_PLAY_MODULE" value="Stata" />
+  </component>
   <component name="ProjectDictionaryState">
     <dictionary name="billy">
       <words>
         <w>dataset</w>
+        <w>eobs</w>
+        <w>javacall</w>
+        <w>labelnames</w>
+        <w>labidx</w>
+        <w>obindex</w>
+        <w>obsindex</w>
+        <w>printvalue</w>
+        <w>printvaluelabels</w>
+        <w>printvarlabels</w>
+        <w>printvarnames</w>
         <w>stata</w>
         <w>stata's</w>
+        <w>stataobs</w>
+        <w>statavars</w>
+        <w>valabs</w>
+        <w>vallabel</w>
         <w>varidx</w>
+        <w>varindex</w>
+        <w>varl</w>
+        <w>varlabels</w>
+        <w>varlist</w>
+        <w>varnames</w>
+        <w>vindex</w>
+        <w>vlabel</w>
       </words>
     </dictionary>
   </component>
@@ -804,7 +825,7 @@
     <option name="isCompilerEnabled" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="" />
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
     <library name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.1">
@@ -849,17 +870,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/stata/sfi/14/sfi-14-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: junit:junit:3.8.1">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
   </component>

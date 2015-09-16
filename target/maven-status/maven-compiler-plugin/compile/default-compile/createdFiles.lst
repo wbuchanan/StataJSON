@@ -1,6 +1,5 @@
-org/paces/StataMetaData/StataObsImpl.class
-org/paces/StataMetaData/StataVars.class
-org/paces/StataMetaData/StataObs.class
-org/paces/StataMetaData/StataVarsImpl.class
-org/paces/StataMetaData/Variables.class
-org/paces/StataMetaData/Observations.class
+org/paces/Stata/StataArgsToCollector.class
+org/paces/Stata/Meta.class
+org/paces/Stata/VarDebug.class
+org/paces/Stata/Variables.class
+org/paces/Stata/Observations.class

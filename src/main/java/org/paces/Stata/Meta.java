@@ -1,9 +1,9 @@
 package org.paces.Stata;
 
-import org.paces.StataMetaData.StataObsImpl;
-import org.paces.StataMetaData.StataVarsImpl;
+import com.stata.sfi.SFIToolkit;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Billy Buchanan
@@ -14,10 +14,10 @@ import java.util.List;
 public class Meta {
 
 	// Observations metadata object
-	public static StataObsImpl stataobs;
+	public static Observations stataobs;
 
 	// Variables metadata object
-	public static StataVarsImpl statavars;
+	public static Variables statavars;
 
 	// Variable index metadata object
 	public static List<Integer> varindex;
@@ -25,14 +25,33 @@ public class Meta {
 	// Observation index metadata object
 	public static List<Long> obsindex;
 
-	// Construct a new Meta class object
 	public static void main(String[] args) {
+		new Meta(args);
+	}
+
+	/***
+	 * Generic constructor when args are passed from javacall
+	 * @param args String array to transform into collector object
+	 */
+	public Meta(String[] args){
 
 		// Create a new observations object
 		setStataobs();
 
-		// Create a new variables object
-		setStatavars();
+		List<String> newargs;
+
+		if (args.length > 0) {
+
+			newargs = StataArgsToCollector.argsToCollector(args);
+
+			// Create a new variables object
+			setStatavars(newargs);
+
+		} else {
+
+			// Create a new variables object
+			setStatavars();
+		}
 
 		// Create a new variable index object
 		setVarindex(statavars);
@@ -40,63 +59,75 @@ public class Meta {
 		// Create a new observation index object
 		setObsindex(stataobs);
 
-	} // End generic main method
+	}
+
+	/*
+
+	to JSON should be formatted as
+
+	[
+		{
+			"var" : value,
+			"var" : "value"
+		},
+		{
+			"var" : value,
+			"var" : "value"
+		}
+	]
+
+	 */
+
 
 	/***
 	 * Generic setter method for observations member variable
-	 * @return An integer value required by the Stata Java API.  Value not used.
 	 */
-	public static int setStataobs() {
+	public static void setStataobs() {
 
 		// Initialize a new observations object
-		stataobs = new StataObsImpl();
-
-		// Return a value to satisfy the Stata API
-		return 0;
+		stataobs = new Observations();
 
 	} // End setter method for observations member variable
 
 	/***
 	 * Generic setter method for variables member variable
-	 * @return An integer value required by the Stata Java API.  Value not used.
 	 */
-	public static int setStatavars() {
+	public static void setStatavars() {
 
 		// Initialize a new variables metadata object
-		statavars = new StataVarsImpl();
+		statavars = new Variables();
 
-		// Return a value to satisfy the Stata API
-		return 0;
+	} // End setter method for variables metadata member variable
+
+	/***
+	 * Generic setter method for variables member variable
+	 */
+	public static void setStatavars(List<String> args) {
+
+		// Initialize a new variables metadata object
+		statavars = new Variables(args);
 
 	} // End setter method for variables metadata member variable
 
 	/***
 	 * Sets teh observation index member variable
 	 * @param observations An observations class object
-	 * @return An integer value required by the Stata Java API.  Value not used.
 	 */
-	public static int setObsindex(StataObsImpl observations) {
+	public static void setObsindex(Observations observations) {
 
 		// Initialize a new observation index object
 		obsindex = observations.getObservationIndex();
-
-		// Return a value to satisfy the Stata API
-		return 0;
 
 	} // End setter method for observation index member variable
 
 	/***
 	 * Sets the variable index member variable
 	 * @param variables A variables class object
-	 * @return An integer value required by the Stata Java API.  Value not used.
 	 */
-	public static int setVarindex(StataVarsImpl variables) {
+	public static void setVarindex(Variables variables) {
 
 		// Initialize a new variable index object
 		varindex = variables.getVariableIndex();
-
-		// Return a value to satisfy the Stata API
-		return 0;
 
 	} // End setter method for variable index member variable
 
@@ -104,13 +135,13 @@ public class Meta {
 	 * Getter for the observations member variable
 	 * @return Returns the observation member variable
 	 */
-	public static StataObsImpl getStataobs() { return stataobs; }
+	public static Observations getStataobs() { return stataobs; }
 
 	/***
 	 * Getter for the variables member variable
 	 * @return Returns the variables member variable
 	 */
-	public static StataVarsImpl getStatavars() { return statavars; }
+	public static Variables getStatavars() { return statavars; }
 
 	/***
 	 * Getter for the observation index member variable
@@ -124,5 +155,39 @@ public class Meta {
 	 */
 	public static List<Integer> getVarindex() { return varindex; }
 
+	public static int printvarnames(String[] args) {
+		for (Integer i : varindex) {
+			SFIToolkit.displayln(statavars.getName(i));
+		}
+		return 0;
+	}
+
+	public static int printvarlabels(String[] args) {
+
+		statavars.getVariableLabels().forEach(SFIToolkit::displayln);
+
+		return 0;
+
+	}
+
+	public static int printvalueLabelnames(String[] args) {
+
+		statavars.getValueLabelNames().forEach(SFIToolkit::displayln);
+
+		return 0;
+
+	}
+
+	public static int printvaluelabels(String[] args) {
+
+		for (Map<Integer, String> vallabel : statavars.getValueLabels()) {
+
+			vallabel.values().forEach(SFIToolkit::displayln);
+
+		}
+
+		return 0;
+
+	}
 
 }
