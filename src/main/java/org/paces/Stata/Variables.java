@@ -105,9 +105,6 @@ public class Variables {
 		// Initialize an empty array list of Integer objects
 		List<Integer> vars = new ArrayList<>();
 
-		// Get the total number of variables in the dataset
-		int nvars = Data.getParsedVarCount();
-
 		// Loop over the total indices of variables
 		for (int i = 0; i < getParsedVarCount(); i++) {
 

@@ -3,3 +3,4 @@ org/paces/Stata/Meta.class
 org/paces/Stata/VarDebug.class
 org/paces/Stata/Variables.class
 org/paces/Stata/Observations.class
+org/paces/Stata/StataJSON.class

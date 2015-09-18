@@ -1,7 +1,8 @@
 package org.paces.Stata;
 
-import com.stata.sfi.SFIToolkit;
+import com.stata.sfi.Data;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,20 +15,16 @@ import java.util.Map;
 public class Meta {
 
 	// Observations metadata object
-	public static Observations stataobs;
+	public Observations stataobs;
 
 	// Variables metadata object
-	public static Variables statavars;
+	public Variables statavars;
 
 	// Variable index metadata object
-	public static List<Integer> varindex;
+	public List<Integer> varindex;
 
 	// Observation index metadata object
-	public static List<Long> obsindex;
-
-	public static void main(String[] args) {
-		new Meta(args);
-	}
+	public List<Long> obsindex;
 
 	/***
 	 * Generic constructor when args are passed from javacall
@@ -82,7 +79,7 @@ public class Meta {
 	/***
 	 * Generic setter method for observations member variable
 	 */
-	public static void setStataobs() {
+	public void setStataobs() {
 
 		// Initialize a new observations object
 		stataobs = new Observations();
@@ -92,7 +89,7 @@ public class Meta {
 	/***
 	 * Generic setter method for variables member variable
 	 */
-	public static void setStatavars() {
+	public void setStatavars() {
 
 		// Initialize a new variables metadata object
 		statavars = new Variables();
@@ -102,7 +99,7 @@ public class Meta {
 	/***
 	 * Generic setter method for variables member variable
 	 */
-	public static void setStatavars(List<String> args) {
+	public void setStatavars(List<String> args) {
 
 		// Initialize a new variables metadata object
 		statavars = new Variables(args);
@@ -113,7 +110,7 @@ public class Meta {
 	 * Sets teh observation index member variable
 	 * @param observations An observations class object
 	 */
-	public static void setObsindex(Observations observations) {
+	public void setObsindex(Observations observations) {
 
 		// Initialize a new observation index object
 		obsindex = observations.getObservationIndex();
@@ -124,7 +121,7 @@ public class Meta {
 	 * Sets the variable index member variable
 	 * @param variables A variables class object
 	 */
-	public static void setVarindex(Variables variables) {
+	public void setVarindex(Variables variables) {
 
 		// Initialize a new variable index object
 		varindex = variables.getVariableIndex();
@@ -135,59 +132,110 @@ public class Meta {
 	 * Getter for the observations member variable
 	 * @return Returns the observation member variable
 	 */
-	public static Observations getStataobs() { return stataobs; }
+	public Observations getStataobs() { return stataobs; }
 
 	/***
 	 * Getter for the variables member variable
 	 * @return Returns the variables member variable
 	 */
-	public static Variables getStatavars() { return statavars; }
+	public Variables getStatavars() { return statavars; }
 
 	/***
 	 * Getter for the observation index member variable
 	 * @return Returns the observation index member variable
 	 */
-	public static List<Long> getObsindex() { return obsindex; }
+	public List<Long> getObsindex() { return obsindex; }
 
 	/***
 	 * Getter for the variable index member variable
 	 * @return Returns the variable index member variable
 	 */
-	public static List<Integer> getVarindex() { return varindex; }
+	public List<Integer> getVarindex() { return varindex; }
 
-	public static int printvarnames(String[] args) {
-		for (Integer i : varindex) {
-			SFIToolkit.displayln(statavars.getName(i));
-		}
-		return 0;
-	}
+	/*
+	public Map<String, ?> getRecord(Long obid, List<Integer> varidx) {
 
-	public static int printvarlabels(String[] args) {
+		// Initialize empty variable to store the variable name
+		String key;
 
-		statavars.getVariableLabels().forEach(SFIToolkit::displayln);
+		// Initialize empty variable to store the value for a given
+		// observation on a specified variable
+		Object value;
 
-		return 0;
+		// Initialize empty container for key/value pairs
+		Map<String, Object> record = new HashMap<>();
 
-	}
+		// Loop over the variable indices
+		for (Integer i : varidx) {
 
-	public static int printvalueLabelnames(String[] args) {
+			// Set the variable name as the key in the map object
+			key = statavars.getName(i);
 
-		statavars.getValueLabelNames().forEach(SFIToolkit::displayln);
+			// Test for string/numeric
+			if (statavars.getVarType(i)) {
 
-		return 0;
+				// Store string value if variable contains strings
+				value = Data.getStr(i, obid);
 
-	}
+			} else {
 
-	public static int printvaluelabels(String[] args) {
+				// Convert numeric variables to string
+				value = Data.getNum(i, obid);
 
-		for (Map<Integer, String> vallabel : statavars.getValueLabels()) {
+			} // End IF/ELSE Block for string/numeric type handling
 
-			vallabel.values().forEach(SFIToolkit::displayln);
+			// Add the key/value pair to the container object
+			record.put(key, value);
 
-		}
+		} // End of Loop
 
-		return 0;
+		// Return the object containing the observation ID and the key/value
+		// pairs
+		return (record);
 
-	}
+	} // End of Method declaration
+	*/
+
+	public Object getRecord(Long obid) {
+
+		// Initialize empty variable to store the variable name
+		String key;
+
+		// Initialize empty variable to store the value for a given
+		// observation on a specified variable
+		Object value;
+
+		// Initialize empty container for key/value pairs
+		Map<String, Object> record = new HashMap<>();
+
+		// Loop over the variable indices
+		for (Integer i : this.varindex) {
+
+			// Set the variable name as the key in the map object
+			key = statavars.getName(i);
+
+			// Test for string/numeric
+			if (statavars.getVarType(i)) {
+
+				// Store string value if variable contains strings
+				value = Data.getStr(i, obid);
+
+			} else {
+
+				// Convert numeric variables to string
+				value = Data.getNum(i, obid);
+
+			} // End IF/ELSE Block for string/numeric type handling
+
+			// Add the key/value pair to the container object
+			record.put(key, value);
+
+		} // End of Loop
+
+		// Return the object containing the observation ID and the key/value
+		// pairs
+		return (record);
+
+	} // End of Method declaration
 
 }
