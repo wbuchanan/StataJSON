@@ -1,7 +1,9 @@
 package org.paces.Stata;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.stata.sfi.Data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,25 @@ public class Meta {
 	public List<Long> obsindex;
 
 	/***
+	 * Constructor for object w/o any arguments passed
+	 */
+	public Meta() {
+
+		// Create an observations member variable
+		setStataobs();
+
+		// Create a variables member variable
+		setStatavars();
+
+		// Create a variable index member variable
+		setVarindex(statavars);
+
+		// Create an observation index member variable
+		setObsindex(stataobs);
+
+	} // End constructor declaration
+
+	/***
 	 * Generic constructor when args are passed from javacall
 	 * @param args String array to transform into collector object
 	 */
@@ -35,10 +56,13 @@ public class Meta {
 		// Create a new observations object
 		setStataobs();
 
+		// List object to store arguments
 		List<String> newargs;
 
+		// If there are arguments passed to the constructor
 		if (args.length > 0) {
 
+			// Convert the string array to a List of Strings
 			newargs = StataArgsToCollector.argsToCollector(args);
 
 			// Create a new variables object
@@ -48,7 +72,8 @@ public class Meta {
 
 			// Create a new variables object
 			setStatavars();
-		}
+
+		} // End IF/ELSE Block
 
 		// Create a new variable index object
 		setVarindex(statavars);
@@ -56,24 +81,7 @@ public class Meta {
 		// Create a new observation index object
 		setObsindex(stataobs);
 
-	}
-
-	/*
-
-	to JSON should be formatted as
-
-	[
-		{
-			"var" : value,
-			"var" : "value"
-		},
-		{
-			"var" : value,
-			"var" : "value"
-		}
-	]
-
-	 */
+	} // End constructor declaration with arguments
 
 
 	/***
@@ -152,50 +160,13 @@ public class Meta {
 	 */
 	public List<Integer> getVarindex() { return varindex; }
 
-	/*
-	public Map<String, ?> getRecord(Long obid, List<Integer> varidx) {
-
-		// Initialize empty variable to store the variable name
-		String key;
-
-		// Initialize empty variable to store the value for a given
-		// observation on a specified variable
-		Object value;
-
-		// Initialize empty container for key/value pairs
-		Map<String, Object> record = new HashMap<>();
-
-		// Loop over the variable indices
-		for (Integer i : varidx) {
-
-			// Set the variable name as the key in the map object
-			key = statavars.getName(i);
-
-			// Test for string/numeric
-			if (statavars.getVarType(i)) {
-
-				// Store string value if variable contains strings
-				value = Data.getStr(i, obid);
-
-			} else {
-
-				// Convert numeric variables to string
-				value = Data.getNum(i, obid);
-
-			} // End IF/ELSE Block for string/numeric type handling
-
-			// Add the key/value pair to the container object
-			record.put(key, value);
-
-		} // End of Loop
-
-		// Return the object containing the observation ID and the key/value
-		// pairs
-		return (record);
-
-	} // End of Method declaration
-	*/
-
+	/***
+	 * Method to get an individual record for a given observation index
+	 * @param obid The observation index for which to retrieve the data
+	 * @return An object containing each of the data elements defined in the
+	 * variable index member variable
+	 */
+	@JsonCreator
 	public Object getRecord(Long obid) {
 
 		// Initialize empty variable to store the variable name
@@ -212,10 +183,10 @@ public class Meta {
 		for (Integer i : this.varindex) {
 
 			// Set the variable name as the key in the map object
-			key = statavars.getName(i);
+			key = statavars.getName(i - 1);
 
 			// Test for string/numeric
-			if (statavars.getVarType(i)) {
+			if (statavars.getVarType(i - 1)) {
 
 				// Store string value if variable contains strings
 				value = Data.getStr(i, obid);
@@ -238,4 +209,69 @@ public class Meta {
 
 	} // End of Method declaration
 
-}
+	/***
+	 * Method to store Stata dataset in a List of objects containing maps of
+	 * key value pairs where the key is the variable name and the value is
+	 * the value on that variable for the given observation
+	 * @return A List of map objects with key/value pairs for the data set in
+	 * memory
+	 */
+	@JsonCreator
+	public List<Object> getAllRecords() {
+
+		// Temporary variable to store keys (variable names)
+		String key;
+
+		// Temporary variable to store values (variable value)
+		Object value;
+
+		// A list of Map<String, Object> variables containing key/value pairs
+		// for individual observations
+		List<Object> obs = new ArrayList<Object>();
+
+		// An object to store all key/value pairs for an observation
+		Map<String, Object> record = new HashMap<>();
+
+		// Loop over the observation indices
+		for (Long obid : this.obsindex) {
+
+			obs.add(getRecord(obid));
+
+			/*
+			// Loop over the variable indices
+			for (Integer varid : this.varindex) {
+
+				// Get the names of the variables
+				key = statavars.getName(varid - 1);
+
+				// Test for string/numeric
+				if (statavars.getVarType(varid - 1)) {
+
+					// Store string value if variable contains strings
+					value = Data.getStr(varid, obid);
+
+				} else {
+
+					// Convert numeric variables to string
+					value = Data.getNum(varid, obid);
+
+				} // End IF/ELSE Block for string/numeric type handling
+
+				// Add the key/value pair to the container object
+				record.put(key, value);
+
+			} // End of Loop over variable indices
+
+			// Add the key/value pairs for an individual observation to the
+			// larger container
+			obs.add(record);
+			*/
+
+		} // End of Loop over observation indices
+
+		// Return the container with individual map objects
+		return(obs);
+
+	} // End method declaration for getAllRecords
+
+} // End object declaration

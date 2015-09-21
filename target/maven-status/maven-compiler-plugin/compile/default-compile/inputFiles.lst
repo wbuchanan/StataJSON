@@ -1,6 +1,10 @@
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Variables.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Observations.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/StataData.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/VarDebug.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/MataMatrix.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/StataArgsToCollector.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/StataJSON.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/DataRecord.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Meta.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/DataSet.java
