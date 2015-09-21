@@ -14,8 +14,8 @@ import static com.stata.sfi.Data.getParsedVarCount;
  * @author Billy Buchanan
  * @version 0.0.0
  * <h2>Stata Variable MetaData Object</h2>
- * <p>Class used for Stata's Java API to access the metadata for Stata variables
- * .</p>
+ * <p>Class used for Stata's Java API to access the metadata for Stata
+ * variables.  This class is initialized by the Meta class object.</p>
  */
 public class Variables {
 
@@ -34,7 +34,7 @@ public class Variables {
 
 	// Member variable containing a list of Map objects with the values and
 	// associated labels contained in the Map object
-	public List<Map<Integer, String>> valueLabels;
+	public List<Object> valueLabels;
 
 	// Member variable containing indicators for whether or not the variable
 	// is of type String
@@ -92,14 +92,24 @@ public class Variables {
 	} // End constructor method
 
 	/***
-	 * Sets an object containing the indices for variables accessed from Stata
-	 * @param args Passed from javacall
+	 * Populates the variable index member variable with the indices used to
+	 * identify variables in the Stata dataset in memory.
+	 * @param args A list of String objects passed to the javacall command in
+	 *                Stata.
 	 */
 	public void setVariableIndex(List<String> args) {
+
+		// Uses Java Stream API to collect all of the variable indices using
+		// the Stata Java API methods
 		this.varindex.addAll(args.stream().map(Data::getVarIndex).
 				collect(Collectors.<Integer>toList()));
-	}
 
+	} // End of setVariableIndex method declaration
+
+	/***
+	 * Populates the variable index member variable with the indices used to
+	 * identify variables in the Stata dataset in memory.
+	 */
 	public void setVariableIndex() {
 
 		// Initialize an empty array list of Integer objects
@@ -109,7 +119,7 @@ public class Variables {
 		for (int i = 0; i < getParsedVarCount(); i++) {
 
 			// Add the index value to the list object
-			vars.add(i);
+			vars.add(i + 1);
 
 		} // End Loop over values
 
@@ -190,7 +200,7 @@ public class Variables {
 	public void setValueLabels() {
 
 		// Initialize temporary container object
-		List<Map<Integer, String>> valabs = new ArrayList<>();
+		List<Object> valabs = new ArrayList<>();
 
 		// Loop over the variable indices
 		for (String vdx : this.valueLabelNames) {
@@ -314,7 +324,7 @@ public class Variables {
 	 * labeled variables or the keyword "skip" to indicate the variable does not
 	 * have any value labels associated with it.
 	 */
-	public List<Map<Integer, String>> getValueLabels() {
+	public List<Object> getValueLabels() {
 		return this.valueLabels;
 	}
 

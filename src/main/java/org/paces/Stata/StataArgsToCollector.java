@@ -7,6 +7,9 @@ import java.util.List;
 /**
  * @author Billy Buchanan
  * @version 0.0.0
+ * <h2>Convenience Method to Convert String[] args to List of String objects
+ * that can use the Streaming API and other newer iterator methods in Java.
+ * </h2>
  */
 class StataArgsToCollector {
 
