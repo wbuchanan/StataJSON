@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by billy on 9/20/15.
+ * @author Billy Buchanan
+ * @version 0.0.0
+ * <h2>Stata DataSet Class Object</h2>
+ * <p>A POJO representation of the Stata dataset currently in memory.
+ * Created by iterating over calls to DataRecord.</p>
  */
 public class DataSet extends Meta implements StataData {
 

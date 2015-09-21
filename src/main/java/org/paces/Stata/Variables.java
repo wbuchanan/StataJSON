@@ -14,8 +14,8 @@ import static com.stata.sfi.Data.getParsedVarCount;
  * @author Billy Buchanan
  * @version 0.0.0
  * <h2>Stata Variable MetaData Object</h2>
- * <p>Class used for Stata's Java API to access the metadata for Stata variables
- * .</p>
+ * <p>Class used for Stata's Java API to access the metadata for Stata
+ * variables.  This class is initialized by the Meta class object.</p>
  */
 public class Variables {
 
@@ -47,7 +47,7 @@ public class Variables {
 	Variables(List<String> arguments) {
 
 		// Set the variable index member variable
-		setVariableIndex();
+		setVariableIndex(arguments);
 
 		// Set the variable name member variable
 		setVariableNames();
@@ -91,11 +91,25 @@ public class Variables {
 
 	} // End constructor method
 
-	//public void setVariableIndex(List<String> args) {
-	//	this.varindex.addAll(args.stream().map(Data::getVarIndex).
-	//			collect(Collectors.<Integer>toList()));
-	//}
+	/***
+	 * Populates the variable index member variable with the indices used to
+	 * identify variables in the Stata dataset in memory.
+	 * @param args A list of String objects passed to the javacall command in
+	 *                Stata.
+	 */
+	public void setVariableIndex(List<String> args) {
 
+		// Uses Java Stream API to collect all of the variable indices using
+		// the Stata Java API methods
+		this.varindex.addAll(args.stream().map(Data::getVarIndex).
+				collect(Collectors.<Integer>toList()));
+
+	} // End of setVariableIndex method declaration
+
+	/***
+	 * Populates the variable index member variable with the indices used to
+	 * identify variables in the Stata dataset in memory.
+	 */
 	public void setVariableIndex() {
 
 		// Initialize an empty array list of Integer objects

@@ -11,7 +11,6 @@ import java.util.List;
  * <h2>Stata Observations Interface Implementation</h2>
  * <p>Implementation of the Stata Observation interface class.</p>
  */
-
 public class Observations {
 
 	// Starting observation index number

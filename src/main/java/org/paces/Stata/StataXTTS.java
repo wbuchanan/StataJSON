@@ -15,6 +15,9 @@ import static java.time.temporal.ChronoUnit.YEARS;
 /**
  * @author Billy Buchanan
  * @version 0.0.0
+ * <h2>Stata XT/TS Methods</h2>
+ * <p>Methods to convert Java Date, Time, and Timestamp objects to Stata
+ * representations.  </p>
  */
 public class StataXTTS {
 

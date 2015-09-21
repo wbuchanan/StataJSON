@@ -8,7 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by billy on 9/20/15.
+ * @author Billy Buchanan
+ * @version 0.0.0
+ * <h2>Stata Record Class Object</h2>
+ * <p>A POJO representation of a single observation from the Stata dataset
+ * loaded in memory. </p>
  */
 public class DataRecord extends Meta implements StataData {
 

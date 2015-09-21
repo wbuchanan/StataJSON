@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by billy on 9/20/15.
+ * @author Billy Buchanan
+ * @version 0.0.0
+ * <h2>Mata Matrix Class Object</h2>
+ * <p>Class used to construct POJO representation of Mata Matrix. </p>
  */
 public class MataMatrix {
 

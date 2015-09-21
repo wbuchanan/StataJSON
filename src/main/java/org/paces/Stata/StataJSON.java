@@ -13,6 +13,9 @@ import java.util.List;
 /**
  * @author Billy Buchanan
  * @version 0.0.0
+ * <h2>Stata JSON Serializer</h2>
+ * <p>Objects and methods to create JSON representation of Stata data and
+ * metadata. </p>
  */
 public class StataJSON {
 
@@ -39,8 +42,10 @@ public class StataJSON {
 	 * formatted string
 	 * @param args Passed from javacall function in Stata
 	 * @return A success value of 0
-	 * @throws JsonProcessingException
-	 * @throws NullPointerException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws NullPointerException An error thrown for referencing a null
+	 * object
 	 */
 	public static int printRecord(String[] args) throws
 			JsonProcessingException, NullPointerException {
@@ -67,8 +72,10 @@ public class StataJSON {
 	 * Method to print the data for the dataset in memory to the console
 	 * @param args Passed from javacall function in Stata
 	 * @return A success value of 0
-	 * @throws JsonProcessingException
-	 * @throws NullPointerException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws NullPointerException An error thrown for referencing a null
+	 * object
 	 */
 	public static int printData(String[] args) throws
 			JsonProcessingException, NullPointerException {
@@ -92,9 +99,12 @@ public class StataJSON {
 	 * formatted string
 	 * @param args Passed from javacall function in Stata
 	 * @return A success value of 0
-	 * @throws JsonProcessingException
-	 * @throws NullPointerException
-	 * @throws IOException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws NullPointerException An error thrown for referencing a null
+	 * object
+	 * @throws IOException An error thrown when attempting to read/write a
+	 * local file
 	 */
 	public static int printRecordToFile(String[] args) throws
 			IOException, JsonProcessingException, NullPointerException {
@@ -124,8 +134,10 @@ public class StataJSON {
 	 * Method to print the data for the dataset in memory to the console
 	 * @param args Passed from javacall function in Stata
 	 * @return A success value of 0
-	 * @throws JsonProcessingException
-	 * @throws NullPointerException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws NullPointerException An error thrown for referencing a null
+	 * object
 	 */
 	public static int printDataToFile(String[] args) throws
 			JsonProcessingException, IOException {
@@ -147,11 +159,11 @@ public class StataJSON {
 
 	} // End printData method declaration
 
-
 	/***
 	 * Method to print a DataRecord object to the Stata console
 	 * @param observation A DataRecord class object
-	 * @throws JsonProcessingException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
 	 */
 	public static void toJSON(DataRecord observation) throws
 			JsonProcessingException {
@@ -170,8 +182,10 @@ public class StataJSON {
 	 * @param observation A DataRecord class object
 	 * @param filename A file object containing the name where the JSON data
 	 *                    will be written
-	 * @throws IOException
-	 * @throws JsonProcessingException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws IOException An error thrown when attempting to read/write a
+	 * local file
 	 */
 	public static void toJSON(DataRecord observation, File filename) throws
 			IOException, JsonProcessingException {
@@ -188,7 +202,8 @@ public class StataJSON {
 	/***
 	 * Method to print a DataSet object to the Stata console
 	 * @param stataData A DataSet class object
-	 * @throws JsonProcessingException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
 	 */
 	public static void toJSON(DataSet stataData) throws
 			JsonProcessingException {
@@ -207,8 +222,10 @@ public class StataJSON {
 	 * @param stataData A DataSet class object
 	 * @param filename A file object containing the name where the JSON data
 	 *                    will be written
-	 * @throws IOException
-	 * @throws JsonProcessingException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws IOException An error thrown when attempting to read/write a
+	 * local file
 	 */
 	public static void toJSON(DataSet stataData, File filename) throws
 			IOException, JsonProcessingException {
@@ -225,7 +242,8 @@ public class StataJSON {
 	/***
 	 * Method to print a generic Object type variable
 	 * @param metaobject A generic Object type variable
-	 * @throws JsonProcessingException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
 	 */
 	public static void toJSON(Object metaobject) throws
 			JsonProcessingException {
@@ -244,8 +262,10 @@ public class StataJSON {
 	 * @param metaobject A generic Object type variable
 	 * @param filename A file object containing the name where the JSON data
 	 *                    will be written
-	 * @throws IOException
-	 * @throws JsonProcessingException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws IOException An error thrown when attempting to read/write a
+	 * local file
 	 */
 	public static void toJSON(Object metaobject, File filename) throws
 			IOException, JsonProcessingException {
@@ -263,7 +283,8 @@ public class StataJSON {
 	/***
 	 * Method to print a List of object types to the Stata console
 	 * @param thedata A List of Object types
-	 * @throws JsonProcessingException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
 	 */
 	public static void toJSON(List<Object> thedata) throws
 			JsonProcessingException {
@@ -282,8 +303,10 @@ public class StataJSON {
 	 * @param thedata A List of Object types
 	 * @param filename A file object containing the name where the JSON data
 	 *                    will be written
-	 * @throws IOException
-	 * @throws JsonProcessingException
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws IOException An error thrown when attempting to read/write a
+	 * local file
 	 */
 	public static void toJSON(List<Object> thedata, File filename) throws
 			IOException, JsonProcessingException {
@@ -301,8 +324,10 @@ public class StataJSON {
 	 * Method to print meta data to the Stata Console
 	 * @param args Argument used to define what values to print to the console
 	 * @return An integer value of 0 if method succeeds
-	 * @throws IOException
-	 * @throws NullPointerException
+	 * @throws NullPointerException An error thrown for referencing a null
+	 * object
+	 * @throws IOException An error thrown when attempting to read/write a
+	 * local file
 	 */
 	@NotNull
 	public static int metaToJSON(String[] args) throws
