@@ -1,6 +1,9 @@
 package org.paces.Stata;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.stata.sfi.Macro;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +12,9 @@ import java.util.List;
  * Created by billy on 9/20/15.
  */
 public class DataSet extends Meta implements StataData {
+
+	@JsonProperty
+	public String name;
 
 	// POJO Representation of the data set in memory of Stata
 	public List<Object> stataDataSet;
@@ -22,6 +28,29 @@ public class DataSet extends Meta implements StataData {
 		setData();
 
 	} // End constructor declaration
+
+	/***
+	 * Generic Setter method for the name of the dataset object
+	 */
+	public void setName() {
+
+		// Store the value of `"`c(filename)'"' as a Java string
+		String nm = Macro.getLocalSafe("c(filename)");
+
+		// If the dataset name is not empty
+		if (!nm.isEmpty()) {
+
+			// Assign the Stata file name as the name of the object
+			this.name = nm;
+
+		} else {
+
+			// Otherwise set a generic name
+			this.name = "Stata Data Set";
+
+		} // End IF/ELSE Block for object name
+
+	} // End declaration of setname method
 
 	/***
 	 * Method to store Stata dataset in a List of objects containing maps of
@@ -60,6 +89,21 @@ public class DataSet extends Meta implements StataData {
 		return this.stataDataSet;
 
 	} // End getter method declaration
+
+	/***
+	 * Getter method to the name of the Object
+	 * @return The name of the Stata Data object
+	 */
+	@JsonGetter
+	public String getName() {
+
+		// Returns the name of the Stata dataset (or generic placeholder)
+		// used to construct a JSON object
+		return this.name;
+
+	} // End of getName method declaration
+
+
 
 } // End Class declaration
 

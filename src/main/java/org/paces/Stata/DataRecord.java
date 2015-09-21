@@ -1,6 +1,7 @@
 package org.paces.Stata;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stata.sfi.Data;
 
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Map;
 public class DataRecord extends Meta implements StataData {
 
 	// Observation ID variable
+	@JsonProperty
 	public Long obid;
 
 	// Variable containing the data for a given observation
@@ -39,8 +41,7 @@ public class DataRecord extends Meta implements StataData {
 
 		// Observation IDs need to be offset by 1 when converting from Stata to
 		// Java.
-		if (observationNumber - 1 < 0) this.obid = Long.valueOf(0);
-		else this.obid = observationNumber - 1;
+		this.obid = observationNumber;
 
 	} // End Method declaration to set observation ID
 
@@ -49,7 +50,7 @@ public class DataRecord extends Meta implements StataData {
 	 * variable index member variable
 	 */
 	@Override
-	@JsonGetter("record")
+	@JsonAnyGetter
 	public void setData() {
 
 		// Initialize empty variable to store the variable name

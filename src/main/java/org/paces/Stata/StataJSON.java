@@ -56,7 +56,7 @@ public class StataJSON {
 		DataRecord x = new DataRecord(obid);
 
 		// Print the resulting data record to the console
-		toJSON(x);
+		toJSON(x.getData());
 
 		// Return a success indicator
 		return 0;
@@ -76,9 +76,7 @@ public class StataJSON {
 		// Create a new Metadata object
 		dbg = new Meta(args);
 
-		// Store the data as a List of Object types
-		// List<Object> stataData = dbg.getAllRecords();
-
+		// Initialize a new StataData object
 		StataData stataData = new DataSet();
 
 		// Print the resulting data record to the console
@@ -115,7 +113,7 @@ public class StataJSON {
 		File jsonOutput = new File(Macro.getLocalSafe("filenm"));
 
 		// Print the resulting data record to the console
-		toJSON(x, jsonOutput);
+		toJSON(x.getData(), jsonOutput);
 
 		// Return a success indicator
 		return 0;
