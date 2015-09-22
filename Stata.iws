@@ -2,35 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/MetaArgs.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataMetaToJSON.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stjson.ado" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/DataRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/DataSet.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/MataMatrix.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/MataMatrix.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Meta.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Observations.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Observations.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/StataArgsToCollector.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataArgsToCollector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/StataData.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/StataJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/StataXTTS.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataXTTS.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Variables.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsonio.sthlp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/stjson.ado" afterPath="$PROJECT_DIR$/jsonio.ado" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/org.paces.Stata.jar" afterPath="$PROJECT_DIR$/target/org.paces.Stata.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/DataRecord.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/DataRecord.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/DataSet.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/DataSet.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/MataMatrix.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/MataMatrix.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Meta.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Meta.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Observations.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Observations.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/DataRecord.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/DataRecord.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/DataRecord.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/DataRecord.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/DataSet.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/DataSet.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/DataSet.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/DataSet.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/MataMatrix.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/MataMatrix.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/MataMatrix.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/MataMatrix.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Meta.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Meta.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Meta.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Meta.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/MetaArgs.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/MetaArgs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/MetaArgs.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/MetaArgs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Observations.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Observations.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Observations.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Observations.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Observations.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Observations.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.ipr" afterPath="$PROJECT_DIR$/Stata.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.iws" afterPath="$PROJECT_DIR$/Stata.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/StataJSON.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/StataJSON.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/StataXTTS.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/StataXTTS.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Variables.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Variables.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/StataData.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/StataData.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/StataData.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/StataData.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/StataJSON.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/StataJSON.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/StataJSON.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/StataJSON.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/StataMetaToJSON.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/StataMetaToJSON.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/StataMetaToJSON.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/StataMetaToJSON.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/StataXTTS.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/StataXTTS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/StataXTTS.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/StataXTTS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Variables.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Variables.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Variables.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Variables.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/allclasses-frame.html" afterPath="$PROJECT_DIR$/doc/allclasses-frame.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/doc/allclasses-noframe.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/constant-values.html" afterPath="$PROJECT_DIR$/doc/constant-values.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/deprecated-list.html" afterPath="$PROJECT_DIR$/doc/deprecated-list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/help-doc.html" afterPath="$PROJECT_DIR$/doc/help-doc.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" afterPath="$PROJECT_DIR$/doc/index-files/index-1.html" />
@@ -46,9 +53,17 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" afterPath="$PROJECT_DIR$/doc/index-files/index-8.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" afterPath="$PROJECT_DIR$/doc/index-files/index-9.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/overview-frame.html" afterPath="$PROJECT_DIR$/doc/overview-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/overview-summary.html" afterPath="$PROJECT_DIR$/doc/overview-summary.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/overview-tree.html" afterPath="$PROJECT_DIR$/doc/overview-tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/package-list" afterPath="$PROJECT_DIR$/doc/package-list" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-frame.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-summary.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-tree.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-use.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-use.html" afterPath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-use.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
     </list>
     <list id="9944e83e-ebc7-46dc-b4a2-561214c82f42" name="Rejected commit: Default" comment="Added debugger to main package body.  Need to initialize variables for all methods." />
@@ -80,7 +95,126 @@
     <favorites_list name="Stata" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="StataJSON.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="9.074074">
+              <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Meta.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6982344">
+              <caret line="38" column="70" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataSet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2119#2127#0" expanded="true" />
+                <element signature="e#2306#2314#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataRecord.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.11111">
+              <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3122#3123#0" expanded="true" />
+                <element signature="e#3152#3153#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsonio.ado" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsonio.ado">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.586206">
+              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider editor-type-id="MultiMarkdownFxHtmlEditor">
+            <state />
+          </provider>
+          <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.206897">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsonio.sthlp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsonio.sthlp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Variables.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="110" column="31" selection-start-line="110" selection-start-column="31" selection-end-line="110" selection-end-column="31" />
+              <folding>
+                <element signature="e#7894#7895#0" expanded="true" />
+                <element signature="e#7921#7922#0" expanded="true" />
+                <element signature="e#8038#8039#0" expanded="true" />
+                <element signature="e#8065#8066#0" expanded="true" />
+                <element signature="e#8204#8205#0" expanded="true" />
+                <element signature="e#8243#8244#0" expanded="true" />
+                <element signature="e#8368#8369#0" expanded="true" />
+                <element signature="e#8408#8409#0" expanded="true" />
+                <element signature="e#8551#8552#0" expanded="true" />
+                <element signature="e#8590#8591#0" expanded="true" />
+                <element signature="e#8933#8934#0" expanded="true" />
+                <element signature="e#8961#8962#0" expanded="true" />
+                <element signature="e#9084#9085#0" expanded="true" />
+                <element signature="e#9118#9119#0" expanded="true" />
+                <element signature="e#9365#9366#0" expanded="true" />
+                <element signature="e#9395#9396#0" expanded="true" />
+                <element signature="e#9523#9524#0" expanded="true" />
+                <element signature="e#9550#9551#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -111,9 +245,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/StataMetaData/VariableInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/StataMetaData/ValueLabelNames.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/StataMetaData/VariableNames.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/StataMetaData/ValueLabels.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/StataMetaData/Meta.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/StataDataSet/StataData.java" />
@@ -136,7 +267,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/ToJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/StataToJSON.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/StataOut.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/DateTimeEpochs.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Variables.java" />
@@ -151,17 +281,21 @@
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/StataJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/MetaArgs.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/toJSON.java" />
-        <option value="$PROJECT_DIR$/stjson.ado" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/MataMatrix.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataMetaToJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataXTTS.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Observations.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataArgsToCollector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataXTTS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" />
+        <option value="$PROJECT_DIR$/stjson.ado" />
+        <option value="$PROJECT_DIR$/jsonio.sthlp" />
+        <option value="$PROJECT_DIR$/jsonio.ado" />
+        <option value="$PROJECT_DIR$/examples.txt" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java" />
       </list>
     </option>
   </component>
@@ -812,7 +946,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="77" y="53" width="1712" height="1101" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -836,7 +970,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29161677" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32804757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32804757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299401" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -895,14 +1029,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1155,46 +1281,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MultiMarkdownFxHtmlEditor">
-        <state />
-      </provider>
-      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25210086">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/MataMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.7">
           <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66923076">
-          <caret line="29" column="61" selection-start-line="29" selection-start-column="61" selection-end-line="29" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2019#2027#0" expanded="true" />
-            <element signature="e#2179#2187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6">
-          <caret line="26" column="59" selection-start-line="26" selection-start-column="59" selection-end-line="26" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1205,40 +1296,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="8.376923">
-          <caret line="363" column="63" selection-start-line="363" selection-start-column="63" selection-end-line="363" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73846155">
-          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Observations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.8846154">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataArgsToCollector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7923077">
-          <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1260,16 +1317,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5384614">
-          <caret line="49" column="76" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
-          <folding>
-            <element signature="e#2938#2947#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/MetaArgs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.115384616">
@@ -1278,10 +1325,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stjson.ado">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Observations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.03846154">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.03930131">
+          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataArgsToCollector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52401745">
+          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="31" selection-start-line="110" selection-start-column="31" selection-end-line="110" selection-end-column="31" />
+          <folding>
+            <element signature="e#7894#7895#0" expanded="true" />
+            <element signature="e#7921#7922#0" expanded="true" />
+            <element signature="e#8038#8039#0" expanded="true" />
+            <element signature="e#8065#8066#0" expanded="true" />
+            <element signature="e#8204#8205#0" expanded="true" />
+            <element signature="e#8243#8244#0" expanded="true" />
+            <element signature="e#8368#8369#0" expanded="true" />
+            <element signature="e#8408#8409#0" expanded="true" />
+            <element signature="e#8551#8552#0" expanded="true" />
+            <element signature="e#8590#8591#0" expanded="true" />
+            <element signature="e#8933#8934#0" expanded="true" />
+            <element signature="e#8961#8962#0" expanded="true" />
+            <element signature="e#9084#9085#0" expanded="true" />
+            <element signature="e#9118#9119#0" expanded="true" />
+            <element signature="e#9365#9366#0" expanded="true" />
+            <element signature="e#9395#9396#0" expanded="true" />
+            <element signature="e#9523#9524#0" expanded="true" />
+            <element signature="e#9550#9551#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.074074">
+          <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsonio.sthlp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsonio.ado">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.586206">
+          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MultiMarkdownFxHtmlEditor">
+        <state />
+      </provider>
+      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.206897">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.11111">
+          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3122#3123#0" expanded="true" />
+            <element signature="e#3152#3153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2119#2127#0" expanded="true" />
+            <element signature="e#2306#2314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6982344">
+          <caret line="38" column="70" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
           <folding />
         </state>
       </provider>

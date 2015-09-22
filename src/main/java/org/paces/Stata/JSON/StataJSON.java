@@ -42,14 +42,18 @@ public class StataJSON {
 		Meta dbg = new Meta(args);
 
 		// Get the value of the observation to print from the local macro obid
-		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
+		Long obid = new Long(Macro.getLocalSafe("obid"));
 
 		// Initialize a new DataRecord object with the data for a given
 		// observation
-		DataRecord x = new DataRecord(obid);
+		DataRecord x = new DataRecord(obid, dbg);
 
 		// Print the resulting data record to the console
 		toJSON(x.getData());
+
+		x = null;
+		obid = null;
+		dbg = null;
 
 		// Return a success indicator
 		return 0;
@@ -72,10 +76,13 @@ public class StataJSON {
 		Meta dbg = new Meta(args);
 
 		// Initialize a new StataData object
-		StataData stataData = new DataSet();
+		StataData stataData = new DataSet(dbg);
 
 		// Print the resulting data record to the console
 		toJSON(stataData);
+
+		stataData = null;
+		dbg = null;
 
 		// Return a success indicator
 		return 0;
@@ -101,17 +108,22 @@ public class StataJSON {
 		Meta dbg = new Meta(args);
 
 		// Get the value of the observation to print from the local macro obid
-		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
+		Long obid = new Long(Macro.getLocalSafe("obid"));
 
 		// Initialize a new DataRecord object with the data for a given
 		// observation
-		DataRecord x = new DataRecord(obid);
+		DataRecord x = new DataRecord(obid, dbg);
 
 		// New File object
 		File jsonOutput = new File(Macro.getLocalSafe("filenm"));
 
 		// Print the resulting data record to the console
 		toJSON(x.getData(), jsonOutput);
+
+		x = null;
+		obid = null;
+		dbg = null;
+		jsonOutput = null;
 
 		// Return a success indicator
 		return 0;
@@ -134,13 +146,16 @@ public class StataJSON {
 		Meta dbg = new Meta(args);
 
 		// Create a new StataData object and print all data to the Stata console
-		StataData stataData = new DataSet();
+		StataData stataData = new DataSet(dbg);
 
 		// New File object
 		File jsonOutput = new File(Macro.getLocalSafe("filenm"));
 
 		// Print the resulting data record to the console
 		toJSON(stataData, jsonOutput);
+
+		stataData = null;
+		dbg = null;
 
 		// Return a success indicator
 		return 0;

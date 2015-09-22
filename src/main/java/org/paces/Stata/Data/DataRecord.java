@@ -2,6 +2,7 @@ package org.paces.Stata.Data;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stata.sfi.Data;
 
@@ -15,7 +16,13 @@ import java.util.Map;
  * <p>A POJO representation of a single observation from the Stata dataset
  * loaded in memory. </p>
  */
-public class DataRecord extends Meta implements StataData {
+public class DataRecord implements StataData {
+
+	/***
+	 * A Stata Metadata object
+	 */
+	@JsonIgnore
+	public Meta metaob;
 
 	/***
 	 * Observation ID variable
@@ -31,9 +38,15 @@ public class DataRecord extends Meta implements StataData {
 	/***
 	 * Constructor method for DataRecord class
 	 * @param id The observation index value for which to retrieve the data for
+	 * @param metaobject A Meta class object containing metadata from the
+	 *                      Stata dataset
+	 *
 	 */
 	@JsonCreator
-	public DataRecord(Long id) {
+	public DataRecord(Long id, Meta metaobject) {
+
+		// The metadata object
+		this.metaob = metaobject;
 
 		// Set the observation ID variable
 		setObid(id);
@@ -74,34 +87,26 @@ public class DataRecord extends Meta implements StataData {
 		Map<String, Object> record = new HashMap<>();
 
 		// Loop over the variable indices
-		for (Integer i : this.varindex) {
+		for (int i = 0; i < metaob.varindex.size(); i++) {
 
-			if (i != 0) {
+			// Set the variable name as the key in the map object
+			key = metaob.statavars.getName(i);
 
-				// Set the variable name as the key in the map object
-				key = statavars.getName(i - 1);
+			// Test for string/numeric
+			if (metaob.statavars.getVarType(i)) {
 
-				// Test for string/numeric
-				if (statavars.getVarType(i - 1)) {
-
-					// Store string value if variable contains strings
-					value = Data.getStr(i, obid);
-
-				} else {
-
-					// Convert numeric variables to string
-					value = Data.getNum(i, obid);
-
-				} // End IF/ELSE Block for string/numeric type handling
-
-				// Add the key/value pair to the container object
-				record.put(key, value);
+				// Store string value if variable contains strings
+				value = Data.getStr(metaob.getVarindex(i), obid);
 
 			} else {
 
-				continue ;
+				// Convert numeric variables to string
+				value = Data.getNum(metaob.getVarindex(i), obid);
 
-			} // End IF/ELSE Block
+			} // End IF/ELSE Block for string/numeric type handling
+
+			// Add the key/value pair to the container object
+			record.put(key, value);
 
 		} // End of Loop
 

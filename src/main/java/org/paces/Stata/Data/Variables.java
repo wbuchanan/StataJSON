@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.stata.sfi.Data.getParsedVarCount;
-
 /**
  * @author Billy Buchanan
  * @version 0.0.0
@@ -53,10 +51,15 @@ public class Variables {
 	public List<Boolean> varTypes;
 
 	/***
+	 * Number of variables passed from javacall
+	 */
+	public int nvars;
+
+	/***
 	 * Generic constructor when varlist is passed
 	 * @param arguments Transformed list of strings from the args parameter
 	 */
-	Variables(List<String> arguments) {
+	/* Variables(List<String> arguments) {
 
 		// Set the variable index member variable
 		setVariableIndex(arguments);
@@ -77,6 +80,7 @@ public class Variables {
 		setVariableTypeIndex();
 
 	} // End constructor method
+	*/
 
 	/***
 	 * Generic constructor when no varlist is passed
@@ -85,6 +89,9 @@ public class Variables {
 
 		// Set the variable index member variable
 		setVariableIndex();
+
+		// Set the number of variables member variable
+		setNvars(this.varindex);
 
 		// Set the variable name member variable
 		setVariableNames();
@@ -106,40 +113,71 @@ public class Variables {
 	/***
 	 * Populates the variable index member variable with the indices used to
 	 * identify variables in the Stata dataset in memory.
-	 * @param args A list of String objects passed to the javacall command in
-	 *                Stata.
-	 */
-	public void setVariableIndex(List<String> args) {
-
-		// Uses Java Stream API to collect all of the variable indices using
-		// the Stata Java API methods
-		this.varindex.addAll(args.stream().map(Data::getVarIndex).
-				collect(Collectors.<Integer>toList()));
-
-	} // End of setVariableIndex method declaration
-
-	/***
-	 * Populates the variable index member variable with the indices used to
-	 * identify variables in the Stata dataset in memory.
 	 */
 	public void setVariableIndex() {
 
 		// Initialize an empty array list of Integer objects
 		List<Integer> vars = new ArrayList<>();
 
-		// Loop over the total indices of variables
-		for (int i = 0; i < getParsedVarCount() - 1; i++) {
+		// Get the number of parsed variables
+		int parsed = Data.getParsedVarCount();
 
-			// Add the index value to the list object
-			vars.add(i + 1);
+		// Get the total number of variables in the dataset
+		int allvars = Data.getVarCount();
 
-		} // End Loop over values
+		// If there are variables parsed from the variable list
+		if (parsed != allvars) {
 
-		// Set the variable index member variable's values
-		this.varindex = vars;
+			// Loop over the variables
+			for (int i = 1; i <= parsed; i++) {
+
+				// Get the index for the individual variables passed as a
+				// varlist
+				vars.add(Data.mapParsedVarIndex(i));
+
+			} // End Loop over varlist variables
+
+			// Set the variable index member variable's values
+			this.varindex = vars;
+
+		} else {
+
+			// Loop over the total indices of variables
+			for (int i = 0; i < allvars - 1; i++) {
+
+				// Add the index value to the list object
+				vars.add(i + 1);
+
+			} // End Loop over values
+
+			// Set the variable index member variable's values
+			this.varindex = vars;
+
+		} // End IF/ELSE Block for variable list handling
 
 	} // End setter method for varindex variable
 
+	/***
+	 * Method to set the number of variables passed to javacall
+	 * @param varidx A variable index
+	 */
+	public void setNvars(List<Integer> varidx) {
+
+		// Set nvars based on the size of the List of integer objects
+		this.nvars = varidx.size();
+
+	} // End setter method for nvars
+
+	/***
+	 * Method to access the number of variables passed from javacall
+	 * @return An integer value with the number of variables passed to javacall
+	 */
+	public int getNvars() {
+
+		// Returns the nvars member variable
+		return this.nvars;
+
+	} // End of getter method for nvars member variable
 
 	/***
 	 * Sets an object containing variable names from Stata data set.

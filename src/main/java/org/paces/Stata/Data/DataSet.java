@@ -1,9 +1,6 @@
 package org.paces.Stata.Data;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.stata.sfi.Macro;
 
 import java.util.ArrayList;
@@ -18,12 +15,18 @@ import java.util.stream.Collectors;
  * <p>A POJO representation of the Stata dataset currently in memory.
  * Created by iterating over calls to DataRecord.</p>
  */
-public class DataSet extends Meta implements StataData {
+public class DataSet implements StataData {
+
+	/***
+	 * A new Meta object
+	 */
+	@JsonIgnore
+	public Meta metaob;
 
 	/***
 	 * The name of the data set in memory to be converted to a JSON object
 	 */
-	@JsonProperty
+	@JsonIgnore
 	public String name;
 
 	/***
@@ -33,9 +36,14 @@ public class DataSet extends Meta implements StataData {
 
 	/***
 	 * Generic constructor method for the class
+	 * @param metaobject A Meta class object containing metadata for the
+	 *                      Stata dataset.
 	 */
 	@JsonCreator
-	public DataSet() {
+	public DataSet(Meta metaobject) {
+
+		// Set the meta object to the value passed to the constructor
+		this.metaob = metaobject;
 
 		// Set the name variable
 		setName();
@@ -81,17 +89,11 @@ public class DataSet extends Meta implements StataData {
 		// object with key/value pairs
 		List<Object> obs = new ArrayList<Object>();
 
-		obs.addAll(this.obsindex.parallelStream().map(
-		(Function<Long, Object>) (id) -> { return new DataRecord(id).getData();}
+		obs.addAll(metaob.obsindex.parallelStream().map(
+				(Function<Long, Object>) (id) -> {
+					return new DataRecord(id, this.metaob).getData();
+				}
 		).collect(Collectors.<Object>toList()));
-
-		// Loop over the observation indices
-		// for (Long obid : this.obsindex) {
-
-			// Add a new Data Record to the Map object
-			//obs.add(new DataRecord(obid).getData());
-
-		//} // End Loop over observation indices
 
 		// Set the member variable to this value
 		stataDataSet = obs;
@@ -122,8 +124,6 @@ public class DataSet extends Meta implements StataData {
 		return this.name;
 
 	} // End of getName method declaration
-
-
 
 } // End Class declaration
 

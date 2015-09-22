@@ -71,8 +71,8 @@ public class Observations {
 	 */
 	public void setNobs() {
 
-		// Return the size of the list object + 1 to account for java indexing
-		this.nobs = ((long) this.obindex.size() + 1);
+		// Return the size of the list object
+		this.nobs = ((long) this.obindex.size());
 
 	} // End Method returning the number of observations
 
