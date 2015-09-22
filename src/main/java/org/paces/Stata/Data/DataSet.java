@@ -1,12 +1,15 @@
-package org.paces.Stata;
+package org.paces.Stata.Data;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stata.sfi.Macro;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author Billy Buchanan
@@ -17,16 +20,25 @@ import java.util.List;
  */
 public class DataSet extends Meta implements StataData {
 
+	/***
+	 * The name of the data set in memory to be converted to a JSON object
+	 */
 	@JsonProperty
 	public String name;
 
-	// POJO Representation of the data set in memory of Stata
+	/***
+	 * POJO Representation of the data set in memory of Stata
+	 */
 	public List<Object> stataDataSet;
 
 	/***
 	 * Generic constructor method for the class
 	 */
+	@JsonCreator
 	public DataSet() {
+
+		// Set the name variable
+		setName();
 
 		// Builds the data object
 		setData();
@@ -69,13 +81,17 @@ public class DataSet extends Meta implements StataData {
 		// object with key/value pairs
 		List<Object> obs = new ArrayList<Object>();
 
+		obs.addAll(this.obsindex.parallelStream().map(
+		(Function<Long, Object>) (id) -> { return new DataRecord(id).getData();}
+		).collect(Collectors.<Object>toList()));
+
 		// Loop over the observation indices
-		for (Long obid : this.obsindex) {
+		// for (Long obid : this.obsindex) {
 
 			// Add a new Data Record to the Map object
-			obs.add(new DataRecord(obid).getData());
+			//obs.add(new DataRecord(obid).getData());
 
-		} // End Loop over observation indices
+		//} // End Loop over observation indices
 
 		// Set the member variable to this value
 		stataDataSet = obs;

@@ -1,4 +1,4 @@
-package org.paces.Stata;
+package org.paces.Stata.Data;
 import com.stata.sfi.Data;
 import com.stata.sfi.ValueLabel;
 
@@ -19,25 +19,37 @@ import static com.stata.sfi.Data.getParsedVarCount;
  */
 public class Variables {
 
-	// Member variable containing variable indices
+	/***
+	 * Member variable containing variable indices
+ 	 */
 	public List<Integer> varindex;
 
-	// Member variable containing Stata variable names
+	/***
+	 * Member variable containing Stata variable names
+	 */
 	public List<String> varnames;
 
-	// Member variable containing Stata variable labels
+	/***
+	 * Member variable containing Stata variable labels
+	 */
 	public List<String> varlabels;
 
-	// Member variable containing Stata value label names associated with a
-	// given variable
+	/***
+	 * Member variable containing Stata value label names associated with a
+	 * given variable
+	 */
 	public List<String> valueLabelNames;
 
-	// Member variable containing a list of Map objects with the values and
-	// associated labels contained in the Map object
+	/***
+	 * Member variable containing a list of Map objects with the values and
+	 * associated labels contained in the Map object
+	 */
 	public List<Object> valueLabels;
 
-	// Member variable containing indicators for whether or not the variable
-	// is of type String
+	/***
+	 * Member variable containing indicators for whether or not the variable
+	 * is of type String
+	 */
 	public List<Boolean> varTypes;
 
 	/***
@@ -116,7 +128,7 @@ public class Variables {
 		List<Integer> vars = new ArrayList<>();
 
 		// Loop over the total indices of variables
-		for (int i = 0; i < getParsedVarCount(); i++) {
+		for (int i = 0; i < getParsedVarCount() - 1; i++) {
 
 			// Add the index value to the list object
 			vars.add(i + 1);

@@ -1,4 +1,4 @@
-package org.paces.Stata;
+package org.paces.Stata.Data;
 import com.stata.sfi.Data;
 import com.stata.sfi.SFIToolkit;
 
@@ -13,16 +13,24 @@ import java.util.List;
  */
 public class Observations {
 
-	// Starting observation index number
+	/***
+	 * Starting observation index number
+	 */
 	private long sobs;
 
-	// Ending observation index number
+	/***
+	 * Ending observation index number
+	 */
 	private long eobs;
 
-	// Total Number of Observations
+	/***
+	 * Total Number of Observations
+	 */
 	private long nobs;
 
-	// Observation indices
+	/***
+	 * Observation indices
+	 */
 	private List<Long> obindex;
 
 	/***
@@ -125,7 +133,6 @@ public class Observations {
 	public void print(Long scalar)  {
 		SFIToolkit.displayln(String.valueOf(scalar));
 	}
-
 
 	/***
 	 * Prints the starting observation index value to the Stata console

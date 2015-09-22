@@ -1,6 +1,7 @@
-package org.paces.Stata;
+package org.paces.Stata.Data;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stata.sfi.Data;
 
@@ -16,18 +17,23 @@ import java.util.Map;
  */
 public class DataRecord extends Meta implements StataData {
 
-	// Observation ID variable
+	/***
+	 * Observation ID variable
+	 */
 	@JsonProperty
 	public Long obid;
 
-	// Variable containing the data for a given observation
+	/***
+	 * Variable containing the data for a given observation
+	 */
 	public Map<String, Object> observation;
 
 	/***
 	 * Constructor method for DataRecord class
 	 * @param id The observation index value for which to retrieve the data for
 	 */
-	DataRecord(Long id) {
+	@JsonCreator
+	public DataRecord(Long id) {
 
 		// Set the observation ID variable
 		setObid(id);
@@ -70,24 +76,32 @@ public class DataRecord extends Meta implements StataData {
 		// Loop over the variable indices
 		for (Integer i : this.varindex) {
 
-			// Set the variable name as the key in the map object
-			key = statavars.getName(i - 1);
+			if (i != 0) {
 
-			// Test for string/numeric
-			if (statavars.getVarType(i - 1)) {
+				// Set the variable name as the key in the map object
+				key = statavars.getName(i - 1);
 
-				// Store string value if variable contains strings
-				value = Data.getStr(i, obid);
+				// Test for string/numeric
+				if (statavars.getVarType(i - 1)) {
+
+					// Store string value if variable contains strings
+					value = Data.getStr(i, obid);
+
+				} else {
+
+					// Convert numeric variables to string
+					value = Data.getNum(i, obid);
+
+				} // End IF/ELSE Block for string/numeric type handling
+
+				// Add the key/value pair to the container object
+				record.put(key, value);
 
 			} else {
 
-				// Convert numeric variables to string
-				value = Data.getNum(i, obid);
+				continue ;
 
-			} // End IF/ELSE Block for string/numeric type handling
-
-			// Add the key/value pair to the container object
-			record.put(key, value);
+			} // End IF/ELSE Block
 
 		} // End of Loop
 

@@ -1,4 +1,4 @@
-package org.paces.Stata;
+package org.paces.Stata.Data;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +29,7 @@ class StataArgsToCollector {
 		// Return the List object
 		return tmp;
 
-	}
+	} // End of method declaration for String array object
 
 	/***
 	 * Argument converter method
@@ -54,6 +54,6 @@ class StataArgsToCollector {
 		// Return the List object
 		return tmp;
 
-	}
+	} // End of method declaration for String object
 
 }

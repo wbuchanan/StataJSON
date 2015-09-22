@@ -1,4 +1,4 @@
-package org.paces.Stata;
+package org.paces.Stata.Data;
 
 import com.stata.sfi.Macro;
 import com.stata.sfi.Mata;
@@ -17,22 +17,34 @@ import java.util.Map;
  */
 public class MataMatrix {
 
-	// Number of columns in the matrix
+	/***
+	 * Number of columns in the matrix
+	 */
 	public long ncols;
 
-	// Number of rows in the matrix
+	/***
+	 * Number of rows in the matrix
+	 */
 	public long nrows;
 
-	// Name of the Mata matrix
+	/***
+	 * Name of the Mata matrix
+	 */
 	public String matName;
 
-	// List of column indices
+	/***
+	 * List of column indices
+	 */
 	public List<Long> colindex;
 
-	// List of row indices
+	/***
+	 * List of row indices
+	 */
 	public List<Long> rowindex;
 
-	// POJO representation of the Mata matrix
+	/***
+	 * POJO representation of the Mata matrix
+	 */
 	public Object matrix;
 
 	/***

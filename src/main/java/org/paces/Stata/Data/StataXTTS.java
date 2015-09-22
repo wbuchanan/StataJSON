@@ -1,6 +1,4 @@
-package org.paces.Stata;
-
-
+package org.paces.Stata.Data;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -21,15 +19,21 @@ import static java.time.temporal.ChronoUnit.YEARS;
  */
 public class StataXTTS {
 
-	// Constant for the Stata Epoch date
+	/***
+	 * Constant for the Stata Epoch date
+	 */
 	public static final Instant stataEpoch =
 			LocalDateTime.of(1960, 1, 1, 0, 0, 0, 0).toInstant(ZoneOffset.UTC);
 
-	// Constant for the Java Epoch date
+	/***
+	 * Constant for the Java Epoch date
+	 */
 	public static final Instant javaEpoch =
 			LocalDateTime.of(1960, 1, 1, 0, 0, 0, 0).toInstant(ZoneOffset.UTC);
 
-	// Constant for the Stata to Java offset
+	/***
+	 * Constant for the Stata to Java offset
+	 */
 	public static final Instant stataOffset =
 			stataEpoch.minusMillis(javaEpoch.toEpochMilli());
 
@@ -78,6 +82,4 @@ public class StataXTTS {
 
 	} // End toStata method declaration for Timestamp object classes
 
-
-
-}
+} // End of StataXTTS object declaration

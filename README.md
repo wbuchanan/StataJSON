@@ -12,5 +12,5 @@ With org.paces.Stata-jar-with-dependencies.jar on the ADOPATH:
 
 ```
 sysuse auto, clear
-javacall org.paces.Stata.StataJSON dbug
+javacall org.paces.Stata.JSON.StataJSON dbug
 ```

@@ -1,12 +1,6 @@
-package org.paces.Stata;
+package org.paces.Stata.Data;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.stata.sfi.Data;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Billy Buchanan
@@ -20,16 +14,24 @@ import java.util.Map;
  */
 public class Meta {
 
-	// Observations metadata object
+	/***
+	 * Observations metadata object
+	 */
 	public Observations stataobs;
 
-	// Variables metadata object
+	/***
+	 * Variables metadata object
+	 */
 	public Variables statavars;
 
-	// Variable index metadata object
+	/***
+	 * Variable index metadata object
+	 */
 	public List<Integer> varindex;
 
-	// Observation index metadata object
+	/***
+	 * Observation index metadata object
+	 */
 	public List<Long> obsindex;
 
 	/***
@@ -172,7 +174,7 @@ public class Meta {
 	 * @return An object containing each of the data elements defined in the
 	 * variable index member variable
 	 */
-	@JsonCreator
+	/*
 	public Object getRecord(Long obid) {
 
 		// Initialize empty variable to store the variable name
@@ -214,7 +216,7 @@ public class Meta {
 		return (record);
 
 	} // End of Method declaration
-
+	*/
 	/***
 	 * Method to store Stata dataset in a List of objects containing maps of
 	 * key value pairs where the key is the variable name and the value is
@@ -222,7 +224,7 @@ public class Meta {
 	 * @return A List of map objects with key/value pairs for the data set in
 	 * memory
 	 */
-	@JsonCreator
+	/*
 	public List<Object> getAllRecords() {
 
 		// Temporary variable to store keys (variable names)
@@ -243,7 +245,7 @@ public class Meta {
 
 			obs.add(getRecord(obid));
 
-			/*
+
 			// Loop over the variable indices
 			for (Integer varid : this.varindex) {
 
@@ -271,7 +273,7 @@ public class Meta {
 			// Add the key/value pairs for an individual observation to the
 			// larger container
 			obs.add(record);
-			*/
+
 
 		} // End of Loop over observation indices
 
@@ -279,5 +281,6 @@ public class Meta {
 		return(obs);
 
 	} // End method declaration for getAllRecords
+	*/
 
 } // End object declaration

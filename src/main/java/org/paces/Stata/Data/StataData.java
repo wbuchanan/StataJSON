@@ -1,4 +1,4 @@
-package org.paces.Stata;
+package org.paces.Stata.Data;
 
 /**
  * @author Billy Buchanan

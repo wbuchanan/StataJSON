@@ -1,11 +1,11 @@
-package org.paces.Stata;
+package org.paces.Stata.JSON;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stata.sfi.Macro;
 import com.stata.sfi.SFIToolkit;
+import org.paces.Stata.Data.*;
 
-import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -14,21 +14,9 @@ import java.util.List;
  * @author Billy Buchanan
  * @version 0.0.0
  * <h2>Stata JSON Serializer</h2>
- * <p>Objects and methods to create JSON representation of Stata data and
- * metadata. </p>
+ * <p>Objects and methods to create JSON representation of Stata data. </p>
  */
 public class StataJSON {
-
-	public static final String VARLABS = "varlabels";
-	public static final String VARNAMES = "varnames";
-	public static final String VALLABS = "vallabs";
-	public static final String VALLABNAMES = "labelnames";
-
-	// Meta object member variable
-	static Meta dbg;
-
-	// Observation index member variable
-	static List<Long> obidx;
 
 	/***
 	 * Main entry point to application
@@ -51,7 +39,7 @@ public class StataJSON {
 			JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		dbg = new Meta(args);
+		Meta dbg = new Meta(args);
 
 		// Get the value of the observation to print from the local macro obid
 		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
@@ -81,7 +69,7 @@ public class StataJSON {
 			JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		dbg = new Meta(args);
+		Meta dbg = new Meta(args);
 
 		// Initialize a new StataData object
 		StataData stataData = new DataSet();
@@ -110,7 +98,7 @@ public class StataJSON {
 			IOException, JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		dbg = new Meta(args);
+		Meta dbg = new Meta(args);
 
 		// Get the value of the observation to print from the local macro obid
 		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
@@ -143,7 +131,7 @@ public class StataJSON {
 			JsonProcessingException, IOException {
 
 		// Create a new Metadata object
-		dbg = new Meta(args);
+		Meta dbg = new Meta(args);
 
 		// Create a new StataData object and print all data to the Stata console
 		StataData stataData = new DataSet();
@@ -171,9 +159,15 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
+		// String representation of the JSON object
+		String theJSON = themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(observation);
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", theJSON);
+
 		// Print JSON to screen
-		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(observation));
+		SFIToolkit.display(theJSON);
 
 	} // End toJSON method declaration for single observation
 
@@ -193,6 +187,13 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
+		// String representation of the JSON object
+		String theJSON = themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(observation);
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", theJSON);
+
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
 				.writeValue(filename, observation);
@@ -211,9 +212,15 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
+		// String representation of the JSON object
+		String theJSON = themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(stataData);
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", theJSON);
+
 		// Print JSON to screen
-		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(stataData));
+		SFIToolkit.display(theJSON);
 
 	} // End toJSON method declaration for dataset
 
@@ -233,6 +240,13 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
+		// String representation of the JSON object
+		String theJSON = themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(stataData);
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", theJSON);
+
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
 				.writeValue(filename, stataData);
@@ -251,9 +265,15 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
+		// String representation of the JSON object
+		String theJSON = themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(metaobject);
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", theJSON);
+
 		// Print JSON to screen
-		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(metaobject));
+		SFIToolkit.display(theJSON);
 
 	} // End toJSON method declaration for single observation
 
@@ -272,6 +292,16 @@ public class StataJSON {
 
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
+
+		// String representation of the JSON object
+		String theJSON = themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(metaobject);
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", theJSON);
+
+		// Print JSON to screen
+		SFIToolkit.display(theJSON);
 
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
@@ -292,9 +322,15 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
+		// String representation of the JSON object
+		String theJSON = themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(thedata);
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", theJSON);
+
 		// Print JSON to screen
-		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(thedata));
+		SFIToolkit.display(theJSON);
 
 	} // End toJSON method declaration for List of Object types
 
@@ -314,103 +350,17 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
+		// String representation of the JSON object
+		String theJSON = themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(thedata);
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", theJSON);
+
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
 				.writeValue(filename, thedata);
 
 	} // End toJSON method declaration for List of Object types
-
-	/***
-	 * Method to print meta data to the Stata Console
-	 * @param args Argument used to define what values to print to the console
-	 * @return An integer value of 0 if method succeeds
-	 * @throws NullPointerException An error thrown for referencing a null
-	 * object
-	 * @throws IOException An error thrown when attempting to read/write a
-	 * local file
-	 */
-	@NotNull
-	public static int metaToJSON(String[] args) throws
-			IOException, NullPointerException {
-
-		// Metadata object
-		dbg = new Meta(args);
-
-		// Get variable list
-		Variables x = dbg.getStatavars();
-
-		// A generic object to store retrieved meta data
-		Object toPrint;
-
-		// Switch statement to store value of the metadata to print to the
-		// console
-		switch (Macro.getLocalSafe("metaprint")) {
-
-			// For variable labels
-			case VARLABS :
-
-				// Store the variable labels
-				toPrint = x.getVariableLabels();
-
-				// Break out of this case of the switch statement
-				break;
-
-			// For variable names
-			case VARNAMES :
-
-				// Store variable names
-				toPrint = x.getVariableNames();
-
-				// Break out of this case of the switch statement
-				break;
-
-			// For value labels
-			case VALLABS :
-
-				// Store value label value/label pairs
-				toPrint = x.getValueLabels();
-
-				// Break out of this case of the switch statement
-				break;
-
-			// For value label names
-			case VALLABNAMES :
-
-				// Store the names of the value labels associated with variables
-				toPrint = x.getValueLabelNames();
-
-				// Break out of this case of the switch statement
-				break;
-
-			// If the parameter doesn't match one of the earlier values
-			default:
-
-				// Store default message
-				toPrint = new String("Invalid argument");
-
-				// Break out of this case of the switch statement
-				break;
-
-		} // End of Switch statement
-
-		if (Macro.getLocalSafe("filenm").isEmpty()) {
-
-			// Print the requested data to the screen
-			toJSON(toPrint);
-
-		} else {
-
-			// New File object
-			File jsonOutput = new File(Macro.getLocalSafe("filenm"));
-
-			// Print the requested data to the screen
-			toJSON(toPrint, jsonOutput);
-
-		}
-
-		// Return success value
-		return 0;
-
-	} // End of metaToJSON method declaration
 
 } // End of StataJSON object declaration
