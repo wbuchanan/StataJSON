@@ -1,9 +1,6 @@
 package org.paces.Stata.Data;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.stata.sfi.Data;
 
 import java.util.HashMap;
@@ -33,6 +30,7 @@ public class DataRecord implements StataData {
 	/***
 	 * Variable containing the data for a given observation
 	 */
+	@JsonIgnore
 	public Map<String, Object> observation;
 
 	/***
@@ -42,7 +40,7 @@ public class DataRecord implements StataData {
 	 *                      Stata dataset
 	 *
 	 */
-	@JsonCreator
+	@JsonIgnore
 	public DataRecord(Long id, Meta metaobject) {
 
 		// The metadata object
@@ -60,6 +58,7 @@ public class DataRecord implements StataData {
 	 * Setter method for the observation ID variable
 	 * @param observationNumber An observation index value
 	 */
+	@JsonSetter
 	public void setObid(long observationNumber) {
 
 		// Observation IDs need to be offset by 1 when converting from Stata to
@@ -73,7 +72,7 @@ public class DataRecord implements StataData {
 	 * variable index member variable
 	 */
 	@Override
-	@JsonAnyGetter
+	@JsonSetter
 	public void setData() {
 
 		// Initialize empty variable to store the variable name
@@ -121,6 +120,8 @@ public class DataRecord implements StataData {
 	 * @return A map object containing key/value pairs for the data related
 	 * to that object
 	 */
+	@Override
+	@JsonGetter
 	public Map<String, Object> getData() {
 		return this.observation;
 	}

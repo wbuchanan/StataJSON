@@ -4,11 +4,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stata.sfi.Macro;
 import com.stata.sfi.SFIToolkit;
-import org.paces.Stata.Data.*;
+import org.paces.Stata.Data.DataRecord;
+import org.paces.Stata.Data.DataSet;
+import org.paces.Stata.Data.Meta;
+import org.paces.Stata.Data.StataData;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Billy Buchanan
@@ -24,6 +28,33 @@ public class StataJSON {
 	 */
 	public static void main(String[] args) {
 	}
+
+
+	/***
+	 * Method to print the all data from the dataset currently in memory
+	 * @param args Passed from javacall function in Stata
+	 * @return A success value of 0
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws NullPointerException An error thrown for referencing a null
+	 * object
+	 */
+	public static int printAll(String[] args) throws JsonProcessingException,
+			NullPointerException {
+
+		// Create a new StataAllToJSON Object
+		StataAllToJSON allData = new StataAllToJSON(args);
+
+		// Print the data object to the Stata Console
+		toJSON(allData.getData());
+
+		// Garbage collection for the object
+		allData = null;
+
+		// Returns success code
+		return 0;
+
+	} // End of method declaration to print all data
 
 	/***
 	 * Method to print the data for a single record to the console as a JSON
@@ -163,6 +194,33 @@ public class StataJSON {
 	} // End printData method declaration
 
 	/***
+	 * Method to print the all data from the dataset currently in memory
+	 * @param args Passed from javacall function in Stata
+	 * @return A success value of 0
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 */
+	public static int printAllToFile(String[] args) throws IOException,
+			JsonProcessingException {
+
+		// Create a new StataAllToJSON Object
+		StataAllToJSON allData = new StataAllToJSON(args);
+
+		// New File object
+		File jsonOutput = new File(Macro.getLocalSafe("filenm"));
+
+		// Print the data object to the Stata Console
+		toJSON(allData.getData(), jsonOutput);
+
+		// Garbage collection for the object
+		allData = null;
+
+		// Returns success code
+		return 0;
+
+	} // End of method declaration to print all data
+
+	/***
 	 * Method to print a DataRecord object to the Stata console
 	 * @param observation A DataRecord class object
 	 * @throws JsonProcessingException A processing error thrown by the
@@ -174,15 +232,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// String representation of the JSON object
-		String theJSON = themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(observation);
-
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", theJSON);
+		Macro.setLocal("thejson", themap.writeValueAsString(observation));
 
 		// Print JSON to screen
-		SFIToolkit.display(theJSON);
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(observation));
 
 	} // End toJSON method declaration for single observation
 
@@ -202,12 +257,8 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// String representation of the JSON object
-		String theJSON = themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(observation);
-
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", theJSON);
+		Macro.setLocal("thejson", themap.writeValueAsString(observation));
 
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
@@ -227,15 +278,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// String representation of the JSON object
-		String theJSON = themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(stataData);
+		// Print JSON to screen
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(stataData));
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", theJSON);
-
-		// Print JSON to screen
-		SFIToolkit.display(theJSON);
+		Macro.setLocal("thejson", themap.writeValueAsString(stataData));
 
 	} // End toJSON method declaration for dataset
 
@@ -255,12 +303,8 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// String representation of the JSON object
-		String theJSON = themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(stataData);
-
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", theJSON);
+		Macro.setLocal("thejson", themap.writeValueAsString(stataData));
 
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
@@ -280,15 +324,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// String representation of the JSON object
-		String theJSON = themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(metaobject);
-
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", theJSON);
+		Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
 
 		// Print JSON to screen
-		SFIToolkit.display(theJSON);
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(metaobject));
 
 	} // End toJSON method declaration for single observation
 
@@ -308,15 +349,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// String representation of the JSON object
-		String theJSON = themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(metaobject);
-
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", theJSON);
+		Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
 
 		// Print JSON to screen
-		SFIToolkit.display(theJSON);
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(metaobject));
 
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
@@ -337,15 +375,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// String representation of the JSON object
-		String theJSON = themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(thedata);
-
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", theJSON);
+		Macro.setLocal("thejson", themap.writeValueAsString(thedata));
 
 		// Print JSON to screen
-		SFIToolkit.display(theJSON);
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(thedata));
 
 	} // End toJSON method declaration for List of Object types
 
@@ -365,17 +400,60 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// String representation of the JSON object
-		String theJSON = themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(thedata);
-
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", theJSON);
+		Macro.setLocal("thejson", themap.writeValueAsString(thedata));
 
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
 				.writeValue(filename, thedata);
 
 	} // End toJSON method declaration for List of Object types
+
+	/***
+	 * Method to print all data and metadata to the Stata console
+	 * @param allData A List of Object types
+	 * @throws JsonProcessingException A processing error thrown by the
+	 * Jackson JSON API
+	 * @throws NullPointerException An exception when null objects are
+	 * referenced
+	 */
+	public static void toJSON(Map<String, Object> allData) throws
+			JsonProcessingException, NullPointerException {
+
+		// New object mapper to parse JSON
+		ObjectMapper themap = new ObjectMapper();
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(allData));
+
+		// Print JSON to screen
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(allData));
+
+	} // End method declaration
+
+	/***
+	 * Method to print all data and metadata to the Stata console
+	 * @param allData A List of Object types
+	 * @param filename A file object containing the name where the JSON data
+	 *                    will be written
+	 * @throws NullPointerException An exception when null objects are
+	 * referenced
+	 * @throws IOException An error thrown when attempting to read/write a
+	 * local file
+	 */
+	public static void toJSON(Map<String, Object> allData, File filename) throws
+			IOException, NullPointerException {
+
+		// New object mapper to parse JSON
+		ObjectMapper themap = new ObjectMapper();
+
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(allData));
+
+		// Print JSON to screen
+		themap.writerWithDefaultPrettyPrinter().writeValue(filename, allData);
+
+	} // End method declaration
 
 } // End of StataJSON object declaration

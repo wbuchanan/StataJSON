@@ -1,5 +1,7 @@
 package org.paces.Stata.JSON;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stata.sfi.Macro;
 import org.paces.Stata.Data.Meta;
 import org.paces.Stata.Data.Variables;
@@ -19,31 +21,37 @@ public class StataMetaToJSON {
 	/***
 	 * Argument to serialize variable labels as JSON object
 	 */
+	@JsonIgnore
 	public static final String VARLABS = "varlabels";
 
 	/***
 	 * Argument to serialize variable names as JSON object
 	 */
+	@JsonIgnore
 	public static final String VARNAMES = "varnames";
 
 	/***
 	 * Argument to serialize value labels as JSON object
 	 */
+	@JsonIgnore
 	public static final String VALLABS = "vallabs";
 
 	/***
 	 * Argument to serialize value label names as JSON object
 	 */
+	@JsonIgnore
 	public static final String VALLABNAMES = "labelnames";
 
 	/***
 	 * Meta object member variable
 	 */
+	@JsonIgnore
 	static Meta dbg;
 
 	/***
 	 * Observation index member variable
 	 */
+	@JsonIgnore
 	static List<Long> obidx;
 
 	/***
@@ -55,6 +63,7 @@ public class StataMetaToJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
+	@JsonGetter
 	public static int metaToJSON(String[] args) throws
 			IOException, NullPointerException {
 

@@ -1,6 +1,10 @@
 package org.paces.Stata.Data;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.stata.sfi.Data;
-import com.stata.sfi.SFIToolkit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,26 +20,31 @@ public class Observations {
 	/***
 	 * Starting observation index number
 	 */
+	@JsonProperty(required = true, value = "Starting Observation")
 	private long sobs;
 
 	/***
 	 * Ending observation index number
 	 */
+	@JsonProperty(required = true, value = "Ending Observation")
 	private long eobs;
 
 	/***
 	 * Total Number of Observations
 	 */
+	@JsonProperty(required = true, value = "Total Number of Observations")
 	private long nobs;
 
 	/***
 	 * Observation indices
 	 */
+	@JsonProperty(required = true, value = "Observation Indices")
 	private List<Long> obindex;
 
 	/***
 	 * Constructor method for class ObservationsImpl
 	 */
+	@JsonCreator
 	public Observations() {
 
 		// Set the starting observation index
@@ -55,6 +64,7 @@ public class Observations {
 	/***
 	 * Sets the starting observation index
 	 */
+	@JsonSetter
 	public void setSobs() {
 		this.sobs = Data.getObsParsedIn1();
 	}
@@ -62,6 +72,7 @@ public class Observations {
 	/***
 	 * Sets the starting observation index
 	 */
+	@JsonSetter
 	public void setEobs() {
 		this.eobs = Data.getObsParsedIn2();
 	}
@@ -69,6 +80,7 @@ public class Observations {
 	/***
 	 * Sets the number of effective observations
 	 */
+	@JsonSetter
 	public void setNobs() {
 
 		// Return the size of the list object
@@ -81,6 +93,7 @@ public class Observations {
 	 * @param start The starting observation index
 	 * @param end The ending observation index
 	 */
+	@JsonSetter
 	public void setObservationIndex(Long start, Long end) {
 
 		// Initialize temp variable
@@ -106,17 +119,20 @@ public class Observations {
 	/***
 	 * @return the starting observation index value
 	 */
+	@JsonGetter
 	public long getSobs() { return(this.sobs); }
 
 	/***
 	 * @return the ending observation index value
 	 */
+	@JsonGetter
 	public long getEobs() { return(this.eobs); }
 
 	/***
 	 *
 	 * @return the number of effective observations
 	 */
+	@JsonGetter
 	public long getNobs() {
 		return(this.nobs);
 	}
@@ -124,31 +140,7 @@ public class Observations {
 	/***
 	 * @return the list of effective observation indices
 	 */
+	@JsonGetter
 	public List<Long> getObservationIndex() { return(this.obindex); }
-
-	/***
-	 * Prints the starting observation index value to the Stata console
-	 * @param scalar A scalar value of type Long to print
-	 */
-	public void print(Long scalar)  {
-		SFIToolkit.displayln(String.valueOf(scalar));
-	}
-
-	/***
-	 * Prints the starting observation index value to the Stata console
-	 * @param obIndices The list of effective observation indices
-	 */
-	public void print(List<Long> obIndices) {
-
-		// Use foreach loop to iterate over the items and print them to the
-		// Stata console.
-		for (Long obIndex : obIndices) {
-
-			// Print value to Stata console
-			SFIToolkit.displayln(String.valueOf(obIndex));
-
-		} // End While loop over iterator elements
-
-	} // End Print method for observation indices
 
 } // End Class definition

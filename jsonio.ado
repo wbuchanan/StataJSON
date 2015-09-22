@@ -11,7 +11,7 @@
 *   Either prints a JSON object to the Stata console or writes one to disk.    *
 *                                                                              *
 * Lines -                                                                      *
-* 	121	                                                                       *
+* 	135	                                                                       *
 *                                                                              *
 ********************************************************************************
 
@@ -33,7 +33,7 @@ prog def jsonio, rclass
 	[ FILEnm(string asis) OBid(real 0) METAprint(string asis) What(string asis) ]
 
 	// Check for aguments defining what to convert
-	if inlist(proper("`what'"), "Record", "Data") & "`metaprint'" == "" {
+	if inlist(proper("`what'"), "Record", "Data", "All") & "`metaprint'" == "" {
 
 		// Make value proper cased
 		loc what = proper("`what'")
@@ -74,7 +74,7 @@ prog def jsonio, rclass
 		} // End IF Block for printing metadata to JSON
 
 		// For non metadata cases
-		if proper("`what'") == "Data" & "`filenm'" != "" {
+		if "`what'" == "Data" & "`filenm'" != "" {
 
 			// Call java method to write JSON object to disk
 			javacall org.paces.Stata.JSON.StataJSON printDataToFile 		 ///
@@ -83,7 +83,7 @@ prog def jsonio, rclass
 		} // End else block for printing data to JSON
 
 		// Call to print dataset to Stata console
-		else if proper("`what'") == "Data" & "`filenm'" == "" {
+		else if "`what'" == "Data" & "`filenm'" == "" {
 
 			// Call java method to write JSON object to the Stata console
 			javacall org.paces.Stata.JSON.StataJSON printData `varlist' `if' ///   
@@ -92,7 +92,7 @@ prog def jsonio, rclass
 		} // End ELSEIF Block to print dataset to Stata console
 
 		// Call to write individual record to file
-		else if proper("`what'") == "Record" & "`filenm'" != "" {
+		else if "`what'" == "Record" & "`filenm'" != "" {
 
 			// Call java method to write individual record to disk
 			javacall org.paces.Stata.JSON.StataJSON printRecordToFile 		 ///
@@ -101,13 +101,21 @@ prog def jsonio, rclass
 		} // End ELSEIF Block for writing individual record to disk
 
 		// Option to print individual record to the screen
-		else {
+		else if "`what'" == "Record" & "`filenm'" == "" {
 
 			// Call java method to print record to the Stata console
 			javacall org.paces.Stata.JSON.StataJSON printRecord `varlist' 	 ///   
 			`if' `in'
 
-		} // End ELSE Block to print JSON record to Stata console
+		} // End ELSEIF Block to print JSON record to Stata console
+
+		// Option to print everything to the console
+		else {
+
+			// Call java method to print everything to the Stata console
+			javacall org.paces.Stata.JSON.StataJSON printAll `varlist' `if' `in'
+
+		} // End ELSE Block to print JSON data/metadata to Stata console
 
 		// Set the local macro that needs to be returned
 		ret loc thejson `"`thejson'"'

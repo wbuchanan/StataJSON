@@ -1,4 +1,9 @@
 package org.paces.Stata.Data;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.stata.sfi.Data;
 import com.stata.sfi.ValueLabel;
 
@@ -20,71 +25,52 @@ public class Variables {
 	/***
 	 * Member variable containing variable indices
  	 */
+	@JsonProperty(required = true, value = "Variable Indices")
 	public List<Integer> varindex;
 
 	/***
 	 * Member variable containing Stata variable names
 	 */
+	@JsonProperty(required = true, value = "Variable Names")
 	public List<String> varnames;
 
 	/***
 	 * Member variable containing Stata variable labels
 	 */
+	@JsonProperty(required = true, value = "Variable Labels")
 	public List<String> varlabels;
 
 	/***
 	 * Member variable containing Stata value label names associated with a
 	 * given variable
 	 */
+	@JsonProperty(required = true, value = "Value Label Names")
 	public List<String> valueLabelNames;
 
 	/***
 	 * Member variable containing a list of Map objects with the values and
 	 * associated labels contained in the Map object
 	 */
+	@JsonProperty(required = true, value = "Value Labels")
 	public List<Object> valueLabels;
 
 	/***
 	 * Member variable containing indicators for whether or not the variable
 	 * is of type String
 	 */
+	@JsonProperty(required = true, value = "Is String Variable Indicators")
 	public List<Boolean> varTypes;
 
 	/***
 	 * Number of variables passed from javacall
 	 */
+	@JsonProperty(required = true, value = "Number of Variables")
 	public int nvars;
-
-	/***
-	 * Generic constructor when varlist is passed
-	 * @param arguments Transformed list of strings from the args parameter
-	 */
-	/* Variables(List<String> arguments) {
-
-		// Set the variable index member variable
-		setVariableIndex(arguments);
-
-		// Set the variable name member variable
-		setVariableNames();
-
-		// Set the variable label member variable
-		setVariableLabels();
-
-		// Set the value label name member variable
-		setValueLabelNames();
-
-		// Set the value label value/label pair member variable
-		setValueLabels();
-
-		// Set the variable is string index member variable
-		setVariableTypeIndex();
-
-	} // End constructor method
-	*/
 
 	/***
 	 * Generic constructor when no varlist is passed
 	 */
+	@JsonCreator
 	Variables() {
 
 		// Set the variable index member variable
@@ -114,6 +100,7 @@ public class Variables {
 	 * Populates the variable index member variable with the indices used to
 	 * identify variables in the Stata dataset in memory.
 	 */
+	@JsonSetter
 	public void setVariableIndex() {
 
 		// Initialize an empty array list of Integer objects
@@ -143,7 +130,7 @@ public class Variables {
 		} else {
 
 			// Loop over the total indices of variables
-			for (int i = 0; i < allvars - 1; i++) {
+			for (int i = 0; i < allvars; i++) {
 
 				// Add the index value to the list object
 				vars.add(i + 1);
@@ -161,6 +148,7 @@ public class Variables {
 	 * Method to set the number of variables passed to javacall
 	 * @param varidx A variable index
 	 */
+	@JsonSetter
 	public void setNvars(List<Integer> varidx) {
 
 		// Set nvars based on the size of the List of integer objects
@@ -172,6 +160,7 @@ public class Variables {
 	 * Method to access the number of variables passed from javacall
 	 * @return An integer value with the number of variables passed to javacall
 	 */
+	@JsonGetter
 	public int getNvars() {
 
 		// Returns the nvars member variable
@@ -183,6 +172,7 @@ public class Variables {
 	 * Sets an object containing variable names from Stata data set.
 	 * Requires the variable index.
 	 */
+	@JsonSetter
 	public void setVariableNames() {
 
 		List<String> tmp = new ArrayList<>();
@@ -201,6 +191,7 @@ public class Variables {
 	 * Sets an object containing variable labels from Stata data set.
 	 * Requires the variable index.
 	 */
+	@JsonSetter
 	public void setVariableLabels() {
 
 		List<String> tmp = new ArrayList<>();
@@ -220,6 +211,7 @@ public class Variables {
 	 * index value
 	 * Requires the variable index.
 	 */
+	@JsonSetter
 	public void setValueLabelNames() {
 
 		List<String> tmp = new ArrayList<>();
@@ -247,6 +239,7 @@ public class Variables {
 	 * Sets an object with the value labels defined for a given variable.
 	 * Requires the variable index.
 	 */
+	@JsonSetter
 	public void setValueLabels() {
 
 		// Initialize temporary container object
@@ -293,6 +286,7 @@ public class Variables {
 	 * is/isn't a string.
 	 * Requires the variable index.
 	 */
+	@JsonSetter
 	public void setVariableTypeIndex() {
 
 		List<Boolean> tmp = new ArrayList<>();
@@ -312,6 +306,7 @@ public class Variables {
 	 *
 	 * @return A list of Integer objects containing variable indices
 	 */
+	@JsonGetter
 	public List<Integer> getVariableIndex() {
 		return this.varindex;
 	}
@@ -319,6 +314,7 @@ public class Variables {
 	/***
 	 * @return A list of String objects containing variable names
 	 */
+	@JsonGetter
 	public List<String> getVariableNames() {
 		return this.varnames;
 	}
@@ -327,6 +323,7 @@ public class Variables {
 	 * @param varidx valid variable index value
 	 * @return Name of variable at index varidx
 	 */
+	@JsonGetter
 	public String getName(int varidx) {
 		return this.varnames.get(varidx);
 	}
@@ -335,6 +332,7 @@ public class Variables {
 	 * @param varidx valid variable index value
 	 * @return Variable Label
 	 */
+	@JsonGetter
 	public String getVarLabel(int varidx) {
 		return this.varlabels.get(varidx);
 	}
@@ -343,6 +341,7 @@ public class Variables {
 	 * @param varidx valid variable index value
 	 * @return Name of variable at index varidx
 	 */
+	@JsonGetter
 	public Boolean getVarType(int varidx) {
 		return this.varTypes.get(varidx);
 	}
@@ -351,13 +350,14 @@ public class Variables {
 	 * @param varidx valid variable index value
 	 * @return Name of value label associated with a given variable index
 	 */
+	@JsonGetter
 	public String getValueLabelName(int varidx) { return this.valueLabelNames
 			.get(varidx); }
-
 
 	/***
 	 * @return A list of String objects containing variable labels.
 	 */
+	@JsonGetter
 	public List<String> getVariableLabels() {
 		return this.varlabels;
 	}
@@ -365,6 +365,7 @@ public class Variables {
 	/***
 	 * @return A list of String objects containing value label names.
 	 */
+	@JsonGetter
 	public List<String> getValueLabelNames() {
 		return this.valueLabelNames;
 	}
@@ -374,6 +375,7 @@ public class Variables {
 	 * labeled variables or the keyword "skip" to indicate the variable does not
 	 * have any value labels associated with it.
 	 */
+	@JsonGetter
 	public List<Object> getValueLabels() {
 		return this.valueLabels;
 	}
@@ -381,6 +383,7 @@ public class Variables {
 	/***
 	 * @return A list of Boolean objects indicating if variable is a string
 	 */
+	@JsonGetter
 	public List<Boolean> getVariableTypes() {
 		return this.varTypes;
 	}

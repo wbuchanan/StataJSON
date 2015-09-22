@@ -1,6 +1,8 @@
 package org.paces.Stata.Data;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.stata.sfi.Macro;
 
 import java.util.ArrayList;
@@ -27,11 +29,12 @@ public class DataSet implements StataData {
 	 * The name of the data set in memory to be converted to a JSON object
 	 */
 	@JsonIgnore
-	public String name;
+	public String filename;
 
 	/***
 	 * POJO Representation of the data set in memory of Stata
 	 */
+	@JsonIgnore
 	public List<Object> stataDataSet;
 
 	/***
@@ -39,14 +42,14 @@ public class DataSet implements StataData {
 	 * @param metaobject A Meta class object containing metadata for the
 	 *                      Stata dataset.
 	 */
-	@JsonCreator
+	@JsonIgnore
 	public DataSet(Meta metaobject) {
 
 		// Set the meta object to the value passed to the constructor
 		this.metaob = metaobject;
 
 		// Set the name variable
-		setName();
+		setFileName();
 
 		// Builds the data object
 		setData();
@@ -56,7 +59,8 @@ public class DataSet implements StataData {
 	/***
 	 * Generic Setter method for the name of the dataset object
 	 */
-	public void setName() {
+	@JsonSetter
+	public void setFileName() {
 
 		// Store the value of `"`c(filename)'"' as a Java string
 		String nm = Macro.getLocalSafe("c(filename)");
@@ -65,12 +69,12 @@ public class DataSet implements StataData {
 		if (!nm.isEmpty()) {
 
 			// Assign the Stata file name as the name of the object
-			this.name = nm;
+			this.filename = nm;
 
 		} else {
 
 			// Otherwise set a generic name
-			this.name = "Stata Data Set";
+			this.filename = "Stata Data Set";
 
 		} // End IF/ELSE Block for object name
 
@@ -82,14 +86,14 @@ public class DataSet implements StataData {
 	 * the value on that variable for the given observation
 	 */
 	@Override
-	@JsonAnyGetter
+	@JsonSetter
 	public void setData() {
 
 		// Initialize container to ID the observation and contains a Map
 		// object with key/value pairs
 		List<Object> obs = new ArrayList<Object>();
 
-		obs.addAll(metaob.obsindex.parallelStream().map(
+		obs.addAll(metaob.obsindex.stream().map(
 				(Function<Long, Object>) (id) -> {
 					return new DataRecord(id, this.metaob).getData();
 				}
@@ -105,6 +109,7 @@ public class DataSet implements StataData {
 	 * @return A POJO representation of the Stata Dataset
 	 */
 	@Override
+	@JsonGetter
 	public Object getData() {
 
 		// Returns the sole member variable of the class
@@ -117,11 +122,11 @@ public class DataSet implements StataData {
 	 * @return The name of the Stata Data object
 	 */
 	@JsonGetter
-	public String getName() {
+	public String getFileName() {
 
 		// Returns the name of the Stata dataset (or generic placeholder)
 		// used to construct a JSON object
-		return this.name;
+		return this.filename;
 
 	} // End of getName method declaration
 
