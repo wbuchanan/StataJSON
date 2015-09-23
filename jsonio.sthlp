@@ -44,11 +44,13 @@ objects.  The table below defines what each argument returns. {break}{p_end}
 {col 10}{hline 70}{break}
 
 {p 4 4 8}{cmdab:w:hat} is an argument used to define what will be serialized.
-The acceptable parameter values are {hi:data} and {hi:record}.  The {hi:data}
-argument will trigger the program to serialize the entire dataset.  The {hi:record}
-argument will serialize a single record from the dataset.  If this argument is
-empty and the metaprint argument has a valid value, the metaprint argument will
-define what to serialize. {p_end}
+The acceptable parameter values are {hi:data} and {hi:record}.  Passing a
+value of {hi:data} to this argument will trigger the program to serialize the
+entire dataset.  Passing a value of {hi:record} to this argument will serialize
+a single record from the dataset.  Passing a value of {hi:all} to this
+argument will serialize all of the metadata and the data set into a single
+JSON object.  If this argument is empty and the metaprint argument has a
+valid value, the metaprint argument will define what to serialize. {p_end}
 
 
 {marker examples}{title:Examples}{break}
@@ -63,11 +65,14 @@ define what to serialize. {p_end}
 
 {p 8 8 12}sysuse auto, clear{p_end}
 {p 8 8 12}jsonio, what(data){p_end}
+{p 8 8 12}jsonio, what(all){p_end}
+
 
 {p 4 4 4} Serialize the auto dataset to a file{p_end}
 
 {p 8 8 12}sysuse auto, clear{p_end}
 {p 8 8 12}jsonio, what(data) file(autoDTA.json){p_end}
+{p 8 8 12}jsonio, what(all) file(autoDTA-withMetaData.json){p_end}
 
 {p 4 4 4} Serialize the auto dataset metadata{p_end}
 

@@ -11,12 +11,12 @@
 *   Either prints a JSON object to the Stata console or writes one to disk.    *
 *                                                                              *
 * Lines -                                                                      *
-* 	135	                                                                       *
+* 	144	                                                                       *
 *                                                                              *
 ********************************************************************************
 
 *! jsonio
-*! 22sep2015
+*! 23sep2015
 *! v 0.0.1
 
 // Drop program from memory if it exists
@@ -110,12 +110,21 @@ prog def jsonio, rclass
 		} // End ELSEIF Block to print JSON record to Stata console
 
 		// Option to print everything to the console
-		else {
+		else if "`what'" == "All" & "`filenm'" == "" {
 
 			// Call java method to print everything to the Stata console
 			javacall org.paces.Stata.JSON.StataJSON printAll `varlist' `if' `in'
 
-		} // End ELSE Block to print JSON data/metadata to Stata console
+		} // End ELSEIF Block to print JSON data/metadata to Stata console
+
+		// Option to write all data to file on the disk
+		else {
+
+			// Call java method to print everything to the Stata console
+        	javacall org.paces.Stata.JSON.StataJSON printAllToFile `varlist' ///
+        	`if' `in'
+
+        } // End ELSE Block to print JSON data/metadata to disk
 
 		// Set the local macro that needs to be returned
 		ret loc thejson `"`thejson'"'
