@@ -8,7 +8,7 @@
 	<groupId>org.paces</groupId>
 	<artifactId>Stata</artifactId>
 	<version>0.0.0</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<name>Stata Java Tools</name>
 	<description>Java plugins used to extend capabilities in Stata
 	statical software platform.</description>
