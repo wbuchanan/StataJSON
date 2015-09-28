@@ -1,13 +1,13 @@
 {smcl}
-{* *! version 0.0.1  24SEP2015}{...}
+{* *! version 0.0.2  28SEP2015}{...}
 {cmd:help jsonio}
 {hline}
 
 {title:Title}
 
-{hi:jsonio {hline 2}} A Stata JSON Serializer/Deserializer built on the {browse "https://github.com/FasterXML/jackson": Jackson} Java library.  For the most up to date version of this program, visit
+{hi:jsonio {hline 2}} A Stata JSON Serializer/Deserializer built on the {browse "http://github.com/FasterXML/jackson": Jackson} Java library.  For the most up to date version of this program, visit
 
-{browse "https://github.com/wbuchanan/StataJSON":Stata JSON on Github}
+{browse "http://github.com/wbuchanan/StataJSON":Stata JSON on Github}
 
 Currently, the program only supports serializing an existing Stata dataset in 
 memory, but will evolve to support injesting JSON data in the near future as well. {p_end}
@@ -86,7 +86,7 @@ valid value, the metaprint argument will define what to serialize. {p_end}
 {p 8 8 12}jsonio, metaprint(labelnames){p_end}
 {p 8 8 12}jsonio, metaprint(vallabs){p_end}
 
-{p 4 4 4}Additional examples are available at {browse "https://github.com/wbuchanan/StataJSON"}{p_end}
+{p 4 4 4}Additional examples are available at {browse "http://github.com/wbuchanan/StataJSON"}{p_end}
 {break}
 
 {title: Author}{break}

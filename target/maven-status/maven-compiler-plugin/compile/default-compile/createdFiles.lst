@@ -1,0 +1,13 @@
+org/paces/Stata/JSON/StataJSON.class
+org/paces/Stata/JSON/MetaArgs.class
+org/paces/Stata/Data/Observations.class
+org/paces/Stata/Data/DataSet.class
+org/paces/Stata/JSON/StataAllToJSON.class
+org/paces/Stata/Data/StataData.class
+org/paces/Stata/JSON/StataMetaToJSON.class
+org/paces/Stata/Data/StataXTTS.class
+org/paces/Stata/Data/Variables.class
+org/paces/Stata/Data/DataRecord.class
+org/paces/Stata/Data/Meta.class
+org/paces/Stata/Data/MataMatrix.class
+org/paces/Stata/Data/StataArgsToCollector.class

@@ -16,8 +16,8 @@
 ********************************************************************************
 
 *! jsonio
-*! 23sep2015
-*! v 0.0.1
+*! 28sep2015
+*! v 0.0.2
 
 // Drop program from memory if it exists
 cap prog drop jsonio
@@ -64,7 +64,7 @@ prog def jsonio, rclass
 		} // End IF Block to load data from using
 
 		// Check for metadata argument
-		if inlist(`"`metaprint'"', "varlabels", "varnames", "vallabs", 		 ///   
+		if inlist(`"`metaprint'`filenm'"', "varlabels", "varnames", "vallabs", 		 ///   
 		"labelnames") {
 
 			// Call java method to print metadata
@@ -73,6 +73,9 @@ prog def jsonio, rclass
 
 		} // End IF Block for printing metadata to JSON
 
+		// For non-metadata based calls
+		else {
+		
 		// For non metadata cases
 		if "`what'" == "Data" & "`filenm'" != "" {
 
@@ -120,14 +123,16 @@ prog def jsonio, rclass
 		// Option to write all data to file on the disk
 		else {
 
-			// Call java method to print everything to the Stata console
+		// Call java method to print everything to the Stata console
         	javacall org.paces.Stata.JSON.StataJSON printAllToFile `varlist' ///
         	`if' `in'
 
-        } // End ELSE Block to print JSON data/metadata to disk
+        	} // End ELSE Block to print JSON data/metadata to disk
 
-		// Set the local macro that needs to be returned
-		ret loc thejson `"`thejson'"'
+	} // End ELSE Block for data-based function calls	
+
+	// Set the local macro that needs to be returned
+	ret loc thejson `"`thejson'"'
 
 	// Restore data to that originally in memory
 	restore

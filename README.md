@@ -276,3 +276,23 @@ satisfying a given condition and write the output to disk
 . jsonio mpg foreign weight price make if rep78 == 1, w(all) filenm(test.json)
 
 ```
+
+## Working with meta data
+Serialize variable names to JSON object that is printed to the Stata console:
+
+```
+ 
+. jsonio, metaprint(varnames)
+[ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ]
+```
+
+Serialize variable labels to JSON object that is printed to the Stata console:
+```
+
+. jsonio, metaprint(varlabels)
+
+[ "Make and Model", "Price", "Mileage (mpg)", "Repair Record 1978", "Headroom (in.)", "Trunk space (cu. ft.)", "Weight (lbs.)", "Length (in.)", "Turn Circle (ft.) ", "Displacement (cu. in.)", "Gear Ratio", "Car type" ]
+```
+
+
+
