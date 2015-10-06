@@ -13,7 +13,7 @@ import java.util.Map;
  * <p>A POJO representation of a single observation from the Stata dataset
  * loaded in memory. </p>
  */
-public class DataRecord implements StataData {
+public class DataRecord implements Record {
 
 	/***
 	 * A Stata Metadata object
@@ -99,8 +99,20 @@ public class DataRecord implements StataData {
 
 			} else {
 
-				// Convert numeric variables to string
-				value = Data.getNum(metaob.getVarindex(i), obid);
+				// Check for missing numeric values
+				if (Data.isValueMissing(Data.getNum(metaob.getVarindex(i),
+						obid))) {
+
+					// If value is missing, populate field with the string
+					// value null.
+					value = "null";
+
+				} else {
+
+					// Convert numeric variables to string
+					value = Data.getNum(metaob.getVarindex(i), obid);
+
+				} // End ELSE Block for non-missing values
 
 			} // End IF/ELSE Block for string/numeric type handling
 
@@ -123,7 +135,10 @@ public class DataRecord implements StataData {
 	@Override
 	@JsonGetter
 	public Map<String, Object> getData() {
-		return this.observation;
-	}
 
-}
+		// Returns the array for the observation
+		return this.observation;
+
+	} // End of getData method declaration
+
+} // End of Class declaration
