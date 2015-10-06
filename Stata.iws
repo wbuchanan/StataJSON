@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordByteArray.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordDoubleArray.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordIntArray.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordLongArray.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordStringArray.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetByteArrays.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetDoubleArrays.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetIntArrays.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetLongArrays.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetStringArrays.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/NumDataColumn.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Record.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/RecordFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StringDataColumn.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.ipr" afterPath="$PROJECT_DIR$/Stata.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Data/DataRecord.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Data/DataRecord.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/org.paces.Stata-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/org.paces.Stata-jar-with-dependencies.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/org.paces.Stata.jar" afterPath="$PROJECT_DIR$/target/org.paces.Stata.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetFactory.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/RecordFactory.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/RecordFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.iws" afterPath="$PROJECT_DIR$/Stata.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
     </list>
     <list id="9944e83e-ebc7-46dc-b4a2-561214c82f42" name="Rejected commit: Default" comment="Added debugger to main package body.  Need to initialize variables for all methods." />
     <ignored path="Stata.iws" />
@@ -54,21 +45,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RecordFactory.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RecordFactory.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/RecordFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="3" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3895349">
+              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataSetFactory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataSetFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43313953">
-              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataSetByteArrays.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetByteArrays.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Meta.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -125,7 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Observations.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Meta.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/DataRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/StataJSON.java" />
@@ -169,13 +179,14 @@
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordByteArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordDoubleArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/RecordFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetByteArrays.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetIntArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetLongArrays.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetDoubleArrays.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetStringArrays.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/x.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/RecordFactory.java" />
       </list>
     </option>
   </component>
@@ -934,13 +945,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Stata.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="17" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stata.ipr">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1148,13 +1152,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2173913">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
@@ -1264,14 +1261,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetByteArrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1744186">
-          <caret line="9" column="80" selection-start-line="0" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordDoubleArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.8502907">
@@ -1296,14 +1285,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/RecordFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="3" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1320,10 +1301,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Meta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetByteArrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43313953">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/RecordFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3895349">
+          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
           <folding />
         </state>
       </provider>
