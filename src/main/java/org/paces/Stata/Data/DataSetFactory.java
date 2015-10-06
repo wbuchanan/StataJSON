@@ -18,28 +18,57 @@ public class DataSetFactory {
 
 	/***
 	 * Method to create a DataSet class object
-	 * @param type A string argument defining what type of Record class
+	 * @param type A string argument defining what type of Set class
 	 *                object to create
 	 * @param metaob An object of class Meta used to define the
 	 *                  observation/variable indices and metadata overall
-	 * @return A Record class object of type defined by the user.  An empty
+	 * @return A Data Set class object of type defined by the user.  An empty
 	 * string will return the object used for JSON serialization
 	 */
-	public StataData getData(String type, Meta metaob) {
+	public StataData DataSetFactory(String type, Meta metaob) {
 
-		if ("byte".equals(type)) {
-			return new DataSetByteArrays(metaob);
-		} else if ("int".equals(type)) {
-			return new DataSetIntArrays(metaob);
-		} else if ("long".equals(type)) {
-			return new DataSetLongArrays(metaob);
-		} else if ("double".equals(type)) {
-			return new DataSetDoubleArrays(metaob);
-		} else if ("string".equals(type)) {
-			return new DataSetStringArrays(metaob);
-		} else {
-			return new DataSet(metaob);
-		}
+		// Dispatch class creation based on value of the argument passed to
+		// the type parameter.
+		switch (type) {
 
-	}
-}
+			// If type argument is 'byte'
+			case "byte":
+
+				// Return a Byte Array class data Set
+				return new DataSetByteArrays(metaob);
+
+			// If type argument is 'int'
+			case "int":
+
+				// Return an Integer Array class data Set
+				return new DataSetIntArrays(metaob);
+
+			// If type argument is 'long'
+			case "long":
+
+				// Return a Long Array class data Set
+				return new DataSetLongArrays(metaob);
+
+			// If type argument is 'double'
+			case "double":
+
+				// Return a Double Array class data Set
+				return new DataSetDoubleArrays(metaob);
+
+			// If type argument is 'string'
+			case "string":
+
+				// Return a String Array class data Set
+				return new DataSetStringArrays(metaob);
+
+			// If type argument is anything else
+			default :
+
+				// Return a Data Set used for JSON serialization
+				return new DataSet(metaob);
+
+		} // End switch statement
+
+	} // End Method declaration
+
+} // End dataset factory class declaration

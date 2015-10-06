@@ -27,21 +27,50 @@ public class RecordFactory {
 	 * @return A Record class object of type defined by the user.  An empty
 	 * string will return the object used for JSON serialization
 	 */
-	public Record getData(String type, Long obid, Meta metaob) {
+	public Record RecordFactory(String type, Long obid, Meta metaob) {
 
-		if ("byte".equals(type)) {
-			return new DataRecordByteArray(obid, metaob);
-		} else if ("int".equals(type)) {
-			return new DataRecordIntArray(obid, metaob);
-		} else if ("long".equals(type)) {
-			return new DataRecordLongArray(obid, metaob);
-		} else if ("double".equals(type)) {
-			return new DataRecordDoubleArray(obid, metaob);
-		} else if ("string".equals(type)) {
-			return new DataRecordStringArray(obid, metaob);
-		} else {
-			return new DataRecord(obid, metaob);
-		}
+		// Dispatch class creation based on value of the argument passed to
+		// the type parameter.
+		switch (type) {
 
-	}
-}
+			// If type argument is 'byte'
+			case "byte":
+
+				// Return a Byte Array class data record
+				return new DataRecordByteArray(obid, metaob);
+
+			// If type argument is 'int'
+			case "int":
+
+				// Return an Integer Array class data record
+				return new DataRecordIntArray(obid, metaob);
+
+			// If type argument is 'long'
+			case "long":
+
+				// Return a Long Array class data record
+				return new DataRecordLongArray(obid, metaob);
+
+			// If type argument is 'double'
+			case "double":
+
+				// Return a Double Array class data record
+				return new DataRecordDoubleArray(obid, metaob);
+
+			// If type argument is 'string'
+			case "string":
+
+				// Return a String Array class data record
+				return new DataRecordStringArray(obid, metaob);
+
+			// If type argument is anything else
+			default :
+
+				// Return a Data record used for JSON serialization
+				return new DataRecord(obid, metaob);
+
+		} // End switch statement
+
+	} // End Method declaration
+
+} // End Factory class declaration
