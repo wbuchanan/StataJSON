@@ -12,17 +12,17 @@ public class DataRecordDoubleArray implements Record {
 	/***
 	 * A Stata Metadata object
 	 */
-	public Meta metaob;
+	private Meta metaob;
 
 	/***
 	 * Observation ID variable
 	 */
-	public Long obid;
+	private Long obid;
 
 	/***
 	 * Variable containing the data for a given observation
 	 */
-	public double[] observation;
+	private double[] observation;
 
 	/***
 	 * Constructor method for DataRecordDoubleArray class

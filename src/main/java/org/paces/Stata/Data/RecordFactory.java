@@ -27,7 +27,7 @@ public class RecordFactory {
 	 * @return A Record class object of type defined by the user.  An empty
 	 * string will return the object used for JSON serialization
 	 */
-	public Record RecordFactory(String type, Long obid, Meta metaob) {
+	public Record recordFactory(String type, Long obid, Meta metaob) {
 
 		// Dispatch class creation based on value of the argument passed to
 		// the type parameter.

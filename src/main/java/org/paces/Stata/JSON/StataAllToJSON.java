@@ -16,12 +16,10 @@ import java.util.Map;
  * <p>Object used to create a JSON object with the data and metadata bound
  * to it. </p>
  */
-@JsonPropertyOrder(value = {"Starting Observation Number",
-		"Ending Observation Number",
-		"Number of Observations",
-		"Variable Names", "Variable Labels",
-		"Is Variable String", "Value Label Names",
-		"Value Labels", "Data Set"}, alphabetic = false)
+@JsonPropertyOrder({ "name", "values", "first record id", "last record id",
+		"number of records", "variable indices", "number of variables",
+		"variable type string", "variable names", "variable labels",
+		"value label names", "value labels" })
 public class StataAllToJSON  {
 
 	/***
@@ -37,73 +35,110 @@ public class StataAllToJSON  {
 	public DataSet theData;
 
 	/***
+	 * A member variable to store the name of the JSON object
+	 */
+	@JsonProperty("name")
+	public final String name = "StataJSON";
+
+	/***
 	 * Member variable containing variable indices
 	 */
-	@JsonProperty(required = true, value = "Variable Indices")
+	@JsonProperty("variable indices")
 	public List<Integer> varindex;
+
+	@JsonGetter
+	public String getname() {
+		return this.name;
+	}
+
+	@JsonGetter
+	public List<Integer> getVarindex() {
+		return this.varindex;
+	}
+
+	@JsonGetter
+	public List<String> getVarnames() {
+		return this.varnames;
+	}
+
+	@JsonGetter
+	public Map<String, String> getVarlabels() {
+		return this.varlabels;
+	}
+
+	@JsonGetter
+	public Map<String, String> getValueLabelNames() {
+		return this.valueLabelNames;
+	}
+
+	@JsonGetter
+	public Map<String, Map<Integer, String>> getValueLabels() {
+		return this.valueLabels;
+	}
 
 	/***
 	 * Member variable containing Stata variable names
 	 */
-	@JsonProperty(required = true, value = "Variable Names")
+	@JsonProperty("variable names")
 	public List<String> varnames;
 
 	/***
 	 * Member variable containing Stata variable labels
 	 */
-	@JsonProperty(required = true, value = "Variable Labels")
-	public List<String> varlabels;
+	@JsonProperty("variable labels")
+	public Map<String, String> varlabels;
 
 	/***
 	 * Member variable containing Stata value label names associated with a
 	 * given variable
 	 */
-	@JsonProperty(required = true, value = "Value Label Names")
-	public List<String> valueLabelNames;
+	@JsonProperty("value label names")
+	public Map<String, String> valueLabelNames;
 
 	/***
 	 * Member variable containing a list of Map objects with the values and
 	 * associated labels contained in the Map object
 	 */
-	@JsonProperty(required = true, value = "Value Labels")
-	public List<Object> valueLabels;
+	@JsonProperty("value labels")
+	public Map<String, Map<Integer, String>> valueLabels;
 
 	/***
 	 * Member variable containing indicators for whether or not the variable
 	 * is of type String
 	 */
-	@JsonProperty(required = true, value = "Is Variable String")
-	public List<Boolean> varTypes;
+	@JsonProperty("variable type string")
+	public Map<String, Boolean> varTypes;
 
 	/***
 	 * Number of variables passed from javacall
 	 */
-	@JsonProperty(required = true, value = "Number of Variables")
+	@JsonProperty("number of variables")
 	public int nvars;
 
 	/***
 	 * Starting observation index number
 	 */
-	@JsonProperty(required = true, value = "Starting Observation")
+	@JsonProperty("first record id")
 	private long sobs;
 
 	/***
 	 * Ending observation index number
 	 */
-	@JsonProperty(required = true, value = "Ending Observation")
+	@JsonProperty("last record id")
 	private long eobs;
 
 	/***
 	 * Total Number of Observations
 	 */
-	@JsonProperty(required = true, value = "Total Number of Observations")
+	@JsonProperty("number of records")
 	private long nobs;
 
 	/***
 	 * Observation indices
 	 */
-	@JsonProperty(required = true, value = "Observation Indices")
+	@JsonIgnore
 	private List<Long> obindex;
+
 
 	/***
 	 * Constructor method for StataAllToJSON class
@@ -162,13 +197,10 @@ public class StataAllToJSON  {
 	 * of data object and objects contain the data to be serialized to JSON
 	 */
 	@JsonAnyGetter
-	@JsonValue
-	@JsonPropertyOrder(value = {"Starting Observation Number",
-			"Ending Observation Number",
-			"Number of Observations",
-			"Variable Names", "Variable Labels",
-			"Is Variable String", "Value Label Names",
-			"Value Labels", "Data Set"}, alphabetic = false)
+	@JsonPropertyOrder({ "name", "values", "first record id", "last record id",
+			"number of records", "variable indices", "number of variables",
+			"variable type string", "variable names", "variable labels",
+			"value label names", "value labels" })
 	public Map<String, Object> getData() {
 
 		// Initialize new map object to store the data
@@ -178,19 +210,45 @@ public class StataAllToJSON  {
 		total # of obs, variable names, variable labels, indicators for string
 		variables, value label names, value labels, and the data it self to the
 		map object. */
-		makeJSON.put("Starting Observation Number", this.sobs);
-		makeJSON.put("Ending Observation Number", this.eobs);
-		makeJSON.put("Number of Observations", this.nobs);
-		makeJSON.put("Variable Names", this.varnames);
-		makeJSON.put("Variable Labels", this.varlabels);
-		makeJSON.put("Is Variable String", this.varTypes);
-		makeJSON.put("Value Label Names", this.valueLabelNames);
-		makeJSON.put("Value Labels", this.valueLabels);
-		makeJSON.put("Data Set", this.theData.getData());
+		makeJSON.put("name", "StataJSON");
+		makeJSON.put("values", this.theData.getData());
+		makeJSON.put("first record id", getSobs());
+		makeJSON.put("last record id", getEobs());
+		makeJSON.put("number of records", getNobs());
+		makeJSON.put("variable indices", getVarindex());
+		makeJSON.put("number of variables", getNvars());
+		makeJSON.put("variable type string", getVariableTypes());
+		makeJSON.put("variable names", getVarnames());
+		makeJSON.put("variable labels", getVarlabels());
+		makeJSON.put("value label names", getValueLabelNames());
+		makeJSON.put("value labels", getValueLabels());
 
 		// Return the map object
 		return makeJSON;
 
 	} // End of getter method declaration
+
+	@JsonGetter
+	public long getSobs() {
+		return this.sobs;
+	}
+
+	@JsonGetter
+	public long getEobs() {
+		return this.eobs;
+	}
+
+	@JsonGetter
+	public long getNobs() {
+		return this.nobs;
+	}
+
+	@JsonGetter
+	public int getNvars() {
+		return this.nvars;
+	}
+
+	@JsonGetter
+	public Map<String, Boolean> getVariableTypes() { return this.varTypes; }
 
 } // End of StataAllToJSON object declaration

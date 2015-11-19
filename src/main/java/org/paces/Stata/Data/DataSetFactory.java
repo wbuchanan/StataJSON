@@ -25,7 +25,7 @@ public class DataSetFactory {
 	 * @return A Data Set class object of type defined by the user.  An empty
 	 * string will return the object used for JSON serialization
 	 */
-	public StataData DataSetFactory(String type, Meta metaob) {
+	public StataData dataSetFactory(String type, Meta metaob) {
 
 		// Dispatch class creation based on value of the argument passed to
 		// the type parameter.

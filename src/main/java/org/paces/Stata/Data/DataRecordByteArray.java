@@ -12,17 +12,17 @@ public class DataRecordByteArray implements Record {
 	/***
 	 * A Stata Metadata object
 	 */
-	public Meta metaob;
+	private Meta metaob;
 
 	/***
 	 * Observation ID variable
 	 */
-	public Long obid;
+	private Long obid;
 
 	/***
 	 * Variable containing the data for a given observation
 	 */
-	public byte[] observation;
+	private byte[] observation;
 
 	/***
 	 * Constructor method for DataRecordByteArray class
