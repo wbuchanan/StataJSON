@@ -21,10 +21,13 @@ public class DataRecord implements Record {
 	@JsonIgnore
 	public Meta metaob;
 
+	@JsonIgnore
+	private Variables vars;
+
 	/***
 	 * Observation ID variable
 	 */
-	@JsonProperty
+	@JsonProperty("_id")
 	public Long obid;
 
 	/***
@@ -40,11 +43,12 @@ public class DataRecord implements Record {
 	 *                      Stata dataset
 	 *
 	 */
-	@JsonIgnore
 	public DataRecord(Long id, Meta metaobject) {
 
 		// The metadata object
 		this.metaob = metaobject;
+
+		this.vars = metaob.getStatavars();
 
 		// Set the observation ID variable
 		setObid(id);
@@ -86,21 +90,21 @@ public class DataRecord implements Record {
 		Map<String, Object> record = new HashMap<>();
 
 		// Loop over the variable indices
-		for (int i = 0; i < metaob.varindex.size(); i++) {
+		for (int i = 0; i < vars.getVariableIndex().size(); i++) {
 
 			// Set the variable name as the key in the map object
-			key = metaob.statavars.getName(i);
+			key = vars.getVariableName(i);
 
 			// Test for string/numeric
-			if (metaob.statavars.getVarType(i)) {
+			if (vars.getVarType(key)) {
 
 				// Store string value if variable contains strings
-				value = Data.getStr(metaob.getVarindex(i), obid);
+				value = Data.getStr(vars.getVariableIndex(i), obid);
 
 			} else {
 
 				// Check for missing numeric values
-				if (Data.isValueMissing(Data.getNum(metaob.getVarindex(i),
+				if (Data.isValueMissing(Data.getNum(vars.getVariableIndex(i),
 						obid))) {
 
 					// If value is missing, populate field with the string
@@ -110,7 +114,7 @@ public class DataRecord implements Record {
 				} else {
 
 					// Convert numeric variables to string
-					value = Data.getNum(metaob.getVarindex(i), obid);
+					value = Data.getNum(vars.getVariableIndex(i), obid);
 
 				} // End ELSE Block for non-missing values
 
@@ -140,5 +144,14 @@ public class DataRecord implements Record {
 		return this.observation;
 
 	} // End of getData method declaration
+
+	/***
+	 * Method to access the observation ID member variable
+	 * @return The observation ID for a given record
+	 */
+	@JsonGetter
+	public Long getObid() {
+		return this.obid;
+	}
 
 } // End of Class declaration

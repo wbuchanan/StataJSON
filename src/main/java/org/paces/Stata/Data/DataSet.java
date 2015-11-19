@@ -1,8 +1,6 @@
 package org.paces.Stata.Data;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.*;
 import com.stata.sfi.Macro;
 
 import java.util.ArrayList;
@@ -17,6 +15,7 @@ import java.util.stream.Collectors;
  * <p>A POJO representation of the Stata dataset currently in memory.
  * Created by iterating over calls to DataRecord.</p>
  */
+@JsonPropertyOrder({"source", "name", "values"})
 public class DataSet implements StataData {
 
 	/***
@@ -25,16 +24,19 @@ public class DataSet implements StataData {
 	@JsonIgnore
 	public Meta metaob;
 
+	@JsonProperty("name")
+	private final String name = "StataJSON";
+
 	/***
 	 * The name of the data set in memory to be converted to a JSON object
 	 */
-	@JsonIgnore
-	public String filename;
+	@JsonProperty("source")
+	public String source;
 
 	/***
 	 * POJO Representation of the data set in memory of Stata
 	 */
-	@JsonIgnore
+	@JsonProperty("values")
 	public List<Object> stataDataSet;
 
 	/***
@@ -49,7 +51,7 @@ public class DataSet implements StataData {
 		this.metaob = metaobject;
 
 		// Set the name variable
-		setFileName();
+		setSource();
 
 		// Builds the data object
 		setData();
@@ -60,21 +62,21 @@ public class DataSet implements StataData {
 	 * Generic Setter method for the name of the dataset object
 	 */
 	@JsonSetter
-	public void setFileName() {
+	public void setSource() {
 
 		// Store the value of `"`c(filename)'"' as a Java string
-		String nm = Macro.getLocalSafe("c(filename)");
+		String nm = Macro.getLocalSafe("filenm");
 
 		// If the dataset name is not empty
 		if (!nm.isEmpty()) {
 
 			// Assign the Stata file name as the name of the object
-			this.filename = nm;
+			this.source = nm;
 
 		} else {
 
 			// Otherwise set a generic name
-			this.filename = "Stata Data Set";
+			this.source = "Stata Data Set";
 
 		} // End IF/ELSE Block for object name
 
@@ -122,13 +124,18 @@ public class DataSet implements StataData {
 	 * @return The name of the Stata Data object
 	 */
 	@JsonGetter
-	public String getFileName() {
+	public String getSource() {
 
 		// Returns the name of the Stata dataset (or generic placeholder)
 		// used to construct a JSON object
-		return this.filename;
+		return this.source;
 
 	} // End of getName method declaration
+
+	@JsonGetter
+	public String getName() {
+		return this.name;
+	}
 
 } // End Class declaration
 

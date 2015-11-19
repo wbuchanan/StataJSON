@@ -26,11 +26,14 @@ cap prog drop jsonio
 prog def jsonio, rclass
 
 	// Set version
-	version 14.0
+	version 13.0
 
 	// Define syntax
 	syntax [varlist] [if] [in] [using/] , 				 					 ///
 	[ FILEnm(string asis) OBid(real 0) METAprint(string asis) What(string asis) ]
+
+    // Set local macro with the file name
+    loc filenm `"`c(filename)'"'
 
 	// Check for aguments defining what to convert
 	if inlist(proper("`what'"), "Record", "Data", "All") & "`metaprint'" == "" {

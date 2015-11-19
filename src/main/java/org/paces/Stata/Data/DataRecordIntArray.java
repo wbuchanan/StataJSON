@@ -12,17 +12,17 @@ public class DataRecordIntArray implements Record {
 	/***
 	 * A Stata Metadata object
 	 */
-	public Meta metaob;
+	private Meta metaob;
 
 	/***
 	 * Observation ID variable
 	 */
-	public Long obid;
+	private Long obid;
 
 	/***
 	 * Variable containing the data for a given observation
 	 */
-	public Integer[] observation;
+	private Integer[] observation;
 
 	/***
 	 * Constructor method for DataRecordIntArray class

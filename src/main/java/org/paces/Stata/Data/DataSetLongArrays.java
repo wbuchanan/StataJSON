@@ -15,17 +15,17 @@ public class DataSetLongArrays implements StataData {
 	/***
 	 * A new Meta object
 	 */
-	public Meta metaob;
+	private Meta metaob;
 	
 	/***
 	 * The name of the data set in memory to be converted to a JSON object
 	 */
-	public String filename;
+	private String filename;
 	
 	/***
 	 * A 2d array of Long objects
 	 */
-	public Long[][] stataDataSet;
+	private Long[][] stataDataSet;
 	
 	/***
 	 * Generic constructor method for the class
