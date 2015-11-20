@@ -33,7 +33,7 @@ prog def jsonio, rclass
 	[ FILEnm(string asis) OBid(real 0) METAprint(string asis) What(string asis) ]
 
     // Set local macro with the file name
-    loc filenm `"`c(filename)'"'
+    loc filename `"`c(filename)'"'
 
 	// Check for aguments defining what to convert
 	if inlist(proper("`what'"), "Record", "Data", "All") & "`metaprint'" == "" {

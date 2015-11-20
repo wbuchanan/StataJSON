@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
  * Created by iterating over calls to DataRecord.</p>
  */
 @JsonPropertyOrder({"source", "name", "values"})
+@JsonRootName("data")
 public class DataSet implements StataData {
 
 	/***
@@ -65,7 +66,7 @@ public class DataSet implements StataData {
 	public void setSource() {
 
 		// Store the value of `"`c(filename)'"' as a Java string
-		String nm = Macro.getLocalSafe("filenm");
+		String nm = Macro.getLocalSafe("filename");
 
 		// If the dataset name is not empty
 		if (!nm.isEmpty()) {
@@ -112,6 +113,7 @@ public class DataSet implements StataData {
 	 */
 	@Override
 	@JsonGetter
+	@JsonProperty("values")
 	public Object getData() {
 
 		// Returns the sole member variable of the class
@@ -124,6 +126,7 @@ public class DataSet implements StataData {
 	 * @return The name of the Stata Data object
 	 */
 	@JsonGetter
+	@JsonProperty("source")
 	public String getSource() {
 
 		// Returns the name of the Stata dataset (or generic placeholder)
@@ -133,6 +136,7 @@ public class DataSet implements StataData {
 	} // End of getName method declaration
 
 	@JsonGetter
+	@JsonProperty("name")
 	public String getName() {
 		return this.name;
 	}

@@ -13,6 +13,8 @@ import java.util.Map;
  * <p>A POJO representation of a single observation from the Stata dataset
  * loaded in memory. </p>
  */
+@JsonPropertyOrder({"_id", "name", "values"})
+@JsonRootName("data")
 public class DataRecord implements Record {
 
 	/***
@@ -28,13 +30,16 @@ public class DataRecord implements Record {
 	 * Observation ID variable
 	 */
 	@JsonProperty("_id")
-	public Long obid;
+	private Long obid;
+
+	@JsonProperty("name")
+	private final String name = "record";
 
 	/***
 	 * Variable containing the data for a given observation
 	 */
-	@JsonIgnore
-	public Map<String, Object> observation;
+	@JsonProperty("values")
+	private Map<String, Object> observation;
 
 	/***
 	 * Constructor method for DataRecord class
@@ -43,6 +48,7 @@ public class DataRecord implements Record {
 	 *                      Stata dataset
 	 *
 	 */
+	@JsonCreator
 	public DataRecord(Long id, Meta metaobject) {
 
 		// The metadata object
@@ -153,5 +159,8 @@ public class DataRecord implements Record {
 	public Long getObid() {
 		return this.obid;
 	}
+
+	@JsonGetter
+	public String getName() { return this.name; }
 
 } // End of Class declaration
