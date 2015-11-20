@@ -1,7 +1,5 @@
 package org.paces.Stata.JSON;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,7 +8,6 @@ import com.stata.sfi.SFIToolkit;
 import org.paces.Stata.Data.DataRecord;
 import org.paces.Stata.Data.DataSet;
 import org.paces.Stata.Data.Meta;
-import org.paces.Stata.Data.StataData;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,10 +20,6 @@ import java.util.Map;
  * <h2>Stata JSON Serializer</h2>
  * <p>Objects and methods to create JSON representation of Stata data. </p>
  */
-@JsonPropertyOrder({ "name", "values", "first record id", "last record id",
-		"number of records", "variable indices", "number of variables",
-		"variable type string", "variable names", "variable labels",
-		"value label names", "value labels" })
 @JsonRootName("StataJSON")
 public class StataJSON {
 
@@ -46,10 +39,6 @@ public class StataJSON {
 	 * @throws NullPointerException An error thrown for referencing a null
 	 * object
 	 */
-	@JsonPropertyOrder({ "name", "values", "first record id", "last record id",
-			"number of records", "variable indices", "number of variables",
-			"variable type string", "variable names", "variable labels",
-			"value label names", "value labels" })
 	public static int printAll(String[] args) throws JsonProcessingException,
 			NullPointerException {
 
@@ -57,7 +46,7 @@ public class StataJSON {
 		StataAllToJSON allData = new StataAllToJSON(args);
 
 		// Print the data object to the Stata Console
-		toJSON(allData.getData());
+		toJSON(allData);
 
 		// Garbage collection for the object
 		allData = null;
@@ -77,7 +66,6 @@ public class StataJSON {
 	 * @throws NullPointerException An error thrown for referencing a null
 	 * object
 	 */
-	@JsonPropertyOrder( { "name", "_id", "values"} )
 	public static int printRecord(String[] args) throws
 			JsonProcessingException, NullPointerException {
 
@@ -92,7 +80,7 @@ public class StataJSON {
 		DataRecord x = new DataRecord(obid, dbg);
 
 		// Print the resulting data record to the console
-		toJSON(x.getData());
+		toJSON(x);
 
 		x = null;
 		obid = null;
@@ -112,7 +100,6 @@ public class StataJSON {
 	 * @throws NullPointerException An error thrown for referencing a null
 	 * object
 	 */
-	@JsonPropertyOrder( { "source", "name", "values" } )
 	public static int printData(String[] args) throws
 			JsonProcessingException, NullPointerException {
 
@@ -120,7 +107,7 @@ public class StataJSON {
 		Meta dbg = new Meta(args);
 
 		// Initialize a new StataData object
-		StataData stataData = new DataSet(dbg);
+		DataSet stataData = new DataSet(dbg);
 
 		// Print the resulting data record to the console
 		toJSON(stataData);
@@ -145,7 +132,6 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
-	@JsonPropertyOrder( { "name", "_id", "values" } )
 	public static int printRecordToFile(String[] args) throws
 			IOException, JsonProcessingException, NullPointerException {
 
@@ -163,7 +149,7 @@ public class StataJSON {
 		FileOutputStream jsonOutput = new FileOutputStream(Macro.getLocalSafe("filenm"));
 
 		// Print the resulting data record to the console
-		toJSON(x.getData(), jsonOutput);
+		toJSON(x, jsonOutput);
 
 		// Close the open file connection
 		jsonOutput.close();
@@ -187,7 +173,6 @@ public class StataJSON {
 	 * @throws NullPointerException An error thrown for referencing a null
 	 * object
 	 */
-	@JsonPropertyOrder( { "source", "name", "values" } )
 	public static int printDataToFile(String[] args) throws
 			JsonProcessingException, IOException {
 
@@ -195,7 +180,7 @@ public class StataJSON {
 		Meta dbg = new Meta(args);
 
 		// Create a new StataData object and print all data to the Stata console
-		StataData stataData = new DataSet(dbg);
+		DataSet stataData = new DataSet(dbg);
 
 		// New File object
 		FileOutputStream jsonOutput = new FileOutputStream(Macro.getLocalSafe("filenm"));
@@ -221,10 +206,6 @@ public class StataJSON {
 	 * @throws JsonProcessingException A processing error thrown by the
 	 * Jackson JSON API
 	 */
-	@JsonPropertyOrder({ "name", "values", "first record id", "last record id",
-			"number of records", "variable indices", "number of variables",
-			"variable type string", "variable names", "variable labels",
-			"value label names", "value labels" })
 	public static int printAllToFile(String[] args) throws IOException,
 			JsonProcessingException {
 
@@ -235,7 +216,7 @@ public class StataJSON {
 		FileOutputStream jsonOutput = new FileOutputStream(Macro.getLocalSafe("filenm"));
 
 		// Print the data object to the Stata Console
-		toJSON(allData.getData(), jsonOutput);
+		toJSON(allData, jsonOutput);
 
 		// Close the file connection
 		jsonOutput.close();
@@ -254,7 +235,6 @@ public class StataJSON {
 	 * @throws JsonProcessingException A processing error thrown by the
 	 * Jackson JSON API
 	 */
-	@JsonCreator
 	public static void toJSON(DataRecord observation) throws
 			JsonProcessingException {
 
@@ -280,7 +260,6 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
-	@JsonCreator
 	public static void toJSON(DataRecord observation, FileOutputStream filename) throws
 			IOException, JsonProcessingException {
 
@@ -302,7 +281,6 @@ public class StataJSON {
 	 * @throws JsonProcessingException A processing error thrown by the
 	 * Jackson JSON API
 	 */
-	@JsonCreator
 	public static void toJSON(DataSet stataData) throws
 			JsonProcessingException {
 
@@ -328,7 +306,6 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
-	@JsonCreator
 	public static void toJSON(DataSet stataData, FileOutputStream filename) throws
 			IOException, JsonProcessingException {
 
@@ -350,7 +327,6 @@ public class StataJSON {
 	 * @throws JsonProcessingException A processing error thrown by the
 	 * Jackson JSON API
 	 */
-	@JsonCreator
 	public static void toJSON(Object metaobject) throws
 			JsonProcessingException {
 
@@ -366,6 +342,7 @@ public class StataJSON {
 
 	} // End toJSON method declaration for single observation
 
+
 	/***
 	 * Method to print a generic Object type variable
 	 * @param metaobject A generic Object type variable
@@ -376,7 +353,6 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
-	@JsonCreator
 	public static void toJSON(Object metaobject, FileOutputStream filename) throws
 			IOException, JsonProcessingException {
 
@@ -403,7 +379,6 @@ public class StataJSON {
 	 * @throws JsonProcessingException A processing error thrown by the
 	 * Jackson JSON API
 	 */
-	@JsonCreator
 	public static void toJSON(List<Object> thedata) throws
 			JsonProcessingException {
 
@@ -429,7 +404,6 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
-	@JsonCreator
 	public static void toJSON(List<Object> thedata, FileOutputStream filename) throws
 			IOException, JsonProcessingException {
 
@@ -453,7 +427,6 @@ public class StataJSON {
 	 * @throws NullPointerException An exception when null objects are
 	 * referenced
 	 */
-	@JsonCreator
 	public static void toJSON(Map<String, Object> allData) throws
 			JsonProcessingException, NullPointerException {
 
@@ -479,7 +452,6 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
-	@JsonCreator
 	public static void toJSON(Map<String, Object> allData, FileOutputStream filename)
 			throws
 			IOException, NullPointerException {
