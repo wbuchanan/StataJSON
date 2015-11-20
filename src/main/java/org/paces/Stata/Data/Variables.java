@@ -26,6 +26,7 @@ public class Variables {
 	 * Inner class containing the variable indices
 	 */
 	@JsonPropertyOrder({ "name", "values"})
+	@JsonRootName("variable indices")
 	public class VariableIndex {
 
 		/***
@@ -126,6 +127,7 @@ public class Variables {
 	 * Inner class containing number of variables
 	 */
 	@JsonPropertyOrder({ "name", "values"})
+	@JsonRootName("number of variables")
 	public class Nvars {
 
 		@JsonProperty("name")
@@ -190,6 +192,7 @@ public class Variables {
 	 * Inner class containing variable names list
 	 */
 	@JsonPropertyOrder({ "name", "values"})
+	@JsonRootName("variable names")
 	public class VarNames {
 
 		@JsonProperty("name")
@@ -261,6 +264,7 @@ public class Variables {
 	 * Inner class containing variable label map
 	 */
 	@JsonPropertyOrder({ "name", "values"})
+	@JsonRootName("variable labels")
 	public class VarLabels {
 
 		@JsonProperty("name")
@@ -337,6 +341,7 @@ public class Variables {
 	 * Inner class method used to store value label names
 	 */
 	@JsonPropertyOrder({ "name", "values"})
+	@JsonRootName("value label names")
 	public class ValLabNames {
 
 		/***
@@ -427,6 +432,7 @@ public class Variables {
 	 * Inner class containing variable -> value label maps
 	 */
 	@JsonPropertyOrder({ "name", "values"})
+	@JsonRootName("value labels")
 	public class ValLabels {
 
 		@JsonProperty("name")
@@ -512,6 +518,7 @@ public class Variables {
 	 * Inner class containing string variable indicators
 	 */
 	@JsonPropertyOrder({ "name", "values"})
+	@JsonRootName("variable type string")
 	public class VarTypes {
 
 		@JsonProperty("name")

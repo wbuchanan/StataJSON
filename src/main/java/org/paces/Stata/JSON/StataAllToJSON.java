@@ -16,10 +16,10 @@ import java.util.Map;
  * <p>Object used to create a JSON object with the data and metadata bound
  * to it. </p>
  */
-@JsonPropertyOrder({ "name", "values", "first record id", "last record id",
+@JsonPropertyOrder(value = { "name", "values", "first record id", "last record id",
 		"number of records", "variable indices", "number of variables",
 		"variable type string", "variable names", "variable labels",
-		"value label names", "value labels" })
+		"value label names", "value labels" }, alphabetic = false)
 public class StataAllToJSON  {
 
 	/***
@@ -156,7 +156,7 @@ public class StataAllToJSON  {
 	 * Method to Retrieve the data from the object in a single container
 	 * @param args Value passed to method from constructor
 	 */
-	@JsonAnySetter
+	@JsonSetter
 	public void setData(String[] args) {
 
 		// Create new metadata object
@@ -173,6 +173,9 @@ public class StataAllToJSON  {
 
 		// Total number of observations
 		this.nobs = this.theMetaData.stataobs.getNobs();
+
+		// Variable indices
+		this.varindex = this.theMetaData.statavars.getVariableIndex();
 
 		// Variable names
 		this.varnames = this.theMetaData.statavars.getVariableNames();
@@ -196,7 +199,6 @@ public class StataAllToJSON  {
 	 * @return A map of String, Object types where Strings indicate the type
 	 * of data object and objects contain the data to be serialized to JSON
 	 */
-	@JsonAnyGetter
 	@JsonPropertyOrder({ "name", "values", "first record id", "last record id",
 			"number of records", "variable indices", "number of variables",
 			"variable type string", "variable names", "variable labels",
@@ -210,7 +212,7 @@ public class StataAllToJSON  {
 		total # of obs, variable names, variable labels, indicators for string
 		variables, value label names, value labels, and the data it self to the
 		map object. */
-		makeJSON.put("name", "StataJSON");
+		makeJSON.put("name", getName());
 		makeJSON.put("values", this.theData.getData());
 		makeJSON.put("first record id", getSobs());
 		makeJSON.put("last record id", getEobs());
@@ -227,6 +229,9 @@ public class StataAllToJSON  {
 		return makeJSON;
 
 	} // End of getter method declaration
+
+	@JsonGetter
+	public String getName() { return this.name; }
 
 	@JsonGetter
 	public long getSobs() {

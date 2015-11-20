@@ -20,25 +20,25 @@ public class Observations {
 	/***
 	 * Starting observation index number
 	 */
-	@JsonProperty(required = true, value = "Starting Observation")
+	@JsonProperty("first record id")
 	private long sobs;
 
 	/***
 	 * Ending observation index number
 	 */
-	@JsonProperty(required = true, value = "Ending Observation")
+	@JsonProperty("last record id")
 	private long eobs;
 
 	/***
 	 * Total Number of Observations
 	 */
-	@JsonProperty(required = true, value = "Total Number of Observations")
+	@JsonProperty("number of records")
 	private long nobs;
 
 	/***
 	 * Observation indices
 	 */
-	@JsonProperty(required = true, value = "Observation Indices")
+	@JsonProperty("observation indices")
 	private List<Long> obindex;
 
 	/***

@@ -6,7 +6,7 @@ import com.stata.sfi.Macro;
 import org.paces.Stata.Data.Meta;
 import org.paces.Stata.Data.Variables;
 
-import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -139,10 +139,13 @@ public class StataMetaToJSON {
 		} else {
 
 			// New File object
-			File jsonOutput = new File(Macro.getLocalSafe("filenm"));
+			FileOutputStream jsonOutput = new FileOutputStream(Macro.getLocalSafe("filenm"));
 
 			// Print the requested data to the screen
 			StataJSON.toJSON(toPrint, jsonOutput);
+
+			// Close file connection
+			jsonOutput.close();
 
 		} // End IF/ELSE Block to test for filenm argument from Stata
 

@@ -1,5 +1,7 @@
 package org.paces.Stata.Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 /**
@@ -17,27 +19,32 @@ public class Meta {
 	/***
 	 * Observations metadata object
 	 */
+	@JsonIgnore
 	public Observations stataobs;
 
 	/***
 	 * Variables metadata object
 	 */
+	@JsonIgnore
 	public Variables statavars;
 
 	/***
 	 * Variable index metadata object
 	 */
+	@JsonIgnore
 	public List<Integer> varindex;
 
 	/***
 	 * Observation index metadata object
 	 */
+	@JsonIgnore
 	public List<Long> obsindex;
 
 	/***
 	 * Constructor for object w/o any arguments passed
 	 * @param args Arguments passed from the javacall command in Stata
 	 */
+	@JsonIgnore
 	public Meta(String[] args) {
 
 		// Create an observations member variable
@@ -57,6 +64,7 @@ public class Meta {
 	/***
 	 * Generic setter method for observations member variable
 	 */
+	@JsonIgnore
 	public void setStataobs() {
 
 		// Initialize a new observations object
@@ -67,6 +75,7 @@ public class Meta {
 	/***
 	 * Generic setter method for variables member variable
 	 */
+	@JsonIgnore
 	public void setStatavars() {
 
 		// Initialize a new variables metadata object
@@ -78,6 +87,7 @@ public class Meta {
 	 * Sets teh observation index member variable
 	 * @param observations An observations class object
 	 */
+	@JsonIgnore
 	public void setObsindex(Observations observations) {
 
 		// Initialize a new observation index object
@@ -89,6 +99,7 @@ public class Meta {
 	 * Sets the variable index member variable
 	 * @param variables A variables class object
 	 */
+	@JsonIgnore
 	public void setVarindex(Variables variables) {
 
 		// Initialize a new variable index object
@@ -100,24 +111,28 @@ public class Meta {
 	 * Getter for the observations member variable
 	 * @return Returns the observation member variable
 	 */
+	@JsonIgnore
 	public Observations getStataobs() { return stataobs; }
 
 	/***
 	 * Getter for the variables member variable
 	 * @return Returns the variables member variable
 	 */
+	@JsonIgnore
 	public Variables getStatavars() { return statavars; }
 
 	/***
 	 * Getter for the observation index member variable
 	 * @return Returns the observation index member variable
 	 */
+	@JsonIgnore
 	public List<Long> getObsindex() { return obsindex; }
 
 	/***
 	 * Getter for the variable index member variable
 	 * @return Returns the variable index member variable
 	 */
+	@JsonIgnore
 	public List<Integer> getVarindex() { return varindex; }
 
 	/***
@@ -125,6 +140,7 @@ public class Meta {
 	 * @param idxid The variable index element whose value is to be retrieved
 	 * @return The element of the variable index passed to the method call
 	 */
+	@JsonIgnore
 	public int getVarindex(int idxid) {
 
 		// Return the element of the variable index identified by the value
