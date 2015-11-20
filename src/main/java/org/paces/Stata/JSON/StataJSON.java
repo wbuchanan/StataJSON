@@ -1,6 +1,5 @@
 package org.paces.Stata.JSON;
 
-import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stata.sfi.Macro;
@@ -20,7 +19,6 @@ import java.util.Map;
  * <h2>Stata JSON Serializer</h2>
  * <p>Objects and methods to create JSON representation of Stata data. </p>
  */
-@JsonRootName("StataJSON")
 public class StataJSON {
 
 	/***

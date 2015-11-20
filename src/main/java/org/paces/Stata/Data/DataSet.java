@@ -1,7 +1,8 @@
 package org.paces.Stata.Data;
 
-import com.fasterxml.jackson.annotation.*;
-import com.stata.sfi.Macro;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class DataSet implements StataData {
 	 * The name of the data set in memory to be converted to a JSON object
 	 */
 	@JsonProperty("source")
-	public String source;
+	private final String source = DataSource.get();
 
 	@JsonProperty("name")
 	private final String name = "StataJSON";
@@ -50,37 +51,10 @@ public class DataSet implements StataData {
 		// Set the meta object to the value passed to the constructor
 		this.metaob = metaobject;
 
-		// Set the name variable
-		setSource();
-
 		// Builds the data object
 		setData();
 
 	} // End constructor declaration
-
-	/***
-	 * Generic Setter method for the name of the dataset object
-	 */
-	@JsonIgnore
-	public void setSource() {
-
-		// Store the value of `"`c(filename)'"' as a Java string
-		String nm = Macro.getLocalSafe("filename");
-
-		// If the dataset name is not empty
-		if (!nm.isEmpty()) {
-
-			// Assign the Stata file name as the name of the object
-			this.source = nm;
-
-		} else {
-
-			// Otherwise set a generic name
-			this.source = "Stata Data";
-
-		} // End IF/ELSE Block for object name
-
-	} // End declaration of setname method
 
 	/***
 	 * Method to store Stata dataset in a List of objects containing maps of

@@ -13,8 +13,7 @@ import java.util.Map;
  * <p>A POJO representation of a single observation from the Stata dataset
  * loaded in memory. </p>
  */
-@JsonPropertyOrder({"_id", "name", "values"})
-@JsonRootName("data")
+@JsonPropertyOrder({ "source", "_id", "name", "values"})
 public class DataRecord implements Record {
 
 	/***
@@ -25,6 +24,9 @@ public class DataRecord implements Record {
 
 	@JsonIgnore
 	private Variables vars;
+
+	@JsonProperty("source")
+	private final String source = DataSource.get();
 
 	/***
 	 * Observation ID variable
@@ -48,7 +50,7 @@ public class DataRecord implements Record {
 	 *                      Stata dataset
 	 *
 	 */
-	@JsonCreator
+	@JsonIgnore
 	public DataRecord(Long id, Meta metaobject) {
 
 		// The metadata object
@@ -68,7 +70,7 @@ public class DataRecord implements Record {
 	 * Setter method for the observation ID variable
 	 * @param observationNumber An observation index value
 	 */
-	@JsonSetter
+	@JsonIgnore
 	public void setObid(long observationNumber) {
 
 		// Observation IDs need to be offset by 1 when converting from Stata to
@@ -82,7 +84,7 @@ public class DataRecord implements Record {
 	 * variable index member variable
 	 */
 	@Override
-	@JsonSetter
+	@JsonIgnore
 	public void setData() {
 
 		// Initialize empty variable to store the variable name
@@ -143,7 +145,7 @@ public class DataRecord implements Record {
 	 * to that object
 	 */
 	@Override
-	@JsonGetter
+	@JsonIgnore
 	public Map<String, Object> getData() {
 
 		// Returns the array for the observation
@@ -155,12 +157,12 @@ public class DataRecord implements Record {
 	 * Method to access the observation ID member variable
 	 * @return The observation ID for a given record
 	 */
-	@JsonGetter
+	@JsonIgnore
 	public Long getObid() {
 		return this.obid;
 	}
 
-	@JsonGetter
+	@JsonIgnore
 	public String getName() { return this.name; }
 
 } // End of Class declaration
