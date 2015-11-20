@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
  * Created by iterating over calls to DataRecord.</p>
  */
 @JsonPropertyOrder({"source", "name", "values"})
-@JsonRootName("data")
 public class DataSet implements StataData {
 
 	/***
@@ -25,14 +24,14 @@ public class DataSet implements StataData {
 	@JsonIgnore
 	public Meta metaob;
 
-	@JsonProperty("name")
-	private final String name = "StataJSON";
-
 	/***
 	 * The name of the data set in memory to be converted to a JSON object
 	 */
 	@JsonProperty("source")
 	public String source;
+
+	@JsonProperty("name")
+	private final String name = "StataJSON";
 
 	/***
 	 * POJO Representation of the data set in memory of Stata
@@ -62,7 +61,7 @@ public class DataSet implements StataData {
 	/***
 	 * Generic Setter method for the name of the dataset object
 	 */
-	@JsonSetter
+	@JsonIgnore
 	public void setSource() {
 
 		// Store the value of `"`c(filename)'"' as a Java string
@@ -77,7 +76,7 @@ public class DataSet implements StataData {
 		} else {
 
 			// Otherwise set a generic name
-			this.source = "Stata Data Set";
+			this.source = "Stata Data";
 
 		} // End IF/ELSE Block for object name
 
@@ -89,7 +88,7 @@ public class DataSet implements StataData {
 	 * the value on that variable for the given observation
 	 */
 	@Override
-	@JsonSetter
+	@JsonIgnore
 	public void setData() {
 
 		// Initialize container to ID the observation and contains a Map
@@ -112,8 +111,7 @@ public class DataSet implements StataData {
 	 * @return A POJO representation of the Stata Dataset
 	 */
 	@Override
-	@JsonGetter
-	@JsonProperty("values")
+	@JsonIgnore
 	public Object getData() {
 
 		// Returns the sole member variable of the class
@@ -125,8 +123,7 @@ public class DataSet implements StataData {
 	 * Getter method to the name of the Object
 	 * @return The name of the Stata Data object
 	 */
-	@JsonGetter
-	@JsonProperty("source")
+	@JsonIgnore
 	public String getSource() {
 
 		// Returns the name of the Stata dataset (or generic placeholder)
@@ -135,8 +132,7 @@ public class DataSet implements StataData {
 
 	} // End of getName method declaration
 
-	@JsonGetter
-	@JsonProperty("name")
+	@JsonIgnore
 	public String getName() {
 		return this.name;
 	}
