@@ -1,0 +1,48 @@
+{
+  "data" : {
+    "source" : "/Applications/Stata/ado/base/a/auto.dta",
+    "name" : "StataJSON",
+    "values" : [ {
+      "mpg" : 24.0,
+      "price" : 4195.0,
+      "weight" : 2730.0,
+      "make" : "Olds Starfire",
+      "foreign" : 0.0
+    }, {
+      "mpg" : 18.0,
+      "price" : 4934.0,
+      "weight" : 3470.0,
+      "make" : "Pont. Firebird",
+      "foreign" : 0.0
+    } ]
+  },
+  "first record id" : 1,
+  "last record id" : 74,
+  "number of records" : 2,
+  "variable indices" : [ 3, 12, 7, 2, 1 ],
+  "number of variables" : 5,
+  "variable type string" : {
+    "mpg" : false,
+    "price" : false,
+    "weight" : false,
+    "make" : true,
+    "foreign" : false
+  },
+  "variable names" : [ "mpg", "foreign", "weight", "price", "make" ],
+  "variable labels" : {
+    "mpg" : "Mileage (mpg)",
+    "price" : "Price",
+    "weight" : "Weight (lbs.)",
+    "make" : "Make and Model",
+    "foreign" : "Car type"
+  },
+  "value label names" : {
+    "foreign" : "origin"
+  },
+  "value labels" : {
+    "foreign" : {
+      "0" : "Domestic",
+      "1" : "Foreign"
+    }
+  }
+}
