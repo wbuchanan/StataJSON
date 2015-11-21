@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>About</title>
-    <meta name="description" content="Making it easier for you to generate the data visualizations you want from Stata less verbose, easier to reproduce, and more flexible for inclusion in production environments.">
+    <title>about</title>
+    <meta name="description" content="A JSON serializer for Stata using the Java-API and Jackson JSON.">
 
-    <link rel="stylesheet" href="/brewscheme/css/main.css">
-    <link rel="canonical" href="https://wbuchanan.github.io/brewscheme/about/">
+    <link rel="stylesheet" href="/StataJSON/css/main.css">
+    <link rel="canonical" href="https://wbuchanan.github.io/StataJSON/about/">
 </head>
 
 
@@ -20,7 +20,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/brewscheme/">brewscheme</a>
+    <a class="site-title" href="/StataJSON/">Stata - jsonio</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -34,37 +34,13 @@
       <div class="trigger">
         
           
-          <a class="page-link" href="/brewscheme/about/">About</a>
-          
-        
-          
-          <a class="page-link" href="/brewscheme/brewscheme/">brewscheme</a>
-          
-        
-          
-          <a class="page-link" href="/brewscheme/brewterpolate/">brewterpolate</a>
-          
-        
-          
-          <a class="page-link" href="/brewscheme/brewtheme/">brewtheme</a>
-          
-        
-          
-          <a class="page-link" href="/brewscheme/brewviewer/">brewviewer</a>
-          
-        
-          
-        
-          
-          <a class="page-link" href="/brewscheme/hextorgb/">hextorgb</a>
+          <a class="page-link" href="/StataJSON/about/">about</a>
           
         
           
         
           
         
-          
-          <a class="page-link" href="/brewscheme/more/">Other Examples/Documentation</a>
           
         
       </div>
@@ -80,15 +56,290 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title">about</h1>
   </header>
 
   <article class="post-content">
-    <p><strong>brewscheme</strong> is a Stata utility for the creation of data visualizations.  The package includes tools for conversions <br />
-between colorspaces, color interpolation, setting global graph aesthetics, setting plot type aesthetics and previewing <br />
-color palette combinations.  Most importantly for Stata users, this program saves <em>you</em> time.  Rather than constantly <br />
-needing to pass arguments to aesthetic parameters, you can create a theme and/or scheme file to store these settings.  Then, <br />
-you only need to pass <code>scheme(myschemeFileName)</code> to the command to get all of your aesthetic settings back.  </p>
+    <h1 id="json-io-functions-for-stata">JSON I/O Functions for Stata</h1>
+
+<p>Java plugin for Stata to convert in-memory data to JSON output.  The plugin <br />
+uses the <a href="https://github.com/FasterXML/jackson">Jackson JSON Library</a>. This <br />
+is still early in development, and could use help from others to test/refine <br />
+the programs.</p>
+
+<h1 id="examples">Examples</h1>
+<p>This requires the source to be compiled to a JAR.  The JAR must then be placed <br />
+on the <code>ADOPATH</code>. All examples use the auto.dta dataset that is automatically<br />
+ installed by Stata.</p>
+
+<pre><code>
+. sysuse auto, clear
+(1978 Automobile Data)
+
+</code></pre>
+
+<h2 id="example-of-serializing-a-single-record">Example of serializing a single record</h2>
+
+<pre><code>
+. jsonio, what(record) obid(74)
+{
+  "source" : "/Applications/Stata/ado/base/a/auto.dta",
+  "_id" : 74,
+  "name" : "record",
+  "values" : {
+    "mpg" : 17.0,
+    "price" : 11995.0,
+    "headroom" : 2.5,
+    "rep78" : 5.0,
+    "length" : 193.0,
+    "weight" : 3170.0,
+    "displacement" : 163.0,
+    "turn" : 37.0,
+    "trunk" : 14.0,
+    "make" : "Volvo 260",
+    "gear_ratio" : 2.9800000190734863,
+    "foreign" : 1.0
+  }
+}
+
+
+</code></pre>
+
+<h2 id="serialize-all-records-that-satisfy-a-given-condition">Serialize all records that satisfy a given condition</h2>
+
+<pre><code>
+. jsonio if rep78 == 1, what(data)
+{
+  "source" : "/Applications/Stata/ado/base/a/auto.dta",
+  "name" : "StataJSON",
+  "values" : [ {
+    "mpg" : 24.0,
+    "price" : 4195.0,
+    "headroom" : 2.0,
+    "rep78" : 1.0,
+    "length" : 180.0,
+    "weight" : 2730.0,
+    "displacement" : 151.0,
+    "turn" : 40.0,
+    "trunk" : 10.0,
+    "make" : "Olds Starfire",
+    "gear_ratio" : 2.7300000190734863,
+    "foreign" : 0.0
+  }, {
+    "mpg" : 18.0,
+    "price" : 4934.0,
+    "headroom" : 1.5,
+    "rep78" : 1.0,
+    "length" : 198.0,
+    "weight" : 3470.0,
+    "displacement" : 231.0,
+    "turn" : 42.0,
+    "trunk" : 7.0,
+    "make" : "Pont. Firebird",
+    "gear_ratio" : 3.0799999237060547,
+    "foreign" : 0.0
+  } ]
+}
+
+</code></pre>
+
+<h2 id="serialize-all-data-and-meta-data-for-records-71---74">Serialize all data and meta data for records 71 - 74</h2>
+
+<pre><code>
+. jsonio in 71/74, w(all)
+{
+  "data" : {
+    "source" : "/Applications/Stata/ado/base/a/auto.dta",
+    "name" : "StataJSON",
+    "values" : [ {
+      "mpg" : 41.0,
+      "price" : 5397.0,
+      "headroom" : 3.0,
+      "rep78" : 5.0,
+      "length" : 155.0,
+      "weight" : 2040.0,
+      "displacement" : 90.0,
+      "turn" : 35.0,
+      "trunk" : 15.0,
+      "make" : "VW Diesel",
+      "gear_ratio" : 3.7799999713897705,
+      "foreign" : 1.0
+    }, {
+      "mpg" : 25.0,
+      "price" : 4697.0,
+      "headroom" : 3.0,
+      "rep78" : 4.0,
+      "length" : 155.0,
+      "weight" : 1930.0,
+      "displacement" : 89.0,
+      "turn" : 35.0,
+      "trunk" : 15.0,
+      "make" : "VW Rabbit",
+      "gear_ratio" : 3.7799999713897705,
+      "foreign" : 1.0
+    }, {
+      "mpg" : 25.0,
+      "price" : 6850.0,
+      "headroom" : 2.0,
+      "rep78" : 4.0,
+      "length" : 156.0,
+      "weight" : 1990.0,
+      "displacement" : 97.0,
+      "turn" : 36.0,
+      "trunk" : 16.0,
+      "make" : "VW Scirocco",
+      "gear_ratio" : 3.7799999713897705,
+      "foreign" : 1.0
+    }, {
+      "mpg" : 17.0,
+      "price" : 11995.0,
+      "headroom" : 2.5,
+      "rep78" : 5.0,
+      "length" : 193.0,
+      "weight" : 3170.0,
+      "displacement" : 163.0,
+      "turn" : 37.0,
+      "trunk" : 14.0,
+      "make" : "Volvo 260",
+      "gear_ratio" : 2.9800000190734863,
+      "foreign" : 1.0
+    } ]
+  },
+  "first record id" : 71,
+  "last record id" : 74,
+  "number of records" : 4,
+  "variable indices" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
+  "number of variables" : 12,
+  "variable type string" : {
+    "mpg" : false,
+    "price" : false,
+    "headroom" : false,
+    "rep78" : false,
+    "length" : false,
+    "weight" : false,
+    "displacement" : false,
+    "turn" : false,
+    "trunk" : false,
+    "make" : true,
+    "gear_ratio" : false,
+    "foreign" : false
+  },
+  "variable names" : [ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacem
+&gt; ent", "gear_ratio", "foreign" ],
+  "variable labels" : {
+    "mpg" : "Mileage (mpg)",
+    "price" : "Price",
+    "headroom" : "Headroom (in.)",
+    "rep78" : "Repair Record 1978",
+    "length" : "Length (in.)",
+    "weight" : "Weight (lbs.)",
+    "displacement" : "Displacement (cu. in.)",
+    "turn" : "Turn Circle (ft.) ",
+    "trunk" : "Trunk space (cu. ft.)",
+    "make" : "Make and Model",
+    "gear_ratio" : "Gear Ratio",
+    "foreign" : "Car type"
+  },
+  "value label names" : {
+    "foreign" : "origin"
+  },
+  "value labels" : {
+    "foreign" : {
+      "0" : "Domestic",
+      "1" : "Foreign"
+    }
+  }
+}
+
+
+</code></pre>
+
+<h2 id="serialize-selected-variables-for-observations-satisfying-a-given-condition">Serialize selected variables for observations satisfying a given condition</h2>
+
+<pre><code>
+. jsonio mpg weight price make if rep78 == 1, w(data)
+{
+  "source" : "/Applications/Stata/ado/base/a/auto.dta",
+  "name" : "StataJSON",
+  "values" : [ {
+    "mpg" : 24.0,
+    "price" : 4195.0,
+    "weight" : 2730.0,
+    "make" : "Olds Starfire"
+  }, {
+    "mpg" : 18.0,
+    "price" : 4934.0,
+    "weight" : 3470.0,
+    "make" : "Pont. Firebird"
+  } ]
+}
+
+
+</code></pre>
+
+<h2 id="writing-output-to-the-harddrive">Writing output to the harddrive</h2>
+
+<p>Serialize all data and metadata for selected variables and observations <br />
+satisfying a given condition and <a href="../test.json">write the output to disk</a></p>
+
+<pre><code>
+. jsonio mpg foreign weight price make if rep78 == 1, w(all) filenm(test.json)
+
+</code></pre>
+
+<h2 id="working-with-meta-data">Working with meta data</h2>
+<p>Serialize variable names to JSON object that is printed to the Stata console:</p>
+
+<pre><code> 
+. jsonio, metaprint(varnames)
+[ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ]
+</code></pre>
+
+<p>Serialize variable labels to JSON object that is printed to the Stata console:</p>
+
+<pre><code>
+. jsonio, metaprint(varlabels)
+
+{
+  "mpg" : "Mileage (mpg)",
+  "price" : "Price",
+  "headroom" : "Headroom (in.)",
+  "rep78" : "Repair Record 1978",
+  "length" : "Length (in.)",
+  "weight" : "Weight (lbs.)",
+  "displacement" : "Displacement (cu. in.)",
+  "turn" : "Turn Circle (ft.) ",
+  "trunk" : "Trunk space (cu. ft.)",
+  "make" : "Make and Model",
+  "gear_ratio" : "Gear Ratio",
+  "foreign" : "Car type"
+}
+
+</code></pre>
+
+<p>Serialize value labels from the data set in memory:</p>
+
+<pre><code>
+. jsonio, metaprint(vallabs)
+{
+  "foreign" : {
+    "0" : "Domestic",
+    "1" : "Foreign"
+  }
+}
+
+</code></pre>
+
+<p>Serialize value label names from the dataset in memory:</p>
+
+<pre><code>
+. jsonio, metaprint(labelnames)
+{
+  "foreign" : "origin"
+}
+
+</code></pre>
+
 
   </article>
 
@@ -101,12 +352,12 @@ you only need to pass <code>scheme(myschemeFileName)</code> to the command to ge
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">brewscheme</h2>
+    <h2 class="footer-heading">Stata - jsonio</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
-          <li>brewscheme</li>
+          <li>Stata - jsonio</li>
           <li><a href="mailto:William.Buchanan@mpls.k12.mn.us">William.Buchanan@mpls.k12.mn.us</a></li>
         </ul>
       </div>
@@ -145,7 +396,7 @@ you only need to pass <code>scheme(myschemeFileName)</code> to the command to ge
       </div>
 
       <div class="footer-col  footer-col-3">
-        <p class="text">Making it easier for you to generate the data visualizations you want from Stata less verbose, easier to reproduce, and more flexible for inclusion in production environments.</p>
+        <p class="text">A JSON serializer for Stata using the Java-API and Jackson JSON.</p>
       </div>
     </div>
 

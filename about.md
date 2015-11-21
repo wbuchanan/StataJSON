@@ -231,7 +231,7 @@ on the `ADOPATH`. All examples use the auto.dta dataset that is automatically
 ## Writing output to the harddrive
 
 Serialize all data and metadata for selected variables and observations 
-satisfying a given condition and [write the output to disk](./test.json)
+satisfying a given condition and [write the output to disk](../test.json)
 
 ```
 
