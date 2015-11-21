@@ -2,6 +2,7 @@
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataRecordLongArray.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/StataJSON.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/StataMetaToJSON.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataSource.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataRecordDoubleArray.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataSet.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataRecordStringArray.java
