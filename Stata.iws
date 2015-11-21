@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Data/DataSource.class" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Data/DataRecord.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Data/DataRecord.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Data/DataSet.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Data/DataSet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/JSON/StataJSON.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/JSON/StataJSON.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/jsonio.jar" afterPath="$PROJECT_DIR$/target/jsonio.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/org.paces.Stata.jar" afterPath="$PROJECT_DIR$/target/org.paces.Stata.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.iws" afterPath="$PROJECT_DIR$/Stata.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <list id="9944e83e-ebc7-46dc-b4a2-561214c82f42" name="Rejected commit: Default" comment="Added debugger to main package body.  Need to initialize variables for all methods." />
     <ignored path="Stata.iws" />
@@ -551,7 +560,6 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.4" />
-    <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../StataPrograms/StataJSON/src/main/java/org/paces/StataJSON/JSON/StataAllToJSON.java" />
     <property name="UNSCRAMBLE_LOG_FILE_LAST_URL" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/org/paces" />
