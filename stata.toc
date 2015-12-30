@@ -1,0 +1,5 @@
+*! TOC File
+v 3
+d JSONIO Project Page
+
+p jsonio A JSON serializer for Stata

@@ -1,0 +1,30 @@
+d 'JSONIO': A Stata plugin for IO operations involving JSON
+d
+d A program to serialize Stata datasets (in memory) to JSON.  
+d Options are available to return the JSON object to the 
+d console or to write the JSON object to disk.  The plugin 
+d requires JRE 1.8 or later.
+d
+d KW: JSON
+d KW: IO
+d KW: export
+d KW: convert
+d KW: data transfer
+d
+d Requires: Stata version 13.1
+d
+d Distribution-Date: 20151230
+d
+d Author: Billy Buchanan
+d         Data Scientist
+d         Office of Research, Evaluation, and Assessment
+d         Minneapolis Public Schools
+d
+d
+d Support: email William [dot] Buchanan @t mpls [dot] k12 [dot] mn [dot] us
+d
+f jsonio.ado
+f jsonio.sthlp
+f jsonio.jar
+
+
