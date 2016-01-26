@@ -19,6 +19,7 @@
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/StataAllToJSON.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/StataXTTS.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/Record.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/QueryJson.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/MetaArgs.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataRecordIntArray.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataSetDoubleArrays.java
@@ -27,3 +28,4 @@
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataSetLongArrays.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/DataSetByteArrays.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Data/Variables.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/LoadJSON.java

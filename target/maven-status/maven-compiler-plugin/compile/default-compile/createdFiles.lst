@@ -30,7 +30,9 @@ org/paces/Stata/Data/DataSetFactory.class
 org/paces/Stata/Data/Variables$VarTypes.class
 org/paces/Stata/Data/Meta.class
 org/paces/Stata/Data/DataSetByteArrays.class
+org/paces/Stata/JSON/LoadJSON.class
 org/paces/Stata/Data/MataMatrix.class
 org/paces/Stata/Data/Variables$VarNames.class
 org/paces/Stata/Data/StataArgsToCollector.class
 org/paces/Stata/Data/DataSource.class
+org/paces/Stata/JSON/QueryJson.class

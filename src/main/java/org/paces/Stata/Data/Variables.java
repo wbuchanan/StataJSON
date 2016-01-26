@@ -723,6 +723,8 @@ public class Variables {
 		return this.varTypes.getValue(varnm);
 	}
 
+	Map<String, Object> metaBlock = new HashMap<>();
+
 	/***
 	 * Generic constructor when no varlist is passed
 	 */

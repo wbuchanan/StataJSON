@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- This contains the overall package metadata -->
-	<groupId>org.paces</groupId>
-	<artifactId>Stata</artifactId>
-	<version>0.0.0</version>
+	<groupId>org.paces-consulting</groupId>
+	<artifactId>jsonio</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Stata Java Tools</name>
 	<description>Java plugins used to extend capabilities in Stata
@@ -47,7 +47,7 @@
 	<!-- Defines how Maven should build the Java binaries -->
 	<build>
 		<defaultGoal>install</defaultGoal>
-		<finalName>org.paces.Stata</finalName>
+		<finalName>jsonio</finalName>
 		<plugins>
 
 			<!-- Sets the JDK to 1.8 -->
@@ -101,18 +101,11 @@
 	<!-- Contains all dependencies required by the project -->
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.2</version>
-			<scope>test</scope>
-			<type>jar</type>
-		</dependency>
-		<dependency>
 			<groupId>com.stata</groupId>
 			<artifactId>sfi</artifactId>
 			<version>14</version>
 			<type>jar</type>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -128,6 +121,14 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<!--
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-csv</artifactId>
@@ -185,18 +186,12 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>fluent-hc</artifactId>
 			<version>4.5.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		-->
 	</dependencies>
 </project>
