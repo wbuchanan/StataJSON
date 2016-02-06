@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsonio.ado" afterPath="$PROJECT_DIR$/jsonio.ado" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataAllToJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataAllToJSON.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" />
-    </list>
+    <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods." />
     <list id="9944e83e-ebc7-46dc-b4a2-561214c82f42" name="Rejected commit: Default" comment="Added debugger to main package body.  Need to initialize variables for all methods." />
     <ignored path="Stata.iws" />
     <ignored path=".idea/workspace.xml" />
