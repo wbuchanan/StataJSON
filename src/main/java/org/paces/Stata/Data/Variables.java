@@ -33,7 +33,7 @@ public class Variables {
 		 * Member variable used to create a name : "", value : {} JSON output
 		 */
 		@JsonProperty("name")
-		private final String name = "variable index";
+		private static final String name = "variable index";
 
 		/***
 		 * Member variable containing variable indices
@@ -131,7 +131,7 @@ public class Variables {
 	public class Nvars {
 
 		@JsonProperty("name")
-		private final String name = "number of variabels";
+		private static final String name = "number of variabels";
 
 		/***
 		 * Number of variables passed from javacall
@@ -196,7 +196,7 @@ public class Variables {
 	public class VarNames {
 
 		@JsonProperty("name")
-		private final String name = "Variable Names";
+		private static final String name = "Variable Names";
 
 		/***
 		 * Member variable containing Stata variable names
@@ -268,7 +268,7 @@ public class Variables {
 	public class VarLabels {
 
 		@JsonProperty("name")
-		private final String name = "Variable Labels";
+		private static final String name = "Variable Labels";
 
 		/***
 		 * Variable labels inner class object
@@ -348,7 +348,7 @@ public class Variables {
 		 * Member variable containing JSON object name
 		 */
 		@JsonProperty("name")
-		private final String name = "Variable Label Names";
+		private static final String name = "Variable Label Names";
 
 		/***
 		 * Member variable containing Stata value label names associated with a
@@ -436,7 +436,7 @@ public class Variables {
 	public class ValLabels {
 
 		@JsonProperty("name")
-		private final String name = "Value Labels";
+		private static final String name = "Value Labels";
 
 		@JsonCreator
 		public ValLabels(VariableIndex varIndex) {
@@ -522,7 +522,7 @@ public class Variables {
 	public class VarTypes {
 
 		@JsonProperty("name")
-		private final String name = "String Variable Indicator";
+		private static final String name = "String Variable Indicator";
 
 		@JsonCreator
 		public VarTypes(VariableIndex varIndex) {
@@ -722,8 +722,6 @@ public class Variables {
 	public Boolean getVarType(String varnm) {
 		return this.varTypes.getValue(varnm);
 	}
-
-	Map<String, Object> metaBlock = new HashMap<>();
 
 	/***
 	 * Generic constructor when no varlist is passed

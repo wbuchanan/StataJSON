@@ -32,11 +32,7 @@ prog def jsonio, rclass
 	syntax [varlist] [if] [in] [using/] , 				 					 ///
 	[ FILEnm(string asis) OBid(real 0) METAprint(string asis)                ///
 	What(string asis) COMMents YAML UQFNames SQuotes UQControl BACKSLash     ///
-	LEADZero NONNUM DUPlicates UNDEFined JSvar UTF16 ]
-
-    // Check option to print data to a JavaScript variable instead of pure JSON
-    if `"`jsvar'"' == "" loc jsvar false
-    else loc jsvar true
+	LEADZero NONNUM DUPlicates UNDEFined UTF16 ]
 
     // Normalize *nix home shortcut in file
     if substr(`"`filenm'"', 1, 1) == "~" {
@@ -131,12 +127,12 @@ prog def jsonio, rclass
 		} // End IF Block to load data from using
 
 		// Check for metadata argument
-		if inlist(`"`metaprint'`filenm'"', "varlabels", "varnames", "vallabs", 		 ///   
+		if inlist(`"`metaprint'`filenm'"', "varlabels", "varnames", "vallabs", ///
 		"labelnames") {
 
 			// Call java method to print metadata
 			javacall org.paces.Stata.JSON.StataMetaToJSON metaToJSON 		 ///
-			`varlist' `if' `in', args(`jsvar' `utf16')
+			`varlist' `if' `in', args(`utf16')
 
 		} // End IF Block for printing metadata to JSON
 
@@ -148,7 +144,7 @@ prog def jsonio, rclass
 
 			// Call java method to write JSON object to disk
 			javacall org.paces.Stata.JSON.StataJSON printDataToFile 		 ///
-			`varlist' `if' `in', args(`jsvar' `utf16')
+			`varlist' `if' `in', args(`utf16')
 
 		} // End else block for printing data to JSON
 
@@ -157,7 +153,7 @@ prog def jsonio, rclass
 
 			// Call java method to write JSON object to the Stata console
 			javacall org.paces.Stata.JSON.StataJSON printData `varlist' `if' ///   
-			`in', args(`jsvar' `utf16')
+			`in', args(`utf16')
 
 		} // End ELSEIF Block to print dataset to Stata console
 
@@ -166,7 +162,7 @@ prog def jsonio, rclass
 
 			// Call java method to write individual record to disk
 			javacall org.paces.Stata.JSON.StataJSON printRecordToFile 		 ///
-			`varlist' `if' `in', args(`jsvar' `utf16')
+			`varlist' `if' `in', args(`utf16')
 
 		} // End ELSEIF Block for writing individual record to disk
 
@@ -175,7 +171,7 @@ prog def jsonio, rclass
 
 			// Call java method to print record to the Stata console
 			javacall org.paces.Stata.JSON.StataJSON printRecord `varlist' 	 ///   
-			`if' `in', args(`jsvar' `utf16')
+			`if' `in', args(`utf16')
 
 		} // End ELSEIF Block to print JSON record to Stata console
 
@@ -184,7 +180,7 @@ prog def jsonio, rclass
 
 			// Call java method to print everything to the Stata console
 			javacall org.paces.Stata.JSON.StataJSON printAll `varlist' `if'  ///
-			`in', args(`jsvar' `utf16')
+			`in', args(`utf16')
 
 		} // End ELSEIF Block to print JSON data/metadata to Stata console
 
@@ -193,7 +189,7 @@ prog def jsonio, rclass
 
 		// Call java method to print everything to the Stata console
         	javacall org.paces.Stata.JSON.StataJSON printAllToFile `varlist' ///
-        	`if' `in', args(`jsvar' `utf16')
+        	`if' `in', args(`utf16')
 
         	} // End ELSE Block to print JSON data/metadata to disk
 

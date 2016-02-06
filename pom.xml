@@ -70,7 +70,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>Meta</mainClass>
+							<mainClass>StataJSON</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -84,6 +84,12 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>StataJSON</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 				<executions>
 					<execution>

@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -49,11 +48,6 @@ public class StataJSON {
 	public static int printAll(String[] args) throws JsonProcessingException,
 			NullPointerException {
 
-		if (args.length >= 2 && !"".equals(args[1])) charset = StandardCharsets.UTF_16;
-		else charset = StandardCharsets.UTF_8;
-
-		asJavaScriptVar = Boolean.valueOf(args[0]);
-
 		// Create a new StataAllToJSON Object
 		StataAllToJSON allData = new StataAllToJSON(args);
 
@@ -83,11 +77,6 @@ public class StataJSON {
 
 		// Create a new Metadata object
 		Meta dbg = new Meta(args);
-
-		if (args.length >= 2 && !"".equals(args[1])) charset = StandardCharsets.UTF_16;
-		else charset = StandardCharsets.UTF_8;
-
-		asJavaScriptVar = Boolean.valueOf(args[0]);
 
 		// Get the value of the observation to print from the local macro obid
 		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
@@ -126,11 +115,6 @@ public class StataJSON {
 		// Initialize a new StataData object
 		DataSet stataData = new DataSet(dbg);
 
-		if (args.length >= 2 && !"".equals(args[1])) charset = StandardCharsets.UTF_16;
-		else charset = StandardCharsets.UTF_8;
-
-		asJavaScriptVar = Boolean.valueOf(args[0]);
-
 		// Print the resulting data record to the console
 		toJSON(stataData);
 
@@ -162,11 +146,6 @@ public class StataJSON {
 
 		// Get the value of the observation to print from the local macro obid
 		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
-
-		if (args.length >= 2 && !"".equals(args[1])) charset = StandardCharsets.UTF_16;
-		else charset = StandardCharsets.UTF_8;
-
-		asJavaScriptVar = Boolean.valueOf(args[0]);
 
 		// Initialize a new DataRecord object with the data for a given
 		// observation
@@ -214,11 +193,6 @@ public class StataJSON {
 		// Create a new StataData object and print all data to the Stata console
 		DataSet stataData = new DataSet(dbg);
 
-		if (args.length >= 2 && !"".equals(args[1])) charset = StandardCharsets.UTF_16;
-		else charset = StandardCharsets.UTF_8;
-
-		asJavaScriptVar = Boolean.valueOf(args[0]);
-
 		File nfile = new File(Macro.getLocalSafe("filenm"));
 
 		nfile.createNewFile();
@@ -253,11 +227,6 @@ public class StataJSON {
 		// Create a new StataAllToJSON Object
 		StataAllToJSON allData = new StataAllToJSON(args);
 
-		if (args.length >= 2 && !"".equals(args[1])) charset = StandardCharsets.UTF_16;
-		else charset = StandardCharsets.UTF_8;
-
-		asJavaScriptVar = Boolean.valueOf(args[0]);
-
 		File nfile = new File(Macro.getLocalSafe("filenm"));
 
 		nfile.createNewFile();
@@ -291,28 +260,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(observation));
 
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(observation) + jsClose);
-
-			// Print JSON to screen
-			SFIToolkit.display(jsOpen + themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(observation) + jsClose);
-
-		// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(observation));
-
-			// Print JSON to screen
-			SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(observation));
-
-		}
+		// Print JSON to screen
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(observation));
 
 	} // End toJSON method declaration for single observation
 
@@ -332,20 +285,8 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(observation) + jsClose);
-
-		// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(observation));
-
-		}
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(observation));
 
 		themap.writerWithDefaultPrettyPrinter()
 				.writeValue(filename, observation);
@@ -368,28 +309,13 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(stataData));
 
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(stataData) + jsClose);
+		// Print JSON to screen
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(stataData));
 
-			// Print JSON to screen
-			SFIToolkit.display(jsOpen + themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(stataData) + jsClose);
-
-			// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(stataData));
-
-			// Print JSON to screen
-			SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(stataData));
-
-		}
 
 	} // End toJSON method declaration for dataset
 
@@ -409,20 +335,8 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(stataData) + jsClose);
-
-			// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(stataData));
-
-		}
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(stataData));
 
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, stataData);
@@ -441,28 +355,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
 
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(metaobject) + jsClose);
-
-			// Print JSON to screen
-			SFIToolkit.display(jsOpen + themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(metaobject) + jsClose);
-
-			// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
-
-			// Print JSON to screen
-			SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(metaobject));
-
-		}
+		// Print JSON to screen
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(metaobject));
 
 	} // End toJSON method declaration for single observation
 
@@ -483,20 +381,8 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(metaobject) + jsClose);
-
-		// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
-
-		}
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
 
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, metaobject);
@@ -516,28 +402,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(thedata));
 
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(thedata) + jsClose);
-
-			// Print JSON to screen
-			SFIToolkit.display(jsOpen + themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(thedata) + jsClose);
-
-			// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(thedata));
-
-			// Print JSON to screen
-			SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(thedata));
-
-		}
+		// Print JSON to screen
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(thedata));
 
 	} // End toJSON method declaration for List of Object types
 
@@ -557,20 +427,8 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(thedata) + jsClose);
-
-			// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(thedata));
-
-		}
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(thedata));
 
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, thedata);
@@ -591,28 +449,12 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(allData));
 
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(allData) + jsClose);
-
-			// Print JSON to screen
-			SFIToolkit.display(jsOpen + themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(allData) + jsClose);
-
-			// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(allData));
-
-			// Print JSON to screen
-			SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-					.writeValueAsString(allData));
-
-		}
+		// Print JSON to screen
+		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+				.writeValueAsString(allData));
 
 	} // End method declaration
 
@@ -633,20 +475,8 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		// If user wants the results printed as a JavaScript variable
-		if (asJavaScriptVar) {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", jsOpen + themap.writeValueAsString
-					(allData) + jsClose);
-
-			// If user wants results printed as pure JSON
-		} else {
-
-			// Return the JSON string in a local macro
-			Macro.setLocal("thejson", themap.writeValueAsString(allData));
-
-		}
+		// Return the JSON string in a local macro
+		Macro.setLocal("thejson", themap.writeValueAsString(allData));
 
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, allData);

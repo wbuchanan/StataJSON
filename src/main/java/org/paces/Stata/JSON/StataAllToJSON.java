@@ -36,7 +36,7 @@ public class StataAllToJSON  {
 	 * A member variable to store the name of the JSON object
 	 */
 	@JsonIgnore
-	public final String name = "StataJSON";
+	public static final String name = "StataJSON";
 
 	/***
 	 * A DataSet class object (e.g., the data from the dataset in memory)
