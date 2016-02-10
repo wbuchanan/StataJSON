@@ -2,7 +2,9 @@ package org.paces.Stata.JSON;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -22,12 +24,36 @@ public class LoadJSON {
 	/***
 	 * Jackson JSON API JsonFactor class object
 	 */
-	JsonFactory jf = new JsonFactory();
+	JsonFactory jf;
 
 	/***
 	 * Jackson JSON Api JsonParser object
 	 */
 	JsonParser jp;
+
+	public LoadJSON(File theFile) throws IOException {
+		init();
+		this.jp = jf.createParser(theFile);
+
+	}
+
+	public LoadJSON(URL url) throws IOException {
+		init();
+		this.jp = jf.createParser(url);
+	}
+
+	public void init() {
+		mapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, false);
+		mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, false);
+		mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+		mapper.configure(DeserializationFeature.EAGER_DESERIALIZER_FETCH, true);
+		mapper.configure(DeserializationFeature.UNWRAP_SINGLE_VALUE_ARRAYS, true);
+		mapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, false);
+		mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+		mapper.configure(MapperFeature.AUTO_DETECT_FIELDS, true);
+		this.jf = mapper.getFactory();
+	}
+
 
 	/***
 	 * Method to parse the JSON input
