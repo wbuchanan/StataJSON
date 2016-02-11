@@ -35,7 +35,7 @@ public class DataRetrieval {
 
 		Map<Long, String> addresses = new HashMap<>();
 
-		for (long i = 0L; i < this.obs.getObservationIndex().size(); i++) {
+		for (Long i : this.obs.getObservationIndex()) {
 
 			List<String> obaddress = new ArrayList<>();
 
@@ -52,25 +52,28 @@ public class DataRetrieval {
 	}
 
 	public static String getAddy(Integer idx, Long obidx) {
-		if (!Data.isVarTypeStr(idx)) {
-			return cleaner(String.valueOf(Data.getNum(idx, obidx)));
+		if (Data.isVarTypeStr(idx)) {
+			return Data.getStr(idx, obidx);
 		}
 		else {
-			return cleaner(Data.getStr(idx, obidx));
+			return String.valueOf(Data.getNum(idx, obidx)).replaceAll("\\.0", "");
 		}
 	}
 
 	public static String formAddy(List<String> addressComponents) {
-
-		return addressComponents.stream().toString();
-
+		StringBuilder addy = new StringBuilder();
+		for(String comp : addressComponents)
+			if (!comp.matches("^Apt\\.|^Ste\\.|^Fl\\.|^Apartment|^Suite|^Floor")) addy.append(comp).append(" ");
+		return cleaner(addy.toString());
 	}
 
-	public static String cleaner(String component) {
-		return component.replaceAll("[^0-9a-zA-Z,\\. ]", "")
-						.replaceAll("  ", "+")
-						.replaceAll(",", ",+");
 
+	public static String cleaner(String component) {
+		String comp = component.replaceAll("[#\\(\\)\\.\\+]", "");
+		comp = comp.replaceAll("  ", " ");
+		comp = comp.replaceAll(" ", "\\+");
+		comp = comp.replaceAll("\\+$", "");
+		return comp;
 	}
 
 

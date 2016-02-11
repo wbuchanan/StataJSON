@@ -27,13 +27,13 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("variable indices")
-	public class VariableIndex {
+	public static class VariableIndex {
 
 		/***
 		 * Member variable used to create a name : "", value : {} JSON output
 		 */
 		@JsonProperty("name")
-		private final String name = "variable index";
+		private static final String name = "variable index";
 
 		/***
 		 * Member variable containing variable indices
@@ -128,10 +128,10 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("number of variables")
-	public class Nvars {
+	public static class Nvars {
 
 		@JsonProperty("name")
-		private final String name = "number of variabels";
+		private static final String name = "number of variabels";
 
 		/***
 		 * Number of variables passed from javacall
@@ -193,10 +193,10 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("variable names")
-	public class VarNames {
+	public static class VarNames {
 
 		@JsonProperty("name")
-		private final String name = "Variable Names";
+		private static final String name = "Variable Names";
 
 		/***
 		 * Member variable containing Stata variable names
@@ -265,10 +265,10 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("variable labels")
-	public class VarLabels {
+	public static class VarLabels {
 
 		@JsonProperty("name")
-		private final String name = "Variable Labels";
+		private static final String name = "Variable Labels";
 
 		/***
 		 * Variable labels inner class object
@@ -342,13 +342,13 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("value label names")
-	public class ValLabNames {
+	public static class ValLabNames {
 
 		/***
 		 * Member variable containing JSON object name
 		 */
 		@JsonProperty("name")
-		private final String name = "Variable Label Names";
+		private static final String name = "Variable Label Names";
 
 		/***
 		 * Member variable containing Stata value label names associated with a
@@ -433,10 +433,10 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("value labels")
-	public class ValLabels {
+	public static class ValLabels {
 
 		@JsonProperty("name")
-		private final String name = "Value Labels";
+		private static final String name = "Value Labels";
 
 		@JsonCreator
 		public ValLabels(VariableIndex varIndex) {
@@ -519,10 +519,10 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("variable type string")
-	public class VarTypes {
+	public static class VarTypes {
 
 		@JsonProperty("name")
-		private final String name = "String Variable Indicator";
+		private static final String name = "String Variable Indicator";
 
 		@JsonCreator
 		public VarTypes(VariableIndex varIndex) {

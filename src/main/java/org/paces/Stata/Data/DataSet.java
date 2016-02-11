@@ -32,7 +32,7 @@ public class DataSet implements StataData {
 	private final String source = DataSource.get();
 
 	@JsonProperty("name")
-	private final String name = "StataJSON";
+	private static final String name = "StataJSON";
 
 	/***
 	 * POJO Representation of the data set in memory of Stata

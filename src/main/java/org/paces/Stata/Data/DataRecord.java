@@ -35,7 +35,7 @@ public class DataRecord implements Record {
 	private Long obid;
 
 	@JsonProperty("name")
-	private final String name = "record";
+	private static final String name = "record";
 
 	/***
 	 * Variable containing the data for a given observation

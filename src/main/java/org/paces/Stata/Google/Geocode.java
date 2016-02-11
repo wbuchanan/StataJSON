@@ -4,11 +4,11 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.stata.sfi.Data;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Billy Buchanan
@@ -16,57 +16,132 @@ import java.util.List;
  */
 public class Geocode {
 
-	private List<Double> bbox = new ArrayList<>();
-	private List<Double> viewport = new ArrayList<>();
-	private List<Double> location = new ArrayList<>();
-	private String locationType;
-	private String formattedAddress = "";
-	private String placeId = "";
-	private String types = "";
-	private static final String urlBase = "://maps.googleapis.com/maps/api/geocode/json?address=";
-	private static String protocol;
-	private static String key;
-	private static final ObjectMapper objmap = configMapper();
+	/**
+	 * Returns the .n extended missing value of the datum was Not found in
+	 * the payload
+	 */
+	public static final Double GEOMISSING = 9.019187969096824E307D;
 
 	/**
-	 * Class constructor to call and access results from the Google Geocoding
-	 * API
-	 * @param address The address string to geocode
-	 * @param key A private API key or a blank string
+	 * Object used to store the bounding box data temporarily
 	 */
-	public Geocode(String address, String key) {
+	private List<Double> bbox = new ArrayList<>();
+
+	/**
+	 * Object used to store the viewport data temporarily
+	 */
+	private List<Double> viewport = new ArrayList<>();
+
+	/**
+	 * Object used to store the point location data temporarily
+	 */
+	private List<Double> location = new ArrayList<>();
+
+	/**
+	 * Object used to store the location type string data temporarily
+	 */
+	private String locationType;
+
+	/**
+	 * Object used to store the formatted address string data temporarily
+	 */
+	private String formattedAddress;
+
+	/**
+	 * Object used to store the Google place ID value temporarily
+	 */
+	private String placeId;
+
+	/**
+	 * Object used to store the Google types data temporarily
+	 */
+	private String types;
+
+	/**
+	 * Object containing the base of the URL used to call the API.  Protocol is
+	 * determined based on the class constructor (e.g., with an API key it
+	 * uses HTTPS and without the key it uses HTTP)
+	 */
+	private static final String urlBase = "://maps.googleapis.com/maps/api/geocode/json?address=";
+
+	/**
+	 * String used to define the protocol to use for making the API call
+	 */
+	private String protocol;
+
+	/**
+	 * String containing the API key
+	 */
+	private String key;
+
+	/**
+	 * Configured ObjectMapper object used to generate parsers for the JSON data
+	 */
+	private ObjectMapper objmap = configMapper();
+
+	/**
+	 * Object used to store the root node of the JSON Payload
+	 */
+	private JsonNode root;
+
+	/**
+	 * Object used to store the geometry node of the JSON payload
+	 */
+	private JsonNode geom;
+
+	/**
+	 * Class constructor
+	 * @param address The API call formatted address string
+	 * @param key An API key if Applicable
+	 * @param obid The long value identifying the observation ID
+	 * @param idx A map of string, integer types connecting newly constructed
+	 *               variables (e.g., the strings) to their variable indices.
+	 *               The map elements are accessed using a type string that
+	 *               identified what type of results the end user would like
+	 *               to return to Stata
+	 * @param retvals Contains the unique list of return type values that the
+	 *                   user requests
+	 */
+	public Geocode(String address, String key, Long obid,
+				   Map<String, Map<String, Integer>> idx, HashSet<String> retvals) {
 
 		// Populates the API key value
 		if (!key.isEmpty()) {
-			key = "key=" + key;
-			protocol = "https";
+			this.key = "key=" + key;
+			this.protocol = "https";
 		} else {
-			key = "";
-			protocol = "http";
+			this.key = "";
+			this.protocol = "http";
 		}
-
-		// "4287 46th Ave North, Robbinsdale, MN, 55422"
-		try {
-			JsonNode root = parsePayload(new URL(callString(address.replace(" ", "+"))));
-			JsonNode geom = getGeometry(root);
-			setBoundingBoxes(geom);
-			setViewPort(geom);
-			setLocation(geom);
-			setLocationType(geom);
-			setFormattedAddress(root);
-			setPlaceID(root);
-			setTypes(root);
-		} catch (IOException e) {
-			System.out.println(e.toString());
-		}
+		String addy = callString(address);
+		System.out.println("Api call : " + addy);
+		this.root = parsePayload(addy);
+		this.geom = getGeometry();
+		setBoundingBoxes();
+		setViewPort();
+		setLocation();
+		setLocationType();
+		setFormattedAddress();
+		setPlaceID();
+		setTypes();
+		addVars(retvals, obid, idx);
 	}
 
 	/**
-	 * Single parameter class constructor ensures that the key value is empty
-	 * @param address The Address string to use for geocoding
+	 * Class constructor
+	 * @param address The API call formatted address string
+	 * @param obid The long value identifying the observation ID
+	 * @param idx A map of string, integer types connecting newly constructed
+	 *               variables (e.g., the strings) to their variable indices.
+	 *               The map elements are accessed using a type string that
+	 *               identified what type of results the end user would like
+	 *               to return to Stata
+	 * @param retvals Contains the unique list of return type values that the
+	 *                   user requests
 	 */
-	public Geocode(String address) {
-		new Geocode(address, "");
+	public Geocode(String address, Long obid, Map<String, Map<String, Integer>> idx,
+				   HashSet<String> retvals) {
+		new Geocode(address, "", obid, idx, retvals);
 	}
 
 	/**
@@ -75,13 +150,13 @@ public class Geocode {
 	 * @return A string formatted for the API call
 	 */
 	private String callString(String address) {
-		return protocol + urlBase + address + key;
+		return this.protocol + urlBase + address + this.key;
 	}
 
 	/**
 	 * Method to configure the Jackson JSON Object Mapper object
 	 */
-	private static ObjectMapper configMapper() {
+	private ObjectMapper configMapper() {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, false);
 		mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, false);
@@ -96,12 +171,18 @@ public class Geocode {
 
 	/**
 	 * Method to parse the JSON Payload into a JsonNode object
-	 * @param apiCall A URL Class used to call the API
+	 * @param uri A URL Class used to call the API
 	 * @return An object of class JsonNode containing the returned payload
-	 * @throws IOException Exception thrown if issue with call to the API
 	 */
-	public JsonNode parsePayload(URL apiCall) throws IOException {
-		return objmap.readTree(apiCall);
+	public JsonNode parsePayload(String uri) {
+		JsonNode x = objmap.createObjectNode().path(0);
+		try {
+			URL apiCall = new URL(uri);
+			x = objmap.readTree(apiCall);
+		} catch (IOException e) {
+			System.out.println(e.toString());
+		}
+		return x;
 	}
 
 	/**
@@ -116,132 +197,185 @@ public class Geocode {
 
 	/**
 	 * Method used to access the geometry components of the payload
-	 * @param root The payload returned from Google
 	 * @return The JsonNode containing the geometry elements
 	 */
-	public JsonNode getGeometry(JsonNode root) {
-		return root.findParent("location");
+	public JsonNode getGeometry() {
+		return this.root.findParent("location");
 	}
 
 	/**
 	 * Parses the bounding box geometry from the geometry object
-	 * @param geom The JsonNode containing the geometry elements
 	 */
-	public void setBoundingBoxes(JsonNode geom) {
-		this.bbox.add(0, geom.path("bounds").path("northeast").path("lat").asDouble());
-		this.bbox.add(1, geom.path("bounds").path("northeast").path("lng").asDouble());
-		this.bbox.add(2, geom.path("bounds").path("southwest").path("lat").asDouble());
-		this.bbox.add(3, geom.path("bounds").path("southwest").path("lng").asDouble());
+	public void setBoundingBoxes() {
+		this.bbox.add(0, this.geom.path("bounds").path("northeast").path("lat").asDouble(Geocode.GEOMISSING));
+		this.bbox.add(1, this.geom.path("bounds").path("northeast").path("lng").asDouble(Geocode.GEOMISSING));
+		this.bbox.add(2, this.geom.path("bounds").path("southwest").path("lat").asDouble(Geocode.GEOMISSING));
+		this.bbox.add(3, this.geom.path("bounds").path("southwest").path("lng").asDouble(Geocode.GEOMISSING));
 	}
 
 	/**
 	 * Parses the viewport geometry from the geometry object
-	 * @param geom The JsonNode containing the geometry elements
 	 */
-	public void setViewPort(JsonNode geom) {
-		this.viewport.add(0, geom.path("viewport").path("northeast").path("lat").asDouble());
-		this.viewport.add(1, geom.path("viewport").path("northeast").path("lng").asDouble());
-		this.viewport.add(2, geom.path("viewport").path("southwest").path("lat").asDouble());
-		this.viewport.add(3, geom.path("viewport").path("southwest").path("lng").asDouble());
+	public void setViewPort() {
+		this.viewport.add(0, this.geom.path("viewport").path("northeast").path("lat").asDouble(Geocode.GEOMISSING));
+		this.viewport.add(1, this.geom.path("viewport").path("northeast").path("lng").asDouble(Geocode.GEOMISSING));
+		this.viewport.add(2, this.geom.path("viewport").path("southwest").path("lat").asDouble(Geocode.GEOMISSING));
+		this.viewport.add(3, this.geom.path("viewport").path("southwest").path("lng").asDouble(Geocode.GEOMISSING));
 	}
 
 	/**
 	 * Parses the point location geometry from the geometry object
-	 * @param geom The JsonNode containing the geometry elements
 	 */
-	public void setLocation(JsonNode geom) {
-		this.location.add(0, geom.path("location").path("lat").asDouble());
-		this.location.add(1, geom.path("location").path("lng").asDouble());
+	public void setLocation() {
+		this.location.add(0, this.geom.path("location").path("lat").asDouble(Geocode.GEOMISSING));
+		this.location.add(1, this.geom.path("location").path("lng").asDouble(Geocode.GEOMISSING));
 	}
 
 	/**
 	 * Parses the location type element from the geometry object
-	 * @param geom The JsonNode containing the geometry elements
 	 */
-	public void setLocationType(JsonNode geom) {
-		this.locationType = geom.path("location_type").asText("").replace("_", " ").toLowerCase();
+	public void setLocationType() {
+		this.locationType = this.geom.path("location_type").asText("").replace("_", " ").toLowerCase();
 	}
 
 	/**
 	 * Parses the formatted address value from the payload
-	 * @param root The JSON Payload from Google
 	 */
-	public void setFormattedAddress(JsonNode root) {
-		this.formattedAddress = root.findPath("formatted_address").asText("");
+	public void setFormattedAddress() {
+		this.formattedAddress = this.root.findPath("formatted_address").asText("");
 	}
 
 	/**
 	 * Parses the place id value from the payload
-	 * @param root The JSON Payload from Google
 	 */
-	public void setPlaceID(JsonNode root) {
-		this.placeId = root.findPath("place_id").toString();
+	public void setPlaceID() {
+		this.placeId = this.root.findPath("place_id").asText("");
 	}
 
 	/**
 	 * Parses the geocode types from the payload
-	 * @param root The JSON Payload from Google
 	 */
-	public void setTypes(JsonNode root) {
-		this.types = root.findPath("types").toString().replaceAll("\\p{Punct}", " ").replaceAll("  ", "");
+	public void setTypes() {
+		this.types = this.root.findPath("types").asText("").replaceAll("\\p{Punct}",	" ").replaceAll("  ", "");
 	}
 
 	/**
-	 * Method to access the bounding box of the point location
-	 * @return A list of double values corresponding to the maximum latitude,
-	 * max longitude, minimum latitude, and minimum longitude in that order
+	 * Adds the point location variables datum to the dataset
+	 * @param idx Map object used to look up the variable index for the
+	 *               point location variables
+	 * @param i The observation to which the datum will be appended
 	 */
-	public List<Double> getBoundingBox() {
-		return this.bbox;
+	public void makeLocation(Map<String, Integer> idx, Long i) {
+		Data.storeNum(idx.get("lat"), i, this.location.get(0));
+		Data.storeNum(idx.get("lon"), i, this.location.get(1));
 	}
 
 	/**
-	 * Method to access the viewport of the point location
-	 * @return A list of double values corresponding to the maximum latitude,
-	 * max longitude, minimum latitude, and minimum longitude in that order
+	 * Adds the bounding box variables datum to the dataset
+	 * @param idx Map object used to look up the variable index for the
+	 *               bounding box variables
+	 * @param i The observation to which the datum will be appended
 	 */
-	public List<Double> getViewport() {
-		return this.viewport;
+	public void makeBoundingBox(Map<String, Integer> idx, Long i) {
+		Data.storeNum(idx.get("bbox_max_lat"), i, this.bbox.get(0));
+		Data.storeNum(idx.get("bbox_max_lon"), i, this.bbox.get(1));
+		Data.storeNum(idx.get("bbox_min_lat"), i, this.bbox.get(2));
+		Data.storeNum(idx.get("bbox_min_lon"), i, this.bbox.get(3));
+	}
+
+
+	/**
+	 * Adds the Viewport variables to the dataset
+	 * @param idx Map object used to look up the variable index for the
+	 *               viewport variables
+	 * @param i The observation to which the datum will be appended
+	 */
+	public void makeViewport(Map<String, Integer> idx, Long i) {
+		Data.storeNum(idx.get("viewport_max_lat"), i, this.viewport.get(0));
+		Data.storeNum(idx.get("viewport_max_lon"), i, this.viewport.get(1));
+		Data.storeNum(idx.get("viewport_min_lat"), i, this.viewport.get(2));
+		Data.storeNum(idx.get("viewport_min_lon"), i, this.viewport.get(3));
+	}
+
+
+	/**
+	 * Adds the location_type variable datum to the dataset
+	 * @param idx Map object used to look up the variable index for the
+	 *               location_type variable
+	 * @param i The observation to which the datum will be appended
+	 */
+	public void makeLocationType(Map<String, Integer> idx, Long i) {
+		Data.storeStr(idx.get("location_type"), i, this.locationType);
 	}
 
 	/**
-	 * Method that returns the geographic coordinates
-	 * @return A list of double values containing the latitude and longitude
+	 * Adds the formatted_address variable datum to the dataset
+	 * @param idx Map object used to look up the variable index for the
+	 *               formatted_address variable
+	 * @param i The observation to which the datum will be appended
 	 */
-	public List<Double> getLocation() {
-		return this.location;
+	public void makeFormattedAddress(Map<String, Integer> idx, Long i) {
+		Data.storeStr(idx.get("formatted_address"), i, this.formattedAddress);
 	}
 
 	/**
-	 * Method to return the place ID value
-	 * @return A String containing Google's place ID
+	 * Adds the place_id variable datum to the dataset
+	 * @param idx Map object used to look up the variable index for the
+	 *               place_id variable
+	 * @param i The observation to which the datum will be appended
 	 */
-	public String getPlaceId() {
-		return this.placeId;
+	public void makePlaceId(Map<String, Integer> idx, Long i) {
+		Data.storeStr(idx.get("place_id"), i, this.placeId);
 	}
 
 	/**
-	 * Method containing the location type string
-	 * @return A string containing the location type from the geocoding
+	 * Adds the google_types variable datum to the dataset
+	 * @param idx Map object used to look up the variable index for the
+	 *               google_types variable
+	 * @param i The observation to which the datum will be appended
 	 */
-	public String getLocationType() {
-		return this.locationType;
+	public void makeTypes(Map<String, Integer> idx, Long i) {
+		Data.storeStr(idx.get("google_types"), i, this.types);
 	}
 
 	/**
-	 * Method to access the type array values from the geocoding api
-	 * @return A string containing the values from the type array of the payload
+	 * Method used to populate data to the added variables in the data set
+	 * @param types The list of type options specifying which elements to return
+	 * @param obidx The observation ID to add the data to
+	 * @param idx An object used to identify the variable name to variable
+	 *               index mappings.
 	 */
-	public String getTypes() {
-		return this.types;
+	public void addVars(HashSet<String> types, Long obidx, Map<String, Map<String, Integer>> idx) {
+		for (String i : types) {
+			switch (i) {
+				default:
+					makeLocation(idx.get(i), obidx);
+					break;
+				case "location":
+					makeLocation(idx.get(i), obidx);
+					break;
+				case "bbox":
+					makeBoundingBox(idx.get(i), obidx);
+					break;
+				case "viewport":
+					makeViewport(idx.get(i), obidx);
+					break;
+				case "address":
+					makeFormattedAddress(idx.get(i), obidx);
+					break;
+				case "loctype":
+					makeLocationType(idx.get(i), obidx);
+					break;
+				case "placeid":
+					makePlaceId(idx.get(i), obidx);
+					break;
+				case "types":
+					makeTypes(idx.get(i), obidx);
+					break;
+			}
+		}
 	}
 
-	/**
-	 * Method to return the formatted address
-	 * @return A string containing a pretty printed address string
-	 */
-	public String getFormattedAddress() {
-		return this.formattedAddress;
-	}
+
 
 }
