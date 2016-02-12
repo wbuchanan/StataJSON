@@ -27,7 +27,7 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("variable indices")
-	public class VariableIndex {
+	public static class VariableIndex {
 
 		/***
 		 * Member variable used to create a name : "", value : {} JSON output
@@ -128,7 +128,7 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("number of variables")
-	public class Nvars {
+	public static class Nvars {
 
 		@JsonProperty("name")
 		private static final String name = "number of variabels";
@@ -193,7 +193,7 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("variable names")
-	public class VarNames {
+	public static class VarNames {
 
 		@JsonProperty("name")
 		private static final String name = "Variable Names";
@@ -265,7 +265,7 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("variable labels")
-	public class VarLabels {
+	public static class VarLabels {
 
 		@JsonProperty("name")
 		private static final String name = "Variable Labels";
@@ -342,7 +342,7 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("value label names")
-	public class ValLabNames {
+	public static class ValLabNames {
 
 		/***
 		 * Member variable containing JSON object name
@@ -433,7 +433,7 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("value labels")
-	public class ValLabels {
+	public static class ValLabels {
 
 		@JsonProperty("name")
 		private static final String name = "Value Labels";
@@ -519,7 +519,7 @@ public class Variables {
 	 */
 	@JsonPropertyOrder({ "name", "values"})
 	@JsonRootName("variable type string")
-	public class VarTypes {
+	public static class VarTypes {
 
 		@JsonProperty("name")
 		private static final String name = "String Variable Indicator";
