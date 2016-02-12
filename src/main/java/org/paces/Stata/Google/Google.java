@@ -22,7 +22,7 @@ public class Google {
 	 * @return A success code
 	 */
 	public static int geocode(String[] args) {
-		HashSet<String> geotypes = processGeoTypes(Macro.getLocalSafe("what"));
+		HashSet<String> geotypes = processGeoTypes(args[0]);
 		DataRetrieval data = new DataRetrieval(args);
 		Map<String, Map<String, Integer>> vdx = getAllVarIndices(geotypes);
 		for(Long i : data.getAddressList().keySet()) {
@@ -84,8 +84,8 @@ public class Google {
 				return GoogleStataVars.getViewportIndices();
 			case "address" :
 				return GoogleStataVars.getFormattedAddressIndices();
-			case "loctype":
-				return GoogleStataVars.getLocationTypeIndices();
+			case "geotype":
+				return GoogleStataVars.getGeoTypeIndices();
 			case "placeid" :
 				return GoogleStataVars.getPlaceIdIndices();
 			case "types":
@@ -117,7 +117,7 @@ public class Google {
 			case "address" :
 				GoogleStataVars.makeGeocodeFormattedAddressVars();
 				break;
-			case "loctype":
+			case "geotype":
 				GoogleStataVars.makeGeocodeLocationTypeVars();
 				break;
 			case "placeid" :
