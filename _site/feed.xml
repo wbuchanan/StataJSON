@@ -5,8 +5,8 @@
     <description>A JSON serializer for Stata using the Java-API and Jackson JSON.</description>
     <link>https://wbuchanan.github.io/StataJSON/</link>
     <atom:link href="https://wbuchanan.github.io/StataJSON/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 Nov 2015 08:04:45 -0600</pubDate>
-    <lastBuildDate>Sat, 21 Nov 2015 08:04:45 -0600</lastBuildDate>
+    <pubDate>Fri, 12 Feb 2016 06:50:34 -0600</pubDate>
+    <lastBuildDate>Fri, 12 Feb 2016 06:50:34 -0600</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
   </channel>
