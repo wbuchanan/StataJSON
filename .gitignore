@@ -1,4 +1,6 @@
-Stata.iml
-Stata.ipr
-Stata.iws
+*.iml
+*.ipr
+*.iws
+*.class
+
 
