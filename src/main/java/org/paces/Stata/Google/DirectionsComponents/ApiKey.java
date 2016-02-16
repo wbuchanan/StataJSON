@@ -1,4 +1,4 @@
-package org.paces.Stata.Google.ApiComponents;
+package org.paces.Stata.Google.DirectionsComponents;
 
 /**
  * @author Billy Buchanan

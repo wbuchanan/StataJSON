@@ -1,10 +1,11 @@
 package org.paces.Stata.Data;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.stata.sfi.Data;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Billy Buchanan
@@ -27,6 +28,10 @@ public class DataRecord implements Record {
 
 	@JsonProperty("source")
 	private final String source = DataSource.get();
+
+	private Set<String> displayTypes = new HashSet<>();
+
+	private Map<String, String> months = new HashMap<>();
 
 	/***
 	 * Observation ID variable
@@ -57,6 +62,23 @@ public class DataRecord implements Record {
 		this.metaob = metaobject;
 
 		this.vars = metaob.getStatavars();
+
+		displayTypes.add("%td");
+		displayTypes.add("%tc");
+		displayTypes.add("%tC");
+
+		months.put("jan", "01");
+		months.put("feb", "02");
+		months.put("mar", "03");
+		months.put("apr", "04");
+		months.put("may", "05");
+		months.put("jun", "06");
+		months.put("jul", "07");
+		months.put("aug", "08");
+		months.put("sep", "09");
+		months.put("oct", "10");
+		months.put("nov", "11");
+		months.put("dec", "12");
 
 		// Set the observation ID variable
 		setObid(id);
@@ -108,6 +130,16 @@ public class DataRecord implements Record {
 
 				// Store string value if variable contains strings
 				value = Data.getStr(vars.getVariableIndex(i), obid);
+
+			} else if (displayTypes.contains(vars.getDiFormats().get(i))) {
+
+				// Gets value as a formatted string if it is a date/time type
+				String temp = Data.getFormattedValue(vars.getVariableIndex(i), obid, true);
+				StringJoiner valstring = new StringJoiner("/");
+				valstring.add(temp.substring(5, 9));
+				valstring.add(months.get(temp.substring(2, 5)));
+				valstring.add(temp.substring(0, 2));
+				value = valstring.toString();
 
 			} else {
 

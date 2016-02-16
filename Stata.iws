@@ -2,25 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Address.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Alternatives.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/ApiKey.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/ArrivalTime.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Avoid.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/DepartureTime.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/FixedOptions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Language.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Region.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TrafficModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TransitMode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TransitRoutingPreference.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TravelMode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Units.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/WayPoints.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/GoogleStataVars.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ReturnValues/GoogleStataVars.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiString.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Details.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/PlaceTypes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Places.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Search.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Address.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Address.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Alternatives.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Alternatives.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/ApiKey.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/ApiKey.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/ArrivalTime.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/ArrivalTime.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Avoid.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Avoid.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/DepartureTime.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/DepartureTime.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/FixedOptions.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/FixedOptions.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Language.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Language.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Region.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Region.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TrafficModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TrafficModel.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TransitMode.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TransitMode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TransitRoutingPreference.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TransitRoutingPreference.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TravelMode.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TravelMode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Units.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Units.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/WayPoints.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/WayPoints.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.iws" afterPath="$PROJECT_DIR$/Stata.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Directions.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Directions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Google.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Google.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
     </list>
     <list id="9944e83e-ebc7-46dc-b4a2-561214c82f42" name="Rejected commit: Default" comment="Added debugger to main package body.  Need to initialize variables for all methods." />
     <ignored path="Stata.iws" />
@@ -64,112 +68,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Geocode.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Geocode.java">
+      <file leaf-file-name="Variables.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.103286386">
-              <caret line="12" column="72" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="772" column="46" selection-start-line="772" selection-start-column="46" selection-end-line="772" selection-end-column="46" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="class#VariableIndex#0;class#Variables#0" expanded="false" />
+                <element signature="class#Nvars#0;class#Variables#0" expanded="false" />
+                <element signature="class#VarNames#0;class#Variables#0" expanded="false" />
+                <element signature="class#VarLabels#0;class#Variables#0" expanded="false" />
+                <element signature="class#ValLabNames#0;class#Variables#0" expanded="false" />
+                <element signature="class#ValLabels#0;class#Variables#0" expanded="false" />
+                <element signature="class#VarTypes#0;class#Variables#0" expanded="false" />
+                <element signature="e#16688#16689#0" expanded="true" />
+                <element signature="e#16716#16717#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataRetrieval.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DataRetrieval.java">
+      <file leaf-file-name="DataRecord.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="55" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrafficModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TrafficModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.614486">
+              <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransitMode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TransitMode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransitRoutingPreference.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TransitRoutingPreference.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TravelMode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/TravelMode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TravelMode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TravelMode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#360#361#0" expanded="true" />
-                <element signature="e#393#394#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WayPoints.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/WayPoints.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Address.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Address.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FixedOptions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/FixedOptions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-              <folding>
-                <element signature="e#318#319#0" expanded="true" />
-                <element signature="e#346#347#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -205,13 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Data/pom.xml" />
-        <option value="$PROJECT_DIR$/JSON/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/HTTP/StataHTTP.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/HTTP/StataURL.java" />
-        <option value="$PROJECT_DIR$/jsonio.sthlp" />
-        <option value="$PROJECT_DIR$/jsonioWiki.txt" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/HTTP/StataGET.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetArray.java" />
@@ -239,10 +156,8 @@
         <option value="$PROJECT_DIR$/jsonio.ado" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataAllToJSON.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordByteArray.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DataRetrieval.java" />
@@ -256,6 +171,15 @@
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/FixedOptions.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TravelMode.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/WayPoints.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiString.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Details.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Places.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TravelMode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/WayPoints.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/PlaceTypes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Search.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
       </list>
     </option>
   </component>
@@ -337,6 +261,119 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JSON" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Problems" />
@@ -436,89 +473,6 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stata" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Google" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
       </pane>
     </panes>
   </component>
@@ -1066,8 +1020,8 @@
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903865" sideWeight="0.49112427" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2782194" sideWeight="0.4868977" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28989667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27733755" sideWeight="0.4868977" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28989667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299401" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Graphical Navigator" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1134,8 +1088,14 @@
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java</url>
+          <line>133</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1144,41 +1104,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/StataXTTS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2173913">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetStringArrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetLongArrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetIntArrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetDoubleArrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataSetByteArrays.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1270,13 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecordByteArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23893805">
@@ -1303,7 +1221,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1322,13 +1240,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28037384">
@@ -1341,19 +1252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ReturnValues/GoogleStataVars.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
-          <folding>
-            <element signature="e#1799#1800#0" expanded="true" />
-            <element signature="e#1833#1834#0" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
-            <element signature="e#2001#2002#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1375,7 +1273,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1384,85 +1281,71 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/ApiKey.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/ApiKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#260#261#0" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Alternatives.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Alternatives.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Avoid.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Avoid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Language.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Language.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Units.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Units.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Region.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Region.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/ArrivalTime.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/ArrivalTime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/DepartureTime.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/DepartureTime.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Geocode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.103286386">
-          <caret line="12" column="72" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1470,13 +1353,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="55" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TrafficModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TrafficModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
@@ -1484,7 +1365,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TransitMode.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TransitMode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
@@ -1492,7 +1373,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TransitRoutingPreference.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TransitRoutingPreference.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
@@ -1500,34 +1381,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/TravelMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/TravelMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#360#361#0" expanded="true" />
-            <element signature="e#393#394#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/WayPoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/Address.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/Address.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
@@ -1535,14 +1389,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/FixedOptions.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Places.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Search.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87616825">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/PlaceTypes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68457943">
+          <caret line="120" column="5" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
           <folding>
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#346#347#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Details.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21028037">
+          <caret line="6" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ReturnValues/GoogleStataVars.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03504673">
+          <caret line="13" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5607477">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/TravelMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7196262">
+          <caret line="27" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TravelMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03504673">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/WayPoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28037384">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/FixedOptions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05373832">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="772" column="46" selection-start-line="772" selection-start-column="46" selection-end-line="772" selection-end-column="46" />
+          <folding>
+            <element signature="class#VariableIndex#0;class#Variables#0" expanded="false" />
+            <element signature="class#Nvars#0;class#Variables#0" expanded="false" />
+            <element signature="class#VarNames#0;class#Variables#0" expanded="false" />
+            <element signature="class#VarLabels#0;class#Variables#0" expanded="false" />
+            <element signature="class#ValLabNames#0;class#Variables#0" expanded="false" />
+            <element signature="class#ValLabels#0;class#Variables#0" expanded="false" />
+            <element signature="class#VarTypes#0;class#Variables#0" expanded="false" />
+            <element signature="e#16688#16689#0" expanded="true" />
+            <element signature="e#16716#16717#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.614486">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

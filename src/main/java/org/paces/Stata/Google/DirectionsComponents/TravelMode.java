@@ -1,7 +1,8 @@
-package org.paces.Stata.Google.ApiComponents;
+package org.paces.Stata.Google.DirectionsComponents;
 
 /**
- * Created by billy on 2/13/16.
+ * @author Billy Buchanan
+ * @version 0.0.0
  */
 public class TravelMode {
 

@@ -22,6 +22,8 @@ import java.util.stream.Collectors;
 		"variable labels", "value label names", "value labels"})
 public class Variables {
 
+
+
 	/***
 	 * Inner class containing the variable indices
 	 */
@@ -625,6 +627,12 @@ public class Variables {
 	private ValLabels valueLabels;
 
 	/***
+	 * Contains the display formats of the variables
+	 */
+	@JsonIgnore
+	private List<String> diFormats = new ArrayList<>();
+
+	/***
 	 * Class containing string variable indicators
 	 */
 	@JsonProperty("variable type string")
@@ -658,6 +666,18 @@ public class Variables {
 	@JsonSetter
 	public void setVarTypes(VariableIndex varindex) {
 		this.varTypes = new VarTypes(this.varindex);
+	}
+
+	/**
+	 * Sets the display format member
+	 * @param vdx
+	 */
+	public void setDiFormats(List<Integer> vdx) {
+		for(Integer i : vdx) this.diFormats.add(Data.getVarFormat(i));
+	}
+
+	public List<String> getDiFormats() {
+		return this.diFormats;
 	}
 
 	@JsonSetter
@@ -749,6 +769,8 @@ public class Variables {
 
 		// Set the variable is string index member variable
 		setVarTypes(this.varindex);
+
+		setDiFormats(this.varindex.getValues());
 
 	} // End constructor method
 
