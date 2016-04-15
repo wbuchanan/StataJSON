@@ -108,6 +108,14 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.paces-consulting</groupId>
+			<artifactId>stata-java</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.6.1</version>
@@ -127,6 +135,22 @@
 			<version>2.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.wnameless</groupId>
+			<artifactId>json-flattener</artifactId>
+			<version>0.1.7-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.eclipsesource.minimal-json</groupId>
+			<artifactId>minimal-json</artifactId>
+			<version>0.9.4</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<optional>true</optional>
 		</dependency>
 
 		<!--
