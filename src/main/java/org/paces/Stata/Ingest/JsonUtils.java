@@ -12,117 +12,84 @@ import java.util.*;
 public class JsonUtils {
 
 	public static Boolean isTerminal(ArrayNode an) {
-		Iterator<JsonNode> elems = an.elements();
-		Boolean returnValue = true;
-		while(elems.hasNext()) {
-			if (!elems.next().isValueNode()) returnValue = false;
-		}
-		return returnValue;
+		return isTerminal((JsonNode) an);
 	}
 
 	public static Boolean containsArray(ArrayNode an) {
-		Iterator<JsonNode> elems = an.elements();
-		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			if (elems.next().isArray()) returnValue = true;
-		}
-		return returnValue;
+		return containsArray((JsonNode) an);
 	}
 
 	public static Boolean containsObject(ArrayNode an) {
-		Iterator<JsonNode> elems = an.elements();
-		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			if (elems.next().isObject()) returnValue = true;
-		}
-		return returnValue;
+		return containsObject((JsonNode) an);
 	}
 
 	public static Boolean containsContainers(ArrayNode an) {
-		Iterator<JsonNode> elems = an.elements();
-		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			JsonNode temp = elems.next();
-			if (temp.isArray() || temp.isObject()) returnValue = true;
-		}
-		return returnValue;
+		return containsContainers((JsonNode) an);
 	}
 
 	public static Boolean isTerminal(ObjectNode an) {
-		Iterator<JsonNode> elems = an.elements();
-		Boolean returnValue = true;
-		while(elems.hasNext()) {
-			if (!elems.next().isValueNode()) returnValue = false;
-		}
-		return returnValue;
+		return isTerminal((JsonNode) an);
 	}
 
 	public static Boolean containsArray(ObjectNode an) {
-		Iterator<JsonNode> elems = an.elements();
-		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			if (elems.next().isArray()) returnValue = true;
-		}
-		return returnValue;
+		return containsArray((JsonNode) an);
 	}
 
 	public static Boolean containsObject(ObjectNode an) {
-		Iterator<JsonNode> elems = an.elements();
-		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			if (elems.next().isObject()) returnValue = true;
-		}
-		return returnValue;
+		return containsObject((JsonNode) an);
 	}
+
 
 	public static Boolean containsContainers(ObjectNode an) {
-		Iterator<JsonNode> elems = an.elements();
-		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			JsonNode temp = elems.next();
-			if (temp.isArray() || temp.isObject()) returnValue = true;
-		}
-		return returnValue;
+		return containsContainers((JsonNode) an);
 	}
 
+	/**
+	 * Method used to indicate whether or not all elements of a given node
+	 * are terminal (e.g., some non-container node type)
+	 * @param an A JsonNode object to test
+	 * @return A boolean where true indicates that all elements are
+	 * value/terminal types, while false indicates that one or more elements
+	 * are container types (i.e., ObjectNode or ArrayNode types).
+	 */
 	public static Boolean isTerminal(JsonNode an) {
-		Iterator<JsonNode> elems = an.elements();
 		Boolean returnValue = true;
-		while(elems.hasNext()) {
-			if (!elems.next().isValueNode()) returnValue = false;
-		}
+		for(JsonNode i : nodeList(an)) if (i.isContainerNode()) returnValue = false;
 		return returnValue;
 	}
 
 	public static Boolean containsArray(JsonNode an) {
-		Iterator<JsonNode> elems = an.elements();
 		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			if (elems.next().isArray()) returnValue = true;
-		}
+		for(JsonNode i : nodeList(an)) if (i.isArray()) returnValue = true;
 		return returnValue;
 	}
 
 	public static Boolean containsObject(JsonNode an) {
-		Iterator<JsonNode> elems = an.elements();
 		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			if (elems.next().isObject()) returnValue = true;
-		}
+		for(JsonNode i : nodeList(an)) if (i.isObject()) returnValue = true;
 		return returnValue;
 	}
 
+	/**
+	 * Method that tests whether the object contains any container type nodes
+	 * @param an A JsonNode object which may/may not contain nested container
+	 *              type nodes
+	 * @return A Boolean : false indicates that no elements are container
+	 * object types; true indicates that one or more elements are container
+	 * type objects.
+	 */
 	public static Boolean containsContainers(JsonNode an) {
-		Iterator<JsonNode> elems = an.elements();
 		Boolean returnValue = false;
-		while(elems.hasNext()) {
-			JsonNode temp = elems.next();
-			if (temp.isArray() || temp.isObject()) returnValue = true;
-		}
+		for(JsonNode i : nodeList(an)) if (i.isContainerNode()) returnValue = true;
 		return returnValue;
 	}
 
-
+	/**
+	 * Convenience wrapper that returns a List of JsonNodes using the
+	 * JsonNode.elements() method to add successive elements to the list object
+	 * @param jn A JsonNode with elements that will be returned in a list object
+	 * @return A List of descendant JsonNode objects
+	 */
 	public static List<JsonNode> nodeList(JsonNode jn) {
 		List<JsonNode> nodes = new ArrayList<>();
 		Iterator<JsonNode> iter = jn.elements();
@@ -130,6 +97,16 @@ public class JsonUtils {
 		return nodes;
 	}
 
+	/**
+	 * A method used to retrieve the maximum depth of each of the descendants
+	 * of a given JsonNode object.  This method returns a list of integers
+	 * containing the maximum depth for each child element in this node.
+	 * @param root The JsonNode object which may/may not contain nested elements
+	 * @param startIndex The value to use to indicate the starting value used
+	 *                      for indexing (e.g., count from 0, 1, etc...)
+	 * @return A list of integer values containing the maximum depth of all
+	 * children of this node
+	 */
 	public static List<Integer> nodeDepths(JsonNode root, Integer startIndex) {
 		List<Integer> nodeDepths = new ArrayList<>();
 		List<JsonNode> nodes = JsonUtils.nodeList(root);
@@ -138,26 +115,83 @@ public class JsonUtils {
 		return nodeDepths;
 	}
 
+	/**
+	 * A method used to retrieve the maximum depth of each of the descendants
+	 * of a given ObjectNode object.  This method returns a list of integers
+	 * containing the maximum depth for each child element in this node.
+	 * @param root The ObjectNode type which may/may not contain nested elements
+	 * @param startIndex The value to use to indicate the starting value used
+	 *                      for indexing (e.g., count from 0, 1, etc...)
+	 * @return A list of integer values containing the maximum depth of all
+	 * children of this node
+	 */
 	public static List<Integer> nodeDepths(ObjectNode root, Integer startIndex) {
 		return nodeDepths((JsonNode) root, startIndex);
 	}
 
+	/**
+	 * A method used to retrieve the maximum depth of each of the descendants
+	 * of a given ArrayNode object.  This method returns a list of integers
+	 * containing the maximum depth for each child element in this node.
+	 * @param root The ArrayNode type which contain nested elements
+	 * @param startIndex The value to use to indicate the starting value used
+	 *                      for indexing (e.g., count from 0, 1, etc...)
+	 * @return A list of integer values containing the maximum depth of all
+	 * children of this node
+	 */
 	public static List<Integer> nodeDepths(ArrayNode root, Integer startIndex) {
 		return nodeDepths((JsonNode) root, startIndex);
 	}
 
+	/**
+	 * A method used to retrieve the maximum depth of each of the descendants
+	 * of a given JsonNode object.  This method returns a list of integers
+	 * containing the maximum depth for each child element in this node.
+	 * <em>This is a wrapper around JsonUtils.nodeDepths(JsonNode, Integer)
+	 * that specifies a value of 0 for the second parameter. </em>
+	 * @param root The JsonNode object which may/may not contain nested elements
+	 * @return A list of integer values containing the maximum depth of all
+	 * children of this node
+	 */
 	public static List<Integer> nodeDepths(JsonNode root) {
 		return nodeDepths(root, 0);
 	}
 
+	/**
+	 * A method used to retrieve the maximum depth of each of the descendants
+	 * of a given ObjectNode object.  This method returns a list of integers
+	 * containing the maximum depth for each child element in this node.
+	 * <em>This is a wrapper around JsonUtils.nodeDepths(JsonNode, Integer)
+	 * that specifies a value of 0 for the second parameter. </em>
+	 * @param root The ObjectNode object which contains nested elements
+	 * @return A list of integer values containing the maximum depth of all
+	 * children of this node
+	 */
 	public static List<Integer> nodeDepths(ObjectNode root) {
 		return nodeDepths((JsonNode) root, 0);
 	}
 
+	/**
+	 * A method used to retrieve the maximum depth of each of the descendants
+	 * of a given ArrayNode object.  This method returns a list of integers
+	 * containing the maximum depth for each child element in this node.
+	 * <em>This is a wrapper around JsonUtils.nodeDepths(ArrayNode, Integer)
+	 * that specifies a value of 0 for the second parameter. </em>
+	 * @param root The ArrayNode object which contains nested elements
+	 * @return A list of integer values containing the maximum depth of all
+	 * children of this node
+	 */
 	public static List<Integer> nodeDepths(ArrayNode root) {
 		return nodeDepths((JsonNode) root, 0);
 	}
 
+	/**
+	 * Public method used handle recasting ObjectNode types to JsonNode types
+	 * to overload the descent method
+	 * @param node An JsonNode which will be descended into to determine
+	 *                the depth of nested objects
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
 	public static Integer descent(JsonNode node, Integer currentLevel) {
 		List<JsonNode> children = nodeList(node);
 		List<Integer> depths = new ArrayList<>();
@@ -170,77 +204,186 @@ public class JsonUtils {
 		return Collections.max(depths);
 	}
 
+	/**
+	 * Public method used handle recasting ObjectNode types to JsonNode types
+	 * to overload the descent method
+	 * @param node An ArrayNode which will be descended into to determine
+	 *                the depth of nested objects
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
 	public static Integer descent(ArrayNode node, Integer currentLevel) {
 		return descent((JsonNode)node, currentLevel);
 	}
 
+	/**
+	 * Public method used handle recasting ObjectNode types to JsonNode types
+	 * to overload the descent method
+	 * @param node An ObjectNode which will be descended into to determine
+	 *                the depth of nested objects
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
 	public static Integer descent(ObjectNode node, Integer currentLevel) {
 		return descent((JsonNode)node, currentLevel);
 	}
 
-	public static Integer descent(BaseJsonNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Base64 type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(BaseJsonNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(BigIntegerNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A BigInteger type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(BigIntegerNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(BinaryNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Binary type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(BinaryNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(BooleanNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Boolean type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(BooleanNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(DecimalNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Decimal valued type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(DecimalNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(DoubleNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Double type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(DoubleNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(FloatNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Float type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(FloatNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(IntNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Integer type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(IntNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(LongNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Long type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(LongNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(MissingNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Missing type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(MissingNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(NullNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Null type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(NullNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(NumericNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Number type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(NumericNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(POJONode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A POJO (Plain Old Java Object) type JsonNode which contains
+	 *                some type of non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(POJONode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(ShortNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Short type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(ShortNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(TextNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Text type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(TextNode node, Integer currentLevel) {
 		return currentLevel;
 	}
 
-	public static Integer descent(ValueNode node, Integer currentLevel) {
+	/**
+	 * Private method used to prevent type errors when calling descent method on objects
+	 * @param node A Value type JsonNode which contains some type of
+	 *                non-container value
+	 * @param currentLevel The level of the descent where this node occurs
+	 */
+	private static Integer descent(ValueNode node, Integer currentLevel) {
 		return currentLevel;
 	}
-
 
 }
