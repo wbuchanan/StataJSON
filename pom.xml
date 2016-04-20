@@ -136,6 +136,62 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<!--
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-csv</artifactId>
+			<version>2.6.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+			<version>2.4.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-smile</artifactId>
+			<version>2.7.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-yaml</artifactId>
+			<version>2.5.4</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate4</artifactId>
+			<version>2.5.3</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+  			<artifactId>jackson-dataformat-avro</artifactId>
+  			<version>2.87.2</version>
+  			<type>jar</type>
+  			<scope>compile</scope>
+  			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-json-org</artifactId>
+			<version>2.6.1</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
 		<dependency>
 			<groupId>com.github.wnameless</groupId>
 			<artifactId>json-flattener</artifactId>
@@ -152,15 +208,6 @@
 			<scope>compile</scope>
 			<optional>true</optional>
 		</dependency>
-
-		<!--
-		<dependency>
-			<groupId>com.fasterxml.jackson.dataformat</groupId>
-			<artifactId>jackson-dataformat-csv</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jdk8</artifactId>
@@ -171,13 +218,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jdk7</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-json-org</artifactId>
 			<version>2.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
