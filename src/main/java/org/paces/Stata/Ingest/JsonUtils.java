@@ -3,46 +3,15 @@ package org.paces.Stata.Ingest;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.*;
 
+import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Billy Buchanan
  * @version 0.0.0
  */
 public class JsonUtils {
-
-	public static Boolean isTerminal(ArrayNode an) {
-		return isTerminal((JsonNode) an);
-	}
-
-	public static Boolean containsArray(ArrayNode an) {
-		return containsArray((JsonNode) an);
-	}
-
-	public static Boolean containsObject(ArrayNode an) {
-		return containsObject((JsonNode) an);
-	}
-
-	public static Boolean containsContainers(ArrayNode an) {
-		return containsContainers((JsonNode) an);
-	}
-
-	public static Boolean isTerminal(ObjectNode an) {
-		return isTerminal((JsonNode) an);
-	}
-
-	public static Boolean containsArray(ObjectNode an) {
-		return containsArray((JsonNode) an);
-	}
-
-	public static Boolean containsObject(ObjectNode an) {
-		return containsObject((JsonNode) an);
-	}
-
-
-	public static Boolean containsContainers(ObjectNode an) {
-		return containsContainers((JsonNode) an);
-	}
 
 	/**
 	 * Method used to indicate whether or not all elements of a given node
@@ -58,16 +27,104 @@ public class JsonUtils {
 		return returnValue;
 	}
 
+	/**
+	 * Method used to indicate whether or not all elements of a given node
+	 * are terminal (e.g., some non-container node type)
+	 * @param an An ArrayNode object to test
+	 * @return A boolean where true indicates that all elements are
+	 * value/terminal types, while false indicates that one or more elements
+	 * are container types (i.e., ObjectNode or ArrayNode types).
+	 */
+	public static Boolean isTerminal(ArrayNode an) {
+		return isTerminal((JsonNode) an);
+	}
+
+	/**
+	 * Method used to indicate whether or not all elements of a given node
+	 * are terminal (e.g., some non-container node type)
+	 * @param an An ObjectNode object to test
+	 * @return A boolean where true indicates that all elements are
+	 * value/terminal types, while false indicates that one or more elements
+	 * are container types (i.e., ObjectNode or ArrayNode types).
+	 */
+	public static Boolean isTerminal(ObjectNode an) {
+		return isTerminal((JsonNode) an);
+	}
+
+	/**
+	 * Method used to indicate whether or not any child elements contain any
+	 * ArrayNode objects.
+	 * @param an A JsonNode object to test
+	 * @return A Boolean. a value of true indicates that one or more
+	 * child nodes is an ArrayNode object; a value of false indicates that no
+	 * direct descendant nodes are ArrayNode objects.
+	 */
 	public static Boolean containsArray(JsonNode an) {
 		Boolean returnValue = false;
 		for(JsonNode i : nodeList(an)) if (i.isArray()) returnValue = true;
 		return returnValue;
 	}
 
+	/**
+	 * Method used to indicate whether or not any child elements contain any
+	 * ArrayNode objects.
+	 * @param an An ArrayNode object to test
+	 * @return A Boolean. a value of true indicates that one or more
+	 * child nodes is an ArrayNode object; a value of false indicates that no
+	 * direct descendant nodes are ArrayNode objects.
+	 */
+	public static Boolean containsArray(ArrayNode an) {
+		return containsArray((JsonNode) an);
+	}
+
+	/**
+	 * Method used to indicate whether or not any child elements contain any
+	 * ArrayNode objects.
+	 * @param an An ObjectNode object to test
+	 * @return A Boolean. a value of true indicates that one or more
+	 * child nodes is an ArrayNode object; a value of false indicates that no
+	 * direct descendant nodes are ArrayNode objects.
+	 */
+	public static Boolean containsArray(ObjectNode an) {
+		return containsArray((JsonNode) an);
+	}
+
+	/**
+	 * Method used to indicate whether or not any child elements contain any
+	 * ObjectNode objects.
+	 * @param an A JsonNode object to test
+	 * @return A Boolean. a value of true indicates that one or more
+	 * child nodes is an ObjectNode object; a value of false indicates that no
+	 * direct descendant nodes are ObjectNode objects.
+	 */
 	public static Boolean containsObject(JsonNode an) {
 		Boolean returnValue = false;
 		for(JsonNode i : nodeList(an)) if (i.isObject()) returnValue = true;
 		return returnValue;
+	}
+
+	/**
+	 * Method used to indicate whether or not any child elements contain any
+	 * ObjectNode objects.
+	 * @param an An ArrayNode object to test
+	 * @return A Boolean. a value of true indicates that one or more
+	 * child nodes is an ObjectNode object; a value of false indicates that no
+	 * direct descendant nodes are ObjectNode objects.
+	 */
+	public static Boolean containsObject(ArrayNode an) {
+		return containsObject((JsonNode) an);
+	}
+
+	/**
+	 * Method used to indicate whether or not any child elements contain any
+	 * ObjectNode objects.
+	 * @param an An ObjectNode object to test
+	 * @return A Boolean. a value of true indicates that one or more
+	 * child nodes is an ObjectNode object; a value of false indicates that no
+	 * direct descendant nodes are ObjectNode objects.
+	 */
+	public static Boolean containsObject(ObjectNode an) {
+		return containsObject((JsonNode) an);
 	}
 
 	/**
@@ -85,6 +142,30 @@ public class JsonUtils {
 	}
 
 	/**
+	 * Method that tests whether the object contains any container type nodes
+	 * @param an An ArrayNode object which may/may not contain nested container
+	 *              type nodes
+	 * @return A Boolean : false indicates that no elements are container
+	 * object types; true indicates that one or more elements are container
+	 * type objects.
+	 */
+	public static Boolean containsContainers(ArrayNode an) {
+		return containsContainers((JsonNode) an);
+	}
+
+	/**
+	 * Method that tests whether the object contains any container type nodes
+	 * @param an An ObjectNode object which may/may not contain nested container
+	 *              type nodes
+	 * @return A Boolean : false indicates that no elements are container
+	 * object types; true indicates that one or more elements are container
+	 * type objects.
+	 */
+	public static Boolean containsContainers(ObjectNode an) {
+		return containsContainers((JsonNode) an);
+	}
+
+	/**
 	 * Convenience wrapper that returns a List of JsonNodes using the
 	 * JsonNode.elements() method to add successive elements to the list object
 	 * @param jn A JsonNode with elements that will be returned in a list object
@@ -95,6 +176,41 @@ public class JsonUtils {
 		Iterator<JsonNode> iter = jn.elements();
 		while (iter.hasNext()) nodes.add(iter.next());
 		return nodes;
+	}
+
+	/**
+	 * Convenience wrapper that returns a List of JsonNodes using the
+	 * JsonNode.fieldNames() method to add successive elements to the list
+	 * object
+	 * @param jn A JsonNode with field names that will be returned in a list
+	 *              object
+	 * @return A List of field names
+	 */
+	public static List<String> fieldList(JsonNode jn) {
+		if (jn.isArray()) return fieldList((ArrayNode) jn);
+		else if (jn.isObject()) return fieldList((ObjectNode) jn);
+		else {
+			List<String> fieldNames = new ArrayList<>();
+			Iterator<String> fields = jn.fieldNames();
+			while (fields.hasNext()) fieldNames.add(fields.next());
+			return fieldNames;
+		}
+	}
+
+	public static List<String> fieldList(ObjectNode jn) {
+		List<String> fieldNames = new ArrayList<>();
+		Iterator<String> fields = jn.fieldNames();
+		while (fields.hasNext()) fieldNames.add(fields.next());
+		return fieldNames;
+	}
+
+	public static List<String> fieldList(ArrayNode jn) {
+		Iterator<JsonNode> arrayVals = jn.elements();
+		Iterator<String> fields = jn.fieldNames();
+		Set<String> s = new LinkedHashSet<>();
+		while (arrayVals.hasNext()) s.addAll(fieldList(arrayVals.next()));
+		List<String> uniqueNames = s.stream().collect(Collectors.toList());
+		return uniqueNames;
 	}
 
 	/**
@@ -183,6 +299,133 @@ public class JsonUtils {
 	 */
 	public static List<Integer> nodeDepths(ArrayNode root) {
 		return nodeDepths((JsonNode) root, 0);
+	}
+
+
+
+	/**
+	 * Public method used handle recasting ObjectNode types to JsonNode types
+	 * to overload the descent method
+	 * @param node An JsonNode which will be descended into to determine
+	 *                the depth of nested objects
+	 * @param currentLevel The level of the descent where this node occurs
+	 * @param parent A string containing the field name for the node; the
+	 *                  first level should always be named root.  Beyond
+	 *                  this, the format of this string will be:
+	 *               root/child_#/grandchild_#/greatgrandchild_#/etc...
+	 *               Where the number appended to the string indicates the
+	 *               depth of the specific node
+	 * @return a Map object containing the JsonNodes keyed by the generation
+	 * string.
+	 */
+	public static Map<String, JsonNode> nodeMapper(JsonNode node,
+	                                               Integer currentLevel,
+	                                               LinkedList<String> parent)
+												   throws IOException {
+
+		List<JsonNode> children = nodeList(node);
+		List<String> fieldNames = fieldList(node);
+		Map<String, JsonNode> nodeMap = new LinkedHashMap<>();
+		LinkedList<String> lineage = new LinkedList<>();
+		lineage.addAll(parent);
+		Integer depth = currentLevel;
+		Boolean.valueOf(lineage.size() == currentLevel);
+		for(Integer i = 0; i < children.size(); i++) {
+			Integer nodeID = i + 1;
+
+			if (node.isArray() && containsContainers(children.get(i))) {
+
+				// Pops the top name off the stack and removes any depth
+				// indicators so they can be replaced with current value
+				String curgen = lineage.pop().replaceAll("(.*)(_[0-9]+)$", "$1");
+
+				if (!curgen.equals(lineage.peek())) lineage.push(curgen + "_" + nodeID.toString());
+				else lineage.push(curgen);
+
+				// Calls itself to handle child nodes that are containers
+				nodeMap.putAll(nodeMapper(children.get(i), depth, lineage));
+
+			} else if (containsContainers(children.get(i))) {
+
+				if (lineage.size() > 0) {
+
+					// Pops the top name off the stack and removes any depth
+					// indicators so they can be replaced with current value
+					String curgen = lineage.pop();
+
+					if (!curgen.replaceAll("(.*)(_[0-9]+)$", "$1").equals(fieldNames.get(i))) lineage.push(curgen);
+
+					lineage.push(fieldNames.get(i));
+
+				}
+
+				else lineage.push(fieldNames.get(i));
+
+				nodeMap.putAll(nodeMapper(children.get(i), nodeID, lineage));
+				if (lineage.size() == 1) lineage.clear();
+			} else if (children.get(i).isObject() && !containsContainers(children.get(i))) {
+
+				if (lineage.size() > 0) {
+
+					// Pops the top name off the stack and removes any depth
+					// indicators so they can be replaced with current value
+					String curgen = lineage.pop();
+
+					if (!curgen.replaceAll("(.*)(_[0-9]+)$", "$1").equals(fieldNames.get(i))) lineage.push(curgen);
+
+					// lineage.push(fieldNames.get(i) + "_" + depth.toString());
+
+					lineage.push(fieldNames.get(i));
+
+				}
+				else lineage.push(fieldNames.get(i) + "_" + depth.toString());
+				nodeMap.putAll(nodeMapper(children.get(i), depth, lineage));
+			} else if (children.get(i).isArray() && !containsContainers(children.get(i))) {
+
+				if (lineage.size() > 0) {
+
+					// Pops the top name off the stack and removes any depth
+					// indicators so they can be replaced with current value
+					String curgen = lineage.pop();
+
+					if (!curgen.replaceAll("(.*)(_[0-9]+)$", "$1").equals(fieldNames.get(i))) lineage.push(curgen);
+
+					lineage.push(fieldNames.get(i));
+
+				}
+
+				else lineage.push(fieldNames.get(i));
+				nodeMap.putAll(nodeMapper(children.get(i), depth, lineage));
+			} else  {
+				String field;
+				if (fieldNames.size() > 0) field = fieldNames.get(i) + "_" + depth.toString();
+				else if (fieldNames.size() == 0) field = "element_" + nodeID.toString();
+				else field = lineage.pop() + "_" + depth.toString();
+				nodeMap.putAll(processTerminalNode(lineage, field, children.get(i)));
+			}
+		}
+		return nodeMap;
+	}
+
+
+	protected static Map<String, JsonNode> processTerminalNode(LinkedList<String> generations,
+	                                                           String thisField,
+	                                                           JsonNode theNode) {
+		Map<String, JsonNode> nodeMap = new HashMap<>();
+		String genString = getGenerationString(generations.descendingIterator());
+		if (!genString.isEmpty()) nodeMap.put(genString + "/" + thisField, theNode);
+		else nodeMap.put(thisField, theNode);
+		return nodeMap;
+	}
+
+
+	public static String getGenerationString(Iterator<String> iter) {
+		StringJoiner genString = new StringJoiner("/");
+		while(iter.hasNext()) {
+			String var = iter.next();
+			if (!var.isEmpty()) genString.add(var);
+		}
+		return genString.toString();
 	}
 
 	/**

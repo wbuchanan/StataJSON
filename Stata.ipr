@@ -673,6 +673,9 @@
     <option wsh="true" />
     <option yui="true" />
   </component>
+  <component name="JUnitGeneratorProjectSettings">
+    <option name="selectedTemplateKey" value="JUnit 4" />
+  </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/doc" />
     <option name="OPTION_SCOPE" value="protected" />

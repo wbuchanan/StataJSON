@@ -3,7 +3,7 @@ package org.paces.Stata.Ingest;
 import com.fasterxml.jackson.databind.*;
 
 import java.io.*;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Billy Buchanan
@@ -27,6 +27,14 @@ public class InJSON {
 	public InJSON(String fileName) throws IOException {
 		File json = new File(fileName);
 		this.rootNode = this.mapper.readTree(json);
+		List<String> rootContainer = new ArrayList<>();
+		LinkedList<String> fieldNames = new LinkedList<>();
+		Map<String, JsonNode> nodeMap = JsonUtils.nodeMapper(this.rootNode, 0, fieldNames);
+		for(String key : nodeMap.keySet()) {
+			StringJoiner sj = new StringJoiner("\t");
+			sj.add("Key = ").add(key).add("Value =").add(nodeMap.get(key).toString());
+			System.out.println(sj.toString());
+		}
 		List<Integer> maxDepths = JsonUtils.nodeDepths(this.rootNode, 0);
 		this.stataJson = new StataJson(this.rootNode);
 		this.stataJson.printString();
