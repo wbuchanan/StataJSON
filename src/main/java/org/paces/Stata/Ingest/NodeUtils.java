@@ -7,6 +7,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * Class that contains various static methods used to assist the StJSON class
+ * parse and flatten the JSON object.
  * @author Billy Buchanan
  * @version 0.0.0
  */
@@ -237,6 +239,14 @@ public class NodeUtils {
 		}
 	}
 
+	/**
+	 * Convenience wrapper that returns a List of JsonNodes using the
+	 * JsonNode.fieldNames() method to add successive elements to the list
+	 * object
+	 * @param jn An ObjectNode with field names that will be returned in a list
+	 *              object
+	 * @return A List of field names
+	 */
 	public static List<String> fieldList(ObjectNode jn) {
 		List<String> fieldNames = new ArrayList<>();
 		Iterator<String> fields = jn.fieldNames();
@@ -244,6 +254,14 @@ public class NodeUtils {
 		return fieldNames;
 	}
 
+	/**
+	 * Convenience wrapper that returns a List of JsonNodes using the
+	 * JsonNode.fieldNames() method to add successive elements to the list
+	 * object
+	 * @param jn A ArrayNode with field names that will be returned in a list
+	 *              object
+	 * @return A List of field names
+	 */
 	public static List<String> fieldList(ArrayNode jn) {
 		Iterator<JsonNode> arrayVals = jn.elements();
 		Iterator<String> fields = jn.fieldNames();
@@ -252,6 +270,7 @@ public class NodeUtils {
 		List<String> uniqueNames = s.stream().collect(Collectors.toList());
 		return uniqueNames;
 	}
+
 
 	/**
 	 * A method used to retrieve the maximum depth of each of the descendants
