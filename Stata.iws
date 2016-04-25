@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/IndexedPeekIterator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StataJson.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/IndexedPeekIterator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/JsonUtils.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/StataJson$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/StataJson.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonUtils.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/InJSON.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/InJSON.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/JsonUtils.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/JsonUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.ipr" afterPath="$PROJECT_DIR$/Stata.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.iws" afterPath="$PROJECT_DIR$/Stata.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonUtils.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonUtils.java" />
     </list>
     <list id="9944e83e-ebc7-46dc-b4a2-561214c82f42" name="Rejected commit: Default" comment="Added debugger to main package body.  Need to initialize variables for all methods." />
     <ignored path="Stata.iws" />
@@ -51,45 +56,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="InJSON.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InJSON.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="-251">
+              <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsonUtils.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonUtils.java">
+      <file leaf-file-name="NodeUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="410" column="53" selection-start-line="410" selection-start-column="53" selection-end-line="410" selection-end-column="62" />
+            <state relative-caret-position="210">
+              <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#descent#0;class#NodeUtils#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsonNode.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/JsonNode.java">
+      <file leaf-file-name="StJSON.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObjectNode.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/node/ObjectNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state relative-caret-position="199">
+              <caret line="293" column="79" selection-start-line="293" selection-start-column="79" selection-end-line="293" selection-end-column="79" />
               <folding>
-                <element signature="e#2138#2139#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#442#443#0" expanded="true" />
+                <element signature="e#473#474#0" expanded="true" />
+                <element signature="docComment;method#getGenerationString#0;class#StJSON#0" expanded="false" />
+                <element signature="docComment;method#checkName#0;class#StJSON#0" expanded="false" />
+                <element signature="docComment;method#checkName#1;class#StJSON#0" expanded="false" />
+                <element signature="docComment;method#checkName#2;class#StJSON#0" expanded="false" />
+                <element signature="method#checkName#2;class#StJSON#0" expanded="false" />
+                <element signature="e#10643#10644#0" expanded="true" />
+                <element signature="e#10679#10680#0" expanded="true" />
+                <element signature="e#10913#10914#0" expanded="true" />
+                <element signature="e#10949#10950#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -126,9 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiComponents/WayPoints.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ApiString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Details.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Places.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/TravelMode.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DirectionsComponents/WayPoints.java" />
@@ -175,8 +179,11 @@
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/ArrayUtilities.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/TempTester.java" />
         <option value="$PROJECT_DIR$/../../StataPrograms/s/sdp2016/README.md" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flattener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" />
       </list>
     </option>
   </component>
@@ -1060,19 +1067,20 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5206125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5206125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903865" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.493007" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744405" sideWeight="0.493007" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903865" sideWeight="0.49112427" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1688103" sideWeight="0.4868977" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16843346" sideWeight="0.4868977" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16063349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262662" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1088,7 +1096,6 @@
       <window_info id="Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299401" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299401" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264095" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Graphical Navigator" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="CSS-X-Fire" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1145,7 +1152,7 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="74" />
+      <option name="time" value="95" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1154,7 +1161,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/StataTypeInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flattener/JsonIndex.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flattener/Flat.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flatten/FlatStream.java" />
@@ -1218,13 +1224,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="704" column="0" selection-start-line="704" selection-start-column="0" selection-end-line="704" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/util/EmptyIterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1314,13 +1313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StataJson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.6.1/jackson-core-2.6.1-sources.jar!/com/fasterxml/jackson/core/TreeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-42">
@@ -1392,13 +1384,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/TempTester.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/node/ArrayNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../StataPrograms/s/sdp2016/README.md">
       <provider editor-type-id="MultiMarkdownFxPreviewEditor">
         <state />
@@ -1420,39 +1405,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StataJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/util/EmptyIterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/node/ObjectNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
+        <state relative-caret-position="130">
           <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
-            <element signature="e#2138#2139#0" expanded="true" />
+            <element signature="e#2138#2139#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/node/ArrayNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="e#1870#1871#0" expanded="false" />
+            <element signature="e#1911#1912#0" expanded="false" />
+            <element signature="e#2166#2167#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/JsonNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
+        <state relative-caret-position="126">
           <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="210">
+          <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#descent#0;class#NodeUtils#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="410" column="53" selection-start-line="410" selection-start-column="53" selection-end-line="410" selection-end-column="62" />
+        <state relative-caret-position="199">
+          <caret line="293" column="79" selection-start-line="293" selection-start-column="79" selection-end-line="293" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#473#474#0" expanded="true" />
+            <element signature="docComment;method#getGenerationString#0;class#StJSON#0" expanded="false" />
+            <element signature="docComment;method#checkName#0;class#StJSON#0" expanded="false" />
+            <element signature="docComment;method#checkName#1;class#StJSON#0" expanded="false" />
+            <element signature="docComment;method#checkName#2;class#StJSON#0" expanded="false" />
+            <element signature="method#checkName#2;class#StJSON#0" expanded="false" />
+            <element signature="e#10643#10644#0" expanded="true" />
+            <element signature="e#10679#10680#0" expanded="true" />
+            <element signature="e#10913#10914#0" expanded="true" />
+            <element signature="e#10949#10950#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-251">
+          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>

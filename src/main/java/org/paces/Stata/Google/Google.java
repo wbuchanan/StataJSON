@@ -1,7 +1,6 @@
 package org.paces.Stata.Google;
 
 import com.stata.sfi.Macro;
-import org.paces.Stata.Google.ReturnValues.GoogleStataVars;
 
 import java.util.*;
 

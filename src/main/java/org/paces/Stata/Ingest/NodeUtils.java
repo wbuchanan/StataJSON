@@ -3,7 +3,6 @@ package org.paces.Stata.Ingest;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.*;
 
-import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
  * @author Billy Buchanan
  * @version 0.0.0
  */
-public class JsonUtils {
+public class NodeUtils {
 
 	/**
 	 * Method used to indicate whether or not all elements of a given node
@@ -52,6 +51,16 @@ public class JsonUtils {
 	}
 
 	/**
+	 * Tests if the node contains any elements
+	 * @param an
+	 * @return
+	 */
+	public static Boolean isEmptyArray(JsonNode an) {
+		if (an.isArray() && an.size() == 0) return true;
+		else return false;
+	}
+
+	/**
 	 * Method used to indicate whether or not any child elements contain any
 	 * ArrayNode objects.
 	 * @param an A JsonNode object to test
@@ -88,6 +97,37 @@ public class JsonUtils {
 	public static Boolean containsArray(ObjectNode an) {
 		return containsArray((JsonNode) an);
 	}
+
+	/**
+	 * Method used to indicate whether or not any child elements contain any
+	 * Missing Nodes
+	 * @param an A JsonNode object to test
+	 * @return A Boolean. a value of true indicates that one or more
+	 * child nodes is an ObjectNode object; a value of false indicates that no
+	 * direct descendant nodes are ObjectNode objects.
+	 */
+	public static Boolean containsMissing(JsonNode an) {
+		Boolean returnValue = false;
+		for(JsonNode i : nodeList(an)) if (i.isMissingNode()) returnValue = true;
+		return returnValue;
+	}
+
+	/**
+	 * Method used to indicate whether or not any child elements contain any
+	 * Missing Nodes
+	 * @param an A JsonNode object to test
+	 * @return A Boolean. a value of true indicates that one or more
+	 * child nodes is an ObjectNode object; a value of false indicates that no
+	 * direct descendant nodes are ObjectNode objects.
+	 */
+	public static Boolean allMissing(JsonNode an) {
+		Boolean returnValue = true;
+		List<JsonNode> ans = nodeList(an);
+		if (ans.size() > 0) for(JsonNode i : ans) returnValue = !i.isMissingNode();
+		else returnValue = true;
+		return returnValue;
+	}
+
 
 	/**
 	 * Method used to indicate whether or not any child elements contain any
@@ -225,7 +265,7 @@ public class JsonUtils {
 	 */
 	public static List<Integer> nodeDepths(JsonNode root, Integer startIndex) {
 		List<Integer> nodeDepths = new ArrayList<>();
-		List<JsonNode> nodes = JsonUtils.nodeList(root);
+		List<JsonNode> nodes = nodeList(root);
 		Integer startLevel;
 		for(JsonNode i : nodes) nodeDepths.add(descent(i, startIndex));
 		return nodeDepths;
@@ -299,133 +339,6 @@ public class JsonUtils {
 	 */
 	public static List<Integer> nodeDepths(ArrayNode root) {
 		return nodeDepths((JsonNode) root, 0);
-	}
-
-
-
-	/**
-	 * Public method used handle recasting ObjectNode types to JsonNode types
-	 * to overload the descent method
-	 * @param node An JsonNode which will be descended into to determine
-	 *                the depth of nested objects
-	 * @param currentLevel The level of the descent where this node occurs
-	 * @param parent A string containing the field name for the node; the
-	 *                  first level should always be named root.  Beyond
-	 *                  this, the format of this string will be:
-	 *               root/child_#/grandchild_#/greatgrandchild_#/etc...
-	 *               Where the number appended to the string indicates the
-	 *               depth of the specific node
-	 * @return a Map object containing the JsonNodes keyed by the generation
-	 * string.
-	 */
-	public static Map<String, JsonNode> nodeMapper(JsonNode node,
-	                                               Integer currentLevel,
-	                                               LinkedList<String> parent)
-												   throws IOException {
-
-		List<JsonNode> children = nodeList(node);
-		List<String> fieldNames = fieldList(node);
-		Map<String, JsonNode> nodeMap = new LinkedHashMap<>();
-		LinkedList<String> lineage = new LinkedList<>();
-		lineage.addAll(parent);
-		Integer depth = currentLevel;
-		Boolean.valueOf(lineage.size() == currentLevel);
-		for(Integer i = 0; i < children.size(); i++) {
-			Integer nodeID = i + 1;
-
-			if (node.isArray() && containsContainers(children.get(i))) {
-
-				// Pops the top name off the stack and removes any depth
-				// indicators so they can be replaced with current value
-				String curgen = lineage.pop().replaceAll("(.*)(_[0-9]+)$", "$1");
-
-				if (!curgen.equals(lineage.peek())) lineage.push(curgen + "_" + nodeID.toString());
-				else lineage.push(curgen);
-
-				// Calls itself to handle child nodes that are containers
-				nodeMap.putAll(nodeMapper(children.get(i), depth, lineage));
-
-			} else if (containsContainers(children.get(i))) {
-
-				if (lineage.size() > 0) {
-
-					// Pops the top name off the stack and removes any depth
-					// indicators so they can be replaced with current value
-					String curgen = lineage.pop();
-
-					if (!curgen.replaceAll("(.*)(_[0-9]+)$", "$1").equals(fieldNames.get(i))) lineage.push(curgen);
-
-					lineage.push(fieldNames.get(i));
-
-				}
-
-				else lineage.push(fieldNames.get(i));
-
-				nodeMap.putAll(nodeMapper(children.get(i), nodeID, lineage));
-				if (lineage.size() == 1) lineage.clear();
-			} else if (children.get(i).isObject() && !containsContainers(children.get(i))) {
-
-				if (lineage.size() > 0) {
-
-					// Pops the top name off the stack and removes any depth
-					// indicators so they can be replaced with current value
-					String curgen = lineage.pop();
-
-					if (!curgen.replaceAll("(.*)(_[0-9]+)$", "$1").equals(fieldNames.get(i))) lineage.push(curgen);
-
-					// lineage.push(fieldNames.get(i) + "_" + depth.toString());
-
-					lineage.push(fieldNames.get(i));
-
-				}
-				else lineage.push(fieldNames.get(i) + "_" + depth.toString());
-				nodeMap.putAll(nodeMapper(children.get(i), depth, lineage));
-			} else if (children.get(i).isArray() && !containsContainers(children.get(i))) {
-
-				if (lineage.size() > 0) {
-
-					// Pops the top name off the stack and removes any depth
-					// indicators so they can be replaced with current value
-					String curgen = lineage.pop();
-
-					if (!curgen.replaceAll("(.*)(_[0-9]+)$", "$1").equals(fieldNames.get(i))) lineage.push(curgen);
-
-					lineage.push(fieldNames.get(i));
-
-				}
-
-				else lineage.push(fieldNames.get(i));
-				nodeMap.putAll(nodeMapper(children.get(i), depth, lineage));
-			} else  {
-				String field;
-				if (fieldNames.size() > 0) field = fieldNames.get(i) + "_" + depth.toString();
-				else if (fieldNames.size() == 0) field = "element_" + nodeID.toString();
-				else field = lineage.pop() + "_" + depth.toString();
-				nodeMap.putAll(processTerminalNode(lineage, field, children.get(i)));
-			}
-		}
-		return nodeMap;
-	}
-
-
-	protected static Map<String, JsonNode> processTerminalNode(LinkedList<String> generations,
-	                                                           String thisField,
-	                                                           JsonNode theNode) {
-		Map<String, JsonNode> nodeMap = new HashMap<>();
-		String genString = getGenerationString(generations.descendingIterator());
-		if (!genString.isEmpty()) nodeMap.put(genString + "/" + thisField, theNode);
-		else nodeMap.put(thisField, theNode);
-		return nodeMap;
-	}
-
-
-	public static String getGenerationString(Iterator<String> iter) {
-		StringJoiner genString = new StringJoiner("/");
-		while(iter.hasNext()) {
-			String var = iter.next();
-			if (!var.isEmpty()) genString.add(var);
-		}
-		return genString.toString();
 	}
 
 	/**

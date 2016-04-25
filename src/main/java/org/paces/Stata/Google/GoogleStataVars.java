@@ -1,4 +1,4 @@
-package org.paces.Stata.Google.ReturnValues;
+package org.paces.Stata.Google;
 
 import com.stata.sfi.Data;
 
