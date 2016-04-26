@@ -1,11 +1,15 @@
-package org.paces.Stata.Ingest;
+package org.paces.Stata.Input;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.MissingNode;
+import org.paces.Stata.Input.Interfaces.*;
 
-import java.io.*;
 import java.util.*;
-import static org.paces.Stata.Ingest.NodeUtils.*;
+import java.util.function.*;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+import static org.paces.Stata.Input.NodeUtils.*;
 
 /**
  * Class that creates a flattened representation of JSON data.  Although this
@@ -25,58 +29,97 @@ import static org.paces.Stata.Ingest.NodeUtils.*;
  * @author Billy Buchanan
  * @version 0.0.0
  */
-public class StJSON implements Serializable {
+public class FlatJSON implements QueryIndex, QueryKey, QueryRange {
 
 	/**
 	 * Member containing the generation strings in the order they exist in
 	 * the JSON
 	 */
-	private LinkedList<String> generations = new LinkedList<>();
-
-	/**
-	 * Member containing strings to map individual datum to Stata types.
-	 */
-	private LinkedList<String> nodeTypes = new LinkedList<>();
+	protected LinkedList<String> generations = new LinkedList<>();
 
 	/**
 	 * Member containing key/value pairs where the key is the full
 	 * path/generation string to a specific element and the value is the
 	 * JsonNode datum
 	 */
-	private Map<String, JsonNode> jsonData;
+	protected Map<String, JsonNode> jsonData;
 
 	/**
-	 * Class constructor for the StJSON type
+	 * Member contains the JsonNode which will be flattened by the flatten
+	 * method of this class
+	 */
+	protected JsonNode node;
+
+	/**
+	 * Member contains the current descent depth when initialized
+	 */
+	protected Integer currentLevel;
+
+	/**
+	 * Member contains the field names from all previous generations of this
+	 * node
+	 */
+	protected LinkedList<String> parent;
+
+	/**
+	 * A no-argument class constructor.
+	 */
+	public FlatJSON() {}
+
+	/**
+	 * Class constructor for the FlatJSON type
 	 * @param node A JsonNode object that will be flattened/parsed
 	 */
-	public StJSON(JsonNode node) {
-		this(node, 0, new LinkedList<String>());
+	public FlatJSON(JsonNode node) {
+		this.node = node;
+		this.currentLevel = 0;
+		this.parent = new LinkedList<String>();
 	}
 
 	/**
-	 * Class constructor for the StJSON type
+	 * Class constructor for the FlatJSON type
 	 * @param node A JsonNode object that will be flattened/parsed
 	 * @param currentLevel The current depth of the descent through the
 	 *                        JsonNode elements
 	 */
-	public StJSON(JsonNode node, Integer currentLevel) {
-		this(node, currentLevel, new LinkedList<String>());
+	public FlatJSON(JsonNode node, Integer currentLevel) {
+		this.node = node;
+		this.currentLevel = currentLevel;
+		this.parent = new LinkedList<String>();
 	}
 
 	/**
-	 * Class constructor for the StJSON type
+	 * Class constructor for the FlatJSON type
 	 * @param node A JsonNode object that will be flattened/parsed
 	 * @param currentLevel The current depth of the descent through the
 	 *                        JsonNode elements
 	 * @param parent A LinkedList of String objects that contain the names of
 	 *                  each of the parent generations related to the node.
 	 */
-	public StJSON(JsonNode node, Integer currentLevel, LinkedList<String> parent) {
-		try {
-			this.jsonData = flatten(node, currentLevel, parent);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public FlatJSON(JsonNode node, Integer currentLevel, LinkedList<String>
+		parent) {
+		this.node = node;
+		this.currentLevel = currentLevel;
+		this.parent.addAll(parent);
+	}
+
+	/**
+	 * A no argument overload of the flatten method.  This separates the
+	 * class initialization from the flattening of the data by accessing the
+	 * member variables containing the data needed to call the parameterized
+	 * flatten method
+	 * @return The Map object returned by the parameterized flatten method or
+	 * an empty Map object
+	 */
+	public void flatten() {
+
+		// Will only do something if the class members are not null
+		if (this.node != null && this.currentLevel != null && this.parent !=
+			null) this.jsonData = flatten(this.node, this.currentLevel, this.parent);
+
+		// Or will return an empty Map object
+		else this.jsonData = new HashMap<String, JsonNode>();
+
 	}
 
 	/**
@@ -95,7 +138,7 @@ public class StJSON implements Serializable {
 	 * string.
 	 */
 	public Map<String, JsonNode> flatten(JsonNode node, Integer currentLevel,
-	                       LinkedList<String> parent) throws IOException {
+	                       LinkedList<String> parent) {
 
 		// Creates a list of child nodes given the JsonNode passed to this
 		// method
@@ -227,19 +270,23 @@ public class StJSON implements Serializable {
 		// Creates the generation string which will have the field name appended
 		String genString = makeGenerationString(generations.descendingIterator());
 
+		String key;
+
 		// If the generation name isn't empty, add the path delimiter before
 		// the field name as the key and add the JsonNode object as the value
 		if (!genString.isEmpty()) {
+
+			key = genString + "/" + thisField;
+
 			nodeMap.put(genString + "/" + thisField, checkEmptyNodes(theNode));
-			this.generations.add(genString + "/" + thisField);
-			setTypeMap(checkEmptyNodes(theNode));
+			this.generations.add(key);
 		}
 
 		// Otherwise add the field name with a root delimiter before it
 		else {
+			key = "/" + thisField + "_" + depth.toString();
 			nodeMap.put("/" + thisField + "_" + depth.toString(), checkEmptyNodes(theNode));
-			this.generations.add("/" + thisField + "_" + depth.toString());
-			setTypeMap(checkEmptyNodes(theNode));
+			this.generations.add(key);
 		}
 
 		return nodeMap;
@@ -400,7 +447,10 @@ public class StJSON implements Serializable {
 	 * @return A JSON Node object identified by the string passed to the method
 	 */
 	public JsonNode get(String key) {
+
+		// Returns an individual JsonNode object
 		return this.jsonData.get(key);
+
 	}
 
 	/**
@@ -409,45 +459,102 @@ public class StJSON implements Serializable {
 	 * @return A LinkedList of String types
 	 */
 	public LinkedList<String> getLineage() {
+
+		// Returns the list containing all of the keys
 		return this.generations;
+
 	}
 
 	/**
-	 * Method used to map the JsonNodeTypes onto types that can be created in
-	 * Stata.  Both Ints and Longs in Java are equivalent to long types in
-	 * Stata.  A short type in Java (e.g., 2-byte integer) is equivalent to
-	 * an int in Stata.  Booleans are mapped to bytes and will have
-	 * true/false converted to binary indicators.
-	 * @param value
+	 * Method used to query the key values of the JSON object.  Implemented as a
+	 * single parameter interface to allow using stream/lambda expressions to
+	 * process the query a bit faster.
+	 *
+	 * @param pattern The string pattern to attempt matching in the Keys of the
+	 *                flattened JSON object
+	 *
+	 * @return A List of strings containing the matched values
 	 */
-	protected void setTypeMap(JsonNode value) {
-		if (value.isBigDecimal()) this.nodeTypes.add("double");
-		else if (value.isBigInteger()) this.nodeTypes.add("double");
-		else if (value.isBinary()) this.nodeTypes.add("strl");
-		else if (value.isBoolean()) this.nodeTypes.add("byte");
-		else if (value.isDouble() ) this.nodeTypes.add("double");
-		else if (value.isFloat()) this.nodeTypes.add("double");
-		else if (value.isFloatingPointNumber()) this.nodeTypes.add("double");
-		else if (value.isInt()) this.nodeTypes.add("long");
-		else if (value.isIntegralNumber()) this.nodeTypes.add("double");
-		else if (value.isLong()) this.nodeTypes.add("double");
-		else if (value.isMissingNode()) this.nodeTypes.add("missing");
-		else if (value.isNull()) this.nodeTypes.add("missing");
-		else if (value.isNumber()) this.nodeTypes.add("double");
-		else if (value.isObject()) this.nodeTypes.add("strl");
-		else if (value.isPojo()) this.nodeTypes.add("strl");
-		else if (value.isShort()) this.nodeTypes.add("int");
-		else if (value.isTextual()) this.nodeTypes.add("str");
-		else this.nodeTypes.add("unknown");
-	}
+	@Override
+	public List<String> queryKey(String pattern) {
+
+		// A regular expression to use for testing.  A Pattern object gets
+		// created to avoid the overhead associated with the String.matches()
+		// method which would compile a pattern in the background.
+		Pattern p = Pattern.compile(pattern);
+
+		// Tests whether or not the expression passed to the method is a
+		// match for a given key value
+		Predicate<String> matcher = (key) -> (p.matcher(key).find());
+
+		// Creates a parallel stream over the elements, filters, and collects
+		// the results
+		List<String> matched = this.generations.parallelStream()
+											   .filter(matcher)
+											   .collect(Collectors.toList());
+
+		// Returns the container with the matched keys
+		return matched;
+
+	} // End Method declaration
 
 	/**
-	 * Method to access the nodeTypes member
-	 * @return A LinkedList of String types that identify the Stata type
-	 * mapping for the element.
+	 * Method used to query the key values of the JSON object.  Implemented as a
+	 * single parameter interface to allow using stream/lambda expressions to
+	 * process the query a bit faster.
+	 *
+	 * @param pattern The string pattern to attempt matching in the Keys of the
+	 *                flattened JSON object
+	 *
+	 * @return A List of integers containing the indices of the matched keys.
 	 */
-	public LinkedList<String> getTypeMap() {
-		return this.nodeTypes;
-	}
+	@Override
+	public List<Integer> queryIdx(String pattern) {
+
+		// A regular expression to use for testing.  A Pattern object gets
+		// created to avoid the overhead associated with the String.matches()
+		// method which would compile a pattern in the background.
+		Pattern p = Pattern.compile(pattern);
+
+		// Test if the index is not -1
+		Predicate<Integer> matcher = (idx) -> (idx != -1);
+
+		// Container used to collect the indices from a parallelStream of the
+		// LinkedList object containing the keys.
+		List<Integer> matched = this.generations
+									.parallelStream()
+									.map((Function<String, Integer>) (key) -> {
+										if (p.matcher(key).find()) {
+											return this.generations.indexOf(key);
+										}
+										else return -1;
+									})
+									.filter(matcher)
+									.collect(Collectors.toList());
+
+		// Returns the container holding the indices
+		return matched;
+
+	} // End Method declaration
+
+	/**
+	 * This method will first call the queryIdx method of the QueryIndex
+	 * interface and then will combine the minimum and maximum values of the
+	 * returned indices.
+	 *
+	 * @param pattern A regular expression used to query JSON elements
+	 *
+	 * @return A two element list containing the minimum and maximum indices
+	 * that match the given string.
+	 */
+	@Override
+	public List<Integer> queryRange(String pattern) {
+		List<Integer> indexValues = queryIdx(pattern);
+		List<Integer> returnValues = new ArrayList<>();
+		Collections.sort(indexValues);
+		returnValues.add(0, indexValues.get(0));
+		returnValues.add(1, indexValues.get(indexValues.size() - 1));
+		return returnValues;
+ 	}
 
 }

@@ -2,43 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jsonio.jar" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/ApiString.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/Address.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/Alternatives.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/ApiKey.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/ArrivalTime.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/Avoid.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/DepartureTime.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/FixedOptions.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/Language.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/Region.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/TrafficModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/TransitMode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/TransitRoutingPreference.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/TravelMode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/Units.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/DirectionComponents/WayPoints.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Directions.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Places/Details.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Places/PlaceTypes.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Places/Places.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Places/Search.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/TravelMode.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/ReturnValues/GoogleStataVars.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/GoogleStataVars.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Google.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Google.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatStataJSON.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryIndex.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKey.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryRange.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/jsonio.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/StJSON.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/NodeUtils.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/InJSON.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/InJSON.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/NodeUtils.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/NodeUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/StJSON.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Ingest/StJSON.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/jsonio-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/jsonio-jar-with-dependencies.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/jsonio.jar" afterPath="$PROJECT_DIR$/target/jsonio.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.iws" afterPath="$PROJECT_DIR$/Stata.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/resources/legiscanPayload.json" afterPath="$PROJECT_DIR$/src/main/java/resources/legiscanPayload.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
@@ -86,31 +63,54 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="InJSON.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+            <state relative-caret-position="167">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="FlatJSON.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="668">
+              <caret line="527" column="0" selection-start-line="527" selection-start-column="0" selection-end-line="527" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#checkEmptyNodes#0;class#FlatJSON#0" expanded="false" />
+                <element signature="docComment;method#makeGenerationString#0;class#FlatJSON#0" expanded="false" />
+                <element signature="method#makeGenerationString#0;class#FlatJSON#0" expanded="false" />
+                <element signature="docComment;method#checkName#0;class#FlatJSON#0" expanded="false" />
+                <element signature="method#checkName#0;class#FlatJSON#0" expanded="false" />
+                <element signature="docComment;method#checkName#1;class#FlatJSON#0" expanded="false" />
+                <element signature="method#checkName#1;class#FlatJSON#0" expanded="false" />
+                <element signature="docComment;method#checkName#2;class#FlatJSON#0" expanded="false" />
+                <element signature="method#checkName#2;class#FlatJSON#0" expanded="false" />
+                <element signature="e#16159#16160#0" expanded="true" />
+                <element signature="e#16195#16196#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="legiscanPayload.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/resources/legiscanPayload.json">
+      <file leaf-file-name="FlatStataJSON.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatStataJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="38600" column="1" selection-start-line="38600" selection-start-column="1" selection-end-line="38600" selection-end-column="1" />
-              <folding />
+            <state relative-caret-position="150">
+              <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#583#584#0" expanded="true" />
+                <element signature="e#597#598#0" expanded="true" />
+                <element signature="e#759#760#0" expanded="true" />
+                <element signature="e#777#778#0" expanded="true" />
+                <element signature="e#5084#5085#0" expanded="true" />
+                <element signature="e#5112#5113#0" expanded="true" />
+                <element signature="e#5253#5254#0" expanded="true" />
+                <element signature="e#5299#5300#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,9 +120,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -146,13 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/PlaceTypes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Places/Search.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/Variables.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Data/DataRecord.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataJSON.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataMetaToJSON.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataAllToJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JSONDatum.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeConversion.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonVisitor.java" />
@@ -169,7 +162,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonNumber.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/FlatJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/StataJsonType.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flattener/JsonIndex.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flattener/Flat.java" />
@@ -192,11 +184,19 @@
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flattener.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/main/java/resources/legiscanPayload.json" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/FlatQuery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/QueryKey.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/FlatStataJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/QueryIndex.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/QueryRange.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/FlatJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryRange.java" />
       </list>
     </option>
   </component>
@@ -484,6 +484,70 @@
               <option name="myItemId" value="Stata" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -557,11 +621,11 @@
     <configuration default="false" name="InJSON" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="org.paces.Stata.Ingest.*" />
+          <option name="PATTERN" value="org.paces.Stata.Input.Interfaces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="org.paces.Stata.Ingest.InJSON" />
+      <option name="MAIN_CLASS_NAME" value="org.paces.Stata.Input.InJSON" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1070,7 +1134,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3745583" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3745583" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903865" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1080,7 +1144,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903865" sideWeight="0.49112427" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649574" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35217902" sideWeight="0.4868977" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17078917" sideWeight="0.4868977" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16063349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1154,8 +1218,14 @@
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java</url>
+          <line>476</line>
+          <properties />
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="101" />
+      <option name="time" value="113" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1164,11 +1234,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flatten/FlatParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flatten/JsonDatum.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StataJsonTypes.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flatten/StataJSONTypeEnum.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Flatten/StataJSONType.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonFlattener.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Parsers.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ReturnValues/GoogleStataVars.java" />
@@ -1384,6 +1449,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding>
+            <element signature="e#2138#2139#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1402,7 +1470,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/NodeUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/NodeUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
@@ -1412,35 +1480,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/StJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="2" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
-          <folding>
-            <element signature="method#flatten#0;class#StJSON#0" expanded="false" />
-            <element signature="method#checkEmptyNodes#0;class#StJSON#0" expanded="false" />
-            <element signature="docComment;method#makeGenerationString#0;class#StJSON#0" expanded="false" />
-            <element signature="method#makeGenerationString#0;class#StJSON#0" expanded="false" />
-            <element signature="docComment;method#checkName#0;class#StJSON#0" expanded="false" />
-            <element signature="method#checkName#0;class#StJSON#0" expanded="false" />
-            <element signature="docComment;method#checkName#1;class#StJSON#0" expanded="false" />
-            <element signature="method#checkName#1;class#StJSON#0" expanded="false" />
-            <element signature="docComment;method#checkName#2;class#StJSON#0" expanded="false" />
-            <element signature="method#checkName#2;class#StJSON#0" expanded="false" />
-            <element signature="e#15013#15014#0" expanded="false" />
-            <element signature="e#15049#15050#0" expanded="false" />
-            <element signature="e#15283#15284#0" expanded="false" />
-            <element signature="e#15319#15320#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataAllToJSON.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1459,14 +1504,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/InJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1477,9 +1514,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/resources/legiscanPayload.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="38600" column="1" selection-start-line="38600" selection-start-column="1" selection-end-line="38600" selection-end-column="1" />
+        <state relative-caret-position="57468">
+          <caret line="38586" column="10" selection-start-line="38586" selection-start-column="10" selection-end-line="38586" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsonio.ado">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryRange.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="668">
+          <caret line="527" column="0" selection-start-line="527" selection-start-column="0" selection-end-line="527" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#checkEmptyNodes#0;class#FlatJSON#0" expanded="false" />
+            <element signature="docComment;method#makeGenerationString#0;class#FlatJSON#0" expanded="false" />
+            <element signature="method#makeGenerationString#0;class#FlatJSON#0" expanded="false" />
+            <element signature="docComment;method#checkName#0;class#FlatJSON#0" expanded="false" />
+            <element signature="method#checkName#0;class#FlatJSON#0" expanded="false" />
+            <element signature="docComment;method#checkName#1;class#FlatJSON#0" expanded="false" />
+            <element signature="method#checkName#1;class#FlatJSON#0" expanded="false" />
+            <element signature="docComment;method#checkName#2;class#FlatJSON#0" expanded="false" />
+            <element signature="method#checkName#2;class#FlatJSON#0" expanded="false" />
+            <element signature="e#16159#16160#0" expanded="true" />
+            <element signature="e#16195#16196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatStataJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
+            <element signature="e#777#778#0" expanded="true" />
+            <element signature="e#5084#5085#0" expanded="true" />
+            <element signature="e#5112#5113#0" expanded="true" />
+            <element signature="e#5253#5254#0" expanded="true" />
+            <element signature="e#5299#5300#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

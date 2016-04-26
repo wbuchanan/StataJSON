@@ -1,8 +1,7 @@
-package org.paces.Stata.Ingest;
+package org.paces.Stata.Input;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.*;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -54,8 +53,9 @@ public class NodeUtils {
 
 	/**
 	 * Tests if the node contains any elements
-	 * @param an
-	 * @return
+	 * @param an A JsonNode object to be tested
+	 * @return A Boolean indicating if the object is both an ArrayNode and
+	 * has size of 0
 	 */
 	public static Boolean isEmptyArray(JsonNode an) {
 		if (an.isArray() && an.size() == 0) return true;
