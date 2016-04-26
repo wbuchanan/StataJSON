@@ -294,5 +294,15 @@ Serialize variable labels to JSON object that is printed to the Stata console:
 [ "Make and Model", "Price", "Mileage (mpg)", "Repair Record 1978", "Headroom (in.)", "Trunk space (cu. ft.)", "Weight (lbs.)", "Length (in.)", "Turn Circle (ft.) ", "Displacement (cu. in.)", "Gear Ratio", "Car type" ]
 ```
 
+# New input functionality 
+The Stata wrappers are not yet developed, but the performance and functionality 
+in the Java binary is available and performs relatively well.  Here are the 
+timings from a recent test with a 2.9M JSON file containing primarily text data:
+
+```
+Started Job at: 2016/04/25 11:54:40
+Ended Job at : 2016/04/25 11:54:41
+32163 elements total
+```
 
 
