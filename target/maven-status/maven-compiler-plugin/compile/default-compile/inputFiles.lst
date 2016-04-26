@@ -5,9 +5,7 @@
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Google/Geocode.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Google/Google.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/InJSON.java
-/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/QueryIndex.java
-/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/QueryKey.java
-/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/QueryRange.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/Queries.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Google/GoogleStataVars.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/NodeUtils.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/MetaArgs.java

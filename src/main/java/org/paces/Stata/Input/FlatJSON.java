@@ -29,7 +29,7 @@ import static org.paces.Stata.Input.NodeUtils.*;
  * @author Billy Buchanan
  * @version 0.0.0
  */
-public class FlatJSON implements QueryIndex, QueryKey, QueryRange {
+public class FlatJSON implements Queries {
 
 	/**
 	 * Member containing the generation strings in the order they exist in
@@ -509,7 +509,7 @@ public class FlatJSON implements QueryIndex, QueryKey, QueryRange {
 	 * @return A List of integers containing the indices of the matched keys.
 	 */
 	@Override
-	public List<Integer> queryIdx(String pattern) {
+	public List<Integer> queryIndex(String pattern) {
 
 		// A regular expression to use for testing.  A Pattern object gets
 		// created to avoid the overhead associated with the String.matches()
@@ -549,7 +549,7 @@ public class FlatJSON implements QueryIndex, QueryKey, QueryRange {
 	 */
 	@Override
 	public List<Integer> queryRange(String pattern) {
-		List<Integer> indexValues = queryIdx(pattern);
+		List<Integer> indexValues = queryIndex(pattern);
 		List<Integer> returnValues = new ArrayList<>();
 		Collections.sort(indexValues);
 		returnValues.add(0, indexValues.get(0));

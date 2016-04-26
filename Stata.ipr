@@ -289,6 +289,7 @@
           <content-type name="PL/SQL" enabled="true" />
           <content-type name="JPA QL" enabled="true" />
           <content-type name="JavaScript" enabled="true" />
+          <content-type name="PHP" enabled="true" />
           <content-type name="JSP" enabled="true" />
           <content-type name="JSPx" enabled="true" />
           <content-type name="Groovy" enabled="true" />
@@ -580,6 +581,7 @@
   <component name="GroovyCompilerProjectConfiguration">
     <option name="invokeDynamic" value="true" />
   </component>
+  <component name="IdProvider" IDEtalkID="B229412A0ECD7A6B7D19706A746977A7" />
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />

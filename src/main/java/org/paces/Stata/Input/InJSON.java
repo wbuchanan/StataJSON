@@ -118,7 +118,7 @@ public class InJSON {
 			sj.add("Key = ").add(key).add("Value =").add(nodeMap.get(key).toString());
 			System.out.println(sj.toString());
 		}
-		for(Integer idx : nodeMap.queryIdx("/routes_1/legs_2/*")) {
+		for(Integer idx : nodeMap.queryIndex("/routes_1/legs_2/*")) {
 			System.out.println("Index = " + idx.toString());
 		}
 		String end = dateFormat.format(Calendar.getInstance().getTime());
