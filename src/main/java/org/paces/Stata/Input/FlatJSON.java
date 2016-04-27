@@ -1,7 +1,7 @@
 package org.paces.Stata.Input;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.MissingNode;
+import com.fasterxml.jackson.databind.node.*;
 import org.paces.Stata.Input.Interfaces.*;
 
 import java.util.*;
@@ -108,8 +108,6 @@ public class FlatJSON implements Queries {
 	 * class initialization from the flattening of the data by accessing the
 	 * member variables containing the data needed to call the parameterized
 	 * flatten method
-	 * @return The Map object returned by the parameterized flatten method or
-	 * an empty Map object
 	 */
 	public void flatten() {
 
@@ -243,7 +241,9 @@ public class FlatJSON implements Queries {
 	 * object or any other JsonNode type object.
 	 */
 	protected JsonNode checkEmptyNodes(JsonNode jn) {
-		if ((jn.isArray() || jn.isObject()) && jn.size() == 0) return MissingNode.getInstance();
+		if (jn.getNodeType() == JsonNodeType.ARRAY && jn.size() == 0) return MissingNode.getInstance();
+		else if (jn.getNodeType() == JsonNodeType.OBJECT && jn.size() == 0) return MissingNode.getInstance();
+		else if (jn.getNodeType() == JsonNodeType.NULL) return MissingNode.getInstance();
 		else return jn;
 	}
 
@@ -466,9 +466,7 @@ public class FlatJSON implements Queries {
 	}
 
 	/**
-	 * Method used to query the key values of the JSON object.  Implemented as a
-	 * single parameter interface to allow using stream/lambda expressions to
-	 * process the query a bit faster.
+	 * Method used to query the key values of the JSON object.
 	 *
 	 * @param pattern The string pattern to attempt matching in the Keys of the
 	 *                flattened JSON object
@@ -477,7 +475,6 @@ public class FlatJSON implements Queries {
 	 */
 	@Override
 	public List<String> queryKey(String pattern) {
-
 		// A regular expression to use for testing.  A Pattern object gets
 		// created to avoid the overhead associated with the String.matches()
 		// method which would compile a pattern in the background.
@@ -490,49 +487,10 @@ public class FlatJSON implements Queries {
 		// Creates a parallel stream over the elements, filters, and collects
 		// the results
 		List<String> matched = this.generations.parallelStream()
-											   .filter(matcher)
-											   .collect(Collectors.toList());
+			.filter(matcher)
+			.collect(Collectors.toList());
 
 		// Returns the container with the matched keys
-		return matched;
-
-	} // End Method declaration
-
-	/**
-	 * Method used to query the key values of the JSON object.  Implemented as a
-	 * single parameter interface to allow using stream/lambda expressions to
-	 * process the query a bit faster.
-	 *
-	 * @param pattern The string pattern to attempt matching in the Keys of the
-	 *                flattened JSON object
-	 *
-	 * @return A List of integers containing the indices of the matched keys.
-	 */
-	@Override
-	public List<Integer> queryIndex(String pattern) {
-
-		// A regular expression to use for testing.  A Pattern object gets
-		// created to avoid the overhead associated with the String.matches()
-		// method which would compile a pattern in the background.
-		Pattern p = Pattern.compile(pattern);
-
-		// Test if the index is not -1
-		Predicate<Integer> matcher = (idx) -> (idx != -1);
-
-		// Container used to collect the indices from a parallelStream of the
-		// LinkedList object containing the keys.
-		List<Integer> matched = this.generations
-									.parallelStream()
-									.map((Function<String, Integer>) (key) -> {
-										if (p.matcher(key).find()) {
-											return this.generations.indexOf(key);
-										}
-										else return -1;
-									})
-									.filter(matcher)
-									.collect(Collectors.toList());
-
-		// Returns the container holding the indices
 		return matched;
 
 	} // End Method declaration
@@ -555,6 +513,51 @@ public class FlatJSON implements Queries {
 		returnValues.add(0, indexValues.get(0));
 		returnValues.add(1, indexValues.get(indexValues.size() - 1));
 		return returnValues;
- 	}
+	}
+
+	/**
+	 * Method used to query the key values of the JSON object.
+	 *
+	 * @param pattern The string pattern to attempt matching in the Keys of the
+	 *                flattened JSON object
+	 *
+	 * @return A List of integers containing the indices of the matched keys.
+	 */
+	@Override
+	public List<Integer> queryIndex(String pattern) {
+
+		// A regular expression to use for testing.  A Pattern object gets
+		// created to avoid the overhead associated with the String.matches()
+		// method which would compile a pattern in the background.
+		Pattern p = Pattern.compile(pattern);
+
+		// Test if the index is not -1
+		Predicate<Integer> matcher = (idx) -> (idx != -1);
+
+		// Container used to collect the indices from a parallelStream of the
+		// LinkedList object containing the keys.
+		List<Integer> matched = this.generations
+			.parallelStream()
+			.map((Function<String, Integer>) (key) -> {
+				if (p.matcher(key).find()) {
+					return this.generations.indexOf(key);
+				}
+				else return -1;
+			})
+			.filter(matcher)
+			.collect(Collectors.toList());
+
+		// Returns the container holding the indices
+		return matched;
+
+	} // End Method declaration
+
+	/**
+	 * Method that returns that total number of elements in the flattened object
+	 * @return An integer containing the total number of elements
+	 */
+	public Integer getNumberOfElements() {
+		return this.jsonData.size();
+	}
 
 }

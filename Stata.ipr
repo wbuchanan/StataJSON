@@ -578,6 +578,11 @@
       <entry_point TYPE="method" FQNAME="org.paces.StataMetaData.Observations int obPrinter()" />
     </entry_points>
   </component>
+  <component name="ExportableFileTemplateSettings">
+    <internal_templates>
+      <template name="Class.java" reformat="true" live-template-enabled="true" enabled="true" />
+    </internal_templates>
+  </component>
   <component name="GroovyCompilerProjectConfiguration">
     <option name="invokeDynamic" value="true" />
   </component>
@@ -680,7 +685,7 @@
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/doc" />
-    <option name="OPTION_SCOPE" value="protected" />
+    <option name="OPTION_SCOPE" value="private" />
     <option name="OPTION_HIERARCHY" value="true" />
     <option name="OPTION_NAVIGATOR" value="true" />
     <option name="OPTION_INDEX" value="true" />

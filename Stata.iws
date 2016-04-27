@@ -26,13 +26,143 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ae3bc83-55c2-4253-aa06-ce5af9dbdb87" name="Default" comment="Added debugger to main package body.  Need to initialize variables for all methods.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/Queries.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryIndex.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKey.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryRange.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/KeyValue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Loaders/KeyValueImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/StataTypeMap.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/StataJSON.ipr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/StataJSON.iws" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataRecord.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataRecordByteArray.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataRecordDoubleArray.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataRecordIntArray.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataRecordLongArray.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataRecordStringArray.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataSet.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataSetByteArrays.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataSetDoubleArrays.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataSetFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataSetIntArrays.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataSetLongArrays.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataSetStringArrays.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/DataSource.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/MataMatrix.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Meta.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/NumDataColumn.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Observations.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Record.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/RecordFactory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/StataArgsToCollector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/StataData.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/StataXTTS.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/StringDataColumn.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Variables$Nvars.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Variables$ValLabNames.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Variables$ValLabels.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Variables$VarLabels.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Variables$VarNames.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Variables$VarTypes.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Variables$VariableIndex.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Data/Variables.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Google/DataRetrieval.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Google/Directions.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Google/Geocode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Google/Google.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Google/GoogleStataVars.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/Google/TravelMode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/JSON/LoadJSON.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/JSON/MetaArgs.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/JSON/QueryJson.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/JSON/StataAllToJSON.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/JSON/StataJSON.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_site/target/classes/org/paces/Stata/JSON/StataMetaToJSON.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/allclasses-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/allclasses-noframe.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/constant-values.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/deprecated-list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/help-doc.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-10.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-11.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-12.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-13.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/DataRecord.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/DataSet.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/MataMatrix.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Meta.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Observations.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/StataData.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/StataXTTS.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/Variables.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/DataRecord.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/DataSet.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/MataMatrix.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Meta.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Observations.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/StataData.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/StataXTTS.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/class-use/Variables.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Data/package-use.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/DataRecord.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/DataSet.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/MetaArgs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/StataAllToJSON.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/StataJSON.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/StataMetaToJSON.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/MetaArgs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/StataAllToJSON.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/StataJSON.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/class-use/StataMetaToJSON.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/JSON/package-use.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/MataMatrix.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Meta.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Observations.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/StataData.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/StataJSON.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/StataXTTS.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/Variables.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/org/paces/Stata/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/overview-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/overview-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/overview-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/package-list" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/script.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/stylesheet.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsonio.jar" afterPath="$PROJECT_DIR$/jsonio.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Geocode.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Google/Geocode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Input/FlatJSON.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Input/FlatJSON.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Input/FlatStataJSON.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Input/FlatStataJSON.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Input/InJSON.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Input/InJSON.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/org/paces/Stata/Input/NodeUtils.class" afterPath="$PROJECT_DIR$/target/classes/org/paces/Stata/Input/NodeUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/jsonio-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/jsonio-jar-with-dependencies.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/jsonio.jar" afterPath="$PROJECT_DIR$/target/jsonio.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.ipr" afterPath="$PROJECT_DIR$/Stata.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stata.iws" afterPath="$PROJECT_DIR$/Stata.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsonio.ado" afterPath="$PROJECT_DIR$/jsonio.ado" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Geocode.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Geocode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatStataJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatStataJSON.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/NodeUtils.java" afterPath="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/NodeUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <list id="9944e83e-ebc7-46dc-b4a2-561214c82f42" name="Rejected commit: Default" comment="Added debugger to main package body.  Need to initialize variables for all methods." />
     <ignored path="Stata.iws" />
@@ -86,8 +216,20 @@
       <file leaf-file-name="InJSON.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="435">
+              <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsonio.ado" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jsonio.ado">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,11 +238,10 @@
       <file leaf-file-name="FlatJSON.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-694">
-              <caret line="465" column="5" selection-start-line="465" selection-start-column="5" selection-end-line="465" selection-end-column="5" />
+            <state relative-caret-position="219">
+              <caret line="245" column="89" selection-start-line="245" selection-start-column="89" selection-end-line="245" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#checkEmptyNodes#0;class#FlatJSON#0" expanded="false" />
                 <element signature="docComment;method#makeGenerationString#0;class#FlatJSON#0" expanded="false" />
                 <element signature="method#makeGenerationString#0;class#FlatJSON#0" expanded="false" />
                 <element signature="docComment;method#checkName#0;class#FlatJSON#0" expanded="false" />
@@ -109,29 +250,24 @@
                 <element signature="method#checkName#1;class#FlatJSON#0" expanded="false" />
                 <element signature="docComment;method#checkName#2;class#FlatJSON#0" expanded="false" />
                 <element signature="method#checkName#2;class#FlatJSON#0" expanded="false" />
+                <element signature="e#19904#19905#0" expanded="true" />
+                <element signature="e#19938#19939#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlatStataJSON.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FlatStataJSON.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatStataJSON.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+            <state relative-caret-position="338">
+              <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5768#5769#0" expanded="true" />
+                <element signature="e#5796#5797#0" expanded="true" />
+                <element signature="e#6018#6019#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Queries.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/Queries.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="62" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -141,8 +277,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -167,17 +303,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Visitor/VisitableJson.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Visitor/JsonVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Visitor/JsonInput.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Visitor/StataJSONType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/Visitor/NodeVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/Array.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/StataTypeInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonDatum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonByte.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonNumber.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/JsonObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/JsonTypes/StataJsonType.java" />
@@ -216,8 +341,19 @@
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryRange.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKeyImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/Queries.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/NodeUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Geocode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Load/JsonToVariables.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatStataJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/StataTypeMap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/LoadToStata.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Loaders/KeyValue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Loaders/KeyValueImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/KeyValue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java" />
+        <option value="$PROJECT_DIR$/jsonio.ado" />
       </list>
     </option>
   </component>
@@ -266,6 +402,9 @@
   <component name="MavenRunner">
     <option name="jreName" value="1.8" />
   </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
@@ -302,6 +441,46 @@
     <panes>
       <pane id="ProjectPane">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.paces-consulting:stata-java:0.0.2-SNAPSHOT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stata-java-0.0.2-SNAPSHOT.jar" />
+              <option name="myItemType" value="com.jetbrains.ther.projectView.TheRTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.paces-consulting:stata-java:0.0.2-SNAPSHOT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stata-java-0.0.2-SNAPSHOT.jar" />
+              <option name="myItemType" value="com.jetbrains.ther.projectView.TheRTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="Stata" />
@@ -433,6 +612,74 @@
               <option name="myItemId" value="Stata" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Loaders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Input" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Interfaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Stata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -535,11 +782,11 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane />
       </pane>
       <pane id="NBKnowledgePane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1409,60 +1656,60 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1810" height="941" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32975113" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32979977" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5912031" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2909305" sideWeight="0.5131023" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21838236" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cabal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32975113" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cabal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32975113" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
       <window_info id="CodotaView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32975113" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32975113" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975113" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852563" sideWeight="0.5" order="25" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3745583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903865" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32508835" sideWeight="0.493007" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903865" sideWeight="0.49112427" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32549942" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="26" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17078917" sideWeight="0.4868977" order="27" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35806832" sideWeight="0.4868977" order="27" side_tool="false" content_ui="tabs" />
       <window_info id="GhcMod" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32979977" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16063349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="The R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32975113" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="The R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32975113" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="22" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39841428" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299401" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Graphical Navigator" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Code explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="UML Diagrams" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3745583" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262662" sideWeight="0.493007" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39841428" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="23" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649574" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299401" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299401" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262662" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Graphical Navigator" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="CSS-X-Fire" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="24" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1518,13 +1765,19 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java</url>
-          <line>476</line>
+          <url>file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java</url>
+          <line>116</line>
           <properties />
-          <option name="timeStamp" value="112" />
+          <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java</url>
+          <line>115</line>
+          <properties />
+          <option name="timeStamp" value="119" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="113" />
+      <option name="time" value="120" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1533,23 +1786,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/ReturnValues/GoogleStataVars.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Directions.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Geocode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2550">
-          <caret line="170" column="5" selection-start-line="156" selection-start-column="4" selection-end-line="170" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/DataRetrieval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/TravelMode.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Google.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1715,9 +1951,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Ingest/TempTester.java" />
     <entry file="file://$PROJECT_DIR$/../../StataPrograms/s/sdp2016/README.md">
-      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="195">
@@ -1725,6 +1958,9 @@
           </first_editor>
           <second_editor />
         </state>
+      </provider>
+      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+        <state />
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.6.1/jackson-databind-2.6.1-sources.jar!/com/fasterxml/jackson/databind/node/TextNode.java">
@@ -1763,30 +1999,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/NodeUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-          <folding>
-            <element signature="method#descent#0;class#NodeUtils#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/JSON/StataAllToJSON.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="646">
@@ -1795,12 +2015,14 @@
           <second_editor />
         </state>
       </provider>
+      <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1811,68 +2033,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsonio.ado">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryIndex.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryRange.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKey.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKeyImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Google/Geocode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryRange.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/QueryKeyImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="2265">
+          <caret line="158" column="55" selection-start-line="158" selection-start-column="55" selection-end-line="158" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6416#6417#0" expanded="false" />
+            <element signature="e#6462#6463#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/Queries.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="293">
           <caret line="29" column="62" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Load/JsonToVariables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/StataTypeMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="e#275#276#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#353#354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatJSON.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-694">
-          <caret line="465" column="5" selection-start-line="465" selection-start-column="5" selection-end-line="465" selection-end-column="5" />
+        <state relative-caret-position="219">
+          <caret line="245" column="89" selection-start-line="245" selection-start-column="89" selection-end-line="245" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#checkEmptyNodes#0;class#FlatJSON#0" expanded="false" />
             <element signature="docComment;method#makeGenerationString#0;class#FlatJSON#0" expanded="false" />
             <element signature="method#makeGenerationString#0;class#FlatJSON#0" expanded="false" />
             <element signature="docComment;method#checkName#0;class#FlatJSON#0" expanded="false" />
@@ -1881,17 +2092,70 @@
             <element signature="method#checkName#1;class#FlatJSON#0" expanded="false" />
             <element signature="docComment;method#checkName#2;class#FlatJSON#0" expanded="false" />
             <element signature="method#checkName#2;class#FlatJSON#0" expanded="false" />
+            <element signature="e#19904#19905#0" expanded="true" />
+            <element signature="e#19938#19939#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/FlatStataJSON.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        <state relative-caret-position="338">
+          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5768#5769#0" expanded="true" />
+            <element signature="e#5796#5797#0" expanded="true" />
+            <element signature="e#6018#6019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Loaders/KeyValueImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1410">
+          <caret line="94" column="52" selection-start-line="94" selection-start-column="52" selection-end-line="94" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/NodeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="method#descent#0;class#NodeUtils#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/Interfaces/KeyValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1087">
+          <caret line="154" column="66" selection-start-line="154" selection-start-column="66" selection-end-line="154" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/paces/Stata/Input/InJSON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="99" column="5" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsonio.ado">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

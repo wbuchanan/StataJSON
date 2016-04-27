@@ -2,9 +2,10 @@ package org.paces.Stata.Input;
 
 import com.fasterxml.jackson.databind.*;
 import com.stata.sfi.*;
+import org.paces.Stata.Input.Loaders.KeyValueImpl;
 
 import java.io.*;
-import java.net.*;
+import java.net.URL;
 import java.text.*;
 import java.util.*;
 
@@ -30,6 +31,8 @@ public class InJSON {
 	private static String bigJSON =
 		"/Users/billy/Desktop/Programs/Java/Stata/src/main/java/resources" +
 			"/legiscanPayload.json";
+	private static KeyValueImpl kv = new KeyValueImpl();
+
 
 	public static void main(String[] args) {
 
@@ -54,7 +57,8 @@ public class InJSON {
 			URL site = new URL(args[0]);
 			rootNode = mapper.readTree(site);
 			FlatStataJSON nodeMap = new FlatStataJSON(rootNode);
-			insheetLoadKeyValue(nodeMap);
+			nodeMap.flatten();
+			insheetLoadKeyValue(nodeMap, args[1]);
 			return 0;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -73,7 +77,9 @@ public class InJSON {
 			File site = new File(args[0]);
 			rootNode = mapper.readTree(site);
 			FlatStataJSON nodeMap = new FlatStataJSON(rootNode);
-			insheetLoadKeyValue(nodeMap);
+			nodeMap.flatten();
+			Macro.setLocal("totalelements", String.valueOf(nodeMap.getNumberOfElements()));
+			insheetLoadKeyValue(nodeMap, args[1]);
 			return 0;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -86,33 +92,29 @@ public class InJSON {
 	 * data into Stata
 	 * @param nodeMap A FlatJSON object
 	 */
-	public static void insheetLoadKeyValue(FlatStataJSON nodeMap) {
-		Data.setObsTotal(nodeMap.getLineage().size());
-		Data.addVarStr("key", nodeMap.getMaxKeyLength());
-		Data.addVarStr("value", nodeMap.getMaxKeyLength());
-		Integer key = Data.getVarIndex("key");
-		Integer value = Data.getVarIndex("value");
-		Integer i = 1;
-		for(String j : nodeMap.getLineage()) {
-			Data.storeStr(key, i, j);
-			Data.storeStr(value, i, nodeMap.get(j).toString());
-			i++;
-		}
+	public static void insheetLoadKeyValue(FlatStataJSON nodeMap, String pattern) {
+		List<String> keys = nodeMap.queryKey(pattern);
+		StataTypeMap types = kv.sameType(keys, nodeMap.getTypeMap());
+		kv.asKeyValue(types, keys, nodeMap);
+		Macro.setLocal("totalkeys", String.valueOf(nodeMap.getTypeMap().size()));
 	}
 
 	/**
 	 * Class constructor.  Used when testing the FlatJSON class
-	 * @param fileName
-	 * @throws IOException
+	 * @param fileName A string containing a fully qualified file path
+	 * @throws IOException An exception thrown if the file is not found
 	 */
 	public InJSON(String fileName) throws IOException {
 		File json = new File(fileName);
 		rootNode = mapper.readTree(json);
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		String start = dateFormat.format(Calendar.getInstance().getTime());
-		FlatJSON nodeMap = new FlatJSON(rootNode, 0);
+		FlatStataJSON nodeMap = new FlatStataJSON(rootNode, 0);
 		nodeMap.flatten();
 		// queryKey("/routes_1/legs_2/*")
+		List<String> keys = nodeMap.queryKey(".*lat");
+		StataTypeMap types = kv.sameType(keys, nodeMap.getTypeMap());
+		kv.asKeyValue(types, keys, nodeMap);
 		for(String key : nodeMap.queryKey("/routes_1/legs_2/*")) {
 			StringJoiner sj = new StringJoiner("\t");
 			sj.add("Key = ").add(key).add("Value =").add(nodeMap.get(key).toString());

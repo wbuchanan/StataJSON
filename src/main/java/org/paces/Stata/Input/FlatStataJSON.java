@@ -5,6 +5,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.util.*;
 
 /**
+ * Stata flavored subclass of FlatJSON.  Includes methods and members that
+ * are specific to the Stata environment (e.g., to map the Node types to
+ * Stata data types, retrieving the maximum length of the keys when setting a
+ * variable in Stata, etc...).  Use this class when working with Stata
+ * specific implementations.
  * @author Billy Buchanan
  * @version 0.0.0
  */
@@ -13,7 +18,7 @@ public class FlatStataJSON extends FlatJSON {
 	/**
 	 * Member containing strings to map individual datum to Stata types.
 	 */
-	private LinkedList<String> nodeTypes = new LinkedList<>();
+	private Map<String, StataTypeMap> nodeTypes = new LinkedHashMap<>();
 
 	/**
 	 * Member that holds the length of the key strings to set the string
@@ -94,7 +99,7 @@ public class FlatStataJSON extends FlatJSON {
 			nodeMap.put(genString + "/" + thisField, checkEmptyNodes(theNode));
 			this.generations.add(key);
 			this.keyLengths.add(key.length());
-			setTypeMap(checkEmptyNodes(theNode));
+			setTypeMap(key, checkEmptyNodes(theNode));
 		}
 
 		// Otherwise add the field name with a root delimiter before it
@@ -103,7 +108,7 @@ public class FlatStataJSON extends FlatJSON {
 			nodeMap.put("/" + thisField + "_" + depth.toString(), checkEmptyNodes(theNode));
 			this.generations.add(key);
 			this.keyLengths.add(key.length());
-			setTypeMap(checkEmptyNodes(theNode));
+			setTypeMap(key, checkEmptyNodes(theNode));
 		}
 
 		return nodeMap;
@@ -116,42 +121,42 @@ public class FlatStataJSON extends FlatJSON {
 	 * Stata.  A short type in Java (e.g., 2-byte integer) is equivalent to
 	 * an int in Stata.  Booleans are mapped to bytes and will have
 	 * true/false converted to binary indicators.
-	 * @param value
+	 * @param value A JSON node to map onto a Stata data type
 	 */
-	protected void setTypeMap(JsonNode value) {
-		if (value.isBigDecimal()) this.nodeTypes.add("double");
-		else if (value.isBigInteger()) this.nodeTypes.add("double");
-		else if (value.isBinary()) this.nodeTypes.add("strl");
-		else if (value.isBoolean()) this.nodeTypes.add("byte");
-		else if (value.isDouble() ) this.nodeTypes.add("double");
-		else if (value.isFloat()) this.nodeTypes.add("double");
-		else if (value.isFloatingPointNumber()) this.nodeTypes.add("double");
-		else if (value.isInt()) this.nodeTypes.add("long");
-		else if (value.isIntegralNumber()) this.nodeTypes.add("double");
-		else if (value.isLong()) this.nodeTypes.add("double");
-		else if (value.isMissingNode()) this.nodeTypes.add("missing");
-		else if (value.isNull()) this.nodeTypes.add("missing");
-		else if (value.isNumber()) this.nodeTypes.add("double");
-		else if (value.isObject()) this.nodeTypes.add("strl");
-		else if (value.isPojo()) this.nodeTypes.add("strl");
-		else if (value.isShort()) this.nodeTypes.add("int");
-		else if (value.isTextual()) this.nodeTypes.add("str");
-		else this.nodeTypes.add("unknown");
+	protected void setTypeMap(String key, JsonNode value) {
+		if (value.isBigDecimal()) this.nodeTypes.put(key, StataTypeMap.DOUBLE);
+		else if (value.isBigInteger()) this.nodeTypes.put(key, StataTypeMap.DOUBLE);
+		else if (value.isBinary()) this.nodeTypes.put(key, StataTypeMap.STRL);
+		else if (value.isBoolean()) this.nodeTypes.put(key, StataTypeMap.BOOL);
+		else if (value.isDouble() ) this.nodeTypes.put(key, StataTypeMap.DOUBLE);
+		else if (value.isFloat()) this.nodeTypes.put(key, StataTypeMap.DOUBLE);
+		else if (value.isFloatingPointNumber()) this.nodeTypes.put(key, StataTypeMap.DOUBLE);
+		else if (value.isInt()) this.nodeTypes.put(key, StataTypeMap.LONG);
+		else if (value.isIntegralNumber()) this.nodeTypes.put(key, StataTypeMap.DOUBLE);
+		else if (value.isLong()) this.nodeTypes.put(key, StataTypeMap.DOUBLE);
+		else if (value.isMissingNode()) this.nodeTypes.put(key, StataTypeMap.MISSING);
+		else if (value.isNull()) this.nodeTypes.put(key, StataTypeMap.MISSING);
+		else if (value.isNumber()) this.nodeTypes.put(key, StataTypeMap.DOUBLE);
+		else if (value.isObject()) this.nodeTypes.put(key, StataTypeMap.STRL);
+		else if (value.isPojo()) this.nodeTypes.put(key, StataTypeMap.STRL);
+		else if (value.isShort()) this.nodeTypes.put(key, StataTypeMap.INT);
+		else if (value.isTextual()) this.nodeTypes.put(key, StataTypeMap.STR);
+		else this.nodeTypes.put(key, StataTypeMap.STR);
 	}
 
 	/**
 	 * Method to access the nodeTypes member
-	 * @return A LinkedList of String types that identify the Stata type
+	 * @return A Map of String types that identify the Stata type
 	 * mapping for the element.
 	 */
-	public LinkedList<String> getTypeMap() {
+	public Map<String, StataTypeMap> getTypeMap() {
 		return this.nodeTypes;
 	}
 
 	/**
 	 * Method returns the maximum string length of the keys in this object.
 	 * This
-	 * @return
+	 * @return The maximum length of key elements
 	 */
 	public Integer getMaxKeyLength() {
 		return Collections.max(this.keyLengths);
