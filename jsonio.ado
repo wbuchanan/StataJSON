@@ -28,6 +28,65 @@ prog def jsonio, rclass
 	// Set version
 	version 13.0
 
+	// Define input syntax
+	syntax anything(name=subtype id="Input/Output Type"), [					 ///
+	ELEMents(passthru) Type(passthru) FILEnm(passthru) OBid(passthru) 		 ///
+	METAprint(passthru)  What(passthru) ]
+
+	// Tokenize the first argument
+	gettoken cmd opts : subtype
+
+	// If command is keyvay
+	if `"`cmd'"' == "kv" keyval `opts', `elements' `type'
+
+	else out `opt', `filenm' `obid' `metaprint' `what'
+
+	// Return local with the total number of keys
+	ret loc totalkeys `totalkeys'
+
+	// Set the local macro that needs to be returned
+	ret loc thejson `"`thejson'"'
+
+// End of the program definition
+end
+
+// JSON Deserializer
+prog def keyval, rclass
+
+	// Define input syntax
+	syntax anything(name=source id="Source of the JSON Input") [,
+	ELEMents(string) Type(integer 0)]
+
+	// If elements is null
+	if `"`elements'"' == "" loc elements "*"
+
+	// Type 0 is for files
+	if `type' == 0 {
+
+		// Call Java method to import from file
+		javacall org.paces.Stata.Input.InJSON insheetFile,					 ///
+		args("`source'" "`elements'")
+
+	} // End IF Block for files
+
+	// If it is a URL
+	else {
+
+		// Call Java method to import from URL
+		javacall org.paces.Stata.Input.InJSON insheetURL,					 ///
+		args("`source'" "`elements'")
+
+	} // End ELSE Block for URLs
+
+	// Return local with the total number of keys
+	ret loc totalkeys `totalkeys'
+
+// End subroutine
+end
+
+// JSON Serializer
+prog def out, rclass
+
 	// Define syntax
 	syntax [varlist] [if] [in] [using/] , 				 					 ///
 	[ FILEnm(string asis) OBid(real 0) METAprint(string asis)                ///

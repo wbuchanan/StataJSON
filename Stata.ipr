@@ -578,10 +578,15 @@
       <entry_point TYPE="method" FQNAME="org.paces.StataMetaData.Observations int obPrinter()" />
     </entry_points>
   </component>
+  <component name="ExportableFileTemplateSettings">
+    <internal_templates>
+      <template name="Class.java" reformat="true" live-template-enabled="true" enabled="true" />
+    </internal_templates>
+  </component>
   <component name="GroovyCompilerProjectConfiguration">
     <option name="invokeDynamic" value="true" />
   </component>
-  <component name="IdProvider" IDEtalkID="EA688F95883F3115BEFC1B663D40D0A5" />
+  <component name="IdProvider" IDEtalkID="B229412A0ECD7A6B7D19706A746977A7" />
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />
@@ -680,7 +685,7 @@
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/doc" />
-    <option name="OPTION_SCOPE" value="protected" />
+    <option name="OPTION_SCOPE" value="private" />
     <option name="OPTION_HIERARCHY" value="true" />
     <option name="OPTION_NAVIGATOR" value="true" />
     <option name="OPTION_INDEX" value="true" />

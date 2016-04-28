@@ -366,6 +366,7 @@ public class NodeUtils {
 	 * @param node An JsonNode which will be descended into to determine
 	 *                the depth of nested objects
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	public static Integer descent(JsonNode node, Integer currentLevel) {
 		List<JsonNode> children = nodeList(node);
@@ -385,6 +386,7 @@ public class NodeUtils {
 	 * @param node An ArrayNode which will be descended into to determine
 	 *                the depth of nested objects
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	public static Integer descent(ArrayNode node, Integer currentLevel) {
 		return descent((JsonNode)node, currentLevel);
@@ -396,6 +398,7 @@ public class NodeUtils {
 	 * @param node An ObjectNode which will be descended into to determine
 	 *                the depth of nested objects
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	public static Integer descent(ObjectNode node, Integer currentLevel) {
 		return descent((JsonNode)node, currentLevel);
@@ -406,6 +409,7 @@ public class NodeUtils {
 	 * @param node A Base64 type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(BaseJsonNode node, Integer currentLevel) {
 		return currentLevel;
@@ -416,6 +420,7 @@ public class NodeUtils {
 	 * @param node A BigInteger type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(BigIntegerNode node, Integer currentLevel) {
 		return currentLevel;
@@ -426,6 +431,7 @@ public class NodeUtils {
 	 * @param node A Binary type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(BinaryNode node, Integer currentLevel) {
 		return currentLevel;
@@ -436,6 +442,7 @@ public class NodeUtils {
 	 * @param node A Boolean type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(BooleanNode node, Integer currentLevel) {
 		return currentLevel;
@@ -446,6 +453,7 @@ public class NodeUtils {
 	 * @param node A Decimal valued type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(DecimalNode node, Integer currentLevel) {
 		return currentLevel;
@@ -456,6 +464,7 @@ public class NodeUtils {
 	 * @param node A Double type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(DoubleNode node, Integer currentLevel) {
 		return currentLevel;
@@ -466,6 +475,7 @@ public class NodeUtils {
 	 * @param node A Float type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(FloatNode node, Integer currentLevel) {
 		return currentLevel;
@@ -476,6 +486,7 @@ public class NodeUtils {
 	 * @param node A Integer type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(IntNode node, Integer currentLevel) {
 		return currentLevel;
@@ -486,6 +497,7 @@ public class NodeUtils {
 	 * @param node A Long type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(LongNode node, Integer currentLevel) {
 		return currentLevel;
@@ -496,6 +508,7 @@ public class NodeUtils {
 	 * @param node A Missing type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(MissingNode node, Integer currentLevel) {
 		return currentLevel;
@@ -506,6 +519,7 @@ public class NodeUtils {
 	 * @param node A Null type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(NullNode node, Integer currentLevel) {
 		return currentLevel;
@@ -516,6 +530,7 @@ public class NodeUtils {
 	 * @param node A Number type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(NumericNode node, Integer currentLevel) {
 		return currentLevel;
@@ -526,6 +541,7 @@ public class NodeUtils {
 	 * @param node A POJO (Plain Old Java Object) type JsonNode which contains
 	 *                some type of non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(POJONode node, Integer currentLevel) {
 		return currentLevel;
@@ -536,6 +552,7 @@ public class NodeUtils {
 	 * @param node A Short type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(ShortNode node, Integer currentLevel) {
 		return currentLevel;
@@ -546,6 +563,7 @@ public class NodeUtils {
 	 * @param node A Text type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(TextNode node, Integer currentLevel) {
 		return currentLevel;
@@ -556,6 +574,7 @@ public class NodeUtils {
 	 * @param node A Value type JsonNode which contains some type of
 	 *                non-container value
 	 * @param currentLevel The level of the descent where this node occurs
+	 * @return An integer value containing the depth of a terminal node
 	 */
 	private static Integer descent(ValueNode node, Integer currentLevel) {
 		return currentLevel;

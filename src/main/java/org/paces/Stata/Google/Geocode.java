@@ -156,6 +156,7 @@ public class Geocode {
 
 	/**
 	 * Method to configure the Jackson JSON Object Mapper object
+	 * @return Returns a configured ObjectMapper object
 	 */
 	private ObjectMapper configMapper() {
 		ObjectMapper mapper = new ObjectMapper();
