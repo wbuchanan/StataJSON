@@ -8,12 +8,16 @@ import java.util.*;
 import static org.paces.Stata.Input.StataTypeMap.*;
 
 /**
+ * Implementing class for loading the data in Stata as a KeyValue pair.
+ * Created statically from the entry point to the class.
  * @author Billy Buchanan
  * @version 0.0.0
  */
 public class KeyValueImpl implements KeyValue {
 
-
+	/**
+	 * Empty class constructor (unused).
+	 */
 	public KeyValueImpl() {
 	}
 
@@ -29,6 +33,9 @@ public class KeyValueImpl implements KeyValue {
 	 */
 	@Override
 	public StataTypeMap sameType(List<String> keys, Map<String, StataTypeMap> typeMap) {
+
+		// Should prevent needing to iterate over en
+		if (new HashSet(typeMap.values()).size() == 1) return typeMap.get(keys.get(0));
 
 		// Gets the first node type
 		StataTypeMap thisType;

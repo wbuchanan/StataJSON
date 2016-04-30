@@ -11,46 +11,7 @@ import java.util.*;
  * @author Billy Buchanan
  * @version 0.0.0
  */
-public interface KeyValue {
-
-	/**
-	 * Method used to create Stata key/value variables
-	 * @param obs The number of observations to create in the data set
-	 * @param keyLength The maximum length of the strings used to store the keys
-	 * @param type String type identifying the Stata data type to create
-	 * @return A List of Integers containing the indices for the key and
-	 * value variables.  The first element is the key (e.g., .get(0)) and
-	 * second element returns the index for the values.
-	 */
-	default List<Integer> addStataVars(Integer obs, Integer keyLength, String
-	 type) {
-		Data.setObsTotal(obs);
-		Data.addVarStr("key", keyLength);
-		switch (type) {
-			case "byte" :
-				Data.addVarInt("value");
-				break;
-			case "int" :
-				Data.addVarInt("value");
-				break;
-			case "long" :
-				Data.addVarInt("value");
-				break;
-			case "double" :
-				Data.addVarDouble("value");
-				break;
-			case "strL" :
-				Data.addVarStrL("value");
-				break;
-			default :
-				Data.addVarStr("value", keyLength);
-				break;
-		}
-		List<Integer> varidx = new ArrayList<>();
-		varidx.add(0, Data.getVarIndex("key"));
-		varidx.add(1, Data.getVarIndex("value"));
-		return varidx;
-	}
+public interface KeyValue extends StataVariableCreator {
 
 	/**
 	 * Method to test whether all the node elements identified by the indices
@@ -75,8 +36,8 @@ public interface KeyValue {
 		Integer i = 1;
 		for(String j : keys) {
 			Data.storeStr(idx.get(0), i, j);
-			if (nodeMap.get(j).booleanValue()) Data.storeNum(idx.get(1), i, 1);
-			else Data.storeNum(1, i, 0);
+			if (nodeMap.get(j).booleanValue()) Data.storeNum(idx.get(1), i, (byte)1);
+			else Data.storeNum(1, i, (byte)0);
 			i++;
 		}
 	}

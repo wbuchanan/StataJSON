@@ -1,10 +1,12 @@
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/StataAllToJSON.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Google/DataRetrieval.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/StataJSON.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/RowValue.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/StataMetaToJSON.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Google/Geocode.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Google/Google.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/InJSON.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/StataVariableCreator.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/Queries.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/StataTypeMap.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Google/GoogleStataVars.java
@@ -12,5 +14,6 @@
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/MetaArgs.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/FlatStataJSON.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Loaders/KeyValueImpl.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Loaders/RowValueImpl.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/FlatJSON.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/KeyValue.java

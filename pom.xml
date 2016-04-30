@@ -6,12 +6,12 @@
 
 	<!-- This contains the overall package metadata -->
 	<groupId>org.paces-consulting</groupId>
-	<artifactId>Stata</artifactId>
-	<version>0.0.0</version>
+	<artifactId>stata-json</artifactId>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 	<name>Stata Java Tools</name>
-	<description>Java plugins used to extend capabilities in Stata
-	statical software platform.</description>
+	<description>Java plugins for serializing and deserializing JSON data in
+		Stata.</description>
 	<url>https://github.com/wbuchanan/StataJSON</url>
 
 	<!-- Information regarding organization publishing the plugin -->
@@ -112,8 +112,8 @@
 			<artifactId>stata-java</artifactId>
 			<version>0.0.2-SNAPSHOT</version>
 			<type>jar</type>
-			<scope>provided</scope>
-			<optional>true</optional>
+			<scope>compile</scope>
+			<optional>false</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -121,6 +121,7 @@
 			<version>2.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<optional>false</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -128,6 +129,7 @@
 			<version>2.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<optional>false</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -135,6 +137,7 @@
 			<version>2.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<optional>false</optional>
 		</dependency>
 		<!--
 		<dependency>
@@ -151,104 +154,6 @@
 			<type>jar</type>
 			<scope>compile</scope>
 			<optional>false</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.dataformat</groupId>
-			<artifactId>jackson-dataformat-smile</artifactId>
-			<version>2.7.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
-			<optional>false</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.dataformat</groupId>
-			<artifactId>jackson-dataformat-yaml</artifactId>
-			<version>2.5.4</version>
-			<type>jar</type>
-			<scope>compile</scope>
-			<optional>false</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-hibernate4</artifactId>
-			<version>2.5.3</version>
-			<type>jar</type>
-			<scope>compile</scope>
-			<optional>false</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.dataformat</groupId>
-  			<artifactId>jackson-dataformat-avro</artifactId>
-  			<version>2.87.2</version>
-  			<type>jar</type>
-  			<scope>compile</scope>
-  			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-json-org</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-			<optional>false</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.github.wnameless</groupId>
-			<artifactId>json-flattener</artifactId>
-			<version>0.1.7-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.eclipsesource.minimal-json</groupId>
-			<artifactId>minimal-json</artifactId>
-			<version>0.9.4</version>
-			<type>jar</type>
-			<scope>compile</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jdk8</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jdk7</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-jsonSchema</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-mrbean</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-parameter-names</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-paranamer</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 		-->
 	</dependencies>
