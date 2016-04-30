@@ -2,18 +2,39 @@ package org.paces.Stata.Input;
 
 import com.fasterxml.jackson.databind.*;
 import com.stata.sfi.*;
-import org.paces.Stata.Input.Loaders.KeyValueImpl;
+import org.paces.Stata.Input.Loaders.*;
 
 import java.io.*;
 import java.net.URL;
-import java.text.*;
-import java.util.*;
+import java.util.List;
 
 /**
- * Currently set up for testing, but this will be the parent class used to
- * call/create the object that will store the JSON Data.  Methods will be
- * available to provide different options over time (e.g., putting into Stata
- * as two string variables, creating series of variables, etc...).
+ * Class that serves as the point of entry for loading JSON data into Stata.
+ * Currently contains two "modes" or "interfaces" (not in the Java sense of
+ * an interface): <strong>key-value</strong> and <strong>row-value</strong>.
+ *
+ * <h2>Key-Value</h2>
+ * This mode is used to return/store the data in Stata as an n x 2 matrix of
+ * key and value pairs.  The methods insheetUrl and insheetFile are used.  These
+ * methods create two variables in Stata with the names <em>key</em> &
+ * <em>value</em>.  If the values of the payload to be loaded are of varying
+ * types the values are all loaded as Strings.  If the values are all the
+ * same numeric type, the values are loaded as that numeric type.  Users can
+ * specify a regular expression string that will be used to query and return
+ * a subset of the available JSON.
+ *
+ * <h2>Row-Value</h2>
+ * This mode is used to return the payload as distinct variables in the data
+ * set (e.g., 1 JSON payload = 1 x m elements), or a row vector.  This mode
+ * uses the insheetFileToVars and insheetUrlToVars methods.  There are two
+ * major differences between this and the key-value mode:
+ * <li>
+ *     <ul>Naming Conventions</ul>
+ *     <ul>Data Types</ul>
+ * </li>
+ * Unlike the key-value mode, more than two variables are required to store
+ * the data in this mode.  At the moment
+ *
  * @author Billy Buchanan
  * @version 0.0.0
  */
@@ -22,18 +43,14 @@ public class InJSON {
 	private static ObjectMapper mapper = new ObjectMapper();
 	private static MappingJsonFactory jsonFactory = new MappingJsonFactory(mapper);
 	private static JsonNode rootNode;
-	private static String emptyObjects =
-		"/Users/billy/Desktop/emptyObjectTest.json";
-	private static String places =
-		"/Users/billy/Desktop/placesExample.json";
-	private static String waypoints =
-		"/Users/billy/Desktop/waypointsResponse.json";
-	private static String bigJSON =
-		"/Users/billy/Desktop/Programs/Java/Stata/src/main/java/resources" +
-			"/legiscanPayload.json";
 	private static KeyValueImpl kv = new KeyValueImpl();
 
 
+	/*
+	private static String emptyObjects = "/Users/billy/Desktop/emptyObjectTest.json";
+	private static String places = "/Users/billy/Desktop/placesExample.json";
+	private static String waypoints = "/Users/billy/Desktop/waypointsResponse.json";
+	private static String bigJSON = "/Users/billy/Desktop/Programs/Java/Stata/src/main/java/resources/legiscanPayload.json";
 	public static void main(String[] args) {
 
 		try {
@@ -45,6 +62,39 @@ public class InJSON {
 			System.out.println(e.toString());
 		}
 	}
+
+	/**
+	*  Class constructor.  Used when testing the FlatJSON class
+	*  @param fileName A string containing a fully qualified file path
+	*  @throws IOException An exception thrown if the file is not found
+	public InJSON(String fileName) throws IOException {
+		File json = new File(fileName);
+		rootNode = mapper.readTree(json);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String start = dateFormat.format(Calendar.getInstance().getTime());
+		FlatStataJSON nodeMap = new FlatStataJSON(rootNode, 0);
+		nodeMap.flatten();
+		// queryKey("/routes_1/legs_2/*")
+		List<String> keys = nodeMap.queryKey(".*lat");
+		StataTypeMap types = kv.sameType(keys, nodeMap.getTypeMap());
+		kv.asKeyValue(types, keys, nodeMap);
+		for(String key : nodeMap.queryKey("/routes_1/legs_2/*")) {
+			StringJoiner sj = new StringJoiner("\t");
+			sj.add("Key = ").add(key).add("Value =").add(nodeMap.get(key).toString());
+			System.out.println(sj.toString());
+		}
+		for(Integer idx : nodeMap.queryIndex("/routes_1/legs_2/*")) {
+			System.out.println("Index = " + idx.toString());
+		}
+		String end = dateFormat.format(Calendar.getInstance().getTime());
+		System.out.println("Started Job at: " + start);
+		System.out.println("Ended Job at : " + end);
+		System.out.println(String.valueOf(nodeMap.getLineage().size()) + " " +
+			"elements total");
+		// for(String i : nodeMap.getLineage()) System.out.println(i);
+		// for(String i : nodeMap.getTypeMap()) System.out.println(i);
+	}
+	*/
 
 	/**
 	 * Method used to read JSON payload from a URL into Stata in a key/value
@@ -100,38 +150,66 @@ public class InJSON {
 	}
 
 	/**
-	 * Class constructor.  Used when testing the FlatJSON class
-	 * @param fileName A string containing a fully qualified file path
-	 * @throws IOException An exception thrown if the file is not found
+	 * Method used to parse JSON from a file and load into a single row in
+	 * the data set in memory
+	 * @param args A String array of arguments passed from the javacall
+	 *                command in Stata
+	 * @return Returns a success/failure indicator
 	 */
-	public InJSON(String fileName) throws IOException {
-		File json = new File(fileName);
-		rootNode = mapper.readTree(json);
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		String start = dateFormat.format(Calendar.getInstance().getTime());
-		FlatStataJSON nodeMap = new FlatStataJSON(rootNode, 0);
-		nodeMap.flatten();
-		// queryKey("/routes_1/legs_2/*")
-		List<String> keys = nodeMap.queryKey(".*lat");
-		StataTypeMap types = kv.sameType(keys, nodeMap.getTypeMap());
-		kv.asKeyValue(types, keys, nodeMap);
-		for(String key : nodeMap.queryKey("/routes_1/legs_2/*")) {
-			StringJoiner sj = new StringJoiner("\t");
-			sj.add("Key = ").add(key).add("Value =").add(nodeMap.get(key).toString());
-			System.out.println(sj.toString());
+	public static int insheetFileToVars(String[] args) {
+		try {
+			File site = new File(args[0]);
+			rootNode = mapper.readTree(site);
+			FlatStataJSON nodeMap = new FlatStataJSON(rootNode);
+			nodeMap.flatten();
+			Macro.setLocal("totalelements", String.valueOf(nodeMap.getNumberOfElements()));
+			insheetLoadRowValue(nodeMap, args[1], Integer.parseInt(args[2]),
+				args[3]);
+			return 0;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return 1;
 		}
-		for(Integer idx : nodeMap.queryIndex("/routes_1/legs_2/*")) {
-			System.out.println("Index = " + idx.toString());
+	}
+
+	/**
+	 * Method used to parse JSON from URL and load into a single row
+	 * @param args A String array of arguments passed from the javacall
+	 *                command in Stata
+	 * @return Returns a success/failure indicator
+	 */
+	public static int insheetUrlToVars(String[] args) {
+		try {
+			URL site = new URL(args[0]);
+			rootNode = mapper.readTree(site);
+			FlatStataJSON nodeMap = new FlatStataJSON(rootNode);
+			nodeMap.flatten();
+			Macro.setLocal("totalelements", String.valueOf(nodeMap.getNumberOfElements()));
+			insheetLoadRowValue(nodeMap, args[1], Integer.parseInt(args[2]),
+				args[3]);
+			return 0;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return 1;
 		}
-		String end = dateFormat.format(Calendar.getInstance().getTime());
-		System.out.println("Started Job at: " + start);
-		System.out.println("Ended Job at : " + end);
-		System.out.println(String.valueOf(nodeMap.getLineage().size()) + " " +
-			"elements total");
-		// for(String i : nodeMap.getLineage()) System.out.println(i);
-		// for(String i : nodeMap.getTypeMap()) System.out.println(i);
 	}
 
 
+	/**
+	 * Method used to load the flattened JSON object as a single row vector
+	 * in the Stata DataSet in memory.
+	 * @param nodeMap The Flattened JSON Object
+	 * @param pattern The query pattern from the user
+	 * @param obid The observation ID where these data will be stored
+	 * @param stubname A string used to construct variable names by appending
+	 *                    ID/Iterator values as a suffix
+	 */
+	public static void insheetLoadRowValue(FlatStataJSON nodeMap,
+	                                       String pattern,
+	                                       Integer obid,
+	                                       String stubname) {
+		List<String> keys = nodeMap.queryKey(pattern);
+		new RowValueImpl(keys, nodeMap, obid, stubname);
+	}
 
 }

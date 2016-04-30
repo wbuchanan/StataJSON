@@ -7,17 +7,17 @@
 * System Requirements -                                                        *
 *   JRE 1.8 or Higher.                                                         *
 *                                                                              *
-* Output -                                                                     *
+* Output - (Optional)                                            			   *
 *   Either prints a JSON object to the Stata console or writes one to disk.    *
 *                                                                              *
 * Lines -                                                                      *
-* 	144	                                                                       *
+* 	209	                                                                       *
 *                                                                              *
 ********************************************************************************
 
 *! jsonio
-*! 28sep2015
-*! v 0.0.2
+*! 29APR2016
+*! v 0.0.4
 
 // Drop program from memory if it exists
 cap prog drop jsonio
@@ -30,19 +30,24 @@ prog def jsonio, rclass
 
 	// Define input syntax
 	syntax anything(name=subtype id="Input/Output Type"), [					 ///
-	ELEMents(passthru) Type(passthru) FILEnm(passthru) OBid(passthru) 		 ///
-	METAprint(passthru)  What(passthru) ]
+	ELEMents(passthru) noURL FILEnm(string) OBid(passthru) 					 ///
+	METAprint(passthru)  What(passthru) STUBname(passthru) ]
 
 	// Tokenize the first argument
 	gettoken cmd opts : subtype
 
-	// If command is keyvay
-	if `"`cmd'"' == "kv" keyval `opts', `elements' `type'
+	// Make sure there aren't any issues with the macro expansion for filepaths
+	if `"`url'"' == "nourl" loc filenm `: subinstr loc filenm `"~"' `"`: env HOME'"''
 
-	else out `opt', `filenm' `obid' `metaprint' `what'
+	// If command is keyvay
+	if `"`cmd'"' == "kv" keyval `"`filenm'"', `elements' `url'
+
+	else if `"`cmd'"' == "rv" rowval `"`filenm'"', `elements' `url' `obid' `stubname'
+
+	else out `opt', filenm(`filenm') `obid' `metaprint' `what'
 
 	// Return local with the total number of keys
-	ret loc totalkeys `totalkeys'
+	ret loc totalkeys `r(totalkeys)'
 
 	// Set the local macro that needs to be returned
 	ret loc thejson `"`thejson'"'
@@ -51,21 +56,24 @@ prog def jsonio, rclass
 end
 
 // JSON Deserializer
-prog def keyval, rclass
+prog def rowval, rclass
 
 	// Define input syntax
-	syntax anything(name=source id="Source of the JSON Input") [,
-	ELEMents(string) Type(integer 0)]
+	syntax anything(name=source id="Source of the JSON Input") [,			 ///
+	ELEMents(string) noURL OBid(integer 0) STUBname(string asis) ]
 
 	// If elements is null
-	if `"`elements'"' == "" loc elements "*"
+	if `"`elements'"' == "" loc elements ".*"
 
-	// Type 0 is for files
-	if `type' == 0 {
+	// Use default stubname if none specified
+	if "`stubname'" == "" loc stubname jsonvar
+
+	// Assumes data is coming from a URL unless specified otherwise
+	if `"`url'"' == "nourl" {
 
 		// Call Java method to import from file
-		javacall org.paces.Stata.Input.InJSON insheetFile,					 ///
-		args("`source'" "`elements'")
+		javacall org.paces.Stata.Input.InJSON insheetFileToVars,			 ///
+		args(`source' "`elements'" "`obid'" "`stubname'")
 
 	} // End IF Block for files
 
@@ -73,8 +81,41 @@ prog def keyval, rclass
 	else {
 
 		// Call Java method to import from URL
-		javacall org.paces.Stata.Input.InJSON insheetURL,					 ///
-		args("`source'" "`elements'")
+		javacall org.paces.Stata.Input.InJSON insheetUrlToVars,				 ///
+		args(`source' "`elements'" "`obid'")
+
+	} // End ELSE Block for URLs
+
+	// Return local with the total number of keys
+	ret loc totalkeys `totalkeys'
+
+// End subroutine
+end
+
+// JSON Deserializer
+prog def keyval, rclass
+
+	// Define input syntax
+	syntax anything(name=source id="Source of the JSON Input") [,			 ///
+	ELEMents(string) noURL ]
+
+	// If elements is null
+	if `"`elements'"' == "" loc elements ".*"
+
+	// Assumes data is coming from a URL unless specified otherwise
+	if `"`url'"' == "nourl" {
+
+		// Call Java method to import from file
+		javacall org.paces.Stata.Input.InJSON insheetFile,					 ///
+		args(`source' "`elements'")
+
+	} // End IF Block for files
+
+	// If it is a URL
+	else {
+
+		// Call Java method to import from URL
+		javacall org.paces.Stata.Input.InJSON insheetUrl, args(`source' "`elements'")
 
 	} // End ELSE Block for URLs
 

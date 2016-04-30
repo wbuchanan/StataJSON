@@ -1,6 +1,7 @@
 org/paces/Stata/Google/GoogleStataVars.class
 org/paces/Stata/Input/Loaders/KeyValueImpl.class
 org/paces/Stata/JSON/StataJSON.class
+org/paces/Stata/Input/Interfaces/StataVariableCreator.class
 org/paces/Stata/Input/Interfaces/Queries.class
 org/paces/Stata/JSON/MetaArgs.class
 org/paces/Stata/Google/DataRetrieval.class
@@ -9,16 +10,14 @@ org/paces/Stata/JSON/StataAllToJSON.class
 org/paces/Stata/Input/FlatStataJSON.class
 org/paces/Stata/Input/FlatJSON.class
 org/paces/Stata/Input/Interfaces/KeyValue.class
+org/paces/Stata/Input/Loaders/RowValueImpl$1.class
 org/paces/Stata/Input/StataTypeMap.class
 org/paces/Stata/JSON/StataMetaToJSON.class
 org/paces/Stata/Input/InJSON.class
 org/paces/Stata/Google/Google.class
-<<<<<<< HEAD
-org/paces/Stata/Input/Interfaces/QueryRange.class
-org/paces/Stata/Input/Interfaces/QueryIndex.class
-org/paces/Stata/JSON/LoadJSON.class
-=======
 org/paces/Stata/Input/Loaders/KeyValueImpl$1.class
->>>>>>> 87457fe9e3332208bb451818da019ca631a6f65d
+org/paces/Stata/Input/Loaders/RowValueImpl.class
+org/paces/Stata/JSON/LoadJSON.class
+org/paces/Stata/Input/Interfaces/RowValue.class
 org/paces/Stata/Input/NodeUtils.class
 org/paces/Stata/JSON/QueryJson.class
