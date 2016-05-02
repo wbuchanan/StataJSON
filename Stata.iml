@@ -31,6 +31,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: org.paces-consulting:stata-java:0.0.2-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.stata:sfi:14" level="project" />
     <orderEntry type="library" name="Maven: org.paces-consulting:stata-java:0.0.2-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.1" level="project" />

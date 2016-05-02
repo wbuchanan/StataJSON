@@ -2,13 +2,79 @@ package org.paces.Stata.Input;
 
 /**
  * An ENUM used to map the JsonNode objects to Stata data types.
+ *
+ * <table summary="Mappings from Enum values, to Stata and JsonNode types">
+ *     <tr><td>Enum Value</td><td>Stata Type</td><td>JsonNode Type</td></tr>
+ *     <tr><td>BOOL</td><td>byte (0 = false; 1 =
+ *     true)</td><td>boolean</td></tr>
+ *     <tr><td>BYTE</td><td>byte</td><td>N/A</td></tr>
+ *     <tr><td>DOUBLE</td><td>double</td><td>Double, Float,
+ *     BigDecimal, BigInteger, FloatingPointNumber, Integral
+ *     Number, Long, and Number</td></tr>
+ *     <tr><td>FLOAT</td><td>double</td><td>Float</td></tr>
+ *     <tr><td>INT</td><td>long</td><td>Integer</td></tr>
+ *     <tr><td>LONG</td><td>double</td><td>Long</td></tr>
+ *     <tr><td>STR</td><td>string</td><td>String</td></tr>
+ *     <tr><td>STRL</td><td>strL</td><td>Binary, Object, and POJO</td></tr>
+ *     <tr><td>MISSING</td><td>byte/string</td><td>Missing</td></tr>
+ *     <tr><td>MIXED</td><td>string</td><td>N/A (multiple types in
+ *     keyvalue mode)</td></tr>
+ *     <tr><td>UNKNOWN</td><td>N/A</td><td>N/A</td></tr>
+ * </table>
+ *
  * @author Billy Buchanan
  * @version 0.0.0
  */
 public enum StataTypeMap {
 
-	BOOL(0), BYTE(1), DOUBLE(2), FLOAT(3), INT(4), LONG(5),
-	STR(6), STRL(7), MISSING(8), MIXED(9), UNKNOWN(10);
+	/**
+	 * Java Boolean to Stata indicator type
+	 */
+	BOOL(0),
+	/**
+	 * Java byte to Stata byte (currently unused, but will be used for
+	 * integers in [-127, 100)
+	 */
+	BYTE(1),
+	/**
+	 * Maps 8-byte Integers, Floats, and Doubles to Stata double types
+	 */
+	DOUBLE(2),
+	/**
+	 * Float types are recast to doubles before pushing into Stata
+	 */
+	FLOAT(3),
+	/**
+	 * Java short types are loaded as Stata int types (e.g., 2-byte Integers)
+	 */
+	INT(4),
+	/**
+	 * Java int types are loaded as Stata long types (e.g., 4-byte Integers)
+	 */
+	LONG(5),
+	/**
+	 * Generic String type
+	 */
+	STR(6),
+	/**
+	 * Stata blob type, used for binary data, objects, and POJOs
+	 */
+	STRL(7),
+	/**
+	 * In key-value mode will return byte with value 127 if all values are
+	 * missing or an empty string,  In row-value mode will always return a
+	 * byte variable with value 127.
+	 */
+	MISSING(8),
+	/**
+	 * Only used in key-value mode to indicate multiple types of data.
+	 * Forces all data to be loaded as string types.
+	 */
+	MIXED(9),
+	/**
+	 * Currently not used, but would load the data into a strL
+	 */
+	UNKNOWN(10);
 
 	/**
 	 * Stores the value of the ENUM

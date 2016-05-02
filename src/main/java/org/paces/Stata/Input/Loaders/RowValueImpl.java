@@ -38,6 +38,8 @@ public class RowValueImpl implements RowValue {
 	 * @param nodeMap A FlatStataJSON object containg a key-value pair of the
 	 *                   flattened JSON object
 	 * @param obid The observation ID where the data will be stored
+	 * @param stubname The root string used to construct variable names for
+	 *                    the JsonNodes
 	 */
 	public RowValueImpl(List<String> keys, FlatStataJSON nodeMap, Integer obid,
 	                    String stubname) {

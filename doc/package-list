@@ -1,4 +1,5 @@
 org.paces.Stata.Google
 org.paces.Stata.Input
 org.paces.Stata.Input.Interfaces
+org.paces.Stata.Input.Loaders
 org.paces.Stata.JSON

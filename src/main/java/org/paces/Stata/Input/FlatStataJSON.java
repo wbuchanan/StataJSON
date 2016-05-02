@@ -121,6 +121,8 @@ public class FlatStataJSON extends FlatJSON {
 	 * Stata.  A short type in Java (e.g., 2-byte integer) is equivalent to
 	 * an int in Stata.  Booleans are mapped to bytes and will have
 	 * true/false converted to binary indicators.
+	 * @param key The JSON generation string used to uniquely identify each
+	 *               JsonNode Object
 	 * @param value A JSON node to map onto a Stata data type
 	 */
 	protected void setTypeMap(String key, JsonNode value) {

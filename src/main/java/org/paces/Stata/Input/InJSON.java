@@ -16,22 +16,22 @@ import java.util.List;
  * <h2>Key-Value</h2>
  * This mode is used to return/store the data in Stata as an n x 2 matrix of
  * key and value pairs.  The methods insheetUrl and insheetFile are used.  These
- * methods create two variables in Stata with the names <em>key</em> &
- * <em>value</em>.  If the values of the payload to be loaded are of varying
- * types the values are all loaded as Strings.  If the values are all the
- * same numeric type, the values are loaded as that numeric type.  Users can
- * specify a regular expression string that will be used to query and return
- * a subset of the available JSON.
+ * methods create two variables in Stata with the names key and value.  If the
+ * values of the payload to be loaded are of varying types the values are all
+ * loaded as Strings.  If the values are all the same numeric type, the
+ * values are loaded as that numeric type.  Users can specify a regular
+ * expression string that will be used to query and return a subset of the
+ * available JSON.
  *
  * <h2>Row-Value</h2>
  * This mode is used to return the payload as distinct variables in the data
  * set (e.g., 1 JSON payload = 1 x m elements), or a row vector.  This mode
  * uses the insheetFileToVars and insheetUrlToVars methods.  There are two
  * major differences between this and the key-value mode:
- * <li>
- *     <ul>Naming Conventions</ul>
- *     <ul>Data Types</ul>
- * </li>
+ *
+ *                          Naming Conventions
+ *                          Data Types
+ *
  * Unlike the key-value mode, more than two variables are required to store
  * the data in this mode.  At the moment
  *
@@ -40,9 +40,24 @@ import java.util.List;
  */
 public class InJSON {
 
+	/**
+	 * A single ObjectMapper class used by all instances to create JsonNode
+	 * objects from the file on disk and/or HTTP request
+	 */
 	private static ObjectMapper mapper = new ObjectMapper();
+
 	private static MappingJsonFactory jsonFactory = new MappingJsonFactory(mapper);
+
+	/**
+	 * A JsonNode object that will be initialized when a method in this class
+	 * gets called
+	 */
 	private static JsonNode rootNode;
+
+	/**
+	 * A static Key Value Implementation object used if data needs to be
+	 * loaded as a key value pair
+	 */
 	private static KeyValueImpl kv = new KeyValueImpl();
 
 
@@ -141,8 +156,10 @@ public class InJSON {
 	 * Method called by insheet URL and File methods to process and load the
 	 * data into Stata
 	 * @param nodeMap A FlatJSON object
+	 * @param pattern A regular expression or empty string used to identify
+	 *                   the JsonNode objects to return to the user
 	 */
-	public static void insheetLoadKeyValue(FlatStataJSON nodeMap, String pattern) {
+	private static void insheetLoadKeyValue(FlatStataJSON nodeMap, String pattern) {
 		List<String> keys = nodeMap.queryKey(pattern);
 		StataTypeMap types = kv.sameType(keys, nodeMap.getTypeMap());
 		kv.asKeyValue(types, keys, nodeMap);
@@ -204,7 +221,7 @@ public class InJSON {
 	 * @param stubname A string used to construct variable names by appending
 	 *                    ID/Iterator values as a suffix
 	 */
-	public static void insheetLoadRowValue(FlatStataJSON nodeMap,
+	private static void insheetLoadRowValue(FlatStataJSON nodeMap,
 	                                       String pattern,
 	                                       Integer obid,
 	                                       String stubname) {

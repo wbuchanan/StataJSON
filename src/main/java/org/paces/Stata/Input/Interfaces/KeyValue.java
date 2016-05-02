@@ -17,7 +17,8 @@ public interface KeyValue extends StataVariableCreator {
 	 * Method to test whether all the node elements identified by the indices
 	 * in the parameter are of the same type
 	 * @param keys A list of keys used to identify elements and the node types
-	 * @param typeMap 
+	 * @param typeMap A map object with Stata data type mapping for each
+	 *                   JsonNode object
 	 * @return A StataTypeMap
 	 */
 	StataTypeMap sameType(List<String> keys, Map<String, StataTypeMap> typeMap);
@@ -181,6 +182,8 @@ public interface KeyValue extends StataVariableCreator {
 	 * Stata missing values;  these will be cast byte values of 127 to
 	 * minimize the amount of memory needed to store the missing values (this
 	 * also assumes all values in the key list contain missing nodes).
+	 * @param type A map object with Stata data type mapping for each
+	 *                   JsonNode object
 	 * @param keys The keys identifying the nodes to load
 	 * @param nodeMap A FlatStataJSON object  
 	 */

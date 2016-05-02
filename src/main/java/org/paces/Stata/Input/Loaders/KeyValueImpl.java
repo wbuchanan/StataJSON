@@ -27,7 +27,8 @@ public class KeyValueImpl implements KeyValue {
 	 *
 	 * @param keys    A list of keys used to identify elements and the node
 	 *                types
-	 * @param typeMap
+	 * @param typeMap A map object with Stata data type mapping for each
+	 *                   JsonNode object
 	 *
 	 * @return A StataTypeMap
 	 */
@@ -84,8 +85,8 @@ public class KeyValueImpl implements KeyValue {
 	 * Stata missing values;  these will be cast byte values of 127 to minimize
 	 * the amount of memory needed to store the missing values (this also
 	 * assumes all values in the key list contain missing nodes).
-	 *
-	 * @param type
+	 * @param type A map object with Stata data type mapping for each
+	 *                   JsonNode object
 	 * @param keys    The keys identifying the nodes to load
 	 * @param nodeMap A FlatStataJSON object
 	 */
