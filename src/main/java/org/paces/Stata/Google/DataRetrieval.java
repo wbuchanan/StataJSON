@@ -1,14 +1,10 @@
 package org.paces.Stata.Google;
 
-import com.stata.sfi.Data;
-import org.paces.Stata.Data.Meta;
-import org.paces.Stata.Data.Observations;
-import org.paces.Stata.Data.Variables;
+import com.stata.sfi.*;
+import org.paces.Stata.MetaData.*;
+import org.paces.Stata.Observations.Observations;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Billy Buchanan
@@ -60,15 +56,15 @@ public class DataRetrieval {
 
 		Map<Long, String> addresses = new HashMap<>();
 
-		for (Long i : this.obs.getObservationIndex()) {
+		for (Number i : this.obs.getObservationIndex()) {
 
 			List<String> obaddress = new ArrayList<>();
 
 			for (Integer j : this.vars.getVariableIndex()) {
-				obaddress.add(getAddy(j, i));
+				obaddress.add(getAddy(j, i.longValue()));
 			}
 
-			addresses.put(i, formAddy(obaddress));
+			addresses.put(i.longValue(), formAddy(obaddress));
 
 		}
 

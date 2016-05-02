@@ -6,12 +6,12 @@
 
 	<!-- This contains the overall package metadata -->
 	<groupId>org.paces-consulting</groupId>
-	<artifactId>jsonio</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>stata-json</artifactId>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 	<name>Stata Java Tools</name>
-	<description>Java plugins used to extend capabilities in Stata
-	statical software platform.</description>
+	<description>Java plugins for serializing and deserializing JSON data in
+		Stata.</description>
 	<url>https://github.com/wbuchanan/StataJSON</url>
 
 	<!-- Information regarding organization publishing the plugin -->
@@ -114,11 +114,20 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.paces-consulting</groupId>
+			<artifactId>stata-java</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>compile</scope>
+			<optional>false</optional>
+		</dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<optional>false</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -126,6 +135,7 @@
 			<version>2.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<optional>false</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -133,6 +143,7 @@
 			<version>2.6.1</version>
 			<type>jar</type>
 			<scope>compile</scope>
+			<optional>false</optional>
 		</dependency>
 		<!--
 		<dependency>
@@ -144,52 +155,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jdk8</artifactId>
-			<version>2.6.1</version>
+			<artifactId>jackson-datatype-joda</artifactId>
+			<version>2.4.0</version>
 			<type>jar</type>
 			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jdk7</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-json-org</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-jsonSchema</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-mrbean</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-parameter-names</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-paranamer</artifactId>
-			<version>2.6.1</version>
-			<type>jar</type>
-			<scope>compile</scope>
+			<optional>false</optional>
 		</dependency>
 		-->
 	</dependencies>

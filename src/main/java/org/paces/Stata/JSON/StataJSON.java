@@ -2,18 +2,16 @@ package org.paces.Stata.JSON;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stata.sfi.Macro;
-import com.stata.sfi.SFIToolkit;
-import org.paces.Stata.Data.DataRecord;
-import org.paces.Stata.Data.DataSet;
-import org.paces.Stata.Data.Meta;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.Charset;
+import com.stata.sfi.*;
 import java.util.List;
+import org.paces.Stata.DataRecords.DataRecord;
+import org.paces.Stata.DataSets.DataSet;
+import org.paces.Stata.MetaData.Meta;
+
+import java.io.*;
+import java.nio.charset.*;
 import java.util.Map;
+
 
 /**
  * @author Billy Buchanan
@@ -76,7 +74,7 @@ public class StataJSON {
 			JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		Meta dbg = new Meta(args);
+		Meta dbg = new Meta();
 
 		// Get the value of the observation to print from the local macro obid
 		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
@@ -110,7 +108,7 @@ public class StataJSON {
 			JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		Meta dbg = new Meta(args);
+		Meta dbg = new Meta();
 
 		// Initialize a new StataData object
 		DataSet stataData = new DataSet(dbg);
@@ -139,10 +137,10 @@ public class StataJSON {
 	 * local file
 	 */
 	public static int printRecordToFile(String[] args) throws
-			IOException, JsonProcessingException, NullPointerException {
+		IOException, JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		Meta dbg = new Meta(args);
+		Meta dbg = new Meta();
 
 		// Get the value of the observation to print from the local macro obid
 		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
@@ -188,7 +186,7 @@ public class StataJSON {
 			JsonProcessingException, IOException {
 
 		// Create a new Metadata object
-		Meta dbg = new Meta(args);
+		Meta dbg = new Meta();
 
 		// Create a new StataData object and print all data to the Stata console
 		DataSet stataData = new DataSet(dbg);

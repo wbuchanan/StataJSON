@@ -34,6 +34,14 @@
       <div class="trigger">
         
           
+          <a class="page-link" href="/StataJSON/input/">input</a>
+          
+        
+          
+          <a class="page-link" href="/StataJSON/output/">output</a>
+          
+        
+          
           <a class="page-link" href="/StataJSON/about/">about</a>
           
         
@@ -65,14 +73,14 @@
 
   <article class="post-content">
     <h1 id="ingesting-google-geocode-api-data">Ingesting Google Geocode API Data</h1>
-<p>As a first step in building out the input capabilities for the jsonio package <br />
-I thought it might be useful if I focused on a well used API that uses JSON for <br />
-its payload delivery.  The <code>ggeocode</code> command handles your needs for <br />
-parsing/cleaning the strings you pass to it for subsequent use in API calls <br />
-to the Google Geocoding API, parses the payload, provides options allowing <br />
-you to specify what elements from the payload you wish to return from the API <br />
-call, and also handles null elements in an intelligent Stata-centered format <br />
-(e.g., missing elements that are numeric will be returned with the extended <br />
+<p>As a first step in building out the input capabilities for the jsonio package 
+I thought it might be useful if I focused on a well used API that uses JSON for 
+its payload delivery.  The <code>ggeocode</code> command handles your needs for 
+parsing/cleaning the strings you pass to it for subsequent use in API calls 
+to the Google Geocoding API, parses the payload, provides options allowing 
+you to specify what elements from the payload you wish to return from the API 
+call, and also handles null elements in an intelligent Stata-centered format 
+(e.g., missing elements that are numeric will be returned with the extended 
 missing value of <code>.n</code> for No Data Found).</p>
 
 <p>Some examples of how the program can be used are listed below.</p>
@@ -94,7 +102,7 @@ end
 </code></pre>
 
 <h2 id="example-1-default-behavior">Example 1. Default behavior</h2>
-<p>When no arguments are passed to the return parameter, the program will only <br />
+<p>When no arguments are passed to the return parameter, the program will only 
 return the latitude and longitude coordinates.</p>
 
 <pre><code>. ggeocode housenum street city state zip
@@ -119,8 +127,8 @@ return the latitude and longitude coordinates.</p>
 </code></pre>
 
 <h2 id="example-2-passing-a-concatenated-string">Example 2. Passing a concatenated string</h2>
-<p>If you wanted, you can also manually format the address string that will be <br />
-used when constructing the URL for the API call.  Additionally, you can request <br />
+<p>If you wanted, you can also manually format the address string that will be 
+used when constructing the URL for the API call.  Additionally, you can request 
 several different types of values be returned.</p>
 
 <pre><code>. qui: g num = strofreal(housenum)

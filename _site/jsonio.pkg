@@ -1,9 +1,15 @@
-d 'JSONIO': A Stata plugin for IO operations involving JSON
+d 'JSONIO': A Stata plugin for I/O operations on JSON data
 d
-d A program to serialize Stata datasets (in memory) to JSON.  
-d Options are available to return the JSON object to the 
-d console or to write the JSON object to disk.  The plugin 
-d requires JRE 1.8 or later.
+d jsonio provides methods for importing and exporting data in JSON format.
+d When exporting data from Stata all metadata possible from the dataset is
+d retained as possible (e.g., value/variable labels, type indicators, etc...).
+d The program jsonio also provides two import modes for JSON data: key-value
+d and row-value.  In key-value mode, all data are loaded into two variables
+d named key and value; if all data types are the same, the program also handles
+d casting the data.  In row-value mode, each node is loaded into individual
+d variables.  In both cases, users are able to use simple regular expressions to
+d query a subset of the data to load.  Data can also be loaded from disk or
+d using HTTP requests to REST APIs.
 d
 d KW: JSON
 d KW: IO
@@ -11,9 +17,9 @@ d KW: export
 d KW: convert
 d KW: data transfer
 d
-d Requires: Stata version 14.1
+d Requires: Stata version 13.1
 d
-d Distribution-Date: 20160212
+d Distribution-Date: 20160502
 d
 d Author: Billy Buchanan
 d         Data Scientist

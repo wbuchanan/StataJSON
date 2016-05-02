@@ -1,15 +1,10 @@
 package org.paces.Stata.JSON;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonRootName;
-import org.paces.Stata.Data.DataSet;
-import org.paces.Stata.Data.Meta;
+import com.fasterxml.jackson.annotation.*;
+import org.paces.Stata.DataSets.DataSet;
+import org.paces.Stata.MetaData.Meta;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Billy Buchanan
@@ -134,43 +129,42 @@ public class StataAllToJSON  {
 	public void setData(String[] args) {
 
 		// Create new metadata object
-		this.theMetaData = new Meta(args);
+		this.theMetaData = new Meta();
 
 		// Create new dataset object
 		this.theData = new DataSet(this.theMetaData).getData();
 
 		// Starting observation index
-		this.sobs = this.theMetaData.stataobs.getSobs();
+		this.sobs = this.theMetaData.getStataobs().getSobs().longValue();
 
 		// Ending observation index
-		this.eobs = this.theMetaData.stataobs.getEobs();
+		this.eobs = this.theMetaData.getStataobs().getEobs().longValue();
 
 		// Total number of observations
-		this.nobs = this.theMetaData.stataobs.getNobs();
+		this.nobs = this.theMetaData.getStataobs().getNobs().longValue();
 
 		// Variable indices
-		this.varindex = this.theMetaData.statavars.getVariableIndex();
+		this.varindex = this.theMetaData.getVarindex();
 
 		// Variable names
-		this.varnames = this.theMetaData.statavars.getVariableNames();
+		this.varnames = this.theMetaData.getVarNames();
 
 		// Variable Labels
-		this.varlabels = this.theMetaData.statavars.getVariableLabels();
+		this.varlabels = this.theMetaData.getVariableLabels();
 
 		// String type boolean
-		this.varTypes = this.theMetaData.statavars.getVariableTypes();
+		this.varTypes = this.theMetaData.getStatavars().getVariableTypes();
 
 		// Value Label Names
-		this.valueLabelNames = this.theMetaData.statavars.getValueLabelNames();
+		this.valueLabelNames = this.theMetaData.getValueLabelNames();
 
 		// Value Labels
-		this.valueLabels = this.theMetaData.statavars.getValueLabels();
+		this.valueLabels = this.theMetaData.getStatavars().getValueLabels();
 
-		// Gets the scalar containing the total number of variables
-		this.nvars = this.theMetaData.statavars.getNvars();
+		this.nvars = this.theMetaData.getStatavars().getNvars();
 
 		// Gets a list containing Long values with observation indices
-		this.obindex = this.theMetaData.getObsindex();
+		this.obindex = this.theMetaData.getObs14();
 
 	} // End of getData method declaration
 
@@ -208,20 +202,20 @@ public class StataAllToJSON  {
 	} // End of getter method declaration
 
 	@JsonIgnore
-	public String getName() { return this.name; }
+	public String getName() { return name; }
 
 	@JsonIgnore
-	public long getSobs() {
+	public Number getSobs() {
 		return this.sobs;
 	}
 
 	@JsonIgnore
-	public long getEobs() {
+	public Number getEobs() {
 		return this.eobs;
 	}
 
 	@JsonIgnore
-	public long getNobs() {
+	public Number getNobs() {
 		return this.nobs;
 	}
 

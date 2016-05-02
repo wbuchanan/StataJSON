@@ -1,13 +1,10 @@
 package org.paces.Stata.JSON;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.stata.sfi.Macro;
-import org.paces.Stata.Data.Meta;
-import org.paces.Stata.Data.Variables;
+import com.fasterxml.jackson.annotation.*;
+import com.stata.sfi.*;
+import org.paces.Stata.MetaData.*;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 /**
@@ -45,7 +42,6 @@ public class StataMetaToJSON {
 	/***
 	 * Meta object member variable
 	 */
-	@JsonIgnore
 	static Meta dbg;
 
 	/***
@@ -68,7 +64,7 @@ public class StataMetaToJSON {
 			IOException, NullPointerException {
 
 		// Metadata object
-		dbg = new Meta(args);
+		dbg = new Meta();
 
 		// Argument passed to method via Stata
 		String metaprint = Macro.getLocal("metaprint");
