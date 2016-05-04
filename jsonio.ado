@@ -44,7 +44,7 @@ prog def jsonio, rclass
 
 	else if `"`cmd'"' == "rv" rowval `"`filenm'"', `elements' `url' `obid' `stubname'
 
-	else out `opt', filenm(`filenm') `obid' `metaprint' `what'
+	else jsonout `opt', filenm(`filenm') `obid' `metaprint' `what'
 
 	// Return local with the total number of keys
 	ret loc totalkeys `r(totalkeys)'
@@ -126,7 +126,7 @@ prog def keyval, rclass
 end
 
 // JSON Serializer
-prog def out, rclass
+prog def jsonout, rclass
 
 	// Define syntax
 	syntax [varlist] [if] [in] [using/] , 				 					 ///
@@ -194,6 +194,9 @@ prog def out, rclass
 
     // Set local macro with the file name
     loc filename `"`c(filename)'"'
+
+    // Clean up file path using tilde shortcut
+    loc filenm `: subinstr loc filenm `"~"' `"`: env HOME'"''
 
 	// Check for aguments defining what to convert
 	if inlist(proper("`what'"), "Record", "Data", "All") & "`metaprint'" == "" {

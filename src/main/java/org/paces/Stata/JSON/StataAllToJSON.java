@@ -15,10 +15,10 @@ import java.util.*;
  * to it. </p>
  */
 @JsonRootName("StataJSON")
-@JsonPropertyOrder({ "data", "firstObservationId", "lastObservationId",
+@JsonPropertyOrder({ "dataSource", "values", "firstRecordId", "lastRecordId",
 		"numberRecords", "variableIndices", "numberVariables",
-		"variableTypeIsString", "variableNames", "variableLabels",
-		"valueLabelNames", "valueLabels", "observationIndex"})
+		"variableIsString", "variableNames", "variableLabels",
+		"valueLabelNames", "valueLabels" })
 public class StataAllToJSON  {
 
 	/***
@@ -36,26 +36,32 @@ public class StataAllToJSON  {
 	/***
 	 * A DataSet class object (e.g., the data from the dataset in memory)
 	 */
-	@JsonProperty("data")
-	public Object theData;
+	@JsonIgnore
+	//public DataSet theData;
+
+	@JsonProperty("dataSource")
+	public String datasource;
+
+	@JsonProperty("values")
+	public Object dataObject;
 
 	/***
 	 * Starting observation index number
 	 */
-	@JsonProperty("firstObservationId")
-	private long sobs;
+	@JsonProperty("firstRecordId")
+	private Number sobs;
 
 	/***
 	 * Ending observation index number
 	 */
-	@JsonProperty("lastObservationId")
-	private long eobs;
+	@JsonProperty("lastRecordId")
+	private Number eobs;
 
 	/***
 	 * Total Number of Observations
 	 */
-	@JsonProperty("numberRecords")
-	private long nobs;
+	@JsonProperty("numberOfRecords")
+	private Number nobs;
 
 	/***
 	 * Member variable containing variable indices
@@ -66,14 +72,14 @@ public class StataAllToJSON  {
 	/***
 	 * Number of variables passed from javacall
 	 */
-	@JsonProperty("numberVariables")
-	public int nvars;
+	@JsonProperty("numberOfVariables")
+	public Integer nvars;
 
 	/***
 	 * Member variable containing indicators for whether or not the variable
 	 * is of type String
 	 */
-	@JsonProperty("variableTypeIsString")
+	@JsonProperty("variableIsString")
 	public Map<String, Boolean> varTypes;
 
 	/***
@@ -105,7 +111,7 @@ public class StataAllToJSON  {
 	/***
 	 * Observation indices
 	 */
-	@JsonProperty("observationIndex")
+	@JsonIgnore
 	private List<Long> obindex;
 
 
@@ -132,7 +138,11 @@ public class StataAllToJSON  {
 		this.theMetaData = new Meta();
 
 		// Create new dataset object
-		this.theData = new DataSet(this.theMetaData).getData();
+		DataSet theData = new DataSet(this.theMetaData);
+
+		this.dataObject = theData.getData();
+
+		this.datasource = theData.getSource();
 
 		// Starting observation index
 		this.sobs = this.theMetaData.getStataobs().getSobs().longValue();
@@ -183,7 +193,8 @@ public class StataAllToJSON  {
 		variables, value label names, value labels, and the data it self to the
 		map object. */
 		makeJSON.put("name", getName());
-		makeJSON.put("data", this.theData);
+		makeJSON.put("source", this.datasource);
+		makeJSON.put("values", this.dataObject);
 		makeJSON.put("firstObservationId", getSobs());
 		makeJSON.put("lastObservationId", getEobs());
 		makeJSON.put("numberRecords", getNobs());
@@ -194,7 +205,7 @@ public class StataAllToJSON  {
 		makeJSON.put("variableLabels", getVarlabels());
 		makeJSON.put("valueLabelNames", getValueLabelNames());
 		makeJSON.put("valueLabels", getValueLabels());
-		makeJSON.put("observationIndex", getObservationIndex());
+		// makeJSON.put("observationIndex", getObservationIndex());
 
 		// Return the map object
 		return makeJSON;
