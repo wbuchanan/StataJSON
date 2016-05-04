@@ -32,7 +32,11 @@
       </library>
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.stata:sfi:14" level="project" />
-    <orderEntry type="library" name="Maven: org.paces-consulting:stata-java:0.0.2-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.paces-consulting:stata-java:0.0.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: joinery:joinery-dataframe:1.7" level="project" />
+    <orderEntry type="library" name="Maven: io.dropwizard.metrics:metrics-annotation:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.supercsv:super-csv:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-math3:3.4.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.1" level="project" />

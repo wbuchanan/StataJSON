@@ -15,10 +15,10 @@ import java.util.*;
  * to it. </p>
  */
 @JsonRootName("StataJSON")
-@JsonPropertyOrder({ "data", "first record id", "last record id",
-		"number of records", "variable indices", "number of variables",
-		"variable type string", "variable names", "variable labels",
-		"value label names", "value labels" })
+@JsonPropertyOrder({ "values", "firstRecordId", "lastRecordId",
+		"numberRecords", "variableIndices", "numberVariables",
+		"variableIsString", "variableNames", "variableLabels",
+		"valueLabelNames", "valueLabels" })
 public class StataAllToJSON  {
 
 	/***
@@ -36,70 +36,70 @@ public class StataAllToJSON  {
 	/***
 	 * A DataSet class object (e.g., the data from the dataset in memory)
 	 */
-	@JsonProperty("data")
+	@JsonProperty("values")
 	public DataSet theData;
 
 	/***
 	 * Starting observation index number
 	 */
-	@JsonProperty("first record id")
+	@JsonProperty("firstRecordId")
 	private Number sobs;
 
 	/***
 	 * Ending observation index number
 	 */
-	@JsonProperty("last record id")
+	@JsonProperty("lastRecordId")
 	private Number eobs;
 
 	/***
 	 * Total Number of Observations
 	 */
-	@JsonProperty("number of records")
+	@JsonProperty("numberOfRecords")
 	private Number nobs;
 
 	/***
 	 * Member variable containing variable indices
 	 */
-	@JsonProperty("variable indices")
+	@JsonProperty("variableIndices")
 	public List<Integer> varindex;
 
 	/***
 	 * Number of variables passed from javacall
 	 */
-	@JsonProperty("number of variables")
+	@JsonProperty("numberOfVariables")
 	public Integer nvars;
 
 	/***
 	 * Member variable containing indicators for whether or not the variable
 	 * is of type String
 	 */
-	@JsonProperty("variable type string")
+	@JsonProperty("variableIsString")
 	public Map<String, Boolean> varTypes;
 
 	/***
 	 * Member variable containing Stata variable names
 	 */
-	@JsonProperty("variable names")
+	@JsonProperty("variableNames")
 	public List<String> varnames;
 
 	/***
 	 * Member variable containing Stata variable labels
 	 */
-	@JsonProperty("variable labels")
+	@JsonProperty("variableLabels")
 	public Map<String, String> varlabels;
 
 	/***
 	 * Member variable containing Stata value label names associated with a
 	 * given variable
 	 */
-	@JsonProperty("value label names")
+	@JsonProperty("valueLabelNames")
 	public Map<String, String> valueLabelNames;
 
 	/***
 	 * Member variable containing a list of Map objects with the values and
 	 * associated labels contained in the Map object
 	 */
-	@JsonProperty("value labels")
+	@JsonProperty("valueLabels")
 	public Map<String, Map<Integer, String>> valueLabels;
 
 	/***
