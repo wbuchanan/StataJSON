@@ -3,14 +3,13 @@ package org.paces.Stata.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stata.sfi.*;
-import java.util.List;
 import org.paces.Stata.DataRecords.DataRecord;
 import org.paces.Stata.DataSets.DataSet;
 import org.paces.Stata.MetaData.Meta;
 
 import java.io.*;
 import java.nio.charset.*;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -259,7 +258,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(observation));
+		if (themap.writeValueAsString(observation).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(observation));
 
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
@@ -284,7 +284,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(observation));
+		if (themap.writeValueAsString(observation).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(observation));
 
 		themap.writerWithDefaultPrettyPrinter()
 				.writeValue(filename, observation);
@@ -308,7 +309,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(stataData));
+		if (themap.writeValueAsString(stataData).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(stataData));
 
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
@@ -334,7 +336,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(stataData));
+		if (themap.writeValueAsString(stataData).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(stataData));
 
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, stataData);
@@ -354,7 +357,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
+		if (themap.writeValueAsString(metaobject).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
 
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
@@ -380,7 +384,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
+		if (themap.writeValueAsString(metaobject).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(metaobject));
 
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, metaobject);
@@ -401,7 +406,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(thedata));
+		if (themap.writeValueAsString(thedata).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(thedata));
 
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
@@ -426,7 +432,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(thedata));
+		if (themap.writeValueAsString(thedata).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(thedata));
 
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, thedata);
@@ -448,7 +455,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(allData));
+		if (themap.writeValueAsString(allData).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(allData));
 
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
@@ -474,7 +482,8 @@ public class StataJSON {
 		ObjectMapper themap = new ObjectMapper();
 
 		// Return the JSON string in a local macro
-		Macro.setLocal("thejson", themap.writeValueAsString(allData));
+		if (themap.writeValueAsString(allData).length() < 32767)
+			Macro.setLocal("thejson", themap.writeValueAsString(allData));
 
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, allData);

@@ -968,15 +968,59 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/stata/sfi/14/sfi-14-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.paces-consulting:stata-java:0.0.2-SNAPSHOT">
+    <library name="Maven: io.dropwizard.metrics:metrics-annotation:3.1.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/paces-consulting/stata-java/0.0.2-SNAPSHOT/stata-java-0.0.2-SNAPSHOT.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/dropwizard/metrics/metrics-annotation/3.1.1/metrics-annotation-3.1.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/paces-consulting/stata-java/0.0.2-SNAPSHOT/stata-java-0.0.2-SNAPSHOT-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/dropwizard/metrics/metrics-annotation/3.1.1/metrics-annotation-3.1.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/paces-consulting/stata-java/0.0.2-SNAPSHOT/stata-java-0.0.2-SNAPSHOT-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/io/dropwizard/metrics/metrics-annotation/3.1.1/metrics-annotation-3.1.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: joinery:joinery-dataframe:1.7">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/joinery/joinery-dataframe/1.7/joinery-dataframe-1.7.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/joinery/joinery-dataframe/1.7/joinery-dataframe-1.7-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/joinery/joinery-dataframe/1.7/joinery-dataframe-1.7-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.sf.supercsv:super-csv:2.3.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/sf/supercsv/super-csv/2.3.1/super-csv-2.3.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/sf/supercsv/super-csv/2.3.1/super-csv-2.3.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/sf/supercsv/super-csv/2.3.1/super-csv-2.3.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.commons:commons-math3:3.4.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.4.1/commons-math3-3.4.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.4.1/commons-math3-3.4.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.4.1/commons-math3-3.4.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.paces-consulting:stata-java:0.0.3-SNAPSHOT">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/paces-consulting/stata-java/0.0.3-SNAPSHOT/stata-java-0.0.3-SNAPSHOT.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/paces-consulting/stata-java/0.0.3-SNAPSHOT/stata-java-0.0.3-SNAPSHOT-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/paces-consulting/stata-java/0.0.3-SNAPSHOT/stata-java-0.0.3-SNAPSHOT-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
