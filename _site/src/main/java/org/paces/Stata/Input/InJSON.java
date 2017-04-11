@@ -59,8 +59,7 @@ public class InJSON {
 	 * loaded as a key value pair
 	 */
 	private static KeyValueImpl kv = new KeyValueImpl();
-
-
+	
 	/*
 	private static String emptyObjects = "/Users/billy/Desktop/emptyObjectTest.json";
 	private static String places = "/Users/billy/Desktop/placesExample.json";

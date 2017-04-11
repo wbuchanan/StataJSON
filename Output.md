@@ -18,7 +18,7 @@ Serializing a single record
 
 ```Stata
 
-. jsonio, what(record) obid(74)
+. jsonio out, what(record) obid(74)
 {
   "mpg" : 17.0,
   "price" : 11995.0,
@@ -41,7 +41,7 @@ Serialize all records that satisfy a given condition
 
 ```Stata
 
-. jsonio if rep78 == 1, what(data)
+. jsonio out if rep78 == 1, what(data)
 {
   "fileName" : "Stata Data Set",
   "data" : [ {
@@ -80,7 +80,7 @@ Serialize all data and meta data for records 71 - 74
 
 ```Stata
 
-. jsonio in 71/74, w(all)
+. jsonio out in 71/74, w(all)
 {
   "Value Labels" : [ {
     "0" : ""
@@ -177,7 +177,7 @@ Serialize all data and metadata for the dataset in memory
 
 ```Stata
 
-. jsonio, w(all)
+. jsonio out, w(all)
 {
   "Value Labels" : [ {
     "0" : ""
@@ -248,7 +248,7 @@ Serialize selected variables for observations satisfying a given condition
 
 ```Stata
 
-. jsonio mpg weight price make if rep78 == 1, w(data)
+. jsonio out mpg weight price make if rep78 == 1, w(data)
 {
   "fileName" : "Stata Data Set",
   "data" : [ {
@@ -273,7 +273,7 @@ Serialize all data and metadata for selected variables and observations
 satisfying a given condition and write the output to disk
 ```Stata
 
-. jsonio mpg foreign weight price make if rep78 == 1, w(all) filenm(test.json)
+. jsonio out mpg foreign weight price make if rep78 == 1, w(all) filenm(test.json)
 
 ```
 
@@ -284,7 +284,7 @@ Serialize variable names to JSON object that is printed to the Stata console:
 
 ```Stata
  
-. jsonio, metaprint(varnames)
+. jsonio out, metaprint(varnames)
 [ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ]
 ```
 
@@ -292,7 +292,7 @@ Serialize variable labels to JSON object that is printed to the Stata console:
 
 ```Stata
 
-. jsonio, metaprint(varlabels)
+. jsonio out, metaprint(varlabels)
 
 [ "Make and Model", "Price", "Mileage (mpg)", "Repair Record 1978", "Headroom (in.)", "Trunk space (cu. ft.)", "Weight (lbs.)", "Length (in.)", "Turn Circle (ft.) ", "Displacement (cu. in.)", "Gear Ratio", "Car type" ]
 ```

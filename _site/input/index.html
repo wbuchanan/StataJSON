@@ -10,7 +10,7 @@
     <meta name="description" content="A JSON serializer for Stata using the Java-API and Jackson JSON.">
 
     <link rel="stylesheet" href="/StataJSON/css/main.css">
-    <link rel="canonical" href="https://wbuchanan.github.io/StataJSON/input/">
+    <link rel="canonical" href="http://localhost:4000/StataJSON/input/">
 </head>
 
 
@@ -72,7 +72,7 @@
   </header>
 
   <article class="post-content">
-    <p><code>jsonio</code> now features several options for loading JSON data into Stata.  Part of this process involves a depth-first traversal of the JSON tree which is used to flatten the JSON data into a two dimensional key-value pair object.  This process also renames the nodes in such a way that each terminal node (e.g., a node containing no children or a scalar value only) can be uniquely identified based on its ancestry/lineage.  Doing so allows users to use simple regular expressions to query collections of nodes from the data.  The examples below attempt to show these features, as well as illustrate the difference between the key-value and row-value modes that define how the data will be loaded into Stata.</p>
+    <p><code class="highlighter-rouge">jsonio</code> now features several options for loading JSON data into Stata.  Part of this process involves a depth-first traversal of the JSON tree which is used to flatten the JSON data into a two dimensional key-value pair object.  This process also renames the nodes in such a way that each terminal node (e.g., a node containing no children or a scalar value only) can be uniquely identified based on its ancestry/lineage.  Doing so allows users to use simple regular expressions to query collections of nodes from the data.  The examples below attempt to show these features, as well as illustrate the difference between the key-value and row-value modes that define how the data will be loaded into Stata.</p>
 
 <h1 id="examples">Examples</h1>
 <p>The examples below are all focused on the ingest side of jsonio.  Currently, two modes are supported (one which loads the data in an n x 2 structure of key and value pairs and the other which loads the values in separate variables in the analog of a row vector).</p>
@@ -309,7 +309,7 @@ Overall total time  =      0.240 (sec)
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
           <li>Stata - jsonio</li>
-          <li><a href="mailto:William.Buchanan@mpls.k12.mn.us">William.Buchanan@mpls.k12.mn.us</a></li>
+          <li><a href="mailto:Billy.Buchanan@fayette.kyschools.us">Billy.Buchanan@fayette.kyschools.us</a></li>
         </ul>
       </div>
 

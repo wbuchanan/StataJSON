@@ -1,6 +1,6 @@
 # Site settings
 title: Stata - jsonio
-email: William.Buchanan@mpls.k12.mn.us
+email: Billy.Buchanan@fayette.kyschools.us
 description: A JSON serializer for Stata using the Java-API and Jackson JSON.
 baseurl: "/StataJSON" # Name of the repository
 url: "https://wbuchanan.github.io" # the base hostname & protocol for your site

@@ -10,7 +10,7 @@
     <meta name="description" content="A JSON serializer for Stata using the Java-API and Jackson JSON.">
 
     <link rel="stylesheet" href="/StataJSON/css/main.css">
-    <link rel="canonical" href="https://wbuchanan.github.io/StataJSON/output/">
+    <link rel="canonical" href="http://localhost:4000/StataJSON/output/">
 </head>
 
 
@@ -72,19 +72,18 @@
   </header>
 
   <article class="post-content">
-    <p>All the examples below use the same standard data set that comes with Stata.
-```Stata</p>
+    <p>All the examples below use the same standard data set that comes with Stata.</p>
+<pre><code class="language-Stata">
+. sysuse auto, clear
+(1978 Automobile Data)
 
-<p>. sysuse auto, clear
-(1978 Automobile Data)</p>
+</code></pre>
 
-<pre><code>
-## Example 1 
-Serializing a single record
+<h2 id="example-1">Example 1</h2>
+<p>Serializing a single record</p>
 
-```Stata
-
-. jsonio, what(record) obid(74)
+<pre><code class="language-Stata">
+. jsonio out, what(record) obid(74)
 {
   "mpg" : 17.0,
   "price" : 11995.0,
@@ -106,7 +105,7 @@ Serializing a single record
 <p>Serialize all records that satisfy a given condition</p>
 
 <pre><code class="language-Stata">
-. jsonio if rep78 == 1, what(data)
+. jsonio out if rep78 == 1, what(data)
 {
   "fileName" : "Stata Data Set",
   "data" : [ {
@@ -144,7 +143,7 @@ Serializing a single record
 <p>Serialize all data and meta data for records 71 - 74</p>
 
 <pre><code class="language-Stata">
-. jsonio in 71/74, w(all)
+. jsonio out in 71/74, w(all)
 {
   "Value Labels" : [ {
     "0" : ""
@@ -240,7 +239,7 @@ Serializing a single record
 <p>Serialize all data and metadata for the dataset in memory</p>
 
 <pre><code class="language-Stata">
-. jsonio, w(all)
+. jsonio out, w(all)
 {
   "Value Labels" : [ {
     "0" : ""
@@ -310,7 +309,7 @@ Serializing a single record
 <p>Serialize selected variables for observations satisfying a given condition</p>
 
 <pre><code class="language-Stata">
-. jsonio mpg weight price make if rep78 == 1, w(data)
+. jsonio out mpg weight price make if rep78 == 1, w(data)
 {
   "fileName" : "Stata Data Set",
   "data" : [ {
@@ -332,27 +331,26 @@ Serializing a single record
 <p>Writing output to the harddrive</p>
 
 <p>Serialize all data and metadata for selected variables and observations 
-satisfying a given condition and write the output to disk
-```Stata</p>
+satisfying a given condition and write the output to disk</p>
+<pre><code class="language-Stata">
+. jsonio out mpg foreign weight price make if rep78 == 1, w(all) filenm(test.json)
 
-<p>. jsonio mpg foreign weight price make if rep78 == 1, w(all) filenm(test.json)</p>
+</code></pre>
 
-<pre><code>
-## Example 7
-Working with meta data
+<h2 id="example-7">Example 7</h2>
+<p>Working with meta data</p>
 
-Serialize variable names to JSON object that is printed to the Stata console:
+<p>Serialize variable names to JSON object that is printed to the Stata console:</p>
 
-```Stata
- 
-. jsonio, metaprint(varnames)
+<pre><code class="language-Stata"> 
+. jsonio out, metaprint(varnames)
 [ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ]
 </code></pre>
 
 <p>Serialize variable labels to JSON object that is printed to the Stata console:</p>
 
 <pre><code class="language-Stata">
-. jsonio, metaprint(varlabels)
+. jsonio out, metaprint(varlabels)
 
 [ "Make and Model", "Price", "Mileage (mpg)", "Repair Record 1978", "Headroom (in.)", "Trunk space (cu. ft.)", "Weight (lbs.)", "Length (in.)", "Turn Circle (ft.) ", "Displacement (cu. in.)", "Gear Ratio", "Car type" ]
 </code></pre>
@@ -375,7 +373,7 @@ Serialize variable names to JSON object that is printed to the Stata console:
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
           <li>Stata - jsonio</li>
-          <li><a href="mailto:William.Buchanan@mpls.k12.mn.us">William.Buchanan@mpls.k12.mn.us</a></li>
+          <li><a href="mailto:Billy.Buchanan@fayette.kyschools.us">Billy.Buchanan@fayette.kyschools.us</a></li>
         </ul>
       </div>
 

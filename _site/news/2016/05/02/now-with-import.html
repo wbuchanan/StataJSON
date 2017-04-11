@@ -10,7 +10,7 @@
     <meta name="description" content="A JSON serializer for Stata using the Java-API and Jackson JSON.">
 
     <link rel="stylesheet" href="/StataJSON/css/main.css">
-    <link rel="canonical" href="https://wbuchanan.github.io/StataJSON/news/2016/05/02/now-with-import.html">
+    <link rel="canonical" href="http://localhost:4000/StataJSON/news/2016/05/02/now-with-import.html">
 </head>
 
 
@@ -74,10 +74,10 @@
 
   <article class="post-content">
     <h1 id="latest-update-to-jsonio-adds-import-support">Latest update to JSONIO adds import support</h1>
-<p>No changes have been made to the export functionality or <code>ggeocode</code> command, but the jsonio command has been modified to add subcommands to support import functions.</p>
+<p>No changes have been made to the export functionality or <code class="highlighter-rouge">ggeocode</code> command, but the jsonio command has been modified to add subcommands to support import functions.</p>
 
 <h1 id="two-import-modes">Two import modes</h1>
-<p><code>jsonio</code> supports loading the data into Stata in two different methods.</p>
+<p><code class="highlighter-rouge">jsonio</code> supports loading the data into Stata in two different methods.</p>
 
 <h2 id="key-value-mode">Key-Value mode</h2>
 <p>key-value mode loads the data into two variables with the names key and value.  This can be useful for cases where you want to work with a single JSON payload/dataset that you want to further restructure. One of the disadvantages is that all data are loaded as string if all of the nodes are not the same type.  If the data are the same type, they will automatically be cast to the correct data type.</p>
@@ -175,7 +175,7 @@
   </tbody>
 </table>
 
-<p>You’ll notice that the variable names are different, and the stub (<code>jsonval</code> in the example above) can be specified by users.  Additionally, the lineage of each node is still retained when loading the data into Stata in this format.  The difference is that in row-value mode, the lineage is stored in variable labels :</p>
+<p>You’ll notice that the variable names are different, and the stub (<code class="highlighter-rouge">jsonval</code> in the example above) can be specified by users.  Additionally, the lineage of each node is still retained when loading the data into Stata in this format.  The difference is that in row-value mode, the lineage is stored in variable labels :</p>
 
 <table>
   <tbody>
@@ -245,7 +245,7 @@
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
           <li>Stata - jsonio</li>
-          <li><a href="mailto:William.Buchanan@mpls.k12.mn.us">William.Buchanan@mpls.k12.mn.us</a></li>
+          <li><a href="mailto:Billy.Buchanan@fayette.kyschools.us">Billy.Buchanan@fayette.kyschools.us</a></li>
         </ul>
       </div>
 

@@ -19,7 +19,7 @@ d KW: data transfer
 d
 d Requires: Stata version 13.1
 d
-d Distribution-Date: 20160502
+d Distribution-Date: 20170411
 d
 d Author: Billy Buchanan
 d         Data Scientist
@@ -27,7 +27,7 @@ d         Office of Research, Evaluation, and Assessment
 d         Minneapolis Public Schools
 d
 d
-d Support: email William [dot] Buchanan @t mpls [dot] k12 [dot] mn [dot] us
+d Support: email Billy [dot] Buchanan @t fayette [dot] kyschools [dot] us
 d
 f ggeocode.ado
 f ggeocode.sthlp

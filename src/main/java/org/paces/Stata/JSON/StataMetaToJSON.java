@@ -49,7 +49,13 @@ public class StataMetaToJSON {
 	 */
 	@JsonIgnore
 	static List<Long> obidx;
-
+	
+	/**
+	 * Stores maximum macro length
+	 */
+	@JsonIgnore
+	static Integer macroLength;
+	
 	/***
 	 * Method to print meta data to the Stata Console
 	 * @param args Argument used to define what values to print to the console
@@ -62,7 +68,9 @@ public class StataMetaToJSON {
 	@JsonGetter
 	public static int metaToJSON(String[] args) throws
 			IOException, NullPointerException {
-
+		
+		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
+		
 		// Metadata object
 		dbg = new Meta();
 
@@ -130,7 +138,7 @@ public class StataMetaToJSON {
 		if (Macro.getLocalSafe("filenm").isEmpty()) {
 
 			// Print the requested data to the screen
-			StataJSON.toJSON(toPrint);
+			StataJSON.toJSON(toPrint, macroLength);
 
 		} else {
 
@@ -138,7 +146,7 @@ public class StataMetaToJSON {
 			FileOutputStream jsonOutput = new FileOutputStream(Macro.getLocalSafe("filenm"));
 
 			// Print the requested data to the screen
-			StataJSON.toJSON(toPrint, jsonOutput);
+			StataJSON.toJSON(toPrint, jsonOutput, macroLength);
 
 			// Close file connection
 			jsonOutput.close();

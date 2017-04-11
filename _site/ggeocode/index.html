@@ -10,7 +10,7 @@
     <meta name="description" content="A JSON serializer for Stata using the Java-API and Jackson JSON.">
 
     <link rel="stylesheet" href="/StataJSON/css/main.css">
-    <link rel="canonical" href="https://wbuchanan.github.io/StataJSON/ggeocode/">
+    <link rel="canonical" href="http://localhost:4000/StataJSON/ggeocode/">
 </head>
 
 
@@ -75,19 +75,19 @@
     <h1 id="ingesting-google-geocode-api-data">Ingesting Google Geocode API Data</h1>
 <p>As a first step in building out the input capabilities for the jsonio package 
 I thought it might be useful if I focused on a well used API that uses JSON for 
-its payload delivery.  The <code>ggeocode</code> command handles your needs for 
+its payload delivery.  The <code class="highlighter-rouge">ggeocode</code> command handles your needs for 
 parsing/cleaning the strings you pass to it for subsequent use in API calls 
 to the Google Geocoding API, parses the payload, provides options allowing 
 you to specify what elements from the payload you wish to return from the API 
 call, and also handles null elements in an intelligent Stata-centered format 
 (e.g., missing elements that are numeric will be returned with the extended 
-missing value of <code>.n</code> for No Data Found).</p>
+missing value of <code class="highlighter-rouge">.n</code> for No Data Found).</p>
 
 <p>Some examples of how the program can be used are listed below.</p>
 
 <h1 id="get-some-data-that-you-can-use-for-geocoding">Get some data that you can use for geocoding</h1>
 
-<pre><code>// Creates a small data set of addresses that you can use for geocoding
+<div class="highlighter-rouge"><pre class="highlight"><code>// Creates a small data set of addresses that you can use for geocoding
 input int housenum str13 street str11 city str2 state str5 zip
 4287 "46th Ave N" "Robbinsdale" "MN" "55422"
 6675 "Old Canton Rd" "Ridgeland" "MS" "39157"
@@ -100,12 +100,13 @@ input int housenum str13 street str11 city str2 state str5 zip
 195 "Arlington Ave" "Providence" "RI" "02906"
 end
 </code></pre>
+</div>
 
 <h2 id="example-1-default-behavior">Example 1. Default behavior</h2>
 <p>When no arguments are passed to the return parameter, the program will only 
 return the latitude and longitude coordinates.</p>
 
-<pre><code>. ggeocode housenum street city state zip
+<div class="highlighter-rouge"><pre class="highlight"><code>. ggeocode housenum street city state zip
 
 . li
 
@@ -125,13 +126,14 @@ return the latitude and longitude coordinates.</p>
      +---------------------------------------------------------------------------------+
 
 </code></pre>
+</div>
 
 <h2 id="example-2-passing-a-concatenated-string">Example 2. Passing a concatenated string</h2>
 <p>If you wanted, you can also manually format the address string that will be 
 used when constructing the URL for the API call.  Additionally, you can request 
 several different types of values be returned.</p>
 
-<pre><code>. qui: g num = strofreal(housenum)
+<div class="highlighter-rouge"><pre class="highlight"><code>. qui: g num = strofreal(housenum)
 . qui: replace street = subinstr(street, " ", "+", .)
 . qui: egen addy_string = concat(street city state zip), p(",+")
 . qui: replace addy_string = num + "+" + addy_string
@@ -154,6 +156,7 @@ several different types of values be returned.</p>
      +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 </code></pre>
+</div>
 
 <p>For additional information, please see the help file.</p>
 
@@ -175,7 +178,7 @@ several different types of values be returned.</p>
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
           <li>Stata - jsonio</li>
-          <li><a href="mailto:William.Buchanan@mpls.k12.mn.us">William.Buchanan@mpls.k12.mn.us</a></li>
+          <li><a href="mailto:Billy.Buchanan@fayette.kyschools.us">Billy.Buchanan@fayette.kyschools.us</a></li>
         </ul>
       </div>
 

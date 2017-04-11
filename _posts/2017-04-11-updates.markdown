@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Updated Binary for Distribution"
+date:   2017-04-11 14:45:00
+categories: news
+---
+
+# New Binary Available
+Thanks to Marc Kaulisch, I became aware that I hadn't updated the binary on the distribution branch in quite some time.  That should be taken care of now, but there is a new minor bug that was still being fixed.  The issue only affects output cases where the `if` or `in` qualifiers are used with `jsonio out`.  It will include the name of the temporary variable created to handle the `if` or `in` condition and write it to the JSON file.  
+
+If you don't have a need to use the `if` or `in` qualifiers to write your data to a JSON object you should be fine.  Additionally, this includes some updates that provide more detailed metadata and objects to make iteration and finding specific datum a bit easier.

@@ -3,19 +3,35 @@
   <channel>
     <title>Stata - jsonio</title>
     <description>A JSON serializer for Stata using the Java-API and Jackson JSON.</description>
-    <link>https://wbuchanan.github.io/StataJSON/</link>
-    <atom:link href="https://wbuchanan.github.io/StataJSON/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 04 May 2016 15:26:54 -0500</pubDate>
-    <lastBuildDate>Wed, 04 May 2016 15:26:54 -0500</lastBuildDate>
-    <generator>Jekyll v3.1.2</generator>
+    <link>http://localhost:4000/StataJSON/</link>
+    <atom:link href="http://localhost:4000/StataJSON/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 11 Apr 2017 14:49:36 -0400</pubDate>
+    <lastBuildDate>Tue, 11 Apr 2017 14:49:36 -0400</lastBuildDate>
+    <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Updated Binary for Distribution</title>
+        <description>&lt;h1 id=&quot;new-binary-available&quot;&gt;New Binary Available&lt;/h1&gt;
+&lt;p&gt;Thanks to Marc Kaulisch, I became aware that I hadn’t updated the binary on the distribution branch in quite some time.  That should be taken care of now, but there is a new minor bug that was still being fixed.  The issue only affects output cases where the &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;in&lt;/code&gt; qualifiers are used with &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonio out&lt;/code&gt;.  It will include the name of the temporary variable created to handle the &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;in&lt;/code&gt; condition and write it to the JSON file.&lt;/p&gt;
+
+&lt;p&gt;If you don’t have a need to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;in&lt;/code&gt; qualifiers to write your data to a JSON object you should be fine.  Additionally, this includes some updates that provide more detailed metadata and objects to make iteration and finding specific datum a bit easier.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 11 Apr 2017 10:45:00 -0400</pubDate>
+        <link>http://localhost:4000/StataJSON/news/2017/04/11/updates.html</link>
+        <guid isPermaLink="true">http://localhost:4000/StataJSON/news/2017/04/11/updates.html</guid>
+        
+        
+        <category>news</category>
+        
+      </item>
     
       <item>
         <title>JSONIO now supports importing data</title>
         <description>&lt;h1 id=&quot;latest-update-to-jsonio-adds-import-support&quot;&gt;Latest update to JSONIO adds import support&lt;/h1&gt;
-&lt;p&gt;No changes have been made to the export functionality or &lt;code&gt;ggeocode&lt;/code&gt; command, but the jsonio command has been modified to add subcommands to support import functions.&lt;/p&gt;
+&lt;p&gt;No changes have been made to the export functionality or &lt;code class=&quot;highlighter-rouge&quot;&gt;ggeocode&lt;/code&gt; command, but the jsonio command has been modified to add subcommands to support import functions.&lt;/p&gt;
 
 &lt;h1 id=&quot;two-import-modes&quot;&gt;Two import modes&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;jsonio&lt;/code&gt; supports loading the data into Stata in two different methods.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jsonio&lt;/code&gt; supports loading the data into Stata in two different methods.&lt;/p&gt;
 
 &lt;h2 id=&quot;key-value-mode&quot;&gt;Key-Value mode&lt;/h2&gt;
 &lt;p&gt;key-value mode loads the data into two variables with the names key and value.  This can be useful for cases where you want to work with a single JSON payload/dataset that you want to further restructure. One of the disadvantages is that all data are loaded as string if all of the nodes are not the same type.  If the data are the same type, they will automatically be cast to the correct data type.&lt;/p&gt;
@@ -113,7 +129,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;You’ll notice that the variable names are different, and the stub (&lt;code&gt;jsonval&lt;/code&gt; in the example above) can be specified by users.  Additionally, the lineage of each node is still retained when loading the data into Stata in this format.  The difference is that in row-value mode, the lineage is stored in variable labels :&lt;/p&gt;
+&lt;p&gt;You’ll notice that the variable names are different, and the stub (&lt;code class=&quot;highlighter-rouge&quot;&gt;jsonval&lt;/code&gt; in the example above) can be specified by users.  Additionally, the lineage of each node is still retained when loading the data into Stata in this format.  The difference is that in row-value mode, the lineage is stored in variable labels :&lt;/p&gt;
 
 &lt;table&gt;
   &lt;tbody&gt;
@@ -166,9 +182,9 @@
 
 &lt;p&gt;Only a few tests have been performed, but the traversal method should be fairly robust to arbitrarily structured JSON (e.g., regardless of what gets thrown at it, it should be able to flatten it and load it as key-value or row-value).  If you find any problems please submit an issue in the project repository that can be replicated (e.g., if I can’t see the JSON causing the issue it becomes difficult to address the problem).&lt;/p&gt;
 </description>
-        <pubDate>Mon, 02 May 2016 00:51:00 -0500</pubDate>
-        <link>https://wbuchanan.github.io/StataJSON/news/2016/05/02/now-with-import.html</link>
-        <guid isPermaLink="true">https://wbuchanan.github.io/StataJSON/news/2016/05/02/now-with-import.html</guid>
+        <pubDate>Mon, 02 May 2016 01:51:00 -0400</pubDate>
+        <link>http://localhost:4000/StataJSON/news/2016/05/02/now-with-import.html</link>
+        <guid isPermaLink="true">http://localhost:4000/StataJSON/news/2016/05/02/now-with-import.html</guid>
         
         
         <category>news</category>
