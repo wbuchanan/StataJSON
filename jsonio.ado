@@ -16,8 +16,8 @@
 ********************************************************************************
 
 *! jsonio
-*! 10NOV2016
-*! v 0.0.5
+*! 12APR2017
+*! v 0.0.6
 
 // Drop program from memory if it exists
 cap prog drop jsonio
@@ -46,7 +46,7 @@ prog def jsonio, rclass
 
 	else if `"`cmd'"' == "rv" rowval `"`filenm'"', `elements' `url' `obid' `stubname'
 
-	else jsonout `opt' if `touse', filenm(`filenm') `obid' `metaprint' `what'
+	else jsonout `opts' if `touse', filenm(`filenm') `obid' `metaprint' `what'
 
 	// Return local with the total number of keys
 	ret loc totalkeys `r(totalkeys)'
