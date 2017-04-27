@@ -1,11 +1,11 @@
 {smcl}
-{* *! version 0.0.3  29APR2016}{...}
+{* *! version 0.0.7  27APR2017}{...}
 
 {hline}
 {p 2 2 8}I/O operations with JSON Data{p_end}
 {hline}
 
-{marker jsoniotitle}{title:help for brewscheme}
+{marker jsoniotitle}{title:help for jsonio}
 
 {p 4 4 8}{hi:jsonio {hline 2}} A Stata JSON Serializer/Deserializer built on
 the {browse "http://github.com/FasterXML/jackson": Jackson} Java library.  For the most up to date version of this program, visit
@@ -24,7 +24,7 @@ of the data in both of these interfaces. {p_end}
 {title:Syntax}
 
 {p 4 4 4}{cmd:jsonio} {it:{opt kv|rv|out}}
-[{opt varlist}] {ifin} [{opt using}] , [ {cmdab:elem:ents(}{it:string}{cmd:)}
+[{opt varlist}] {ifin} , [ {cmdab:elem:ents(}{it:string}{cmd:)}
 {cmdab:no:URL} {cmdab:file:nm(}{it:string}{cmd:)}
 {cmdab:ob:id(}{it:real}{cmd:)} {cmdab:meta:print(}{it:string}{cmd:)}
 {cmdab:w:hat(}{it:string}{cmd:)} {cmdab:stub:name(}{it:string}{cmd:)}] {break}
@@ -159,34 +159,34 @@ form: {p_end}
 {p 4 4 4} Serialize the last record of the auto dataset {p_end}
 
 {p 8 8 12}sysuse auto, clear{p_end}
-{p 8 8 12}jsonio, what(record) obid(74){p_end}
+{p 8 8 12}jsonio out, what(record) obid(74){p_end}
 
 
 {p 4 4 4} Serialize the auto dataset {p_end}
 
 {p 8 8 12}sysuse auto, clear{p_end}
-{p 8 8 12}jsonio, what(data){p_end}
-{p 8 8 12}jsonio, what(all){p_end}
+{p 8 8 12}jsonio out, what(data){p_end}
+{p 8 8 12}jsonio out, what(all){p_end}
 
 {p 4 4 4} Serialize the auto dataset to a file{p_end}
 
 {p 8 8 12}sysuse auto, clear{p_end}
-{p 8 8 12}jsonio, what(data) file(autoDTA.json){p_end}
-{p 8 8 12}jsonio, what(all) file(autoDTA-withMetaData.json){p_end}
+{p 8 8 12}jsonio out, what(data) file(autoDTA.json){p_end}
+{p 8 8 12}jsonio out, what(all) file(autoDTA-withMetaData.json){p_end}
 
 {p 4 4 4} Serialize the auto dataset metadata{p_end}
 
 {p 8 8 12}sysuse auto, clear{p_end}
-{p 8 8 12}jsonio, metaprint(varnames){p_end}
-{p 8 8 12}jsonio, metaprint(varlabels){p_end}
-{p 8 8 12}jsonio, metaprint(labelnames){p_end}
-{p 8 8 12}jsonio, metaprint(vallabs){p_end}
+{p 8 8 12}jsonio out, metaprint(varnames){p_end}
+{p 8 8 12}jsonio out, metaprint(varlabels){p_end}
+{p 8 8 12}jsonio out, metaprint(labelnames){p_end}
+{p 8 8 12}jsonio out, metaprint(vallabs){p_end}
 
 {p 4 4 4}Additional examples are available at {browse "http://github.com/wbuchanan/StataJSON"}{p_end}
 {break}
 
 {title: Author}{break}
 {p 2 2 2}William R. Buchanan, Ph.D. {p_end}
-{p 2 2 2}Data Scientist{p_end}
-{p 2 2 2}{browse "http://mpls.k12.mn.us":Minneapolis Public Schools}{p_end}
-{p 2 2 2}William.Buchanan at mpls [dot] k12 [dot] mn [dot] us{p_end}
+{p 2 2 2}Director, Office of Data, Research, & Accountability{p_end}
+{p 2 2 2}{browse "http://www.fcps.net":Fayette County Public Schools}{p_end}
+{p 2 2 2}Billy.Buchanan at fayette [dot] kyschools [dot] us{p_end}

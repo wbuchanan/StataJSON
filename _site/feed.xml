@@ -5,16 +5,16 @@
     <description>A JSON serializer for Stata using the Java-API and Jackson JSON.</description>
     <link>https://wbuchanan.github.io/StataJSON/</link>
     <atom:link href="https://wbuchanan.github.io/StataJSON/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 12 Apr 2017 07:11:28 -0400</pubDate>
-    <lastBuildDate>Wed, 12 Apr 2017 07:11:28 -0400</lastBuildDate>
+    <pubDate>Thu, 27 Apr 2017 01:40:26 -0400</pubDate>
+    <lastBuildDate>Thu, 27 Apr 2017 01:40:26 -0400</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
         <title>Updated Binary for Distribution</title>
         <description>&lt;h1 id=&quot;new-binary-available&quot;&gt;New Binary Available&lt;/h1&gt;
-&lt;p&gt;Thanks to Marc Kaulisch, I became aware that I hadn’t updated the binary on the distribution branch in quite some time.  That should be taken care of now, but there is a new minor bug that was still being fixed.  The issue only affects output cases where the &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;in&lt;/code&gt; qualifiers are used with &lt;code class=&quot;highlighter-rouge&quot;&gt;jsonio out&lt;/code&gt;.  It will include the name of the temporary variable created to handle the &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;in&lt;/code&gt; condition and write it to the JSON file.&lt;/p&gt;
+&lt;p&gt;Thanks to Marc Kaulisch, I became aware that I hadn’t updated the binary on the distribution branch in quite some time.&lt;/p&gt;
 
-&lt;p&gt;If you don’t have a need to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;in&lt;/code&gt; qualifiers to write your data to a JSON object you should be fine.  Additionally, this includes some updates that provide more detailed metadata and objects to make iteration and finding specific datum a bit easier.&lt;/p&gt;
+&lt;p&gt;After submitting an updated version of the program to the &lt;a href=&quot;https://ideas.repec.org/s/boc/bocode.html&quot;&gt;SSC Archive&lt;/a&gt; Kit Baum notified me of some errors in the &lt;code class=&quot;highlighter-rouge&quot;&gt;.ado&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;help jsonio&lt;/code&gt; files.  These are now corrected as well.&lt;/p&gt;
 </description>
         <pubDate>Tue, 11 Apr 2017 10:45:00 -0400</pubDate>
         <link>https://wbuchanan.github.io/StataJSON/news/2017/04/11/updates.html</link>

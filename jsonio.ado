@@ -11,13 +11,13 @@
 *   Either prints a JSON object to the Stata console or writes one to disk.    *
 *                                                                              *
 * Lines -                                                                      *
-* 	209	                                                                       *
+* 	322	                                                                       *
 *                                                                              *
 ********************************************************************************
 
 *! jsonio
-*! 12APR2017
-*! v 0.0.6
+*! 27APR2017
+*! v 0.0.7
 
 // Drop program from memory if it exists
 cap prog drop jsonio
@@ -42,9 +42,11 @@ prog def jsonio, rclass
 	// If command is keyvay
 	if `"`cmd'"' == "kv" keyval `"`filenm'"', `elements' `url'
 
+	// If the command is rowvalue orientation
 	else if `"`cmd'"' == "rv" rowval `"`filenm'"', `elements' `url' `obid' `stubname'
 
-	else jsonout `opts' if `touse', filenm(`filenm') `obid' `metaprint' `what'
+	// For output need to pass the if/in conditions to the subroutine call
+	else jsonout `opts' `if' `in', filenm(`filenm') `obid' `metaprint' `what'
 
 	// Return local with the total number of keys
 	ret loc totalkeys `r(totalkeys)'
