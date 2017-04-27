@@ -11,13 +11,13 @@
 *   Either prints a JSON object to the Stata console or writes one to disk.    *
 *                                                                              *
 * Lines -                                                                      *
-* 	209	                                                                       *
+* 	322	                                                                       *
 *                                                                              *
 ********************************************************************************
 
 *! jsonio
-*! 12APR2017
-*! v 0.0.6
+*! 27APR2017
+*! v 0.0.7
 
 // Drop program from memory if it exists
 cap prog drop jsonio
@@ -36,17 +36,17 @@ prog def jsonio, rclass
 	// Tokenize the first argument
 	gettoken cmd opts : subtype
 
-	marksample touse
-
 	// Make sure there aren't any issues with the macro expansion for filepaths
 	if `"`url'"' == "nourl" loc filenm `: subinstr loc filenm `"~"' `"`: env HOME'"''
 
 	// If command is keyvay
 	if `"`cmd'"' == "kv" keyval `"`filenm'"', `elements' `url'
 
+	// If the command is rowvalue orientation
 	else if `"`cmd'"' == "rv" rowval `"`filenm'"', `elements' `url' `obid' `stubname'
 
-	else jsonout `opts' if `touse', filenm(`filenm') `obid' `metaprint' `what'
+	// For output need to pass the if/in conditions to the subroutine call
+	else jsonout `opts' `if' `in', filenm(`filenm') `obid' `metaprint' `what'
 
 	// Return local with the total number of keys
 	ret loc totalkeys `r(totalkeys)'
@@ -132,7 +132,67 @@ prog def jsonout, rclass
 
 	// Define syntax
 	syntax [varlist] [if] [in] [using/] , 				 					 ///
-	[ FILEnm(string asis) OBid(real 0) METAprint(string asis) What(string asis) ]
+	[ FILEnm(string asis) OBid(real 0) METAprint(string asis)                ///
+	What(string asis) COMMents YAML UQFNames SQuotes UQControl BACKSLash     ///
+	LEADZero NONNUM DUPlicates UNDEFined UTF16 ]
+
+    // Normalize *nix home shortcut in file
+    if substr(`"`filenm'"', 1, 1) == "~" {
+        loc filenm `: subinstr loc filenm `"~"' `"`: env HOME'"', all'
+    }
+
+    /* Used to enable the ALLOW_COMMENTS property of
+    the JsonParser Java class from the Jackson API.  For additional information
+    interested users should see:
+        http://fasterxml.github.io/jackson-core/javadoc/2.6/
+    */
+	if `"`comments'"' == "" loc comments false
+	else loc comments true
+
+    /* Used to enable the ALLOW_YAML_COMMENTS property of the JsonParser Java
+     class from the Jackson API. */
+	if `"`yaml'"' == "" loc yaml false
+	else loc yaml true
+
+    /* Used to enable the ALLOW_UNQUOTED_FIELD_NAMES property of the JsonParser Java
+     class from the Jackson API. */
+	if `"`uqfnames'"' == "" loc uqfnames false
+	else loc uqfnames true
+
+    /* Used to enable the ALLOW_SINGLE_QUOTES property of the JsonParser Java
+     class from the Jackson API. */
+	if `"`squotes'"' == "" loc squotes false
+	else loc squotes true
+
+    /* Used to enable the ALLOW_UNQUOTED_CONTROL_CHARS property of the JsonParser Java
+     class from the Jackson API. */
+	if `"`uqcontrol'"' == "" loc uqcontrol false
+	else loc uqcontrol true
+
+    /* Used to enable the ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER property of the
+    JsonParser Java class from the Jackson API. */
+	if `"`backslash'"' == "" loc backslash false
+	else loc backslash true
+
+    /* Used to enable the ALLOW_NUMERIC_LEADING_ZEROS property of the JsonParser Java
+     class from the Jackson API. */
+	if `"`leadzero'"' == "" loc leadzero false
+	else loc leadzero true
+
+    /* Used to enable the ALLOW_NON_NUMERIC_NUMBERS property of the JsonParser Java
+     class from the Jackson API. */
+	if `"`nonnum'"' == "" loc nonnum false
+	else loc nonnum true
+
+    /* Used to enable the STRICT_DUPLICATE_DETECTION property of the JsonParser Java
+     class from the Jackson API. */
+	if `"`duplicates'"' == "" loc duplicates false
+	else loc duplicates true
+
+    /* Used to enable the IGNORE_UNDEFINED property of the JsonParser Java
+     class from the Jackson API. */
+	if `"`undefined'"' == "" loc undefined false
+	else loc undefined true
 
 	// Gets maximum length of a macro for the user
 	loc maxlen `= `c(maxvar)' * 129'
@@ -175,12 +235,12 @@ prog def jsonout, rclass
 		} // End IF Block to load data from using
 
 		// Check for metadata argument
-		if inlist(`"`metaprint'`filenm'"', "varlabels", "varnames", "vallabs", 		 ///   
+		if inlist(`"`metaprint'`filenm'"', "varlabels", "varnames", "vallabs", ///
 		"labelnames") {
 
 			// Call java method to print metadata
 			javacall org.paces.Stata.JSON.StataMetaToJSON metaToJSON 		 ///
-			`varlist' `if' `in'
+			`varlist' `if' `in', args(`utf16')
 
 		} // End IF Block for printing metadata to JSON
 
@@ -194,7 +254,7 @@ prog def jsonout, rclass
 				javacall org.paces.Stata.JSON.StataJSON printDataToFile 	 ///
 				`varlist' `if' `in'
 
-			} // End else block for printing data to JSON
+			} // End if block for printing data to JSON
 
 			// Call to print dataset to Stata console
 			else if "`what'" == "Data" & "`filenm'" == "" {
