@@ -11,13 +11,13 @@
 *   Either prints a JSON object to the Stata console or writes one to disk.    *
 *                                                                              *
 * Lines -                                                                      *
-* 	209	                                                                       *
+* 	322	                                                                       *
 *                                                                              *
 ********************************************************************************
 
 *! jsonio
-*! 29APR2016
-*! v 0.0.4
+*! 27APR2017
+*! v 0.0.7
 
 // Drop program from memory if it exists
 cap prog drop jsonio
@@ -29,7 +29,7 @@ prog def jsonio, rclass
 	version 13.0
 
 	// Define input syntax
-	syntax anything(name=subtype id="Input/Output Type"), [					 ///
+	syntax anything(name=subtype id="Input/Output Type") [if] [in] , [		 ///
 	ELEMents(passthru) noURL FILEnm(string) OBid(passthru) 					 ///
 	METAprint(passthru)  What(passthru) STUBname(passthru) ]
 
@@ -42,15 +42,17 @@ prog def jsonio, rclass
 	// If command is keyvay
 	if `"`cmd'"' == "kv" keyval `"`filenm'"', `elements' `url'
 
+	// If the command is rowvalue orientation
 	else if `"`cmd'"' == "rv" rowval `"`filenm'"', `elements' `url' `obid' `stubname'
 
-	else jsonout `opt', filenm(`filenm') `obid' `metaprint' `what'
+	// For output need to pass the if/in conditions to the subroutine call
+	else jsonout `opts' `if' `in', filenm(`filenm') `obid' `metaprint' `what'
 
 	// Return local with the total number of keys
 	ret loc totalkeys `r(totalkeys)'
 
 	// Set the local macro that needs to be returned
-	ret loc thejson `"`thejson'"'
+	ret loc thejson `"`r(thejson)'"'
 
 // End of the program definition
 end
@@ -192,6 +194,9 @@ prog def jsonout, rclass
 	if `"`undefined'"' == "" loc undefined false
 	else loc undefined true
 
+	// Gets maximum length of a macro for the user
+	loc maxlen `= `c(maxvar)' * 129'
+
     // Set local macro with the file name
     loc filename `"`c(filename)'"'
 
@@ -242,64 +247,67 @@ prog def jsonout, rclass
 		// For non-metadata based calls
 		else {
 		
-		// For non metadata cases
-		if "`what'" == "Data" & "`filenm'" != "" {
+			// For non metadata cases
+			if "`what'" == "Data" & "`filenm'" != "" {
 
-			// Call java method to write JSON object to disk
-			javacall org.paces.Stata.JSON.StataJSON printDataToFile 		 ///
-			`varlist' `if' `in', args(`utf16')
+				// Call java method to write JSON object to disk
+				javacall org.paces.Stata.JSON.StataJSON printDataToFile 	 ///
+				`varlist' `if' `in'
 
-		} // End else block for printing data to JSON
+			} // End if block for printing data to JSON
 
-		// Call to print dataset to Stata console
-		else if "`what'" == "Data" & "`filenm'" == "" {
+			// Call to print dataset to Stata console
+			else if "`what'" == "Data" & "`filenm'" == "" {
 
-			// Call java method to write JSON object to the Stata console
-			javacall org.paces.Stata.JSON.StataJSON printData `varlist' `if' ///   
-			`in', args(`utf16')
+				// Call java method to write JSON object to the Stata console
+				javacall org.paces.Stata.JSON.StataJSON printData `varlist'  ///
+				`if' `in'
 
-		} // End ELSEIF Block to print dataset to Stata console
+			} // End ELSEIF Block to print dataset to Stata console
 
-		// Call to write individual record to file
-		else if "`what'" == "Record" & "`filenm'" != "" {
+			// Call to write individual record to file
+			else if "`what'" == "Record" & "`filenm'" != "" {
 
-			// Call java method to write individual record to disk
-			javacall org.paces.Stata.JSON.StataJSON printRecordToFile 		 ///
-			`varlist' `if' `in', args(`utf16')
+				// Call java method to write individual record to disk
+				javacall org.paces.Stata.JSON.StataJSON printRecordToFile 	 ///
+				`varlist' `if' `in'
 
-		} // End ELSEIF Block for writing individual record to disk
+			} // End ELSEIF Block for writing individual record to disk
 
-		// Option to print individual record to the screen
-		else if "`what'" == "Record" & "`filenm'" == "" {
+			// Option to print individual record to the screen
+			else if "`what'" == "Record" & "`filenm'" == "" {
 
-			// Call java method to print record to the Stata console
-			javacall org.paces.Stata.JSON.StataJSON printRecord `varlist' 	 ///   
-			`if' `in', args(`utf16')
+				// Call java method to print record to the Stata console
+				javacall org.paces.Stata.JSON.StataJSON printRecord 		 ///
+				`varlist' `if' `in'
 
-		} // End ELSEIF Block to print JSON record to Stata console
+			} // End ELSEIF Block to print JSON record to Stata console
 
-		// Option to print everything to the console
-		else if "`what'" == "All" & "`filenm'" == "" {
+			// Option to print everything to the console
+			else if "`what'" == "All" & "`filenm'" == "" {
 
-			// Call java method to print everything to the Stata console
-			javacall org.paces.Stata.JSON.StataJSON printAll `varlist' `if'  ///
-			`in', args(`utf16')
+				// Call java method to print everything to the Stata console
+				javacall org.paces.Stata.JSON.StataJSON printAll `varlist'   ///
+				`if' `in'
 
-		} // End ELSEIF Block to print JSON data/metadata to Stata console
+			} // End ELSEIF Block to print JSON data/metadata to Stata console
 
-		// Option to write all data to file on the disk
-		else {
+			// Option to write all data to file on the disk
+			else {
 
-		// Call java method to print everything to the Stata console
-        	javacall org.paces.Stata.JSON.StataJSON printAllToFile `varlist' ///
-        	`if' `in', args(`utf16')
+				// Call java method to print everything to the Stata console
+				javacall org.paces.Stata.JSON.StataJSON printAllToFile       ///
+				`varlist' `if' `in'
 
-        	} // End ELSE Block to print JSON data/metadata to disk
+			} // End ELSE Block to print JSON data/metadata to disk
 
-	} // End ELSE Block for data-based function calls	
+		} // End ELSE Block for data-based function calls
 
-	// Set the local macro that needs to be returned
-	ret loc thejson `"`thejson'"'
+		// Put default error message in the macro
+		if `"`thejson'"' == "" ret loc thejson "JSON Object Too Large for Macro."
+
+		// Set the local macro that needs to be returned
+		else ret loc thejson `"`thejson'"'
 
 	// Restore data to that originally in memory
 	restore
