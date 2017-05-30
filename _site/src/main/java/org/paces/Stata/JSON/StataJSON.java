@@ -83,20 +83,25 @@ public class StataJSON {
 		// Create a new Metadata object
 		Meta dbg = new Meta();
 
-		// Get the value of the observation to print from the local macro obid
-		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
-		
+		// Check to make sure there is only a single element
+		List<Number> obs = dbg.getObsindex();
+
+		// Gets the maximimum macro length
 		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
-		
-		// Initialize a new DataRecord object with the data for a given
-		// observation
-		DataRecord x = new DataRecord(obid, dbg);
 
-		// Print the resulting data record to the console
-		toJSON(x, macroLength);
+		// Loops over all the potential observations
+		for (Number obid : obs) {
 
-		x = null;
-		obid = null;
+			// Initialize a new DataRecord object with the data for a given
+			// observation
+			DataRecord x = new DataRecord(obid.intValue(), dbg);
+
+			// Print the resulting data record to the console
+			toJSON(x.getData(), macroLength);
+
+		} // End of loop
+
+		// Destroys the Meta class object
 		dbg = null;
 
 		// Return a success indicator
@@ -153,14 +158,11 @@ public class StataJSON {
 		// Create a new Metadata object
 		Meta dbg = new Meta();
 
-		// Get the value of the observation to print from the local macro obid
-		Long obid = Long.valueOf(Macro.getLocalSafe("obid"));
-		
+		// Check to make sure there is only a single element
+		List<Number> obs = dbg.getObsindex();
+
+		// Gets the maximimum macro length
 		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
-		
-		// Initialize a new DataRecord object with the data for a given
-		// observation
-		DataRecord x = new DataRecord(obid, dbg);
 
 		File nfile = new File(Macro.getLocalSafe("filenm"));
 
@@ -169,17 +171,23 @@ public class StataJSON {
 		// New File object
 		FileOutputStream jsonOutput = new FileOutputStream(nfile, true);
 
-		// Print the resulting data record to the console
-		toJSON(x, jsonOutput, macroLength);
+		// Loops over all the potential observations
+		for (Number obid : obs) {
+
+			// Initialize a new DataRecord object with the data for a given
+			// observation
+			DataRecord x = new DataRecord(obid.intValue(), dbg);
+
+			// Print the resulting data record to the console
+			toJSON(x, jsonOutput, macroLength);
+
+		} // End of loop
 
 		// Close the open file connection
 		jsonOutput.close();
 
-		x = null;
-		obid = null;
 		dbg = null;
 		jsonOutput = null;
-
 
 		// Return a success indicator
 		return 0;
@@ -268,7 +276,7 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		String thejson = themap.writeValueAsString(observation);
+		String thejson = themap.writeValueAsString(observation.getData());
 
 		if (thejson.length() <= maclen) {
 			
@@ -300,7 +308,7 @@ public class StataJSON {
 		// New object mapper to parse JSON
 		ObjectMapper themap = new ObjectMapper();
 
-		String thejson = themap.writeValueAsString(observation);
+		String thejson = themap.writeValueAsString(observation.getData());
 		
 		if (thejson.length() <= maclen) {
 			

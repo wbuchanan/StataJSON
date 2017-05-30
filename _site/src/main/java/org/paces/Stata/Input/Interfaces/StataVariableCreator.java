@@ -22,8 +22,7 @@ public interface StataVariableCreator {
 	 * value variables.  The first element is the key (e.g., .get(0)) and
 	 * second element returns the index for the values.
 	 */
-	default List<Integer> addStataVars(Integer obs, Integer keyLength, String
-		type) {
+	default List<Integer> addStataVars(Integer obs, Integer keyLength, String type) {
 		if (Data.getObsTotal() == 0L) Data.setObsTotal(obs);
 		List<Integer> varidx = new ArrayList<>();
 		varidx.add(0, addStataVar("key", keyLength, "str"));
