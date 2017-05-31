@@ -246,7 +246,21 @@ Serializing a single record
 
 ```Stata
 
-. jsonio, what(record) obid(74)
+. jsonio out in 73/74, what(record)
+[{
+  "mpg" : 25.0,
+  "price" : 6850.0,
+  "headroom" : 2.0,
+  "rep78" : 4.0,
+  "length" : 156.0,
+  "weight" : 1990.0,
+  "displacement" : 97.0,
+  "turn" : 36.0,
+  "trunk" : 16.0,
+  "make" : "VW Scirocco",
+  "gear_ratio" : 3.7799999713897705,
+  "foreign" : 1.0
+}, 
 {
   "mpg" : 17.0,
   "price" : 11995.0,
@@ -260,7 +274,7 @@ Serializing a single record
   "make" : "Volvo 260",
   "gear_ratio" : 2.9800000190734863,
   "foreign" : 1.0
-}
+}]
 
 ```
 
@@ -269,9 +283,10 @@ Serialize all records that satisfy a given condition
 
 ```Stata
 
-. jsonio if rep78 == 1, what(data)
+. jsonio out if rep78 == 1, what(data)
 {
-  "fileName" : "Stata Data Set",
+  "source" : "/Applications/Stata/ado/base/a/auto.dta",
+  "name" : "DataSet",
   "data" : [ {
     "mpg" : 24.0,
     "price" : 4195.0,
@@ -301,6 +316,7 @@ Serialize all records that satisfy a given condition
   } ]
 }
 
+
 ```
 
 ## Example 3
@@ -308,94 +324,108 @@ Serialize all data and meta data for records 71 - 74
 
 ```Stata
 
-. jsonio in 71/74, w(all)
+. jsonio out in 71/74, w(all)
 {
-  "Value Labels" : [ {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : "Domestic",
-    "1" : "Foreign"
-  } ],
-  "Starting Observation Number" : 71,
-  "Data Set" : [ {
-    "mpg" : 41.0,
-    "price" : 5397.0,
-    "headroom" : 3.0,
-    "rep78" : 5.0,
-    "length" : 155.0,
-    "weight" : 2040.0,
-    "displacement" : 90.0,
-    "turn" : 35.0,
-    "trunk" : 15.0,
-    "make" : "VW Diesel",
-    "gear_ratio" : 3.7799999713897705,
-    "foreign" : 1.0
-  }, {
-    "mpg" : 25.0,
-    "price" : 4697.0,
-    "headroom" : 3.0,
-    "rep78" : 4.0,
-    "length" : 155.0,
-    "weight" : 1930.0,
-    "displacement" : 89.0,
-    "turn" : 35.0,
-    "trunk" : 15.0,
-    "make" : "VW Rabbit",
-    "gear_ratio" : 3.7799999713897705,
-    "foreign" : 1.0
-  }, {
-    "mpg" : 25.0,
-    "price" : 6850.0,
-    "headroom" : 2.0,
-    "rep78" : 4.0,
-    "length" : 156.0,
-    "weight" : 1990.0,
-    "displacement" : 97.0,
-    "turn" : 36.0,
-    "trunk" : 16.0,
-    "make" : "VW Scirocco",
-    "gear_ratio" : 3.7799999713897705,
-    "foreign" : 1.0
-  }, {
-    "mpg" : 17.0,
-    "price" : 11995.0,
-    "headroom" : 2.5,
-    "rep78" : 5.0,
-    "length" : 193.0,
-    "weight" : 3170.0,
-    "displacement" : 163.0,
-    "turn" : 37.0,
-    "trunk" : 14.0,
-    "make" : "Volvo 260",
-    "gear_ratio" : 2.9800000190734863,
-    "foreign" : 1.0
-  } ],
-  "Variable Names" : [ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ],
-  "Is Variable String" : [ true, false, false, false, false, false, false, false, false, false, false, false ],
-  "Number of Observations" : 4,
-  "Ending Observation Number" : 74,
-  "Value Label Names" : [ "", "", "", "", "", "", "", "", "", "", "", "origin" ],
-  "Variable Labels" : [ "Make and Model", "Price", "Mileage (mpg)", "Repair Record 1978", "Headroom (in.)", "Trunk space (cu. ft.)", "Weight (lbs.)", "Length (in.)", "Turn Circle (ft.) ", "Displacement (cu. in.)", "Gear Ratio", "Car type" ]
+  "values" : {
+    "source" : "/Applications/Stata/ado/base/a/auto.dta",
+    "name" : "DataSet",
+    "data" : [ {
+      "mpg" : 41.0,
+      "price" : 5397.0,
+      "headroom" : 3.0,
+      "rep78" : 5.0,
+      "length" : 155.0,
+      "weight" : 2040.0,
+      "displacement" : 90.0,
+      "turn" : 35.0,
+      "trunk" : 15.0,
+      "make" : "VW Diesel",
+      "gear_ratio" : 3.7799999713897705,
+      "foreign" : 1.0
+    }, {
+      "mpg" : 25.0,
+      "price" : 4697.0,
+      "headroom" : 3.0,
+      "rep78" : 4.0,
+      "length" : 155.0,
+      "weight" : 1930.0,
+      "displacement" : 89.0,
+      "turn" : 35.0,
+      "trunk" : 15.0,
+      "make" : "VW Rabbit",
+      "gear_ratio" : 3.7799999713897705,
+      "foreign" : 1.0
+    }, {
+      "mpg" : 25.0,
+      "price" : 6850.0,
+      "headroom" : 2.0,
+      "rep78" : 4.0,
+      "length" : 156.0,
+      "weight" : 1990.0,
+      "displacement" : 97.0,
+      "turn" : 36.0,
+      "trunk" : 16.0,
+      "make" : "VW Scirocco",
+      "gear_ratio" : 3.7799999713897705,
+      "foreign" : 1.0
+    }, {
+      "mpg" : 17.0,
+      "price" : 11995.0,
+      "headroom" : 2.5,
+      "rep78" : 5.0,
+      "length" : 193.0,
+      "weight" : 3170.0,
+      "displacement" : 163.0,
+      "turn" : 37.0,
+      "trunk" : 14.0,
+      "make" : "Volvo 260",
+      "gear_ratio" : 2.9800000190734863,
+      "foreign" : 1.0
+    } ]
+  },
+  "firstRecordId" : 71,
+  "lastRecordId" : 74,
+  "variableIndices" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
+  "variableIsString" : {
+    "mpg" : false,
+    "price" : false,
+    "headroom" : false,
+    "rep78" : false,
+    "length" : false,
+    "weight" : false,
+    "displacement" : false,
+    "turn" : false,
+    "trunk" : false,
+    "make" : true,
+    "gear_ratio" : false,
+    "foreign" : false
+  },
+  "variableNames" : [ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ],
+  "variableLabels" : {
+    "mpg" : "Mileage (mpg)",
+    "price" : "Price",
+    "headroom" : "Headroom (in.)",
+    "rep78" : "Repair Record 1978",
+    "length" : "Length (in.)",
+    "weight" : "Weight (lbs.)",
+    "displacement" : "Displacement (cu. in.)",
+    "turn" : "Turn Circle (ft.) ",
+    "trunk" : "Trunk space (cu. ft.)",
+    "make" : "Make and Model",
+    "gear_ratio" : "Gear Ratio",
+    "foreign" : "Car type"
+  },
+  "valueLabelNames" : {
+    "foreign" : "origin"
+  },
+  "valueLabels" : {
+    "foreign" : {
+      "0" : "Domestic",
+      "1" : "Foreign"
+    }
+  },
+  "numberOfRecords" : 4,
+  "numberOfVariables" : 12
 }
 
 ```
@@ -405,68 +435,97 @@ Serialize all data and metadata for the dataset in memory
 
 ```Stata
 
-. jsonio, w(all)
+. jsonio out, w(all)
 {
-  "Value Labels" : [ {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : ""
-  }, {
-    "0" : "Domestic",
-    "1" : "Foreign"
-  } ],
-  "Starting Observation Number" : 1,
-  "Data Set" : [ {
-    "mpg" : 22.0,
-    "price" : 4099.0,
-    "headroom" : 2.5,
-    "rep78" : 3.0,
-    "length" : 186.0,
-    "weight" : 2930.0,
-    "displacement" : 121.0,
-    "turn" : 40.0,
-    "trunk" : 11.0,
-    "make" : "AMC Concord",
-    "gear_ratio" : 3.5799999237060547,
-    "foreign" : 0.0
-  }, {...}, {
-    "mpg" : 17.0,
-    "price" : 11995.0,
-    "headroom" : 2.5,
-    "rep78" : 5.0,
-    "length" : 193.0,
-    "weight" : 3170.0,
-    "displacement" : 163.0,
-    "turn" : 37.0,
-    "trunk" : 14.0,
-    "make" : "Volvo 260",
-    "gear_ratio" : 2.9800000190734863,
-    "foreign" : 1.0
-  } ],
-  "Variable Names" : [ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ],
-  "Is Variable String" : [ true, false, false, false, false, false, false, false, false, false, false, false ],
-  "Number of Observations" : 74,
-  "Ending Observation Number" : 74,
-  "Value Label Names" : [ "", "", "", "", "", "", "", "", "", "", "", "origin" ],
-  "Variable Labels" : [ "Make and Model", "Price", "Mileage (mpg)", "Repair Record 1978", "Headroom (in.)", "Trunk space (cu. ft.)", "Weight (lbs.)", "Length (in.)", "Turn Circle (ft.) ", "Displacement (cu. in.)", "Gear Ratio", "Car type" ]
+  "values" : {
+    "source" : "/Applications/Stata/ado/base/a/auto.dta",
+    "name" : "DataSet",
+    "data" : [ {
+      "mpg" : 22.0,
+      "price" : 4099.0,
+      "headroom" : 2.5,
+      "rep78" : 3.0,
+      "length" : 186.0,
+      "weight" : 2930.0,
+      "displacement" : 121.0,
+      "turn" : 40.0,
+      "trunk" : 11.0,
+      "make" : "AMC Concord",
+      "gear_ratio" : 3.5799999237060547,
+      "foreign" : 0.0
+    }, {
+      "mpg" : 17.0,
+      "price" : 4749.0,
+      "headroom" : 3.0,
+      "rep78" : 3.0,
+      "length" : 173.0,
+      "weight" : 3350.0,
+      "displacement" : 258.0,
+      "turn" : 40.0,
+      "trunk" : 11.0,
+      "make" : "AMC Pacer",
+      "gear_ratio" : 2.5299999713897705,
+      "foreign" : 0.0
+    }, 
+    ...
+    {
+      "mpg" : 17.0,
+      "price" : 11995.0,
+      "headroom" : 2.5,
+      "rep78" : 5.0,
+      "length" : 193.0,
+      "weight" : 3170.0,
+      "displacement" : 163.0,
+      "turn" : 37.0,
+      "trunk" : 14.0,
+      "make" : "Volvo 260",
+      "gear_ratio" : 2.9800000190734863,
+      "foreign" : 1.0
+    } ]
+  },
+  "firstRecordId" : 1,
+  "lastRecordId" : 74,
+  "variableIndices" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
+  "variableIsString" : {
+    "mpg" : false,
+    "price" : false,
+    "headroom" : false,
+    "rep78" : false,
+    "length" : false,
+    "weight" : false,
+    "displacement" : false,
+    "turn" : false,
+    "trunk" : false,
+    "make" : true,
+    "gear_ratio" : false,
+    "foreign" : false
+  },
+  "variableNames" : [ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ],
+  "variableLabels" : {
+    "mpg" : "Mileage (mpg)",
+    "price" : "Price",
+    "headroom" : "Headroom (in.)",
+    "rep78" : "Repair Record 1978",
+    "length" : "Length (in.)",
+    "weight" : "Weight (lbs.)",
+    "displacement" : "Displacement (cu. in.)",
+    "turn" : "Turn Circle (ft.) ",
+    "trunk" : "Trunk space (cu. ft.)",
+    "make" : "Make and Model",
+    "gear_ratio" : "Gear Ratio",
+    "foreign" : "Car type"
+  },
+  "valueLabelNames" : {
+    "foreign" : "origin"
+  },
+  "valueLabels" : {
+    "foreign" : {
+      "0" : "Domestic",
+      "1" : "Foreign"
+    }
+  },
+  "numberOfRecords" : 74,
+  "numberOfVariables" : 12
 }
 
 ```
@@ -476,9 +535,10 @@ Serialize selected variables for observations satisfying a given condition
 
 ```Stata
 
-. jsonio mpg weight price make if rep78 == 1, w(data)
+. jsonio out mpg weight price make if rep78 == 1, w(data)
 {
-  "fileName" : "Stata Data Set",
+  "source" : "/Applications/Stata/ado/base/a/auto.dta",
+  "name" : "DataSet",
   "data" : [ {
     "mpg" : 24.0,
     "price" : 4195.0,
@@ -501,7 +561,7 @@ Serialize all data and metadata for selected variables and observations
 satisfying a given condition and write the output to disk
 ```Stata
 
-. jsonio mpg foreign weight price make if rep78 == 1, w(all) filenm(test.json)
+. jsonio out mpg foreign weight price make if rep78 == 1, w(all) filenm(test.json)
 
 ```
 
@@ -512,7 +572,7 @@ Serialize variable names to JSON object that is printed to the Stata console:
 
 ```Stata
  
-. jsonio, metaprint(varnames)
+. jsonio out, metaprint(varnames)
 [ "make", "price", "mpg", "rep78", "headroom", "trunk", "weight", "length", "turn", "displacement", "gear_ratio", "foreign" ]
 ```
 
@@ -520,9 +580,45 @@ Serialize variable labels to JSON object that is printed to the Stata console:
 
 ```Stata
 
-. jsonio, metaprint(varlabels)
+. jsonio out, metaprint(varlabels)
+{
+  "mpg" : "Mileage (mpg)",
+  "price" : "Price",
+  "headroom" : "Headroom (in.)",
+  "rep78" : "Repair Record 1978",
+  "length" : "Length (in.)",
+  "weight" : "Weight (lbs.)",
+  "displacement" : "Displacement (cu. in.)",
+  "turn" : "Turn Circle (ft.) ",
+  "trunk" : "Trunk space (cu. ft.)",
+  "make" : "Make and Model",
+  "gear_ratio" : "Gear Ratio",
+  "foreign" : "Car type"
+}
 
-[ "Make and Model", "Price", "Mileage (mpg)", "Repair Record 1978", "Headroom (in.)", "Trunk space (cu. ft.)", "Weight (lbs.)", "Length (in.)", "Turn Circle (ft.) ", "Displacement (cu. in.)", "Gear Ratio", "Car type" ]
 ```
 
+Serialize value labels associating the variable name with the mapping
 
+```Stata
+
+. jsonio out, metaprint(vallabs)  
+{
+  "foreign" : {
+    "0" : "Domestic",
+    "1" : "Foreign"
+  }
+}
+
+```
+
+You can also serialize the names of the value labels associated with variables
+
+```Stata
+
+. jsonio out, metaprint(labelnames)
+{
+  "foreign" : "origin"
+}
+
+```

@@ -1,6 +1,7 @@
 package org.paces.Stata.JSON;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stata.sfi.*;
 import org.paces.Stata.MetaData.*;
 
@@ -55,7 +56,13 @@ public class StataMetaToJSON {
 	 */
 	@JsonIgnore
 	static Integer macroLength;
-	
+
+	/**
+	 * Creates object used to generate JSON
+	 */
+	@JsonIgnore
+	private static ObjectMapper themap = new ObjectMapper();
+
 	/***
 	 * Method to print meta data to the Stata Console
 	 * @param args Argument used to define what values to print to the console
@@ -134,19 +141,36 @@ public class StataMetaToJSON {
 
 		} // End of Switch statement
 
+		// String representation of the JSON object
+		String theJSON;
+
 		// Check if filenm local macro is empty/set
 		if (Macro.getLocalSafe("filenm").isEmpty()) {
 
-			// Print the requested data to the screen
-			StataJSON.toJSON(toPrint, macroLength);
+			theJSON = themap.writeValueAsString(toPrint);
+
+			if (storeAsMacro(theJSON, macroLength) != 0) {
+				SFIToolkit.displayln("The JSON object was too long to be stored in a local macro");
+			}
+
+			// Print JSON to screen
+			SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
+					.writeValueAsString(toPrint));
 
 		} else {
 
 			// New File object
 			FileOutputStream jsonOutput = new FileOutputStream(Macro.getLocalSafe("filenm"));
 
-			// Print the requested data to the screen
-			StataJSON.toJSON(toPrint, jsonOutput, macroLength);
+			theJSON = themap.writeValueAsString(toPrint);
+
+			if (storeAsMacro(theJSON, macroLength) != 0) {
+				SFIToolkit.displayln("The JSON object was too long to be stored in a local macro");
+			}
+
+			// Print JSON to file
+			themap.writerWithDefaultPrettyPrinter()
+					.writeValue(jsonOutput, toPrint);
 
 			// Close file connection
 			jsonOutput.close();
@@ -157,5 +181,21 @@ public class StataMetaToJSON {
 		return 0;
 
 	} // End of metaToJSON method declaration
+
+	/**
+	 * Method to test whether JSON object can be stored in a macro
+	 * @param printJSON The string value of the JSON object
+	 * @param maxlen The maximum number of characters that can be stored in a macro on the users machine
+	 * @return Returns an integer valued C-style success code (e.g., 0 for success, !0 for error)
+	 */
+	private static int storeAsMacro(String printJSON, Integer maxlen) {
+		if (printJSON.length() <= maxlen) {
+			Macro.setLocal("thejson", printJSON);
+			return 0;
+		} else {
+			Macro.setLocal("thejson", "");
+			return 1;
+		}
+	}
 
 } // End of Object declaration
