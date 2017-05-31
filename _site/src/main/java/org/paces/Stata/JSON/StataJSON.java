@@ -25,11 +25,16 @@ public class StataJSON {
 	 */
 	private static Integer macroLength;
 
-
 	public static Charset charset;
 	public static final String jsOpen = "var stataData = ";
 	public static final String jsClose = " ; ";
 	public static Boolean asJavaScriptVar;
+
+	/**
+	 * New object mapper to parse JSON
+	 */
+	private static ObjectMapper themap = new ObjectMapper();
+
 
 	/***
 	 * Main entry point to application
@@ -89,6 +94,20 @@ public class StataJSON {
 		// Gets the maximimum macro length
 		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
 
+		String appender;
+
+		// Creates comma delimiter for records
+		if (obs.size() > 1) appender = ", ";
+
+		// Otherwise adds a blank string after the object
+		else appender = "";
+
+		// Gets the maximimum macro length
+		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
+
+		// Display an opening array bracket
+		SFIToolkit.display("[");
+
 		// Loops over all the potential observations
 		for (Number obid : obs) {
 
@@ -97,11 +116,16 @@ public class StataJSON {
 			DataRecord x = new DataRecord(obid.intValue(), dbg);
 
 			// Print the resulting data record to the console
-			toJSON(x.getData(), macroLength);
+			toJSON(x, macroLength);
+
+			// For all but the last record, append the appender value
+			if (!obid.equals(obs.get(obs.size() - 1))) SFIToolkit.displayln(appender);
 
 		} // End of loop
 
-		// Destroys the Meta class object
+		// Display the array closing bracket
+		SFIToolkit.display("]");
+
 		dbg = null;
 
 		// Return a success indicator
@@ -273,21 +297,23 @@ public class StataJSON {
 	public static void toJSON(DataRecord observation, Integer maclen) throws
 			JsonProcessingException {
 
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
+		// Gets the data component from the data record object
+		Map<String, Object> theData = observation.getData();
 
-		String thejson = themap.writeValueAsString(observation.getData());
+		// Gets the string value of the data converted as a JSON object
+		String thejson = themap.writeValueAsString(theData);
 
+		// Tests the length of the JSON object
 		if (thejson.length() <= maclen) {
 			
 			// Return the JSON string in a local macro
 			Macro.setLocal("thejson", thejson);
 			
-		}
+		} // Ends the IF Block
 			
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
-				.writeValueAsString(observation));
+				.writeValueAsString(theData));
 
 	} // End toJSON method declaration for single observation
 
@@ -305,17 +331,19 @@ public class StataJSON {
 	public static void toJSON(DataRecord observation, FileOutputStream filename, Integer maclen) throws
 			IOException, JsonProcessingException {
 
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
+		// Gets the data component from the data record object
+		Map<String, Object> theData = observation.getData();
 
-		String thejson = themap.writeValueAsString(observation.getData());
-		
+		// Gets the string value of the data converted as a JSON object
+		String thejson = themap.writeValueAsString(theData);
+
+		// Tests for the length of the string
 		if (thejson.length() <= maclen) {
 			
 			// Return the JSON string in a local macro
 			Macro.setLocal("thejson", thejson);
 			
-		}
+		} // End of IF Block
 		
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
@@ -336,9 +364,6 @@ public class StataJSON {
 	 */
 	public static void toJSON(DataSet stataData, Integer maclen) throws
 			JsonProcessingException {
-
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
 
 		String thejson = themap.writeValueAsString(stataData);
 		
@@ -369,9 +394,6 @@ public class StataJSON {
 	public static void toJSON(DataSet stataData, FileOutputStream filename, Integer maclen) throws
 			IOException, JsonProcessingException {
 
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
-
 		String thejson = themap.writeValueAsString(stataData);
 		
 		if (thejson.length() <= maclen) {
@@ -387,6 +409,7 @@ public class StataJSON {
 
 	} // End toJSON method declaration for dataset
 
+
 	/***
 	 * Method to print a generic Object type variable
 	 * @param metaobject A generic Object type variable
@@ -394,11 +417,8 @@ public class StataJSON {
 	 * @throws JsonProcessingException A processing error thrown by the
 	 * Jackson JSON API
 	 */
-	public static void toJSON(Object metaobject, Integer maclen) throws
+	public static void toJSON(StataAllToJSON metaobject, Integer maclen) throws
 			JsonProcessingException {
-
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
 
 		String thejson = themap.writeValueAsString(metaobject);
 		
@@ -415,7 +435,6 @@ public class StataJSON {
 
 	} // End toJSON method declaration for single observation
 
-
 	/***
 	 * Method to print a generic Object type variable
 	 * @param metaobject A generic Object type variable
@@ -427,11 +446,8 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
-	public static void toJSON(Object metaobject, FileOutputStream filename, Integer maclen) throws
+	public static void toJSON(StataAllToJSON metaobject, FileOutputStream filename, Integer maclen) throws
 			IOException, JsonProcessingException {
-
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
 
 		String thejson = themap.writeValueAsString(metaobject);
 		
@@ -455,11 +471,9 @@ public class StataJSON {
 	 * @throws JsonProcessingException A processing error thrown by the
 	 * Jackson JSON API
 	 */
+/*
 	public static void toJSON(List<Object> thedata, Integer maclen) throws
 			JsonProcessingException {
-
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
 
 		String thejson = themap.writeValueAsString(thedata);
 		
@@ -475,6 +489,7 @@ public class StataJSON {
 				.writeValueAsString(thedata));
 
 	} // End toJSON method declaration for List of Object types
+*/
 
 	/***
 	 * Method to print a List of object types to the Stata console
@@ -487,11 +502,9 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
+/*
 	public static void toJSON(List<Object> thedata, FileOutputStream filename, Integer maclen) throws
 			IOException, JsonProcessingException {
-
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
 
 		String thejson = themap.writeValueAsString(thedata);
 		
@@ -507,6 +520,7 @@ public class StataJSON {
 				.writeValue(filename, thedata);
 
 	} // End toJSON method declaration for List of Object types
+*/
 
 	/***
 	 * Method to print all data and metadata to the Stata console
@@ -517,11 +531,9 @@ public class StataJSON {
 	 * @throws NullPointerException An exception when null objects are
 	 * referenced
 	 */
+/*
 	public static void toJSON(Map<String, Object> allData, Integer maclen) throws
 			JsonProcessingException, NullPointerException {
-
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
 
 		String thejson = themap.writeValueAsString(allData);
 		
@@ -537,6 +549,7 @@ public class StataJSON {
 				.writeValueAsString(allData));
 
 	} // End method declaration
+*/
 
 	/***
 	 * Method to print all data and metadata to the Stata console
@@ -549,12 +562,10 @@ public class StataJSON {
 	 * @throws IOException An error thrown when attempting to read/write a
 	 * local file
 	 */
+/*
 	public static void toJSON(Map<String, Object> allData, FileOutputStream filename, Integer maclen)
 			throws
 			IOException, NullPointerException {
-
-		// New object mapper to parse JSON
-		ObjectMapper themap = new ObjectMapper();
 
 		String thejson = themap.writeValueAsString(allData);
 		
@@ -569,5 +580,5 @@ public class StataJSON {
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, allData);
 
 	} // End method declaration
-
+*/
 } // End of StataJSON object declaration
