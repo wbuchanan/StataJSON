@@ -9,7 +9,7 @@
 	<artifactId>stata-json</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
-	<name>Stata Java Tools</name>
+	<name>Stata JSON I/O</name>
 	<description>Java plugins for serializing and deserializing JSON data in
 		Stata.</description>
 	<url>https://github.com/wbuchanan/StataJSON</url>

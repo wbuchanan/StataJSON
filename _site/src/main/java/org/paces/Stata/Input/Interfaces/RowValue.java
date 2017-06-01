@@ -2,7 +2,6 @@ package org.paces.Stata.Input.Interfaces;
 
 import com.stata.sfi.*;
 import org.paces.Stata.Input.FlatStataJSON;
-
 import java.util.List;
 
 /**

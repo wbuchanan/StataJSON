@@ -30,6 +30,8 @@ public class StataJSON {
 	public static final String jsClose = " ; ";
 	public static Boolean asJavaScriptVar;
 
+	private static final String[] workAround = {""};
+
 	/**
 	 * New object mapper to parse JSON
 	 */
@@ -86,7 +88,7 @@ public class StataJSON {
 			JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		Meta dbg = new Meta();
+		Meta dbg = new Meta(workAround);
 
 		// Check to make sure there is only a single element
 		List<Number> obs = dbg.getObsindex();
@@ -146,7 +148,7 @@ public class StataJSON {
 			JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		Meta dbg = new Meta();
+		Meta dbg = new Meta(workAround);
 
 		// Initialize a new StataData object
 		DataSet stataData = new DataSet(dbg);
@@ -180,7 +182,7 @@ public class StataJSON {
 		IOException, JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
-		Meta dbg = new Meta();
+		Meta dbg = new Meta(workAround);
 
 		// Check to make sure there is only a single element
 		List<Number> obs = dbg.getObsindex();
@@ -231,7 +233,7 @@ public class StataJSON {
 			JsonProcessingException, IOException {
 
 		// Create a new Metadata object
-		Meta dbg = new Meta();
+		Meta dbg = new Meta(workAround);
 
 		// Create a new StataData object and print all data to the Stata console
 		DataSet stataData = new DataSet(dbg);

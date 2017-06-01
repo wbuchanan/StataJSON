@@ -2,9 +2,7 @@ package org.paces.Stata.Input.Loaders;
 
 import org.paces.Stata.Input.*;
 import org.paces.Stata.Input.Interfaces.KeyValue;
-
 import java.util.*;
-
 import static org.paces.Stata.Input.StataTypeMap.*;
 
 /**
@@ -36,7 +34,9 @@ public class KeyValueImpl implements KeyValue {
 	public StataTypeMap sameType(List<String> keys, Map<String, StataTypeMap> typeMap) {
 
 		// Should prevent needing to iterate over en
-		if (new HashSet(typeMap.values()).size() == 1) return typeMap.get(keys.get(0));
+		if (new HashSet(typeMap.values()).size() == 1) {
+			return typeMap.get(keys.get(0));
+		}
 
 		// Gets the first node type
 		StataTypeMap thisType;
