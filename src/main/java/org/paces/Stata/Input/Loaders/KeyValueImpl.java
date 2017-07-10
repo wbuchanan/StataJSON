@@ -47,7 +47,7 @@ public class KeyValueImpl implements KeyValue {
 
 			// If the Last type is Missing and the current type is not missing
 			if (lastType == MISSING &&
-				typeMap.get(keys.get(i)) != MISSING) {
+					typeMap.get(keys.get(i)) != MISSING) {
 
 				// Set the last type to the current type
 				lastType = typeMap.get(keys.get(i));

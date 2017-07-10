@@ -65,7 +65,7 @@ public interface StataVariableCreator {
 	 * the data will be stored.
 	 */
 	default Integer addStataVar(String varname, String varlabel,
-	                            Integer keyLength, String type) {
+								Integer keyLength, String type) {
 		Integer varidx = addStataVar(varname, keyLength, type);
 		Data.setVarLabel(varidx, varlabel);
 		return varidx;

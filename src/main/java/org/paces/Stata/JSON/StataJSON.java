@@ -19,7 +19,7 @@ import java.util.*;
  * <p>Objects and methods to create JSON representation of Stata data. </p>
  */
 public class StataJSON {
-	
+
 	/**
 	 * Member containing the maximum length used to return JSON object to local
 	 */
@@ -43,7 +43,7 @@ public class StataJSON {
 	 * @param args Arguments passed from javacall
 	 */
 	public static void main(String[] args) {
-		
+
 	}
 
 	/***
@@ -60,7 +60,7 @@ public class StataJSON {
 
 		// Create a new StataAllToJSON Object
 		StataAllToJSON allData = new StataAllToJSON(args);
-		
+
 		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
 
 		// Print the data object to the Stata Console
@@ -101,7 +101,7 @@ public class StataJSON {
 		// Creates comma delimiter for records
 		if (obs.size() > 1) appender = ", ";
 
-		// Otherwise adds a blank string after the object
+			// Otherwise adds a blank string after the object
 		else appender = "";
 
 		// Gets the maximimum macro length
@@ -152,9 +152,9 @@ public class StataJSON {
 
 		// Initialize a new StataData object
 		DataSet stataData = new DataSet(dbg);
-		
+
 		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
-		
+
 		// Print the resulting data record to the console
 		toJSON(stataData, macroLength);
 
@@ -179,7 +179,7 @@ public class StataJSON {
 	 * local file
 	 */
 	public static int printRecordToFile(String[] args) throws
-		IOException, JsonProcessingException, NullPointerException {
+			IOException, JsonProcessingException, NullPointerException {
 
 		// Create a new Metadata object
 		Meta dbg = new Meta(workAround);
@@ -239,7 +239,7 @@ public class StataJSON {
 		DataSet stataData = new DataSet(dbg);
 
 		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
-		
+
 		// New File object
 		FileOutputStream jsonOutput = new FileOutputStream(Macro.getLocalSafe("filenm"), true);
 
@@ -271,7 +271,7 @@ public class StataJSON {
 		StataAllToJSON allData = new StataAllToJSON(args);
 
 		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
-		
+
 		// New File object
 		FileOutputStream jsonOutput = new FileOutputStream(Macro.getLocalSafe("filenm"), true);
 
@@ -307,12 +307,12 @@ public class StataJSON {
 
 		// Tests the length of the JSON object
 		if (thejson.length() <= maclen) {
-			
+
 			// Return the JSON string in a local macro
 			Macro.setLocal("thejson", thejson);
-			
+
 		} // Ends the IF Block
-			
+
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
 				.writeValueAsString(theData));
@@ -341,12 +341,12 @@ public class StataJSON {
 
 		// Tests for the length of the string
 		if (thejson.length() <= maclen) {
-			
+
 			// Return the JSON string in a local macro
 			Macro.setLocal("thejson", thejson);
-			
+
 		} // End of IF Block
-		
+
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
 				.writeValue(filename, observation);
@@ -368,18 +368,18 @@ public class StataJSON {
 			JsonProcessingException {
 
 		String thejson = themap.writeValueAsString(stataData);
-		
+
 		if (thejson.length() <= maclen) {
-			
+
 			// Return the JSON string in a local macro
 			Macro.setLocal("thejson", thejson);
-			
+
 		}
-		
+
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
 				.writeValueAsString(stataData));
-		
+
 	} // End toJSON method declaration for dataset
 
 	/***
@@ -397,14 +397,14 @@ public class StataJSON {
 			IOException, JsonProcessingException {
 
 		String thejson = themap.writeValueAsString(stataData);
-		
+
 		if (thejson.length() <= maclen) {
-			
+
 			// Return the JSON string in a local macro
 			Macro.setLocal("thejson", thejson);
-			
+
 		}
-		
+
 		// Print JSON to file
 		themap.writerWithDefaultPrettyPrinter()
 				.writeValue(filename, stataData);
@@ -423,14 +423,14 @@ public class StataJSON {
 			JsonProcessingException {
 
 		String thejson = themap.writeValueAsString(metaobject);
-		
+
 		if (thejson.length() <= maclen) {
-			
+
 			// Return the JSON string in a local macro
 			Macro.setLocal("thejson", thejson);
-			
+
 		}
-		
+
 		// Print JSON to screen
 		SFIToolkit.display(themap.writerWithDefaultPrettyPrinter()
 				.writeValueAsString(metaobject));
@@ -452,14 +452,14 @@ public class StataJSON {
 			IOException, JsonProcessingException {
 
 		String thejson = themap.writeValueAsString(metaobject);
-		
+
 		if (thejson.length() <= maclen) {
-			
+
 			// Return the JSON string in a local macro
 			Macro.setLocal("thejson", thejson);
-			
+
 		}
-		
+
 		// Print JSON to screen
 		themap.writerWithDefaultPrettyPrinter().writeValue(filename, metaobject);
 

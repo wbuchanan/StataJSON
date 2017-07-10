@@ -45,6 +45,9 @@ prog def jsonio, rclass
 	// If the command is rowvalue orientation
 	else if `"`cmd'"' == "rv" rowval `"`filenm'"', `elements' `url' `obid' `stubname'
 
+	// If the command is table orientation
+    else if `"`cmd'"' == "table" table `"`filenm'"' `url'
+
 	// For output need to pass the if/in conditions to the subroutine call
 	else jsonout `opts' `if' `in', filenm(`filenm') `obid' `metaprint' `what'
 
@@ -55,6 +58,21 @@ prog def jsonio, rclass
 	ret loc thejson `"`r(thejson)'"'
 
 // End of the program definition
+end
+
+// Defines subroutine for loading table of data
+prog def table
+
+    // Defines calling syntax
+    syntax anything(name=file id="Need source identification") [, noURL ]
+
+    // Passes info to java API call
+    javacall org.paces.Stata.Input.external.JSONTableLoader readJSON, args(`: list clean file' `url')
+
+    // Will attempt to destring all possible variables
+    qui: destring *, replace
+
+// End of the subroutine
 end
 
 // JSON Deserializer

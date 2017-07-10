@@ -96,8 +96,7 @@ public class FlatJSON implements Queries {
 	 * @param parent A LinkedList of String objects that contain the names of
 	 *                  each of the parent generations related to the node.
 	 */
-	public FlatJSON(JsonNode node, Integer currentLevel, LinkedList<String>
-		parent) {
+	public FlatJSON(JsonNode node, Integer currentLevel, LinkedList<String> parent) {
 		this.node = node;
 		this.currentLevel = currentLevel;
 		this.parent.addAll(parent);
@@ -154,7 +153,7 @@ public class FlatJSON implements Queries {
 		LinkedList<String> lineage = new LinkedList<>();
 
 		// Adds the values passed to the method
-		lineage.addAll(parent);
+		if (parent.size() > 0) lineage.addAll(parent);
 
 		// Sets the current iteration depth.  This gets used to identify
 		// repeated objects within container nodes and to make sure the key

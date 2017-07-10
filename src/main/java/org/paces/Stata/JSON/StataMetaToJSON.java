@@ -50,7 +50,7 @@ public class StataMetaToJSON {
 	 */
 	@JsonIgnore
 	static List<Long> obidx;
-	
+
 	/**
 	 * Stores maximum macro length
 	 */
@@ -75,9 +75,9 @@ public class StataMetaToJSON {
 	@JsonGetter
 	public static int metaToJSON(String[] args) throws
 			IOException, NullPointerException {
-		
+
 		macroLength = new Integer(Macro.getLocalSafe("maxlen"));
-		
+
 		// Metadata object
 		dbg = new Meta();
 

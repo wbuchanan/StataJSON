@@ -24,7 +24,7 @@ public interface RowValue extends StataVariableCreator {
 	 *                    ID/Iterator values as a suffix
 	 */
 	void toVariables(List<String> keys, FlatStataJSON nodeMap, Integer obid,
-	                 String stubname);
+					 String stubname);
 
 	/**
 	 * Method used to load boolean values in Stata as byte values where 1
@@ -35,7 +35,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadBool(Integer obid, Integer varidx, FlatStataJSON datum,
-	                      String key) {
+						  String key) {
 		if(datum.get(key).booleanValue()) Data.storeNum(varidx, obid, (byte)1);
 		else Data.storeNum(varidx, obid, (byte)0);
 	}
@@ -49,7 +49,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadByte(Integer obid, Integer varidx, FlatStataJSON datum,
-	                      String key) {
+						  String key) {
 		Data.storeNum(varidx, obid, Byte.parseByte(datum.get(key).asText()));
 	}
 
@@ -61,7 +61,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadInt(Integer obid, Integer varidx, FlatStataJSON datum,
-	                     String key) {
+						 String key) {
 		Data.storeNum(varidx, obid, datum.get(key).intValue());
 	}
 
@@ -75,7 +75,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadLong(Integer obid, Integer varidx, FlatStataJSON datum,
-	                      String key) {
+						  String key) {
 		Data.storeNum(varidx, obid, datum.get(key).intValue());
 	}
 
@@ -90,7 +90,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadDouble(Integer obid, Integer varidx, FlatStataJSON datum,
-	                        String key) {
+							String key) {
 		Data.storeNum(varidx, obid, datum.get(key).doubleValue());
 	}
 
@@ -103,7 +103,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadFloat(Integer obid, Integer varidx, FlatStataJSON datum,
-	                       String key) {
+						   String key) {
 		Data.storeNum(varidx, obid, (double) datum.get(key).floatValue());
 	}
 
@@ -115,7 +115,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadString(Integer obid, Integer varidx, FlatStataJSON datum,
-	                        String key) {
+							String key) {
 		Data.storeStr(varidx, obid, datum.get(key).textValue());
 	}
 
@@ -129,7 +129,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadStrL(Integer obid, Integer varidx, FlatStataJSON datum,
-	                      String key) {
+						  String key) {
 		Data.storeStr(varidx, obid, datum.get(key).textValue());
 	}
 
@@ -142,7 +142,7 @@ public interface RowValue extends StataVariableCreator {
 	 * @param key The key to the JsonNode object (also the variable label)
 	 */
 	default void loadMissing(Integer obid, Integer varidx, FlatStataJSON datum,
-	                         String key) {
+							 String key) {
 		Data.storeNum(varidx, obid, (byte) 127);
 	}
 

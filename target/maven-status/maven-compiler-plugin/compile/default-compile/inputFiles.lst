@@ -16,6 +16,8 @@
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/FlatStataJSON.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Loaders/KeyValueImpl.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Loaders/RowValueImpl.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/external/JSONTableLoader.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/FlatJSON.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/Interfaces/KeyValue.java
+/Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/Input/external/JSONFlattener.java
 /Users/billy/Desktop/Programs/Java/Stata/src/main/java/org/paces/Stata/JSON/LoadJSON.java
