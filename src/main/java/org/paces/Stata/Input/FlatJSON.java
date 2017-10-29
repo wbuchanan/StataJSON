@@ -62,9 +62,14 @@ public class FlatJSON implements Queries {
 	protected LinkedList<String> parent;
 
 	/**
+	 * Member variable used to try controlling issues parsing arrays of objects
+	 */
+	protected LinkedList<String> arrayObjectID = new LinkedList<String>();
+
+	/**
 	 * A no-argument class constructor.
 	 */
-	public FlatJSON() {}
+	public FlatJSON() { }
 
 	/**
 	 * Class constructor for the FlatJSON type
@@ -112,8 +117,8 @@ public class FlatJSON implements Queries {
 	public void flatten() {
 
 		// Will only do something if the class members are not null
-		if (this.node != null && this.currentLevel != null && this.parent !=
-			null) this.jsonData = flatten(this.node, this.currentLevel, this.parent);
+		if (this.node != null && this.currentLevel != null && this.parent != null)
+			this.jsonData = flatten(this.node, this.currentLevel, this.parent);
 
 		// Or will return an empty Map object
 		else this.jsonData = new HashMap<String, JsonNode>();
@@ -201,11 +206,14 @@ public class FlatJSON implements Queries {
 			// the ObjectNode is a terminal node
 			} else if (children.get(i).isObject() && !containsContainers(children.get(i))) {
 
-				// Recurse into the ObjectNode
-				nodeMap.putAll(flatten(children.get(i), depth, checkName(lineage, fieldNames.get(i), depth)));
+				// Iterates the ID counter for cases where there is an array of objects
+				this.arrayObjectID.add("id_" + i.toString());
 
-				// Remove the last generation pushed to the lineage stack
-				lineage.pop();
+				// Recurse into the ObjectNode
+				nodeMap.putAll(flatten(children.get(i), depth, arrayObjectID));
+
+				// Removes the current ID from the linked list
+				this.arrayObjectID.pop();
 
 			// If this is a terminal node
 			} else  {

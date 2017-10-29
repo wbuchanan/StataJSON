@@ -70,7 +70,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>StataJSON</mainClass>
+							<mainClass>org.paces.Stata.Input.InJSON</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -87,7 +87,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>StataJSON</mainClass>
+							<mainClass>org.paces.Stata.Input.InJSON</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
