@@ -63,25 +63,25 @@ public class InJSON {
 	 * loaded as a key value pair
 	 */
 	private static KeyValueImpl kv = new KeyValueImpl();
-	private static String emptyObjects = "/Users/billy/Desktop/emptyObjectTest.json";
-	private static String places = "/Users/billy/Desktop/placesExample.json";
-	private static String waypoints = "/Users/billy/Desktop/waypointsResponse.json";
-	private static String bigJSON = "/Users/billy/Desktop/Programs/Java/Stata/src/main/java/resources/legiscanPayload.json";
-	private static String jcIssue = "/Users/billy/Desktop/Programs/Java/Stata/cannerTest.json";
-	private static String issue2b = "/Users/billy/Desktop/Programs/Java/Stata/issue2Test2.json";
-	private static String jsonioOutput = "/Users/billy/Desktop/Programs/Java/Stata/jsonioOutput.json";
+//	private static String emptyObjects = "/Users/billy/Desktop/emptyObjectTest.json";
+//	private static String places = "/Users/billy/Desktop/placesExample.json";
+//	private static String waypoints = "/Users/billy/Desktop/waypointsResponse.json";
+//	private static String bigJSON = "/Users/billy/Desktop/Programs/Java/Stata/src/main/java/resources/legiscanPayload.json";
+//	private static String jcIssue = "/Users/billy/Desktop/Programs/Java/Stata/cannerTest.json";
+//	private static String issue2b = "/Users/billy/Desktop/Programs/Java/Stata/issue2Test2.json";
+//	private static String jsonioOutput = "/Users/billy/Desktop/Programs/Java/Stata/jsonioOutput.json";
 
 	public static void main(String[] args) {
 
-		try {
-			new InJSON(issue2b);
-			new InJSON(jsonioOutput);
-			new InJSON(jcIssue);
+//		try {
+//			new InJSON(issue2b);
+//			new InJSON(jsonioOutput);
+//			new InJSON(jcIssue);
 //			new InJSON(args[0]);
 //			new InJSON(bigJSON);
-		} catch (IOException e) {
-			System.out.println(e.toString());
-		}
+//		} catch (IOException e) {
+//			System.out.println(e.toString());
+//		}
 	}
 
 	/**
@@ -89,6 +89,7 @@ public class InJSON {
 	*  @param fileName A string containing a fully qualified file path
 	*  @throws IOException An exception thrown if the file is not found
 	 */
+/*
 	public InJSON(String fileName) throws IOException {
 		File json = new File(fileName);
 		rootNode = mapper.readTree(json);
@@ -100,7 +101,7 @@ public class InJSON {
 		List<String> keys = nodeMap.queryKey(".*");
 		StataTypeMap types = kv.sameType(keys, nodeMap.getTypeMap());
 		//kv.asKeyValue(types, keys, nodeMap);
-/*		for(String key : nodeMap.queryKey(".*")) {
+		for(String key : nodeMap.queryKey(".*")) {
 			StringJoiner sj = new StringJoiner("\t");
 			sj.add("Key = ").add(key).add("Value =").add(nodeMap.get(key).toString());
 			System.out.println(sj.toString());
@@ -113,11 +114,10 @@ public class InJSON {
 		System.out.println("Ended Job at : " + end);
 		System.out.println(String.valueOf(nodeMap.getLineage().size()) + " " +
 			"elements total");
-*/
 		for(String i : nodeMap.getLineage()) System.out.println(i);
 		//for(String i : nodeMap.getTypeMap()) System.out.println(i);
 	}
-
+*/
 
 	/**
 	 * Method used to read JSON payload from a URL into Stata in a key/value
