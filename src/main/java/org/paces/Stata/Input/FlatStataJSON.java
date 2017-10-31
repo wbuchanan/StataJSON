@@ -92,7 +92,7 @@ public class FlatStataJSON extends FlatJSON {
 
 		// If the generation name isn't empty, add the path delimiter before
 		// the field name as the key and add the JsonNode object as the value
-		if (!genString.isEmpty()) {
+		if (!genString.isEmpty() || genString.equals("")) {
 
 			key = genString + "/" + thisField;
 

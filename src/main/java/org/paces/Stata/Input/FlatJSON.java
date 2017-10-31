@@ -102,7 +102,7 @@ public class FlatJSON implements Queries {
 	 *                  each of the parent generations related to the node.
 	 */
 	public FlatJSON(JsonNode node, Integer currentLevel, LinkedList<String>
-		parent) {
+			parent) {
 		this.node = node;
 		this.currentLevel = currentLevel;
 		this.parent.addAll(parent);
@@ -120,7 +120,7 @@ public class FlatJSON implements Queries {
 		if (this.node != null && this.currentLevel != null && this.parent != null)
 			this.jsonData = flatten(this.node, this.currentLevel, this.parent);
 
-		// Or will return an empty Map object
+			// Or will return an empty Map object
 		else this.jsonData = new HashMap<String, JsonNode>();
 
 	}
@@ -141,7 +141,7 @@ public class FlatJSON implements Queries {
 	 * string.
 	 */
 	public Map<String, JsonNode> flatten(JsonNode node, Integer currentLevel,
-	                       LinkedList<String> parent) {
+										 LinkedList<String> parent) {
 
 		// Creates a list of child nodes given the JsonNode passed to this
 		// method
@@ -180,20 +180,20 @@ public class FlatJSON implements Queries {
 				// If so, starts recursion into the child elements
 				nodeMap.putAll(flatten(children.get(i), depth, checkName(lineage, nodeID)));
 
-			// If the child element is an ArrayNode type but has no elements
-			// in the Array
+				// If the child element is an ArrayNode type but has no elements
+				// in the Array
 			} else if (!children.get(i).elements().hasNext() && children.get(i).isArray()) {
 
 				// This is a terminal node (e.g., Empty Array)
 				// Add it to the stack
 				nodeMap.putAll(processTerminalNode(lineage, fieldNames.get(i),
-													children.get(i), depth + 1));
+						children.get(i), depth + 1));
 
-			// If the child object contains nodes that are container nodes
-			// Or if the child node is an Array and does not have container
-			// child nodes of its own
+				// If the child object contains nodes that are container nodes
+				// Or if the child node is an Array and does not have container
+				// child nodes of its own
 			} else if (containsContainers(children.get(i)) ||
-			(children.get(i).isArray() && !containsContainers(children.get(i)))) {
+					(children.get(i).isArray() && !containsContainers(children.get(i)))) {
 
 				// Recurse into the child element
 				nodeMap.putAll(flatten(children.get(i), depth, checkName(lineage, fieldNames.get(i))));
@@ -201,21 +201,28 @@ public class FlatJSON implements Queries {
 				// Remove the last generation pushed to the lineage stack
 				lineage.pop();
 
-			// If the child object is an ObjectNode type and does not contain
-			// any container nodes as children (e.g., each node with in
-			// the ObjectNode is a terminal node
+				// If the child object is an ObjectNode type and does not contain
+				// any container nodes as children (e.g., each node with in
+				// the ObjectNode is a terminal node
 			} else if (children.get(i).isObject() && !containsContainers(children.get(i))) {
 
 				// Iterates the ID counter for cases where there is an array of objects
-				this.arrayObjectID.add("id_" + i.toString());
+				// this.arrayObjectID.add("id_" + i.toString());
+
+				String newFieldName;
+
+				if (lineage.size() == 0) lineage.add("");
+
+				if ((fieldNames.size() == 1) || (!node.isArray() && parent.size() == 0 && fieldNames.size() > 0)) newFieldName = fieldNames.get(i);
+				else newFieldName = "id";
 
 				// Recurse into the ObjectNode
-				nodeMap.putAll(flatten(children.get(i), depth, arrayObjectID));
+				nodeMap.putAll(flatten(children.get(i), depth, checkName(lineage, newFieldName, i + 1)));
 
 				// Removes the current ID from the linked list
-				this.arrayObjectID.pop();
+				lineage.pop();
 
-			// If this is a terminal node
+				// If this is a terminal node
 			} else  {
 
 				// String object used to hold the name of this field
@@ -225,8 +232,8 @@ public class FlatJSON implements Queries {
 				// appropriate field name from that list
 				if (fieldNames.size() > 0) field = fieldNames.get(i);
 
-				// Otherwise, it is an array so use the generic element_# to
-				// ID the individual elements within the Array
+					// Otherwise, it is an array so use the generic element_# to
+					// ID the individual elements within the Array
 				else field = "element_" + nodeID.toString();
 
 				// Add this key/value pair to the map object
@@ -268,9 +275,9 @@ public class FlatJSON implements Queries {
 	 * name appended to it.
 	 */
 	protected Map<String, JsonNode> processTerminalNode(LinkedList<String> generations,
-                                                       String thisField,
-                                                       JsonNode theNode,
-	                                                   Integer depth) {
+														String thisField,
+														JsonNode theNode,
+														Integer depth) {
 
 		// Creates a new Map object used to create a key/value pair object
 		Map<String, JsonNode> nodeMap = new HashMap<>();
@@ -328,7 +335,7 @@ public class FlatJSON implements Queries {
 		// Convert the string joiner to a string and return it
 		if (!genString.toString().isEmpty()) return "/" + genString.toString();
 
-		// If the generation string is empty just return the empty string
+			// If the generation string is empty just return the empty string
 		else return genString.toString();
 
 	} // End Method declaration
@@ -344,7 +351,7 @@ public class FlatJSON implements Queries {
 	 * new field name being added to the stack.
 	 */
 	private LinkedList<String> checkName(LinkedList<String> lineage,
-	                                     String fieldName) {
+										 String fieldName) {
 
 		// Checks to see if the list contains any data
 		if (lineage.size() > 0) {
@@ -383,11 +390,11 @@ public class FlatJSON implements Queries {
 	 * new field name being added to the stack.
 	 */
 	private LinkedList<String> checkName(LinkedList<String> lineage,
-	                                            String fieldName,
-	                                            Integer depth) {
+										 String fieldName,
+										 Integer depth) {
 
 		// Test the side of the generation string container
-		if (lineage.size() > 0) {
+		if (lineage.size() > 0 && !fieldName.equals("id")) {
 
 			// Pops the top name off the stack and removes any depth
 			// indicators so they can be replaced with current value
@@ -401,6 +408,11 @@ public class FlatJSON implements Queries {
 			lineage.push(fieldName);
 
 		} // End IF Block for pre-populated generation string
+
+		else if (lineage.size() > 0 && fieldName.equals("id")) {
+			if (lineage.get(0).equals("")) lineage.pop();
+			lineage.push(fieldName + "_" + depth.toString());
+		}
 
 		// If the generation string has no values, add the depth value to the
 		// field name and add it to the generation string
@@ -432,8 +444,8 @@ public class FlatJSON implements Queries {
 		// prior to it, push it back onto the stack with a new numeric ID
 		if (!curgen.equals(lineage.peek())) lineage.push(curgen + "_" + nodeID.toString());
 
-		// If it is the same it gets pushed back onto the stack without the
-		// numeric ID value appended
+			// If it is the same it gets pushed back onto the stack without the
+			// numeric ID value appended
 		else lineage.push(curgen);
 
 		// Return the generation string container
@@ -495,8 +507,8 @@ public class FlatJSON implements Queries {
 		// Creates a parallel stream over the elements, filters, and collects
 		// the results
 		List<String> matched = this.generations.parallelStream()
-			.filter(matcher)
-			.collect(Collectors.toList());
+				.filter(matcher)
+				.collect(Collectors.toList());
 
 		// Returns the container with the matched keys
 		return matched;
@@ -545,15 +557,15 @@ public class FlatJSON implements Queries {
 		// Container used to collect the indices from a parallelStream of the
 		// LinkedList object containing the keys.
 		List<Integer> matched = this.generations
-			.parallelStream()
-			.map((Function<String, Integer>) (key) -> {
-				if (p.matcher(key).find()) {
-					return this.generations.indexOf(key);
-				}
-				else return -1;
-			})
-			.filter(matcher)
-			.collect(Collectors.toList());
+				.parallelStream()
+				.map((Function<String, Integer>) (key) -> {
+					if (p.matcher(key).find()) {
+						return this.generations.indexOf(key);
+					}
+					else return -1;
+				})
+				.filter(matcher)
+				.collect(Collectors.toList());
 
 		// Returns the container holding the indices
 		return matched;
