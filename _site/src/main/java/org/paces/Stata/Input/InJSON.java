@@ -6,7 +6,11 @@ import org.paces.Stata.Input.Loaders.*;
 
 import java.io.*;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Class that serves as the point of entry for loading JSON data into Stata.
@@ -59,28 +63,33 @@ public class InJSON {
 	 * loaded as a key value pair
 	 */
 	private static KeyValueImpl kv = new KeyValueImpl();
-	
-	/*
-	private static String emptyObjects = "/Users/billy/Desktop/emptyObjectTest.json";
-	private static String places = "/Users/billy/Desktop/placesExample.json";
-	private static String waypoints = "/Users/billy/Desktop/waypointsResponse.json";
-	private static String bigJSON = "/Users/billy/Desktop/Programs/Java/Stata/src/main/java/resources/legiscanPayload.json";
+//	private static String emptyObjects = "/Users/billy/Desktop/emptyObjectTest.json";
+//	private static String places = "/Users/billy/Desktop/placesExample.json";
+//	private static String waypoints = "/Users/billy/Desktop/waypointsResponse.json";
+//	private static String bigJSON = "/Users/billy/Desktop/Programs/Java/Stata/src/main/java/resources/legiscanPayload.json";
+//	private static String jcIssue = "/Users/billy/Desktop/Programs/Java/Stata/cannerTest.json";
+//	private static String issue2b = "/Users/billy/Desktop/Programs/Java/Stata/issue2Test2.json";
+//	private static String jsonioOutput = "/Users/billy/Desktop/Programs/Java/Stata/jsonioOutput.json";
+
 	public static void main(String[] args) {
 
-		try {
-			new InJSON(waypoints);
-//			new InJSON(emptyObjects);
+//		try {
+//			new InJSON(issue2b);
+//			new InJSON(jsonioOutput);
+//			new InJSON(jcIssue);
 //			new InJSON(args[0]);
 //			new InJSON(bigJSON);
-		} catch (IOException e) {
-			System.out.println(e.toString());
-		}
+//		} catch (IOException e) {
+//			System.out.println(e.toString());
+//		}
 	}
 
 	/**
 	*  Class constructor.  Used when testing the FlatJSON class
 	*  @param fileName A string containing a fully qualified file path
 	*  @throws IOException An exception thrown if the file is not found
+	 */
+/*
 	public InJSON(String fileName) throws IOException {
 		File json = new File(fileName);
 		rootNode = mapper.readTree(json);
@@ -89,15 +98,15 @@ public class InJSON {
 		FlatStataJSON nodeMap = new FlatStataJSON(rootNode, 0);
 		nodeMap.flatten();
 		// queryKey("/routes_1/legs_2/*")
-		List<String> keys = nodeMap.queryKey(".*lat");
+		List<String> keys = nodeMap.queryKey(".*");
 		StataTypeMap types = kv.sameType(keys, nodeMap.getTypeMap());
-		kv.asKeyValue(types, keys, nodeMap);
-		for(String key : nodeMap.queryKey("/routes_1/legs_2/*")) {
+		//kv.asKeyValue(types, keys, nodeMap);
+		for(String key : nodeMap.queryKey(".*")) {
 			StringJoiner sj = new StringJoiner("\t");
 			sj.add("Key = ").add(key).add("Value =").add(nodeMap.get(key).toString());
 			System.out.println(sj.toString());
 		}
-		for(Integer idx : nodeMap.queryIndex("/routes_1/legs_2/*")) {
+		for(Integer idx : nodeMap.queryIndex(".*")) {
 			System.out.println("Index = " + idx.toString());
 		}
 		String end = dateFormat.format(Calendar.getInstance().getTime());
@@ -105,10 +114,10 @@ public class InJSON {
 		System.out.println("Ended Job at : " + end);
 		System.out.println(String.valueOf(nodeMap.getLineage().size()) + " " +
 			"elements total");
-		// for(String i : nodeMap.getLineage()) System.out.println(i);
-		// for(String i : nodeMap.getTypeMap()) System.out.println(i);
+		for(String i : nodeMap.getLineage()) System.out.println(i);
+		//for(String i : nodeMap.getTypeMap()) System.out.println(i);
 	}
-	*/
+*/
 
 	/**
 	 * Method used to read JSON payload from a URL into Stata in a key/value
@@ -119,6 +128,7 @@ public class InJSON {
 	public static int insheetUrl(String[] args) {
 		try {
 			URL site = new URL(args[0]);
+			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			rootNode = mapper.readTree(site);
 			FlatStataJSON nodeMap = new FlatStataJSON(rootNode);
 			nodeMap.flatten();
@@ -139,6 +149,7 @@ public class InJSON {
 	public static int insheetFile(String[] args) {
 		try {
 			File site = new File(args[0]);
+			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			rootNode = mapper.readTree(site);
 			FlatStataJSON nodeMap = new FlatStataJSON(rootNode);
 			nodeMap.flatten();
@@ -175,6 +186,7 @@ public class InJSON {
 	public static int insheetFileToVars(String[] args) {
 		try {
 			File site = new File(args[0]);
+			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			rootNode = mapper.readTree(site);
 			FlatStataJSON nodeMap = new FlatStataJSON(rootNode);
 			nodeMap.flatten();
@@ -197,12 +209,12 @@ public class InJSON {
 	public static int insheetUrlToVars(String[] args) {
 		try {
 			URL site = new URL(args[0]);
+			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			rootNode = mapper.readTree(site);
 			FlatStataJSON nodeMap = new FlatStataJSON(rootNode);
 			nodeMap.flatten();
 			Macro.setLocal("totalelements", String.valueOf(nodeMap.getNumberOfElements()));
-			insheetLoadRowValue(nodeMap, args[1], Integer.parseInt(args[2]),
-				args[3]);
+			insheetLoadRowValue(nodeMap, args[1], Integer.parseInt(args[2]), args[3]);
 			return 0;
 		} catch (IOException e) {
 			e.printStackTrace();

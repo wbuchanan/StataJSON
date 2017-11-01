@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Stata - jsonio</title>
+    <title>Fixes and Improvements</title>
     <meta name="description" content="A JSON serializer for Stata using the Java-API and Jackson JSON.">
 
     <link rel="stylesheet" href="/StataJSON/css/main.css">
-    <link rel="canonical" href="https://wbuchanan.github.io/StataJSON/">
+    <link rel="canonical" href="https://wbuchanan.github.io/StataJSON/news/2017/11/01/updates.html">
 </head>
 
 
@@ -65,39 +65,30 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">Fixes and Improvements</h1>
+    <p class="post-meta">Nov 1, 2017</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Nov 1, 2017</span>
+  <article class="post-content">
+    <h1 id="new-binary-available">New Binary Available</h1>
+<p>It’s taken me several months to scrounge up some time to do a tiny bit of development 
+and thanks to a GitHub user named <a href="https://github.com/guilhemc">guilhemc</a> reminding me about 
+the issue periodically I was finally able to close out a couple of issues, 
+discover a new issue, and patch that new issue as well.  There are still a couple quirks 
+that I wish I could figure out, but those will be for another day/time.  These won’t be noticable
+to end users directly, but are annoyances that I’d like to do 
+away with.</p>
 
-        <h2>
-          <a class="post-link" href="/StataJSON/news/2017/11/01/updates.html">Fixes and Improvements</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 11, 2017</span>
+<h1 id="installation">Installation</h1>
 
-        <h2>
-          <a class="post-link" href="/StataJSON/news/2017/04/11/updates.html">Updated Binary for Distribution</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 2, 2016</span>
+<pre><code class="language-Stata">// Use this snippet to reinstall the JSONIO package for Stata
+net inst jsonio, from(https://wbuchanan.github.io/StataJSON) replace 
+</code></pre>
 
-        <h2>
-          <a class="post-link" href="/StataJSON/news/2016/05/02/now-with-import.html">JSONIO now supports importing data</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/StataJSON/feed.xml">via RSS</a></p>
+  </article>
 
 </div>
 

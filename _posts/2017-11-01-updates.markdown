@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Fixes and Improvements"
+date:   2017-11-01 14:45:00
+categories: news
+---
+
+# New Binary Available
+It's taken me several months to scrounge up some time to do a tiny bit of development 
+and thanks to a GitHub user named [guilhemc](https://github.com/guilhemc) reminding me about 
+the issue periodically I was finally able to close out a couple of issues, 
+discover a new issue, and patch that new issue as well.  There are still a couple quirks 
+that I wish I could figure out, but those will be for another day/time.  These won't be noticable
+to end users directly, but are annoyances that I'd like to do 
+away with.
+
+# Installation
+
+```Stata
+// Use this snippet to reinstall the JSONIO package for Stata
+net inst jsonio, from(https://wbuchanan.github.io/StataJSON) replace 
+```

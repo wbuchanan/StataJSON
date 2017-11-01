@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 0.0.7  27APR2017}{...}
+{* *! version 0.0.8  01NOV2017}{...}
 
 {hline}
 {p 2 2 8}I/O operations with JSON Data{p_end}

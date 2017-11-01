@@ -16,8 +16,8 @@
 ********************************************************************************
 
 *! jsonio
-*! 27APR2017
-*! v 0.0.7
+*! 01NOV2017
+*! v 0.0.8
 
 // Drop program from memory if it exists
 cap prog drop jsonio
