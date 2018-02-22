@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stata.sfi.Data;
-import com.stata.sfi.SFIToolkit;
 import sun.net.www.protocol.http.HttpURLConnection;
 
 import java.io.IOException;
@@ -112,13 +111,12 @@ public class Geocode {
 
 		// Populates the API key value
 		if (!apiKey.isEmpty()) {
-			this.key = "key=" + apiKey;
+			this.key = "&key=" + apiKey;
 		} else {
 			this.key = "";
 		}
 		String addy = callString(address);
 		this.root = parsePayload(addy);
-		SFIToolkit.display(this.root.asText("No JSON Data loaded into the JsonNode object as of line 120"));
 		this.geom = getGeometry();
 		setBoundingBoxes();
 		setViewPort();
@@ -182,14 +180,10 @@ public class Geocode {
 		JsonNode x = objmap.createObjectNode().path(0);
 		try {
 			URL apiCall = new URL(uri);
-			SFIToolkit.displayln(apiCall.toString());
 			x = objmap.readTree(apiCall);
-			SFIToolkit.displayln("JSON Node Content after URL connection");
-			SFIToolkit.displayln(x.toString());
 		} catch (IOException e) {
 			System.out.println(e.toString());
 		}
-		SFIToolkit.display(x.asText("No data found in JSON object from parsePayload method."));
 		return x;
 	}
 
