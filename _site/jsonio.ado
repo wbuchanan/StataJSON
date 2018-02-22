@@ -16,7 +16,7 @@
 ********************************************************************************
 
 *! jsonio
-*! 01NOV2017
+*! 22FEB2018
 *! v 0.0.8
 
 // Drop program from memory if it exists
@@ -84,7 +84,7 @@ prog def rowval, rclass
 
 		// Call Java method to import from URL
 		javacall org.paces.Stata.Input.InJSON insheetUrlToVars,				 ///
-		args(`source' "`elements'" "`obid'")
+		args(`source' "`elements'" "`obid'" "`stubname'")
 
 	} // End ELSE Block for URLs
 

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stata.sfi.Data;
+import sun.net.www.protocol.http.HttpURLConnection;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -69,7 +71,7 @@ public class Geocode {
 	/**
 	 * String used to define the protocol to use for making the API call
 	 */
-	private String protocol;
+	private String protocol = "https";
 
 	/**
 	 * String containing the API key
@@ -109,11 +111,9 @@ public class Geocode {
 
 		// Populates the API key value
 		if (!apiKey.isEmpty()) {
-			this.key = "key=" + apiKey;
-			this.protocol = "https";
+			this.key = "&key=" + apiKey;
 		} else {
 			this.key = "";
-			this.protocol = "http";
 		}
 		String addy = callString(address);
 		this.root = parsePayload(addy);
@@ -206,13 +206,60 @@ public class Geocode {
 	}
 
 	/**
-	 * Parses the bounding box geometry from the geometry object
+	 * Parses the bounding box geometry from the geometry object.
+	 * Added a bunch of error handling based on Issue #27 where a Null Object exception was thrown by the bounding
+	 * box failing to be set in the class.
 	 */
 	private void setBoundingBoxes() {
-		this.bbox.add(0, this.geom.path("bounds").path("northeast").path("lat").asDouble(Geocode.GEOMISSING));
-		this.bbox.add(1, this.geom.path("bounds").path("northeast").path("lng").asDouble(Geocode.GEOMISSING));
-		this.bbox.add(2, this.geom.path("bounds").path("southwest").path("lat").asDouble(Geocode.GEOMISSING));
-		this.bbox.add(3, this.geom.path("bounds").path("southwest").path("lng").asDouble(Geocode.GEOMISSING));
+		JsonNode existingBoundingBox = this.geom.findPath("bounds");
+		if (!this.geom.findPath("bounds").isMissingNode()) {
+
+			if (!this.geom.path("bounds").findPath("northeast").isMissingNode() &&
+				!this.geom.path("bounds").findPath("southwest").isMissingNode()) {
+
+				if (!this.geom.path("bounds").path("northeast").findPath("lat").isMissingNode() &&
+					!this.geom.path("bounds").path("northeast").findPath("lng").isMissingNode() &&
+					!this.geom.path("bounds").path("southwest").findPath("lat").isMissingNode() &&
+					!this.geom.path("bounds").path("southwest").findPath("lng").isMissingNode()) {
+
+					this.bbox.add(0, this.geom.path("bounds").path("northeast").path("lat").asDouble(Geocode.GEOMISSING));
+					this.bbox.add(1, this.geom.path("bounds").path("northeast").path("lng").asDouble(Geocode.GEOMISSING));
+					this.bbox.add(2, this.geom.path("bounds").path("southwest").path("lat").asDouble(Geocode.GEOMISSING));
+					this.bbox.add(3, this.geom.path("bounds").path("southwest").path("lng").asDouble(Geocode.GEOMISSING));
+
+				}
+
+				else {
+
+					this.bbox.add(0, Geocode.GEOMISSING);
+					this.bbox.add(1, Geocode.GEOMISSING);
+					this.bbox.add(2, Geocode.GEOMISSING);
+					this.bbox.add(3, Geocode.GEOMISSING);
+
+				}
+
+			}
+
+			else {
+
+				this.bbox.add(0, Geocode.GEOMISSING);
+				this.bbox.add(1, Geocode.GEOMISSING);
+				this.bbox.add(2, Geocode.GEOMISSING);
+				this.bbox.add(3, Geocode.GEOMISSING);
+
+			}
+
+		}
+
+		else {
+
+			this.bbox.add(0, Geocode.GEOMISSING);
+			this.bbox.add(1, Geocode.GEOMISSING);
+			this.bbox.add(2, Geocode.GEOMISSING);
+			this.bbox.add(3, Geocode.GEOMISSING);
+
+		}
+
 	}
 
 	/**

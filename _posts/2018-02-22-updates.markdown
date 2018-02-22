@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Fixes and Improvements"
+date:   2018-02-22 12:24:00
+categories: news
+---
+
+# New Binary Available
+A few smaller issues have been brought to my attention since the last update.  The two issues [#27](https://github.com/wbuchanan/StataJSON/issues/27) and [#28](https://github.com/wbuchanan/StataJSON/issues/28) should be fixed with this updated release.
+
+# Installation
+
+```Stata
+// Use this snippet to reinstall the JSONIO package for Stata
+net inst jsonio, from(https://wbuchanan.github.io/StataJSON) replace 
+```
